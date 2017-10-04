@@ -1,5 +1,0 @@
-C:\Users\dvogel\Desktop\PCN-Integration\PCN-Integration.WCF\bin\PCN-Integration.WCF.dll.config
-C:\Users\dvogel\Desktop\PCN-Integration\PCN-Integration.WCF\bin\PCN-Integration.WCF.dll
-C:\Users\dvogel\Desktop\PCN-Integration\PCN-Integration.WCF\bin\PCN-Integration.WCF.pdb
-C:\Users\dvogel\Desktop\PCN-Integration\PCN-Integration.WCF\obj\Debug\PCN-Integration.WCF.dll
-C:\Users\dvogel\Desktop\PCN-Integration\PCN-Integration.WCF\obj\Debug\PCN-Integration.WCF.pdb
