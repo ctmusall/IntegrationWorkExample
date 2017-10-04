@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://mirthtest/IntegrationService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PCN.WebService.Data" />
+  <xs:import schemaLocation="http://mirthtest/IntegrationService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/PCN.WebService.Data.Results" />
+  <xs:import schemaLocation="http://mirthtest/IntegrationService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/PCN.WebService.Wcf" />
+  <xs:element name="SubmitOrder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PCN.WebService.Data" minOccurs="0" name="order" nillable="true" type="q1:InboundOrder" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SubmitOrderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PCN.WebService.Data.Results" minOccurs="0" name="SubmitOrderResult" nillable="true" type="q2:SubmitOrderResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="customerId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="orderId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetOrderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PCN.WebService.Data.Results" minOccurs="0" name="GetOrderResult" nillable="true" type="q3:GetOrderResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Version">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="VersionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PCN.WebService.Wcf" minOccurs="0" name="VersionResult" nillable="true" type="q4:IntegrationServiceInfo" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendTSIStatusUpdate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/PCN.WebService.Data" minOccurs="0" name="OD" nillable="true" type="q5:OrderDetail" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="SendTSIStatusUpdateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/PCN.WebService.Data.Results" minOccurs="0" name="SendTSIStatusUpdateResult" nillable="true" type="q6:ServiceResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TSISubmitOrder">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/PCN.WebService.Data" minOccurs="0" name="TSIInboundOrder" nillable="true" type="q7:TSIInboundOrder" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TSISubmitOrderResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/PCN.WebService.Data.Results" minOccurs="0" name="TSISubmitOrderResult" nillable="true" type="q8:TSISubmitOrderResult" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

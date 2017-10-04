@@ -1,0 +1,1985 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:wsmex="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlaceOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="XMLData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlaceOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PlaceOrderResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AsyncPlaceOrder2">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="XMLData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AsyncPlaceOrder2Response">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AsyncPlaceOrder2Result" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AsyncPlaceOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="XMLData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AsyncPlaceOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AsyncPlaceOrderResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlaceSigningOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="XMLData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PlaceSigningOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PlaceSigningOrderResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReturnSigners">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="FASSNumber" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ReturnSignersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ReturnSignersResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SignTrackEvent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="xml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SignTrackEventResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SignTrackEventResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AsyncFNEvent">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="xml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AsyncFNEventResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AsyncFNEventResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STLenderVerifyUser">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="XMLData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STLenderVerifyUserResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STLenderVerifyUserResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STLenderChangePassword">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="XMLData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STLenderChangePasswordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STLenderChangePasswordResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STLenderForgotPassword">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="XMLData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STLenderForgotPasswordResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STLenderForgotPasswordResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetLanguages">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetLanguagesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetLanguagesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STLenderPlaceOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="XMLData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STLenderPlaceOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STLenderPlaceOrderResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STLenderFindOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="XMLData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STLenderFindOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STLenderFindOrderResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STLenderRetrieveOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="XMLData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STLenderRetrieveOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STLenderRetrieveOrderResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STLenderRetrieveOrderUploadDocs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="XMLData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STLenderRetrieveOrderUploadDocsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STLenderRetrieveOrderUploadDocsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STLenderUploadDocs">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="XMLData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STLenderUploadDocsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STLenderUploadDocsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STLenderCancelOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="XMLData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STLenderCancelOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STLenderCancelOrderResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STLenderAddNote">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="XMLData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STLenderAddNoteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STLenderAddNoteResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STLenderBranchsUsers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="XMLData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STLenderBranchsUsersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STLenderBranchsUsersResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STGetCompanies">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="XMLData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STGetCompaniesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STGetCompaniesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STGetBranches">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="XMLData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STGetBranchesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STGetBranchesResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STGetBranchUsers">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="XMLData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STGetBranchUsersResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STGetBranchUsersResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STGetUserInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="XMLData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STGetUserInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STGetUserInfoResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STRegisterMobile">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="XMLData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STRegisterMobileResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STRegisterMobileResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STVerifyMobileSecurityCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="XMLData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STVerifyMobileSecurityCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STVerifyMobileSecurityCodeResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STVerifySMSSystem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="XMLData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STVerifySMSSystemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STVerifySMSSystemResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STVerifyFASSSystem">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="XMLData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STVerifyFASSSystemResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STVerifyFASSSystemResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNotariesByName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="XMLData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNotariesByNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNotariesByNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNotariesByCity">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="XMLData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNotariesByCityResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNotariesByCityResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNotariesByAddress">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="XMLData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNotariesByAddressResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNotariesByAddressResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNotariesByFASSNotaryId">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="XMLData" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetNotariesByFASSNotaryIdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetNotariesByFASSNotaryIdResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetFlags">
+        <s:complexType />
+      </s:element>
+      <s:element name="GetFlagsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetFlagsResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STGetUserInfoByUsername">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="requestXml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="STGetUserInfoByUsernameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="STGetUserInfoByUsernameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPCNOrderStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="username" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="password" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="xml" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetPCNOrderStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetPCNOrderStatusResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="STLenderAddNoteHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNotariesByAddressSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNotariesByAddressResponse" />
+  </wsdl:message>
+  <wsdl:message name="STLenderFindOrderHttpPostIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AsyncPlaceOrder2HttpGetIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderRetrieveOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:STLenderRetrieveOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="STGetBranchesHttpGetIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderFindOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:STLenderFindOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="STLenderChangePasswordSoapOut">
+    <wsdl:part name="parameters" element="tns:STLenderChangePasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="STLenderPlaceOrderHttpPostIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderRetrieveOrderUploadDocsSoapIn">
+    <wsdl:part name="parameters" element="tns:STLenderRetrieveOrderUploadDocs" />
+  </wsdl:message>
+  <wsdl:message name="AsyncPlaceOrderHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SignTrackEventHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderFindOrderHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNotariesByCityHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNotariesByCityHttpGetIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderRetrieveOrderHttpGetIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNotariesByFASSNotaryIdHttpPostIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderBranchsUsersHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AsyncFNEventHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="STGetBranchesSoapIn">
+    <wsdl:part name="parameters" element="tns:STGetBranches" />
+  </wsdl:message>
+  <wsdl:message name="PlaceSigningOrderHttpPostIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderPlaceOrderHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="PlaceOrderHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNotariesByNameHttpPostIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLanguagesHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="STGetUserInfoByUsernameHttpPostIn">
+    <wsdl:part name="requestXml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderUploadDocsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderCancelOrderHttpGetIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderRetrieveOrderUploadDocsHttpPostIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STGetCompaniesHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="STGetCompaniesSoapIn">
+    <wsdl:part name="parameters" element="tns:STGetCompanies" />
+  </wsdl:message>
+  <wsdl:message name="GetNotariesByCitySoapOut">
+    <wsdl:part name="parameters" element="tns:GetNotariesByCityResponse" />
+  </wsdl:message>
+  <wsdl:message name="STLenderVerifyUserHttpPostIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STVerifyFASSSystemHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="STGetUserInfoHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNotariesByNameHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AsyncPlaceOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:AsyncPlaceOrder" />
+  </wsdl:message>
+  <wsdl:message name="STVerifySMSSystemHttpPostIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ReturnSignersHttpPostIn">
+    <wsdl:part name="Username" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="FASSNumber" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STRegisterMobileHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldHttpGetIn" />
+  <wsdl:message name="PlaceOrderHttpPostIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderPlaceOrderHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNotariesByFASSNotaryIdHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="STGetUserInfoByUsernameHttpGetIn">
+    <wsdl:part name="requestXml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderAddNoteSoapIn">
+    <wsdl:part name="parameters" element="tns:STLenderAddNote" />
+  </wsdl:message>
+  <wsdl:message name="STGetUserInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:STGetUserInfo" />
+  </wsdl:message>
+  <wsdl:message name="GetNotariesByCityHttpPostIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderFindOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:STLenderFindOrder" />
+  </wsdl:message>
+  <wsdl:message name="GetFlagsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetFlagsResponse" />
+  </wsdl:message>
+  <wsdl:message name="AsyncPlaceOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:AsyncPlaceOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="STLenderUploadDocsHttpPostIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderCancelOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:STLenderCancelOrder" />
+  </wsdl:message>
+  <wsdl:message name="STLenderFindOrderHttpGetIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderRetrieveOrderHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetLanguagesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetLanguages" />
+  </wsdl:message>
+  <wsdl:message name="ReturnSignersHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderRetrieveOrderUploadDocsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNotariesByAddressHttpGetIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="STLenderPlaceOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:STLenderPlaceOrder" />
+  </wsdl:message>
+  <wsdl:message name="STLenderVerifyUserHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="STGetBranchesSoapOut">
+    <wsdl:part name="parameters" element="tns:STGetBranchesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNotariesByAddressHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNotariesByAddressHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="STVerifyFASSSystemSoapOut">
+    <wsdl:part name="parameters" element="tns:STVerifyFASSSystemResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLanguagesHttpPostIn" />
+  <wsdl:message name="STVerifySMSSystemSoapOut">
+    <wsdl:part name="parameters" element="tns:STVerifySMSSystemResponse" />
+  </wsdl:message>
+  <wsdl:message name="STLenderRetrieveOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:STLenderRetrieveOrder" />
+  </wsdl:message>
+  <wsdl:message name="PlaceSigningOrderHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderUploadDocsHttpGetIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STVerifyFASSSystemSoapIn">
+    <wsdl:part name="parameters" element="tns:STVerifyFASSSystem" />
+  </wsdl:message>
+  <wsdl:message name="STVerifySMSSystemHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="PlaceSigningOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:PlaceSigningOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNotariesByNameSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNotariesByNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetFlagsHttpGetIn" />
+  <wsdl:message name="PlaceOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:PlaceOrder" />
+  </wsdl:message>
+  <wsdl:message name="STLenderForgotPasswordSoapIn">
+    <wsdl:part name="parameters" element="tns:STLenderForgotPassword" />
+  </wsdl:message>
+  <wsdl:message name="STGetBranchUsersSoapIn">
+    <wsdl:part name="parameters" element="tns:STGetBranchUsers" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNotariesByCitySoapIn">
+    <wsdl:part name="parameters" element="tns:GetNotariesByCity" />
+  </wsdl:message>
+  <wsdl:message name="STVerifyFASSSystemHttpGetIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPCNOrderStatusHttpGetIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="xml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ReturnSignersSoapIn">
+    <wsdl:part name="parameters" element="tns:ReturnSigners" />
+  </wsdl:message>
+  <wsdl:message name="STVerifyFASSSystemHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNotariesByCityHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AsyncPlaceOrderHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AsyncFNEventHttpGetIn">
+    <wsdl:part name="xml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SignTrackEventSoapIn">
+    <wsdl:part name="parameters" element="tns:SignTrackEvent" />
+  </wsdl:message>
+  <wsdl:message name="AsyncPlaceOrderHttpGetIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STGetUserInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:STGetUserInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="STLenderFindOrderHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderAddNoteHttpPostIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="SignTrackEventHttpGetIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="xml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AsyncPlaceOrder2SoapIn">
+    <wsdl:part name="parameters" element="tns:AsyncPlaceOrder2" />
+  </wsdl:message>
+  <wsdl:message name="STGetUserInfoByUsernameHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="PlaceOrderHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderChangePasswordSoapIn">
+    <wsdl:part name="parameters" element="tns:STLenderChangePassword" />
+  </wsdl:message>
+  <wsdl:message name="GetPCNOrderStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:GetPCNOrderStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="AsyncFNEventHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderUploadDocsSoapIn">
+    <wsdl:part name="parameters" element="tns:STLenderUploadDocs" />
+  </wsdl:message>
+  <wsdl:message name="STLenderForgotPasswordSoapOut">
+    <wsdl:part name="parameters" element="tns:STLenderForgotPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="PlaceSigningOrderHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SignTrackEventHttpPostIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="xml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderBranchsUsersHttpPostIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNotariesByFASSNotaryIdSoapOut">
+    <wsdl:part name="parameters" element="tns:GetNotariesByFASSNotaryIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="STVerifyMobileSecurityCodeHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="PlaceSigningOrderHttpGetIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AsyncPlaceOrder2SoapOut">
+    <wsdl:part name="parameters" element="tns:AsyncPlaceOrder2Response" />
+  </wsdl:message>
+  <wsdl:message name="GetFlagsHttpPostIn" />
+  <wsdl:message name="GetLanguagesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetLanguagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="STLenderUploadDocsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderVerifyUserHttpGetIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNotariesByFASSNotaryIdHttpGetIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STRegisterMobileHttpPostIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STGetUserInfoByUsernameSoapIn">
+    <wsdl:part name="parameters" element="tns:STGetUserInfoByUsername" />
+  </wsdl:message>
+  <wsdl:message name="STVerifyMobileSecurityCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:STVerifyMobileSecurityCode" />
+  </wsdl:message>
+  <wsdl:message name="STVerifyMobileSecurityCodeHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderAddNoteHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AsyncPlaceOrderHttpPostIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNotariesByNameHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderPlaceOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:STLenderPlaceOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="STLenderVerifyUserSoapOut">
+    <wsdl:part name="parameters" element="tns:STLenderVerifyUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="STVerifySMSSystemSoapIn">
+    <wsdl:part name="parameters" element="tns:STVerifySMSSystem" />
+  </wsdl:message>
+  <wsdl:message name="STLenderCancelOrderHttpPostIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPCNOrderStatusHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="STLenderBranchsUsersHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderForgotPasswordHttpPostIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderForgotPasswordHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="STGetBranchUsersSoapOut">
+    <wsdl:part name="parameters" element="tns:STGetBranchUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="STGetBranchUsersHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderBranchsUsersHttpGetIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderPlaceOrderHttpGetIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STVerifySMSSystemHttpGetIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderBranchsUsersSoapOut">
+    <wsdl:part name="parameters" element="tns:STLenderBranchsUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="STLenderRetrieveOrderUploadDocsHttpGetIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetPCNOrderStatusHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="STGetBranchUsersHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AsyncPlaceOrder2HttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AsyncFNEventSoapIn">
+    <wsdl:part name="parameters" element="tns:AsyncFNEvent" />
+  </wsdl:message>
+  <wsdl:message name="STGetBranchesHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNotariesByFASSNotaryIdHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AsyncFNEventSoapOut">
+    <wsdl:part name="parameters" element="tns:AsyncFNEventResponse" />
+  </wsdl:message>
+  <wsdl:message name="STLenderCancelOrderHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="STGetCompaniesHttpGetIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AsyncPlaceOrder2HttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFlagsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetFlags" />
+  </wsdl:message>
+  <wsdl:message name="STRegisterMobileHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ReturnSignersHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="STVerifyMobileSecurityCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:STVerifyMobileSecurityCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetPCNOrderStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:GetPCNOrderStatus" />
+  </wsdl:message>
+  <wsdl:message name="STVerifyFASSSystemHttpPostIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderForgotPasswordHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderChangePasswordHttpGetIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldHttpPostIn" />
+  <wsdl:message name="GetPCNOrderStatusHttpPostIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="xml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STVerifyMobileSecurityCodeHttpGetIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STGetCompaniesHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderChangePasswordHttpPostIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PlaceOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:PlaceOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="STGetUserInfoByUsernameSoapOut">
+    <wsdl:part name="parameters" element="tns:STGetUserInfoByUsernameResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNotariesByAddressHttpPostIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STGetCompaniesHttpPostIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STGetBranchUsersHttpPostIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="PlaceOrderHttpGetIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderRetrieveOrderUploadDocsSoapOut">
+    <wsdl:part name="parameters" element="tns:STLenderRetrieveOrderUploadDocsResponse" />
+  </wsdl:message>
+  <wsdl:message name="STGetUserInfoHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderBranchsUsersSoapIn">
+    <wsdl:part name="parameters" element="tns:STLenderBranchsUsers" />
+  </wsdl:message>
+  <wsdl:message name="STLenderRetrieveOrderHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderVerifyUserHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderRetrieveOrderHttpPostIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="AsyncPlaceOrder2HttpPostIn">
+    <wsdl:part name="username" type="s:string" />
+    <wsdl:part name="password" type="s:string" />
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderCancelOrderHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SignTrackEventSoapOut">
+    <wsdl:part name="parameters" element="tns:SignTrackEventResponse" />
+  </wsdl:message>
+  <wsdl:message name="STGetUserInfoHttpPostIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderForgotPasswordHttpGetIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNotariesByNameHttpGetIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="ReturnSignersHttpGetIn">
+    <wsdl:part name="Username" type="s:string" />
+    <wsdl:part name="Password" type="s:string" />
+    <wsdl:part name="FASSNumber" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderUploadDocsSoapOut">
+    <wsdl:part name="parameters" element="tns:STLenderUploadDocsResponse" />
+  </wsdl:message>
+  <wsdl:message name="STGetCompaniesSoapOut">
+    <wsdl:part name="parameters" element="tns:STGetCompaniesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLanguagesHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="STRegisterMobileSoapOut">
+    <wsdl:part name="parameters" element="tns:STRegisterMobileResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNotariesByNameSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNotariesByName" />
+  </wsdl:message>
+  <wsdl:message name="PlaceSigningOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:PlaceSigningOrder" />
+  </wsdl:message>
+  <wsdl:message name="STGetUserInfoByUsernameHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderVerifyUserSoapIn">
+    <wsdl:part name="parameters" element="tns:STLenderVerifyUser" />
+  </wsdl:message>
+  <wsdl:message name="STGetBranchesHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderChangePasswordHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="STVerifyMobileSecurityCodeHttpPostIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STGetUserInfoHttpGetIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STRegisterMobileSoapIn">
+    <wsdl:part name="parameters" element="tns:STRegisterMobile" />
+  </wsdl:message>
+  <wsdl:message name="STLenderChangePasswordHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="SignTrackEventHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="STGetBranchesHttpPostIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STGetBranchUsersHttpGetIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFlagsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="ReturnSignersSoapOut">
+    <wsdl:part name="parameters" element="tns:ReturnSignersResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetLanguagesHttpGetIn" />
+  <wsdl:message name="STLenderCancelOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:STLenderCancelOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="STLenderRetrieveOrderUploadDocsHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="AsyncFNEventHttpPostIn">
+    <wsdl:part name="xml" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderAddNoteSoapOut">
+    <wsdl:part name="parameters" element="tns:STLenderAddNoteResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetNotariesByAddressSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNotariesByAddress" />
+  </wsdl:message>
+  <wsdl:message name="STVerifySMSSystemHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="STRegisterMobileHttpGetIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="STLenderAddNoteHttpGetIn">
+    <wsdl:part name="XMLData" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="GetFlagsHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="GetNotariesByFASSNotaryIdSoapIn">
+    <wsdl:part name="parameters" element="tns:GetNotariesByFASSNotaryId" />
+  </wsdl:message>
+  <wsdl:portType name="SigntrackConnectHttpPost1">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldHttpPostIn" />
+      <wsdl:output message="tns:HelloWorldHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PlaceOrder">
+      <wsdl:documentation>Place an Order</wsdl:documentation>
+      <wsdl:input message="tns:PlaceOrderHttpPostIn" />
+      <wsdl:output message="tns:PlaceOrderHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AsyncPlaceOrder2">
+      <wsdl:documentation>Place an Order Async</wsdl:documentation>
+      <wsdl:input message="tns:AsyncPlaceOrder2HttpPostIn" />
+      <wsdl:output message="tns:AsyncPlaceOrder2HttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AsyncPlaceOrder">
+      <wsdl:documentation>Place an Order Async</wsdl:documentation>
+      <wsdl:input message="tns:AsyncPlaceOrderHttpPostIn" />
+      <wsdl:output message="tns:AsyncPlaceOrderHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PlaceSigningOrder">
+      <wsdl:documentation>Place a Signing Order</wsdl:documentation>
+      <wsdl:input message="tns:PlaceSigningOrderHttpPostIn" />
+      <wsdl:output message="tns:PlaceSigningOrderHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnSigners">
+      <wsdl:documentation>Return all the Signers for a FASS Number.</wsdl:documentation>
+      <wsdl:input message="tns:ReturnSignersHttpPostIn" />
+      <wsdl:output message="tns:ReturnSignersHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SignTrackEvent">
+      <wsdl:input message="tns:SignTrackEventHttpPostIn" />
+      <wsdl:output message="tns:SignTrackEventHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AsyncFNEvent">
+      <wsdl:input message="tns:AsyncFNEventHttpPostIn" />
+      <wsdl:output message="tns:AsyncFNEventHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STLenderVerifyUser">
+      <wsdl:documentation>Verify a Lender User</wsdl:documentation>
+      <wsdl:input message="tns:STLenderVerifyUserHttpPostIn" />
+      <wsdl:output message="tns:STLenderVerifyUserHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STLenderChangePassword">
+      <wsdl:documentation>Change a password for a Lender User</wsdl:documentation>
+      <wsdl:input message="tns:STLenderChangePasswordHttpPostIn" />
+      <wsdl:output message="tns:STLenderChangePasswordHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STLenderForgotPassword">
+      <wsdl:documentation>Resets a password for a Lender User</wsdl:documentation>
+      <wsdl:input message="tns:STLenderForgotPasswordHttpPostIn" />
+      <wsdl:output message="tns:STLenderForgotPasswordHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLanguages">
+      <wsdl:documentation>Returns all the langueages from the FASSNotary Database.</wsdl:documentation>
+      <wsdl:input message="tns:GetLanguagesHttpPostIn" />
+      <wsdl:output message="tns:GetLanguagesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STLenderPlaceOrder">
+      <wsdl:documentation>Places an order from the Lender WebSite</wsdl:documentation>
+      <wsdl:input message="tns:STLenderPlaceOrderHttpPostIn" />
+      <wsdl:output message="tns:STLenderPlaceOrderHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STLenderFindOrder">
+      <wsdl:documentation>Finds the orders for the Lender WebSite</wsdl:documentation>
+      <wsdl:input message="tns:STLenderFindOrderHttpPostIn" />
+      <wsdl:output message="tns:STLenderFindOrderHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STLenderRetrieveOrder">
+      <wsdl:documentation>Retrieves the given order.</wsdl:documentation>
+      <wsdl:input message="tns:STLenderRetrieveOrderHttpPostIn" />
+      <wsdl:output message="tns:STLenderRetrieveOrderHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STLenderRetrieveOrderUploadDocs">
+      <wsdl:documentation>Retrieves the given order.</wsdl:documentation>
+      <wsdl:input message="tns:STLenderRetrieveOrderUploadDocsHttpPostIn" />
+      <wsdl:output message="tns:STLenderRetrieveOrderUploadDocsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STLenderUploadDocs">
+      <wsdl:documentation>Updates the docs.</wsdl:documentation>
+      <wsdl:input message="tns:STLenderUploadDocsHttpPostIn" />
+      <wsdl:output message="tns:STLenderUploadDocsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STLenderCancelOrder">
+      <wsdl:documentation>Cancels the order.</wsdl:documentation>
+      <wsdl:input message="tns:STLenderCancelOrderHttpPostIn" />
+      <wsdl:output message="tns:STLenderCancelOrderHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STLenderAddNote">
+      <wsdl:documentation>Adds a note to the order.</wsdl:documentation>
+      <wsdl:input message="tns:STLenderAddNoteHttpPostIn" />
+      <wsdl:output message="tns:STLenderAddNoteHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STLenderBranchsUsers">
+      <wsdl:documentation>Returns all the Branches with the Users that have Web Access.  Only Administrators can access this.</wsdl:documentation>
+      <wsdl:input message="tns:STLenderBranchsUsersHttpPostIn" />
+      <wsdl:output message="tns:STLenderBranchsUsersHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STGetCompanies">
+      <wsdl:documentation>Returns all the Companies given Company Type ID.  Only Administrators can access this.</wsdl:documentation>
+      <wsdl:input message="tns:STGetCompaniesHttpPostIn" />
+      <wsdl:output message="tns:STGetCompaniesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STGetBranches">
+      <wsdl:documentation>Returns all the Branches for a given Company.  Only Administrators can access this.</wsdl:documentation>
+      <wsdl:input message="tns:STGetBranchesHttpPostIn" />
+      <wsdl:output message="tns:STGetBranchesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STGetBranchUsers">
+      <wsdl:documentation>Returns all the Users for a given Company-Branch.  Only Administrators can access this.</wsdl:documentation>
+      <wsdl:input message="tns:STGetBranchUsersHttpPostIn" />
+      <wsdl:output message="tns:STGetBranchUsersHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STGetUserInfo">
+      <wsdl:documentation>Returns UserInfo given user id or username.  Only Administrators can access this.</wsdl:documentation>
+      <wsdl:input message="tns:STGetUserInfoHttpPostIn" />
+      <wsdl:output message="tns:STGetUserInfoHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STRegisterMobile">
+      <wsdl:documentation>Register mobile number to SMS system.</wsdl:documentation>
+      <wsdl:input message="tns:STRegisterMobileHttpPostIn" />
+      <wsdl:output message="tns:STRegisterMobileHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STVerifyMobileSecurityCode">
+      <wsdl:documentation>Verify user Security code is valid.</wsdl:documentation>
+      <wsdl:input message="tns:STVerifyMobileSecurityCodeHttpPostIn" />
+      <wsdl:output message="tns:STVerifyMobileSecurityCodeHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STVerifySMSSystem">
+      <wsdl:documentation>SMS System is Active or Not.</wsdl:documentation>
+      <wsdl:input message="tns:STVerifySMSSystemHttpPostIn" />
+      <wsdl:output message="tns:STVerifySMSSystemHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STVerifyFASSSystem">
+      <wsdl:documentation>Mobile Registration exists in FASS.</wsdl:documentation>
+      <wsdl:input message="tns:STVerifyFASSSystemHttpPostIn" />
+      <wsdl:output message="tns:STVerifyFASSSystemHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNotariesByName">
+      <wsdl:documentation>Return all Notaries search by Name</wsdl:documentation>
+      <wsdl:input message="tns:GetNotariesByNameHttpPostIn" />
+      <wsdl:output message="tns:GetNotariesByNameHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNotariesByCity">
+      <wsdl:documentation>Return all Notaries search by City and State</wsdl:documentation>
+      <wsdl:input message="tns:GetNotariesByCityHttpPostIn" />
+      <wsdl:output message="tns:GetNotariesByCityHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNotariesByAddress">
+      <wsdl:documentation>Return all Notaries search by Address and Radius in miles</wsdl:documentation>
+      <wsdl:input message="tns:GetNotariesByAddressHttpPostIn" />
+      <wsdl:output message="tns:GetNotariesByAddressHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNotariesByFASSNotaryId">
+      <wsdl:documentation>Return all Notaries search by Notary ID</wsdl:documentation>
+      <wsdl:input message="tns:GetNotariesByFASSNotaryIdHttpPostIn" />
+      <wsdl:output message="tns:GetNotariesByFASSNotaryIdHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlags">
+      <wsdl:documentation>Returns all the flags from the FASSNotary Database.</wsdl:documentation>
+      <wsdl:input message="tns:GetFlagsHttpPostIn" />
+      <wsdl:output message="tns:GetFlagsHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STGetUserInfoByUsername">
+      <wsdl:documentation>Returns UserInfo given username.</wsdl:documentation>
+      <wsdl:input message="tns:STGetUserInfoByUsernameHttpPostIn" />
+      <wsdl:output message="tns:STGetUserInfoByUsernameHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPCNOrderStatus">
+      <wsdl:documentation>Returns Order status from PCN.</wsdl:documentation>
+      <wsdl:input message="tns:GetPCNOrderStatusHttpPostIn" />
+      <wsdl:output message="tns:GetPCNOrderStatusHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="SigntrackConnectHttpGet1">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldHttpGetIn" />
+      <wsdl:output message="tns:HelloWorldHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PlaceOrder">
+      <wsdl:documentation>Place an Order</wsdl:documentation>
+      <wsdl:input message="tns:PlaceOrderHttpGetIn" />
+      <wsdl:output message="tns:PlaceOrderHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AsyncPlaceOrder2">
+      <wsdl:documentation>Place an Order Async</wsdl:documentation>
+      <wsdl:input message="tns:AsyncPlaceOrder2HttpGetIn" />
+      <wsdl:output message="tns:AsyncPlaceOrder2HttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AsyncPlaceOrder">
+      <wsdl:documentation>Place an Order Async</wsdl:documentation>
+      <wsdl:input message="tns:AsyncPlaceOrderHttpGetIn" />
+      <wsdl:output message="tns:AsyncPlaceOrderHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PlaceSigningOrder">
+      <wsdl:documentation>Place a Signing Order</wsdl:documentation>
+      <wsdl:input message="tns:PlaceSigningOrderHttpGetIn" />
+      <wsdl:output message="tns:PlaceSigningOrderHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnSigners">
+      <wsdl:documentation>Return all the Signers for a FASS Number.</wsdl:documentation>
+      <wsdl:input message="tns:ReturnSignersHttpGetIn" />
+      <wsdl:output message="tns:ReturnSignersHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SignTrackEvent">
+      <wsdl:input message="tns:SignTrackEventHttpGetIn" />
+      <wsdl:output message="tns:SignTrackEventHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AsyncFNEvent">
+      <wsdl:input message="tns:AsyncFNEventHttpGetIn" />
+      <wsdl:output message="tns:AsyncFNEventHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STLenderVerifyUser">
+      <wsdl:documentation>Verify a Lender User</wsdl:documentation>
+      <wsdl:input message="tns:STLenderVerifyUserHttpGetIn" />
+      <wsdl:output message="tns:STLenderVerifyUserHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STLenderChangePassword">
+      <wsdl:documentation>Change a password for a Lender User</wsdl:documentation>
+      <wsdl:input message="tns:STLenderChangePasswordHttpGetIn" />
+      <wsdl:output message="tns:STLenderChangePasswordHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STLenderForgotPassword">
+      <wsdl:documentation>Resets a password for a Lender User</wsdl:documentation>
+      <wsdl:input message="tns:STLenderForgotPasswordHttpGetIn" />
+      <wsdl:output message="tns:STLenderForgotPasswordHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLanguages">
+      <wsdl:documentation>Returns all the langueages from the FASSNotary Database.</wsdl:documentation>
+      <wsdl:input message="tns:GetLanguagesHttpGetIn" />
+      <wsdl:output message="tns:GetLanguagesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STLenderPlaceOrder">
+      <wsdl:documentation>Places an order from the Lender WebSite</wsdl:documentation>
+      <wsdl:input message="tns:STLenderPlaceOrderHttpGetIn" />
+      <wsdl:output message="tns:STLenderPlaceOrderHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STLenderFindOrder">
+      <wsdl:documentation>Finds the orders for the Lender WebSite</wsdl:documentation>
+      <wsdl:input message="tns:STLenderFindOrderHttpGetIn" />
+      <wsdl:output message="tns:STLenderFindOrderHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STLenderRetrieveOrder">
+      <wsdl:documentation>Retrieves the given order.</wsdl:documentation>
+      <wsdl:input message="tns:STLenderRetrieveOrderHttpGetIn" />
+      <wsdl:output message="tns:STLenderRetrieveOrderHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STLenderRetrieveOrderUploadDocs">
+      <wsdl:documentation>Retrieves the given order.</wsdl:documentation>
+      <wsdl:input message="tns:STLenderRetrieveOrderUploadDocsHttpGetIn" />
+      <wsdl:output message="tns:STLenderRetrieveOrderUploadDocsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STLenderUploadDocs">
+      <wsdl:documentation>Updates the docs.</wsdl:documentation>
+      <wsdl:input message="tns:STLenderUploadDocsHttpGetIn" />
+      <wsdl:output message="tns:STLenderUploadDocsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STLenderCancelOrder">
+      <wsdl:documentation>Cancels the order.</wsdl:documentation>
+      <wsdl:input message="tns:STLenderCancelOrderHttpGetIn" />
+      <wsdl:output message="tns:STLenderCancelOrderHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STLenderAddNote">
+      <wsdl:documentation>Adds a note to the order.</wsdl:documentation>
+      <wsdl:input message="tns:STLenderAddNoteHttpGetIn" />
+      <wsdl:output message="tns:STLenderAddNoteHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STLenderBranchsUsers">
+      <wsdl:documentation>Returns all the Branches with the Users that have Web Access.  Only Administrators can access this.</wsdl:documentation>
+      <wsdl:input message="tns:STLenderBranchsUsersHttpGetIn" />
+      <wsdl:output message="tns:STLenderBranchsUsersHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STGetCompanies">
+      <wsdl:documentation>Returns all the Companies given Company Type ID.  Only Administrators can access this.</wsdl:documentation>
+      <wsdl:input message="tns:STGetCompaniesHttpGetIn" />
+      <wsdl:output message="tns:STGetCompaniesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STGetBranches">
+      <wsdl:documentation>Returns all the Branches for a given Company.  Only Administrators can access this.</wsdl:documentation>
+      <wsdl:input message="tns:STGetBranchesHttpGetIn" />
+      <wsdl:output message="tns:STGetBranchesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STGetBranchUsers">
+      <wsdl:documentation>Returns all the Users for a given Company-Branch.  Only Administrators can access this.</wsdl:documentation>
+      <wsdl:input message="tns:STGetBranchUsersHttpGetIn" />
+      <wsdl:output message="tns:STGetBranchUsersHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STGetUserInfo">
+      <wsdl:documentation>Returns UserInfo given user id or username.  Only Administrators can access this.</wsdl:documentation>
+      <wsdl:input message="tns:STGetUserInfoHttpGetIn" />
+      <wsdl:output message="tns:STGetUserInfoHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STRegisterMobile">
+      <wsdl:documentation>Register mobile number to SMS system.</wsdl:documentation>
+      <wsdl:input message="tns:STRegisterMobileHttpGetIn" />
+      <wsdl:output message="tns:STRegisterMobileHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STVerifyMobileSecurityCode">
+      <wsdl:documentation>Verify user Security code is valid.</wsdl:documentation>
+      <wsdl:input message="tns:STVerifyMobileSecurityCodeHttpGetIn" />
+      <wsdl:output message="tns:STVerifyMobileSecurityCodeHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STVerifySMSSystem">
+      <wsdl:documentation>SMS System is Active or Not.</wsdl:documentation>
+      <wsdl:input message="tns:STVerifySMSSystemHttpGetIn" />
+      <wsdl:output message="tns:STVerifySMSSystemHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STVerifyFASSSystem">
+      <wsdl:documentation>Mobile Registration exists in FASS.</wsdl:documentation>
+      <wsdl:input message="tns:STVerifyFASSSystemHttpGetIn" />
+      <wsdl:output message="tns:STVerifyFASSSystemHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNotariesByName">
+      <wsdl:documentation>Return all Notaries search by Name</wsdl:documentation>
+      <wsdl:input message="tns:GetNotariesByNameHttpGetIn" />
+      <wsdl:output message="tns:GetNotariesByNameHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNotariesByCity">
+      <wsdl:documentation>Return all Notaries search by City and State</wsdl:documentation>
+      <wsdl:input message="tns:GetNotariesByCityHttpGetIn" />
+      <wsdl:output message="tns:GetNotariesByCityHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNotariesByAddress">
+      <wsdl:documentation>Return all Notaries search by Address and Radius in miles</wsdl:documentation>
+      <wsdl:input message="tns:GetNotariesByAddressHttpGetIn" />
+      <wsdl:output message="tns:GetNotariesByAddressHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNotariesByFASSNotaryId">
+      <wsdl:documentation>Return all Notaries search by Notary ID</wsdl:documentation>
+      <wsdl:input message="tns:GetNotariesByFASSNotaryIdHttpGetIn" />
+      <wsdl:output message="tns:GetNotariesByFASSNotaryIdHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlags">
+      <wsdl:documentation>Returns all the flags from the FASSNotary Database.</wsdl:documentation>
+      <wsdl:input message="tns:GetFlagsHttpGetIn" />
+      <wsdl:output message="tns:GetFlagsHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STGetUserInfoByUsername">
+      <wsdl:documentation>Returns UserInfo given username.</wsdl:documentation>
+      <wsdl:input message="tns:STGetUserInfoByUsernameHttpGetIn" />
+      <wsdl:output message="tns:STGetUserInfoByUsernameHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPCNOrderStatus">
+      <wsdl:documentation>Returns Order status from PCN.</wsdl:documentation>
+      <wsdl:input message="tns:GetPCNOrderStatusHttpGetIn" />
+      <wsdl:output message="tns:GetPCNOrderStatusHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="SigntrackConnectSoaps">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PlaceOrder">
+      <wsdl:documentation>Place an Order</wsdl:documentation>
+      <wsdl:input message="tns:PlaceOrderSoapIn" />
+      <wsdl:output message="tns:PlaceOrderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AsyncPlaceOrder2">
+      <wsdl:documentation>Place an Order Async</wsdl:documentation>
+      <wsdl:input message="tns:AsyncPlaceOrder2SoapIn" />
+      <wsdl:output message="tns:AsyncPlaceOrder2SoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AsyncPlaceOrder">
+      <wsdl:documentation>Place an Order Async</wsdl:documentation>
+      <wsdl:input message="tns:AsyncPlaceOrderSoapIn" />
+      <wsdl:output message="tns:AsyncPlaceOrderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="PlaceSigningOrder">
+      <wsdl:documentation>Place a Signing Order</wsdl:documentation>
+      <wsdl:input message="tns:PlaceSigningOrderSoapIn" />
+      <wsdl:output message="tns:PlaceSigningOrderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ReturnSigners">
+      <wsdl:documentation>Return all the Signers for a FASS Number.</wsdl:documentation>
+      <wsdl:input message="tns:ReturnSignersSoapIn" />
+      <wsdl:output message="tns:ReturnSignersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SignTrackEvent">
+      <wsdl:input message="tns:SignTrackEventSoapIn" />
+      <wsdl:output message="tns:SignTrackEventSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AsyncFNEvent">
+      <wsdl:input message="tns:AsyncFNEventSoapIn" />
+      <wsdl:output message="tns:AsyncFNEventSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STLenderVerifyUser">
+      <wsdl:documentation>Verify a Lender User</wsdl:documentation>
+      <wsdl:input message="tns:STLenderVerifyUserSoapIn" />
+      <wsdl:output message="tns:STLenderVerifyUserSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STLenderChangePassword">
+      <wsdl:documentation>Change a password for a Lender User</wsdl:documentation>
+      <wsdl:input message="tns:STLenderChangePasswordSoapIn" />
+      <wsdl:output message="tns:STLenderChangePasswordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STLenderForgotPassword">
+      <wsdl:documentation>Resets a password for a Lender User</wsdl:documentation>
+      <wsdl:input message="tns:STLenderForgotPasswordSoapIn" />
+      <wsdl:output message="tns:STLenderForgotPasswordSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLanguages">
+      <wsdl:documentation>Returns all the langueages from the FASSNotary Database.</wsdl:documentation>
+      <wsdl:input message="tns:GetLanguagesSoapIn" />
+      <wsdl:output message="tns:GetLanguagesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STLenderPlaceOrder">
+      <wsdl:documentation>Places an order from the Lender WebSite</wsdl:documentation>
+      <wsdl:input message="tns:STLenderPlaceOrderSoapIn" />
+      <wsdl:output message="tns:STLenderPlaceOrderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STLenderFindOrder">
+      <wsdl:documentation>Finds the orders for the Lender WebSite</wsdl:documentation>
+      <wsdl:input message="tns:STLenderFindOrderSoapIn" />
+      <wsdl:output message="tns:STLenderFindOrderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STLenderRetrieveOrder">
+      <wsdl:documentation>Retrieves the given order.</wsdl:documentation>
+      <wsdl:input message="tns:STLenderRetrieveOrderSoapIn" />
+      <wsdl:output message="tns:STLenderRetrieveOrderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STLenderRetrieveOrderUploadDocs">
+      <wsdl:documentation>Retrieves the given order.</wsdl:documentation>
+      <wsdl:input message="tns:STLenderRetrieveOrderUploadDocsSoapIn" />
+      <wsdl:output message="tns:STLenderRetrieveOrderUploadDocsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STLenderUploadDocs">
+      <wsdl:documentation>Updates the docs.</wsdl:documentation>
+      <wsdl:input message="tns:STLenderUploadDocsSoapIn" />
+      <wsdl:output message="tns:STLenderUploadDocsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STLenderCancelOrder">
+      <wsdl:documentation>Cancels the order.</wsdl:documentation>
+      <wsdl:input message="tns:STLenderCancelOrderSoapIn" />
+      <wsdl:output message="tns:STLenderCancelOrderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STLenderAddNote">
+      <wsdl:documentation>Adds a note to the order.</wsdl:documentation>
+      <wsdl:input message="tns:STLenderAddNoteSoapIn" />
+      <wsdl:output message="tns:STLenderAddNoteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STLenderBranchsUsers">
+      <wsdl:documentation>Returns all the Branches with the Users that have Web Access.  Only Administrators can access this.</wsdl:documentation>
+      <wsdl:input message="tns:STLenderBranchsUsersSoapIn" />
+      <wsdl:output message="tns:STLenderBranchsUsersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STGetCompanies">
+      <wsdl:documentation>Returns all the Companies given Company Type ID.  Only Administrators can access this.</wsdl:documentation>
+      <wsdl:input message="tns:STGetCompaniesSoapIn" />
+      <wsdl:output message="tns:STGetCompaniesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STGetBranches">
+      <wsdl:documentation>Returns all the Branches for a given Company.  Only Administrators can access this.</wsdl:documentation>
+      <wsdl:input message="tns:STGetBranchesSoapIn" />
+      <wsdl:output message="tns:STGetBranchesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STGetBranchUsers">
+      <wsdl:documentation>Returns all the Users for a given Company-Branch.  Only Administrators can access this.</wsdl:documentation>
+      <wsdl:input message="tns:STGetBranchUsersSoapIn" />
+      <wsdl:output message="tns:STGetBranchUsersSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STGetUserInfo">
+      <wsdl:documentation>Returns UserInfo given user id or username.  Only Administrators can access this.</wsdl:documentation>
+      <wsdl:input message="tns:STGetUserInfoSoapIn" />
+      <wsdl:output message="tns:STGetUserInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STRegisterMobile">
+      <wsdl:documentation>Register mobile number to SMS system.</wsdl:documentation>
+      <wsdl:input message="tns:STRegisterMobileSoapIn" />
+      <wsdl:output message="tns:STRegisterMobileSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STVerifyMobileSecurityCode">
+      <wsdl:documentation>Verify user Security code is valid.</wsdl:documentation>
+      <wsdl:input message="tns:STVerifyMobileSecurityCodeSoapIn" />
+      <wsdl:output message="tns:STVerifyMobileSecurityCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STVerifySMSSystem">
+      <wsdl:documentation>SMS System is Active or Not.</wsdl:documentation>
+      <wsdl:input message="tns:STVerifySMSSystemSoapIn" />
+      <wsdl:output message="tns:STVerifySMSSystemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STVerifyFASSSystem">
+      <wsdl:documentation>Mobile Registration exists in FASS.</wsdl:documentation>
+      <wsdl:input message="tns:STVerifyFASSSystemSoapIn" />
+      <wsdl:output message="tns:STVerifyFASSSystemSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNotariesByName">
+      <wsdl:documentation>Return all Notaries search by Name</wsdl:documentation>
+      <wsdl:input message="tns:GetNotariesByNameSoapIn" />
+      <wsdl:output message="tns:GetNotariesByNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNotariesByCity">
+      <wsdl:documentation>Return all Notaries search by City and State</wsdl:documentation>
+      <wsdl:input message="tns:GetNotariesByCitySoapIn" />
+      <wsdl:output message="tns:GetNotariesByCitySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNotariesByAddress">
+      <wsdl:documentation>Return all Notaries search by Address and Radius in miles</wsdl:documentation>
+      <wsdl:input message="tns:GetNotariesByAddressSoapIn" />
+      <wsdl:output message="tns:GetNotariesByAddressSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNotariesByFASSNotaryId">
+      <wsdl:documentation>Return all Notaries search by Notary ID</wsdl:documentation>
+      <wsdl:input message="tns:GetNotariesByFASSNotaryIdSoapIn" />
+      <wsdl:output message="tns:GetNotariesByFASSNotaryIdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFlags">
+      <wsdl:documentation>Returns all the flags from the FASSNotary Database.</wsdl:documentation>
+      <wsdl:input message="tns:GetFlagsSoapIn" />
+      <wsdl:output message="tns:GetFlagsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="STGetUserInfoByUsername">
+      <wsdl:documentation>Returns UserInfo given username.</wsdl:documentation>
+      <wsdl:input message="tns:STGetUserInfoByUsernameSoapIn" />
+      <wsdl:output message="tns:STGetUserInfoByUsernameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPCNOrderStatus">
+      <wsdl:documentation>Returns Order status from PCN.</wsdl:documentation>
+      <wsdl:input message="tns:GetPCNOrderStatusSoapIn" />
+      <wsdl:output message="tns:GetPCNOrderStatusSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SigntrackConnectSoap_12" type="tns:SigntrackConnectSoaps">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlaceOrder">
+      <soap12:operation soapAction="http://tempuri.org/PlaceOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AsyncPlaceOrder2">
+      <soap12:operation soapAction="http://tempuri.org/AsyncPlaceOrder2" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AsyncPlaceOrder">
+      <soap12:operation soapAction="http://tempuri.org/AsyncPlaceOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PlaceSigningOrder">
+      <soap12:operation soapAction="http://tempuri.org/PlaceSigningOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReturnSigners">
+      <soap12:operation soapAction="http://tempuri.org/ReturnSigners" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SignTrackEvent">
+      <soap12:operation soapAction="http://tempuri.org/SignTrackEvent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AsyncFNEvent">
+      <soap12:operation soapAction="http://tempuri.org/AsyncFNEvent" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="STLenderVerifyUser">
+      <soap12:operation soapAction="http://tempuri.org/STLenderVerifyUser" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="STLenderChangePassword">
+      <soap12:operation soapAction="http://tempuri.org/STLenderChangePassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="STLenderForgotPassword">
+      <soap12:operation soapAction="http://tempuri.org/STLenderForgotPassword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLanguages">
+      <soap12:operation soapAction="http://tempuri.org/GetLanguages" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="STLenderPlaceOrder">
+      <soap12:operation soapAction="http://tempuri.org/STLenderPlaceOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="STLenderFindOrder">
+      <soap12:operation soapAction="http://tempuri.org/STLenderFindOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="STLenderRetrieveOrder">
+      <soap12:operation soapAction="http://tempuri.org/STLenderRetrieveOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="STLenderRetrieveOrderUploadDocs">
+      <soap12:operation soapAction="http://tempuri.org/STLenderRetrieveOrderUploadDocs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="STLenderUploadDocs">
+      <soap12:operation soapAction="http://tempuri.org/STLenderUploadDocs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="STLenderCancelOrder">
+      <soap12:operation soapAction="http://tempuri.org/STLenderCancelOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="STLenderAddNote">
+      <soap12:operation soapAction="http://tempuri.org/STLenderAddNote" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="STLenderBranchsUsers">
+      <soap12:operation soapAction="http://tempuri.org/STLenderBranchsUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="STGetCompanies">
+      <soap12:operation soapAction="http://tempuri.org/STGetCompanies" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="STGetBranches">
+      <soap12:operation soapAction="http://tempuri.org/STGetBranches" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="STGetBranchUsers">
+      <soap12:operation soapAction="http://tempuri.org/STGetBranchUsers" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="STGetUserInfo">
+      <soap12:operation soapAction="http://tempuri.org/STGetUserInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="STRegisterMobile">
+      <soap12:operation soapAction="http://tempuri.org/STRegisterMobile" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="STVerifyMobileSecurityCode">
+      <soap12:operation soapAction="http://tempuri.org/STVerifyMobileSecurityCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="STVerifySMSSystem">
+      <soap12:operation soapAction="http://tempuri.org/STVerifySMSSystem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="STVerifyFASSSystem">
+      <soap12:operation soapAction="http://tempuri.org/STVerifyFASSSystem" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNotariesByName">
+      <soap12:operation soapAction="http://tempuri.org/GetNotariesByName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNotariesByCity">
+      <soap12:operation soapAction="http://tempuri.org/GetNotariesByCity" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNotariesByAddress">
+      <soap12:operation soapAction="http://tempuri.org/GetNotariesByAddress" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNotariesByFASSNotaryId">
+      <soap12:operation soapAction="http://tempuri.org/GetNotariesByFASSNotaryId" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFlags">
+      <soap12:operation soapAction="http://tempuri.org/GetFlags" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="STGetUserInfoByUsername">
+      <soap12:operation soapAction="http://tempuri.org/STGetUserInfoByUsername" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPCNOrderStatus">
+      <soap12:operation soapAction="http://tempuri.org/GetPCNOrderStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FASS_vs0">
+    <wsdl:port name="FASS2" binding="tns:SigntrackConnectSoap_12">
+      <soap12:address location="https://staging.webservices.firstam.com:443/FASSNotary/DEV/fastnconnect" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

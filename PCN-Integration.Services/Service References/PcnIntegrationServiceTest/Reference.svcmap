@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="99261569-7e49-422f-834d-2dba6c09580c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>true</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://mirthtest/IntegrationService.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="IntegrationService.xsd" MetadataType="Schema" ID="094a221e-ae78-41fe-ae03-0f29353e85e6" SourceId="1" SourceUrl="http://mirthtest/IntegrationService.svc?xsd=xsd3" />
+    <MetadataFile FileName="IntegrationService1.xsd" MetadataType="Schema" ID="cf1f4435-5a45-4ce6-979e-26e62da225a4" SourceId="1" SourceUrl="http://mirthtest/IntegrationService.svc?xsd=xsd5" />
+    <MetadataFile FileName="IntegrationService2.xsd" MetadataType="Schema" ID="6d5cbf17-ae4c-44d9-97b5-379baf76c480" SourceId="1" SourceUrl="http://mirthtest/IntegrationService.svc?xsd=xsd0" />
+    <MetadataFile FileName="IntegrationService3.xsd" MetadataType="Schema" ID="a21ebbf8-9e92-4687-a097-29f19061a971" SourceId="1" SourceUrl="http://mirthtest/IntegrationService.svc?xsd=xsd2" />
+    <MetadataFile FileName="IntegrationService4.xsd" MetadataType="Schema" ID="7f35f9d5-fc3c-4532-8bbc-c37fdfdd214a" SourceId="1" SourceUrl="http://mirthtest/IntegrationService.svc?xsd=xsd4" />
+    <MetadataFile FileName="IntegrationService.wsdl" MetadataType="Wsdl" ID="f94b4cc3-cdd2-4de8-bafe-1817ffaeabc6" SourceId="1" SourceUrl="http://mirthtest/IntegrationService.svc?wsdl" />
+    <MetadataFile FileName="IntegrationService5.xsd" MetadataType="Schema" ID="68ac469d-07bb-4d24-ad21-1b02d7600128" SourceId="1" SourceUrl="http://mirthtest/IntegrationService.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
