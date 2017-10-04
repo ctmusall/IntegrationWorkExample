@@ -253,15 +253,17 @@ namespace PCN_Integration.Services
 
     private void UpdateRecordOfActionTaken(FassOrder fassOrder, OSGPCN300 order)
     {
-      fassOrder.StatusLastUpdated = fassOrder.Status;
-      fassOrder.Status = ConvertStatusIdToString(order.STATUS);
-      fassOrder.DateTimeLastUpdated = DateTime.Now;
+        var context = new PCNIntegrationEntities();
+        var fOrder = context.FassOrders.FirstOrDefault(f => f.OrderId == fassOrder.OrderId);
 
-      using (var context = new PCNIntegrationEntities())
-      {
-        var foo = context.FassOrders.ToList();
+        if (fOrder == null) return;
+
+        fOrder.StatusLastUpdated = fassOrder.Status;
+        fOrder.Status = ConvertStatusIdToString(order.STATUS);
+        fOrder.DateTimeLastUpdated = DateTime.Now;
+        
+        
         context.SaveChanges();
-      }
     }
   }
 }
