@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="5f544cc5-0240-4433-9af1-09cd7ba4baad" ChangeDateTime="07/28/2017 20:44:44">
+    <Property Name="ElementName" Value="[dbo].[FassOrders].[FileId]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[FassOrders]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="FileNumber" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="3eb61fa9-7c25-4536-b836-8c11eda2a5b9" ChangeDateTime="08/02/2017 13:53:31">
+    <Property Name="ElementName" Value="[dbo].[FassOrders].[FileNumber]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[FassOrders]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="FileNo" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="ff4dd017-b2f6-40b3-9345-ca001712094e" ChangeDateTime="09/13/2017 19:14:18">
+    <Property Name="ElementName" Value="[dbo].[FassNotes].[PCN Short Description]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[FassNotes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PCNShortDescription" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="5ab1cc37-eda9-41e0-8665-1fa527729190" ChangeDateTime="09/13/2017 19:14:23">
+    <Property Name="ElementName" Value="[dbo].[FassNotes].[PCN Long Description]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[FassNotes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PCNLongDescription" />
+  </Operation>
+</Operations>

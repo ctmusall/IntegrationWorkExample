@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PCN.WebService.Data.Results" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PCN.WebService.Data.Results" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://mirthtest/IntegrationService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PCN.WebService.Data" />
+  <xs:complexType name="SubmitOrderResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ServiceResult">
+        <xs:sequence>
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PCN.WebService.Data" minOccurs="0" name="Order" nillable="true" type="q1:InboundOrder" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="SubmitOrderResult" nillable="true" type="tns:SubmitOrderResult" />
+  <xs:complexType name="ServiceResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Outcome" type="tns:OutcomeEnum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceResult" nillable="true" type="tns:ServiceResult" />
+  <xs:simpleType name="OutcomeEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="Success" />
+      <xs:enumeration value="Fail" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="OutcomeEnum" nillable="true" type="tns:OutcomeEnum" />
+  <xs:complexType name="GetOrderResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ServiceResult">
+        <xs:sequence>
+          <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PCN.WebService.Data" minOccurs="0" name="Order" nillable="true" type="q2:OutboundOrder" />
+          <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PCN.WebService.Data" minOccurs="0" name="Order1" nillable="true" type="q3:OutboundOrder" />
+          <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PCN.WebService.Data" minOccurs="0" name="Order2" nillable="true" type="q4:OutboundOrder" />
+          <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/PCN.WebService.Data" minOccurs="0" name="Order3" nillable="true" type="q5:OutboundOrder" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="GetOrderResult" nillable="true" type="tns:GetOrderResult" />
+  <xs:complexType name="TSISubmitOrderResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:ServiceResult">
+        <xs:sequence>
+          <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/PCN.WebService.Data" minOccurs="0" name="Order" nillable="true" type="q6:InboundOrder" />
+          <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/PCN.WebService.Data" minOccurs="0" name="TSIServices" nillable="true" type="q7:ArrayOfTSIService" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="TSISubmitOrderResult" nillable="true" type="tns:TSISubmitOrderResult" />
+</xs:schema>

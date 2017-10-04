@@ -1,0 +1,325 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PCNModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="OSGPCN300">
+          <Key>
+            <PropertyRef Name="ORDERID" />
+          </Key>
+          <Property Name="ORDERID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="INSTRUCTIONID" Type="int" Nullable="false" />
+          <Property Name="STATUS" Type="smallint" Nullable="false" />
+          <Property Name="CUSTOMERID" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="NEEDSUPDATED" Type="smallint" Nullable="false" />
+          <Property Name="NOTES" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="SCHEDULINGNOTES" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="ORDERDATE" Type="datetime" Nullable="false" />
+          <Property Name="ORDERTIME" Type="datetime" Nullable="false" />
+          <Property Name="LENDER_NAME" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="CLOSING_LOCATION" Type="int" Nullable="false" />
+          <Property Name="CLOSING_ADDRESS1" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="CLOSING_ADDRESS2" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="CLOSING_ADDRESS3" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="CLOSING_CITY" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CLOSING_STATE" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="CLOSING_ZIP" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="PRODUCT" Type="smallint" Nullable="false" />
+          <Property Name="CLOSINGDATE" Type="datetime" Nullable="false" />
+          <Property Name="CLOSINGDATETBD" Type="smallint" Nullable="false" />
+          <Property Name="BORROWERNAME" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="COBORROWERNAME" Type="varchar" MaxLength="40" Nullable="false" />
+          <Property Name="BORROWER_ADDRESS1" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="BORROWER_ADDRESS2" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="BORROWER_ADDRESS3" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="BORROWER_CITY" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="BORROWER_STATE" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="BORROWER_ZIP" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="BORROWER_PHONE1" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="BORROWER_PHONE2" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="BORROWER_EMAIL" Type="varchar" MaxLength="70" Nullable="false" />
+          <Property Name="DOCSTOATTORNEY" Type="smallint" Nullable="false" />
+          <Property Name="TOTALBILLAMT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TOTALPAYAMT" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CREATE_USER" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="CREATE_DATE" Type="datetime" Nullable="false" />
+          <Property Name="MODIFY_USER" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="MODIFY_DATE" Type="datetime" Nullable="false" />
+          <Property Name="CUSTOMER_CONTACT" Type="int" Nullable="false" />
+          <Property Name="TRACKING1" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="TRACKING2" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="TRACKING3" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="CLOSINGTIME" Type="datetime" Nullable="false" />
+          <Property Name="CLOSINGTIMETBD" Type="smallint" Nullable="false" />
+          <Property Name="COUNTYID" Type="int" Nullable="false" />
+          <Property Name="RESPONSETIME" Type="int" Nullable="false" />
+          <Property Name="SCHEDULEDTIME" Type="datetime" Nullable="false" />
+          <Property Name="CONFIRMATIONSENT" Type="datetime" Nullable="false" />
+          <Property Name="INSTRUCTIONS" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="IMPORTDATE" Type="datetime" Nullable="false" />
+          <Property Name="CANCELLEDREASON" Type="smallint" Nullable="false" />
+          <Property Name="UNABLEREASON" Type="smallint" Nullable="false" />
+          <Property Name="FAILEDREASON" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="SCHEDULE_USER" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="SCHEDULE_DATE" Type="datetime" Nullable="false" />
+          <Property Name="BORROWER_COUNTYID" Type="int" Nullable="false" />
+          <Property Name="TRACKING_COURIER_ID_1" Type="int" Nullable="false" />
+          <Property Name="TRACKING_COURIER_ID_2" Type="int" Nullable="false" />
+          <Property Name="TRACKING_COURIER_ID_3" Type="int" Nullable="false" />
+          <Property Name="CONFIRMDATE" Type="datetime" Nullable="false" />
+          <Property Name="CONFIRMTIME" Type="datetime" Nullable="false" />
+          <Property Name="REQUESTEDDATE" Type="datetime" Nullable="false" />
+          <Property Name="REQUESTEDTIME" Type="datetime" Nullable="false" />
+          <Property Name="ADDITIONALSERVICE" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="DATE_RECORDED" Type="datetime" Nullable="false" />
+          <Property Name="BOOK" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="PAGE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="DISBURSMENT_SENT_ATTY" Type="datetime" Nullable="false" />
+          <Property Name="MANAGER_APPROVAL" Type="bit" Nullable="false" />
+          <Property Name="FILE_NUM" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="PRECLOSECALL" Type="int" />
+          <Property Name="PRECLOSECALLTIME" Type="datetime" />
+          <Property Name="POSTCLOSEATTCALL" Type="int" />
+          <Property Name="POSTCLOSEATTCALLTIME" Type="datetime" />
+          <Property Name="POSTCLOSECLNTCALL" Type="int" />
+          <Property Name="POSTCLOSECLNTCALLTIME" Type="datetime" />
+          <Property Name="DIDNOTCLOSEREASON" Type="int" Nullable="false" />
+          <Property Name="PRECLOSE" Type="datetime" />
+          <Property Name="POSTCLOSEATT" Type="datetime" />
+          <Property Name="POSTCLOSECLNT" Type="datetime" />
+          <Property Name="IVRCALLSTATUS" Type="int" Nullable="false" />
+          <Property Name="RESCHEDULEDTIME" Type="varchar" MaxLength="50" />
+          <Property Name="OSG_ROWID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SOP_SEQUENCE" Type="int" />
+          <Property Name="PM_SEQUENCE" Type="int" />
+          <Property Name="SOP_IMPORTDATE" Type="datetime" />
+          <Property Name="PM_IMPORTDATE" Type="datetime" />
+        </EntityType>
+        <EntityContainer Name="PCNModelStoreContainer">
+          <EntitySet Name="OSGPCN300" EntityType="Self.OSGPCN300" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PCNModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="OSGPCN300">
+          <Key>
+            <PropertyRef Name="ORDERID" />
+          </Key>
+          <Property Name="ORDERID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="INSTRUCTIONID" Type="Int32" Nullable="false" />
+          <Property Name="STATUS" Type="Int16" Nullable="false" />
+          <Property Name="CUSTOMERID" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NEEDSUPDATED" Type="Int16" Nullable="false" />
+          <Property Name="NOTES" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SCHEDULINGNOTES" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ORDERDATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ORDERTIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LENDER_NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CLOSING_LOCATION" Type="Int32" Nullable="false" />
+          <Property Name="CLOSING_ADDRESS1" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CLOSING_ADDRESS2" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CLOSING_ADDRESS3" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CLOSING_CITY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CLOSING_STATE" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="CLOSING_ZIP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PRODUCT" Type="Int16" Nullable="false" />
+          <Property Name="CLOSINGDATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CLOSINGDATETBD" Type="Int16" Nullable="false" />
+          <Property Name="BORROWERNAME" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="COBORROWERNAME" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BORROWER_ADDRESS1" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BORROWER_ADDRESS2" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BORROWER_ADDRESS3" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BORROWER_CITY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BORROWER_STATE" Type="String" MaxLength="2" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="BORROWER_ZIP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BORROWER_PHONE1" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BORROWER_PHONE2" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BORROWER_EMAIL" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DOCSTOATTORNEY" Type="Int16" Nullable="false" />
+          <Property Name="TOTALBILLAMT" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="TOTALPAYAMT" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="CREATE_USER" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CREATE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MODIFY_USER" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MODIFY_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CUSTOMER_CONTACT" Type="Int32" Nullable="false" />
+          <Property Name="TRACKING1" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TRACKING2" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TRACKING3" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CLOSINGTIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CLOSINGTIMETBD" Type="Int16" Nullable="false" />
+          <Property Name="COUNTYID" Type="Int32" Nullable="false" />
+          <Property Name="RESPONSETIME" Type="Int32" Nullable="false" />
+          <Property Name="SCHEDULEDTIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CONFIRMATIONSENT" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="INSTRUCTIONS" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IMPORTDATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CANCELLEDREASON" Type="Int16" Nullable="false" />
+          <Property Name="UNABLEREASON" Type="Int16" Nullable="false" />
+          <Property Name="FAILEDREASON" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SCHEDULE_USER" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SCHEDULE_DATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BORROWER_COUNTYID" Type="Int32" Nullable="false" />
+          <Property Name="TRACKING_COURIER_ID_1" Type="Int32" Nullable="false" />
+          <Property Name="TRACKING_COURIER_ID_2" Type="Int32" Nullable="false" />
+          <Property Name="TRACKING_COURIER_ID_3" Type="Int32" Nullable="false" />
+          <Property Name="CONFIRMDATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CONFIRMTIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="REQUESTEDDATE" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="REQUESTEDTIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ADDITIONALSERVICE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DATE_RECORDED" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BOOK" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PAGE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DISBURSMENT_SENT_ATTY" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="MANAGER_APPROVAL" Type="Boolean" Nullable="false" />
+          <Property Name="FILE_NUM" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PRECLOSECALL" Type="Int32" />
+          <Property Name="PRECLOSECALLTIME" Type="DateTime" Precision="3" />
+          <Property Name="POSTCLOSEATTCALL" Type="Int32" />
+          <Property Name="POSTCLOSEATTCALLTIME" Type="DateTime" Precision="3" />
+          <Property Name="POSTCLOSECLNTCALL" Type="Int32" />
+          <Property Name="POSTCLOSECLNTCALLTIME" Type="DateTime" Precision="3" />
+          <Property Name="DIDNOTCLOSEREASON" Type="Int32" Nullable="false" />
+          <Property Name="PRECLOSE" Type="DateTime" Precision="3" />
+          <Property Name="POSTCLOSEATT" Type="DateTime" Precision="3" />
+          <Property Name="POSTCLOSECLNT" Type="DateTime" Precision="3" />
+          <Property Name="IVRCALLSTATUS" Type="Int32" Nullable="false" />
+          <Property Name="RESCHEDULEDTIME" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="OSG_ROWID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SOP_SEQUENCE" Type="Int32" />
+          <Property Name="PM_SEQUENCE" Type="Int32" />
+          <Property Name="SOP_IMPORTDATE" Type="DateTime" Precision="3" />
+          <Property Name="PM_IMPORTDATE" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="PCNEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="OSGPCN300" EntityType="Self.OSGPCN300" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PCNModelStoreContainer" CdmEntityContainer="PCNEntities">
+          <EntitySetMapping Name="OSGPCN300">
+            <EntityTypeMapping TypeName="PCNModel.OSGPCN300">
+              <MappingFragment StoreEntitySet="OSGPCN300">
+                <ScalarProperty Name="ORDERID" ColumnName="ORDERID" />
+                <ScalarProperty Name="INSTRUCTIONID" ColumnName="INSTRUCTIONID" />
+                <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+                <ScalarProperty Name="CUSTOMERID" ColumnName="CUSTOMERID" />
+                <ScalarProperty Name="NEEDSUPDATED" ColumnName="NEEDSUPDATED" />
+                <ScalarProperty Name="NOTES" ColumnName="NOTES" />
+                <ScalarProperty Name="SCHEDULINGNOTES" ColumnName="SCHEDULINGNOTES" />
+                <ScalarProperty Name="ORDERDATE" ColumnName="ORDERDATE" />
+                <ScalarProperty Name="ORDERTIME" ColumnName="ORDERTIME" />
+                <ScalarProperty Name="LENDER_NAME" ColumnName="LENDER_NAME" />
+                <ScalarProperty Name="CLOSING_LOCATION" ColumnName="CLOSING_LOCATION" />
+                <ScalarProperty Name="CLOSING_ADDRESS1" ColumnName="CLOSING_ADDRESS1" />
+                <ScalarProperty Name="CLOSING_ADDRESS2" ColumnName="CLOSING_ADDRESS2" />
+                <ScalarProperty Name="CLOSING_ADDRESS3" ColumnName="CLOSING_ADDRESS3" />
+                <ScalarProperty Name="CLOSING_CITY" ColumnName="CLOSING_CITY" />
+                <ScalarProperty Name="CLOSING_STATE" ColumnName="CLOSING_STATE" />
+                <ScalarProperty Name="CLOSING_ZIP" ColumnName="CLOSING_ZIP" />
+                <ScalarProperty Name="PRODUCT" ColumnName="PRODUCT" />
+                <ScalarProperty Name="CLOSINGDATE" ColumnName="CLOSINGDATE" />
+                <ScalarProperty Name="CLOSINGDATETBD" ColumnName="CLOSINGDATETBD" />
+                <ScalarProperty Name="BORROWERNAME" ColumnName="BORROWERNAME" />
+                <ScalarProperty Name="COBORROWERNAME" ColumnName="COBORROWERNAME" />
+                <ScalarProperty Name="BORROWER_ADDRESS1" ColumnName="BORROWER_ADDRESS1" />
+                <ScalarProperty Name="BORROWER_ADDRESS2" ColumnName="BORROWER_ADDRESS2" />
+                <ScalarProperty Name="BORROWER_ADDRESS3" ColumnName="BORROWER_ADDRESS3" />
+                <ScalarProperty Name="BORROWER_CITY" ColumnName="BORROWER_CITY" />
+                <ScalarProperty Name="BORROWER_STATE" ColumnName="BORROWER_STATE" />
+                <ScalarProperty Name="BORROWER_ZIP" ColumnName="BORROWER_ZIP" />
+                <ScalarProperty Name="BORROWER_PHONE1" ColumnName="BORROWER_PHONE1" />
+                <ScalarProperty Name="BORROWER_PHONE2" ColumnName="BORROWER_PHONE2" />
+                <ScalarProperty Name="BORROWER_EMAIL" ColumnName="BORROWER_EMAIL" />
+                <ScalarProperty Name="DOCSTOATTORNEY" ColumnName="DOCSTOATTORNEY" />
+                <ScalarProperty Name="TOTALBILLAMT" ColumnName="TOTALBILLAMT" />
+                <ScalarProperty Name="TOTALPAYAMT" ColumnName="TOTALPAYAMT" />
+                <ScalarProperty Name="CREATE_USER" ColumnName="CREATE_USER" />
+                <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+                <ScalarProperty Name="MODIFY_USER" ColumnName="MODIFY_USER" />
+                <ScalarProperty Name="MODIFY_DATE" ColumnName="MODIFY_DATE" />
+                <ScalarProperty Name="CUSTOMER_CONTACT" ColumnName="CUSTOMER_CONTACT" />
+                <ScalarProperty Name="TRACKING1" ColumnName="TRACKING1" />
+                <ScalarProperty Name="TRACKING2" ColumnName="TRACKING2" />
+                <ScalarProperty Name="TRACKING3" ColumnName="TRACKING3" />
+                <ScalarProperty Name="CLOSINGTIME" ColumnName="CLOSINGTIME" />
+                <ScalarProperty Name="CLOSINGTIMETBD" ColumnName="CLOSINGTIMETBD" />
+                <ScalarProperty Name="COUNTYID" ColumnName="COUNTYID" />
+                <ScalarProperty Name="RESPONSETIME" ColumnName="RESPONSETIME" />
+                <ScalarProperty Name="SCHEDULEDTIME" ColumnName="SCHEDULEDTIME" />
+                <ScalarProperty Name="CONFIRMATIONSENT" ColumnName="CONFIRMATIONSENT" />
+                <ScalarProperty Name="INSTRUCTIONS" ColumnName="INSTRUCTIONS" />
+                <ScalarProperty Name="IMPORTDATE" ColumnName="IMPORTDATE" />
+                <ScalarProperty Name="CANCELLEDREASON" ColumnName="CANCELLEDREASON" />
+                <ScalarProperty Name="UNABLEREASON" ColumnName="UNABLEREASON" />
+                <ScalarProperty Name="FAILEDREASON" ColumnName="FAILEDREASON" />
+                <ScalarProperty Name="SCHEDULE_USER" ColumnName="SCHEDULE_USER" />
+                <ScalarProperty Name="SCHEDULE_DATE" ColumnName="SCHEDULE_DATE" />
+                <ScalarProperty Name="BORROWER_COUNTYID" ColumnName="BORROWER_COUNTYID" />
+                <ScalarProperty Name="TRACKING_COURIER_ID_1" ColumnName="TRACKING_COURIER_ID_1" />
+                <ScalarProperty Name="TRACKING_COURIER_ID_2" ColumnName="TRACKING_COURIER_ID_2" />
+                <ScalarProperty Name="TRACKING_COURIER_ID_3" ColumnName="TRACKING_COURIER_ID_3" />
+                <ScalarProperty Name="CONFIRMDATE" ColumnName="CONFIRMDATE" />
+                <ScalarProperty Name="CONFIRMTIME" ColumnName="CONFIRMTIME" />
+                <ScalarProperty Name="REQUESTEDDATE" ColumnName="REQUESTEDDATE" />
+                <ScalarProperty Name="REQUESTEDTIME" ColumnName="REQUESTEDTIME" />
+                <ScalarProperty Name="ADDITIONALSERVICE" ColumnName="ADDITIONALSERVICE" />
+                <ScalarProperty Name="DATE_RECORDED" ColumnName="DATE_RECORDED" />
+                <ScalarProperty Name="BOOK" ColumnName="BOOK" />
+                <ScalarProperty Name="PAGE" ColumnName="PAGE" />
+                <ScalarProperty Name="DISBURSMENT_SENT_ATTY" ColumnName="DISBURSMENT_SENT_ATTY" />
+                <ScalarProperty Name="MANAGER_APPROVAL" ColumnName="MANAGER_APPROVAL" />
+                <ScalarProperty Name="FILE_NUM" ColumnName="FILE_NUM" />
+                <ScalarProperty Name="PRECLOSECALL" ColumnName="PRECLOSECALL" />
+                <ScalarProperty Name="PRECLOSECALLTIME" ColumnName="PRECLOSECALLTIME" />
+                <ScalarProperty Name="POSTCLOSEATTCALL" ColumnName="POSTCLOSEATTCALL" />
+                <ScalarProperty Name="POSTCLOSEATTCALLTIME" ColumnName="POSTCLOSEATTCALLTIME" />
+                <ScalarProperty Name="POSTCLOSECLNTCALL" ColumnName="POSTCLOSECLNTCALL" />
+                <ScalarProperty Name="POSTCLOSECLNTCALLTIME" ColumnName="POSTCLOSECLNTCALLTIME" />
+                <ScalarProperty Name="DIDNOTCLOSEREASON" ColumnName="DIDNOTCLOSEREASON" />
+                <ScalarProperty Name="PRECLOSE" ColumnName="PRECLOSE" />
+                <ScalarProperty Name="POSTCLOSEATT" ColumnName="POSTCLOSEATT" />
+                <ScalarProperty Name="POSTCLOSECLNT" ColumnName="POSTCLOSECLNT" />
+                <ScalarProperty Name="IVRCALLSTATUS" ColumnName="IVRCALLSTATUS" />
+                <ScalarProperty Name="RESCHEDULEDTIME" ColumnName="RESCHEDULEDTIME" />
+                <ScalarProperty Name="OSG_ROWID" ColumnName="OSG_ROWID" />
+                <ScalarProperty Name="SOP_SEQUENCE" ColumnName="SOP_SEQUENCE" />
+                <ScalarProperty Name="PM_SEQUENCE" ColumnName="PM_SEQUENCE" />
+                <ScalarProperty Name="SOP_IMPORTDATE" ColumnName="SOP_IMPORTDATE" />
+                <ScalarProperty Name="PM_IMPORTDATE" ColumnName="PM_IMPORTDATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

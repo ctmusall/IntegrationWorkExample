@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PCN.WebService.Data" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PCN.WebService.Data" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="InboundOrder">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseOrder">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Notes" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OrderAction" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Services" nillable="true" type="tns:ArrayOfService" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="InboundOrder" nillable="true" type="tns:InboundOrder" />
+  <xs:complexType name="BaseOrder">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Borrower" nillable="true" type="tns:Person" />
+      <xs:element minOccurs="0" name="ClosingAddress" nillable="true" type="tns:Address" />
+      <xs:element minOccurs="0" name="ClosingDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClosingLocation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClosingTime" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CoBorrower" nillable="true" type="tns:Person" />
+      <xs:element minOccurs="0" name="CustomerContact" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomerId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DeliveryMethod" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FileNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LenderName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LoanNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrderId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Product" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RequestedClosingDate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RequestedClosingTime" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BaseOrder" nillable="true" type="tns:BaseOrder" />
+  <xs:complexType name="Person">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="tns:Address" />
+      <xs:element minOccurs="0" name="CellPhone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Email2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FaxNumber1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FaxNumber2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HomePhone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Salutation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SuffixName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WorkPhone" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Person" nillable="true" type="tns:Person" />
+  <xs:complexType name="Address">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Address2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Address3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="County" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ZipCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Address" nillable="true" type="tns:Address" />
+  <xs:complexType name="ArrayOfService">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Service" nillable="true" type="tns:Service" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfService" nillable="true" type="tns:ArrayOfService" />
+  <xs:complexType name="Service">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BillRate" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PayRate" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Service" nillable="true" type="tns:Service" />
+  <xs:complexType name="OutboundOrder">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:BaseOrder">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AdjournedReason" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Attorneys" nillable="true" type="tns:ArrayOfAttorneyInfoForOrder" />
+          <xs:element minOccurs="0" name="BorrowerContacted" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="BorrowerContactedStatusSent" nillable="true" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="CancelledReason" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="ClosingAttorney" nillable="true" type="tns:AttorneyInfoForOrder" />
+          <xs:element minOccurs="0" name="Couriers" nillable="true" type="tns:ArrayOfCourier" />
+          <xs:element minOccurs="0" name="CustomerName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="DelawareCompliance" nillable="true" type="tns:DelawareCompliance" />
+          <xs:element minOccurs="0" name="DisbursementLedger" nillable="true" type="tns:Ledger" />
+          <xs:element minOccurs="0" name="NotClosedReason" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Notes" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PostClosingAttorney" nillable="true" type="tns:Call" />
+          <xs:element minOccurs="0" name="PostClosingClient" nillable="true" type="tns:Call" />
+          <xs:element minOccurs="0" name="PreClosing" nillable="true" type="tns:Call" />
+          <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TotalBillRate" type="xs:decimal" />
+          <xs:element minOccurs="0" name="UnableReason" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="OutboundOrder" nillable="true" type="tns:OutboundOrder" />
+  <xs:complexType name="ArrayOfAttorneyInfoForOrder">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AttorneyInfoForOrder" nillable="true" type="tns:AttorneyInfoForOrder" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAttorneyInfoForOrder" nillable="true" type="tns:ArrayOfAttorneyInfoForOrder" />
+  <xs:complexType name="AttorneyInfoForOrder">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Person">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="AttorneyId" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="Services" nillable="true" type="tns:ArrayOfService" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="AttorneyInfoForOrder" nillable="true" type="tns:AttorneyInfoForOrder" />
+  <xs:complexType name="ArrayOfCourier">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Courier" nillable="true" type="tns:Courier" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCourier" nillable="true" type="tns:ArrayOfCourier" />
+  <xs:complexType name="Courier">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="Courier" nillable="true" type="tns:Courier" />
+  <xs:complexType name="DelawareCompliance">
+    <xs:sequence />
+  </xs:complexType>
+  <xs:element name="DelawareCompliance" nillable="true" type="tns:DelawareCompliance" />
+  <xs:complexType name="Ledger">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Book" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Page" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Recorded" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Sent" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Ledger" nillable="true" type="tns:Ledger" />
+  <xs:complexType name="Call">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Text" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TimeStamp" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Call" nillable="true" type="tns:Call" />
+  <xs:complexType name="OrderDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MessageTypeCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrderContacts" nillable="true" type="tns:OrderContacts" />
+      <xs:element minOccurs="0" name="OrderDetailId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrderTransactions" nillable="true" type="tns:OrderTransactions" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrderDetail" nillable="true" type="tns:OrderDetail" />
+  <xs:complexType name="OrderContacts">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="OrderContact" nillable="true" type="tns:OrderContact" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrderContacts" nillable="true" type="tns:OrderContacts" />
+  <xs:complexType name="OrderContact">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ContactTypeCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EmailAddress" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FaxNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HomePhoneNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MobileNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WorkPhoneExtension" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WorkPhoneNumber" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrderContact" nillable="true" type="tns:OrderContact" />
+  <xs:complexType name="OrderTransactions">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="OrderTransaction" nillable="true" type="tns:OrderTransaction" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrderTransactions" nillable="true" type="tns:OrderTransactions" />
+  <xs:complexType name="OrderTransaction">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Closing" nillable="true" type="tns:Closing" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrderTransaction" nillable="true" type="tns:OrderTransaction" />
+  <xs:complexType name="Closing">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClosingSchedules" nillable="true" type="tns:ClosingSchedules" />
+      <xs:element minOccurs="0" name="VendorInstructions" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Closing" nillable="true" type="tns:Closing" />
+  <xs:complexType name="ClosingSchedules">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClosingSchedule" nillable="true" type="tns:ClosingSchedule" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClosingSchedules" nillable="true" type="tns:ClosingSchedules" />
+  <xs:complexType name="ClosingSchedule">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClosingVendors" nillable="true" type="tns:ClosingVendors" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClosingSchedule" nillable="true" type="tns:ClosingSchedule" />
+  <xs:complexType name="ClosingVendors">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClosingVendor" nillable="true" type="tns:ClosingVendor" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClosingVendors" nillable="true" type="tns:ClosingVendors" />
+  <xs:complexType name="ClosingVendor">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClosingVendorServices" nillable="true" type="tns:ArrayOfClosingVendorService" />
+      <xs:element minOccurs="0" name="VendorResponse" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClosingVendor" nillable="true" type="tns:ClosingVendor" />
+  <xs:complexType name="ArrayOfClosingVendorService">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ClosingVendorService" nillable="true" type="tns:ClosingVendorService" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfClosingVendorService" nillable="true" type="tns:ArrayOfClosingVendorService" />
+  <xs:complexType name="ClosingVendorService">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ClosingVendorServiceId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StatusCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ClosingVendorService" nillable="true" type="tns:ClosingVendorService" />
+  <xs:complexType name="TSIInboundOrder">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="InboundOrder" nillable="true" type="tns:InboundOrder" />
+      <xs:element minOccurs="0" name="TSIServices" nillable="true" type="tns:ArrayOfTSIService" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TSIInboundOrder" nillable="true" type="tns:TSIInboundOrder" />
+  <xs:complexType name="ArrayOfTSIService">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TSIService" nillable="true" type="tns:TSIService" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTSIService" nillable="true" type="tns:ArrayOfTSIService" />
+  <xs:complexType name="TSIService">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Cost" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ServiceName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TSIService" nillable="true" type="tns:TSIService" />
+</xs:schema>
