@@ -50,39 +50,45 @@ namespace PCN_Integration.Services.Services
 
             foreach (var trackedOrder in trackedFassOrders)
             {
-                var pcnOrder = pcnOrders.FirstOrDefault(o => string.Equals(o.ORDERID, trackedOrder.OrderId, StringComparison.InvariantCultureIgnoreCase));
-
-                if (pcnOrder == null) continue;
-
-                if (trackedOrder.Status == ConvertStatusIdToString(pcnOrder.STATUS)) continue;
-
-                var pcnWebService = new PcnWebServiceInvoker();
-                bool success;
-
-                var response = pcnWebService.GetOrderFromService("F55137", pcnOrder.ORDERID, out success); //Being used for testing //also F55144                
-
-                var order = response.GetOrderResult.Order;
-                var status = order.Status;
-                var note = GetNote(order);
-
-                var fassMessage = new FassMonitorResponseMessage
-                {
-                    OrderId = order.OrderId,
-                    OrderStatus = status,
-                    AttorneyFirstName = order.ClosingAttorney.FirstName,
-                    AttorneyLastName = order.ClosingAttorney.LastName,
-                    HomeNumber = order.ClosingAttorney.HomePhone,
-                    CellNumber = order.ClosingAttorney.CellPhone,
-                    WorkNumber = order.ClosingAttorney.WorkPhone,
-                    Fax = order.ClosingAttorney.FaxNumber1,
-                    Email = order.ClosingAttorney.Email1,
-                    Notes = note,
-                };
-
-                ConvertAndAssignFee(fassMessage, order);
-
-                SendUpdateToMirth(fassMessage, trackedOrder, pcnOrder);
+                BuildFassResponseMessageAndSendUpdate(pcnOrders, trackedOrder);
             }
+        }
+
+        private void BuildFassResponseMessageAndSendUpdate(IEnumerable<OSGPCN300> pcnOrders, FassOrder trackedOrder)
+        {
+            var pcnOrder = pcnOrders.FirstOrDefault(o =>
+                string.Equals(o.ORDERID, trackedOrder.OrderId, StringComparison.InvariantCultureIgnoreCase));
+
+            if (pcnOrder == null) return;
+
+            if (trackedOrder.Status == ConvertStatusIdToString(pcnOrder.STATUS)) return;
+
+            var pcnWebService = new PcnWebServiceInvoker();
+            bool success;
+
+            var response = pcnWebService.GetOrderFromService("F55137", pcnOrder.ORDERID,out success); //Being used for testing //also F55144                
+
+            var order = response.GetOrderResult.Order;
+            var status = order.Status;
+            var note = GetNote(order);
+
+            var fassMessage = new FassMonitorResponseMessage
+            {
+                OrderId = order.OrderId,
+                OrderStatus = status,
+                AttorneyFirstName = order.ClosingAttorney.FirstName,
+                AttorneyLastName = order.ClosingAttorney.LastName,
+                HomeNumber = order.ClosingAttorney.HomePhone,
+                CellNumber = order.ClosingAttorney.CellPhone,
+                WorkNumber = order.ClosingAttorney.WorkPhone,
+                Fax = order.ClosingAttorney.FaxNumber1,
+                Email = order.ClosingAttorney.Email1,
+                Notes = note,
+            };
+
+            ConvertAndAssignFee(fassMessage, order);
+
+            SendUpdateToMirth(fassMessage, trackedOrder, pcnOrder);
         }
 
         private void SendUpdateToMirth(FassMonitorResponseMessage fassMessage, FassOrder trackedOrder, OSGPCN300 pcnOrder)
@@ -97,10 +103,6 @@ namespace PCN_Integration.Services.Services
             if (result.Success)
             {
                 UpdateRecordOfActionTaken(trackedOrder, pcnOrder);
-            }
-            else
-            {
-                //error handling.
             }
         }
 
