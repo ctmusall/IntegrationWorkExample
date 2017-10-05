@@ -1,5 +1,4 @@
 ﻿using System.ServiceProcess;
-using PCN_Integration.Services;
 using PCN_Integration.Services.Services;
 using PCN_Integration.Services.Services.IntegrationServiceFactory;
 using PCN_Integration.WindowsService.Common;
