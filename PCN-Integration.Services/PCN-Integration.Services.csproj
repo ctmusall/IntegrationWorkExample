@@ -52,6 +52,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\PcnIntegrationServicesConstants.cs" />
     <Compile Include="Services\FassMonitor.cs" />
     <Compile Include="FassMonitorResponseMessage.cs" />
     <Compile Include="MirthService.cs" />
@@ -68,7 +69,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Services\IIntegrationServiceBase.cs" />
     <Compile Include="Services\IntegrationServiceBase.cs" />
     <Compile Include="Services\IntegrationServiceFactory\IServiceFactory.cs" />
     <Compile Include="Services\IntegrationServiceFactory\ServiceFactory.cs" />
