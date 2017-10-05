@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using PCN_Integration.DataModels;
@@ -10,16 +11,6 @@ namespace PCN_Integration.Services.Services
 {
     public class FassMonitor : IntegrationServiceBase
     {
-        private readonly int _daysToLookBack;
-        private readonly int _mirthChannel;
-        private readonly string _mirthIpAddress;
-        public FassMonitor()
-        {
-            _mirthIpAddress = Properties.Settings.Default.mirthIPAddress;
-            _mirthChannel = Properties.Settings.Default.mirthChannel;
-            _daysToLookBack = Properties.Settings.Default.daysToLookBack;
-        }
-
         private void TrackNewFassOrders()
         {
             var orders = GetRecentOrdersFromPcn();
@@ -95,8 +86,8 @@ namespace PCN_Integration.Services.Services
         {
             var mirthSender = new MirthService
             {
-                Ip = _mirthIpAddress,
-                Port = _mirthChannel,
+                Ip = Properties.Settings.Default.mirthIPAddress,
+                Port = Properties.Settings.Default.mirthChannel
             };
 
             var result = mirthSender.SendFassMessageToMirth(fassMessage.ToSerializedXml());
@@ -140,21 +131,20 @@ namespace PCN_Integration.Services.Services
             var result = new List<OSGPCN300>();
             try
             {
-                using (var context = new PCNEntities())
-                {
-                    DateTime currentDate = DateTime.Now.Date.AddDays(-_daysToLookBack);
+                var context = new PCNEntities();
+                var currentDate = DateTime.Now.Date.AddDays(-Properties.Settings.Default.daysToLookBack);
 
-                    var res = context.OSGPCN300.Where(o =>
-                    (o.STATUS == 0 || o.STATUS == 1) && //o.ORDERID == "03072017" && //For testing
-                    (o.CUSTOMERID == "F55137" || o.CUSTOMERID == "F55144") && //FAMS (F55137) and FAMS (F55144) loss mit
-                    o.CREATE_DATE > currentDate
-                    );
-                    return res.ToList();
-                }
+                var res = context.OSGPCN300.Where(o =>
+                (o.STATUS == 0 || o.STATUS == 1) && //o.ORDERID == "03072017" && //For testing
+                (o.CUSTOMERID == "F55137" || o.CUSTOMERID == "F55144") && //FAMS (F55137) and FAMS (F55144) loss mit
+                o.CREATE_DATE > currentDate
+                );
+                return res.ToList();
+                
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //TODO Add error handling and logging.
+                EventLog.WriteEntry(ex.Source, ex.Message);
                 return result;
             }
         }
@@ -163,18 +153,15 @@ namespace PCN_Integration.Services.Services
         {
             try
             {
-                using (var context = new PCNIntegrationEntities())
-                {
-                    if (context.FassOrders.Any(o => o.OrderId == order.OrderId) == false)
-                    {
-                        context.FassOrders.Add(order);
-                        context.SaveChanges();
-                    }
-                }
+                var context = new PCNIntegrationEntities();
+
+                if (context.FassOrders.Any(o => o.OrderId == order.OrderId)) return;
+                context.FassOrders.Add(order);
+                context.SaveChanges();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //TODO Add error handling and logging.
+                EventLog.WriteEntry(ex.Source, ex.Message);
             }
         }
 
@@ -202,9 +189,9 @@ namespace PCN_Integration.Services.Services
                 result = context.FassOrders.ToList();
                 return result;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //TODO Add error handling and logging.
+                EventLog.WriteEntry(ex.Source, ex.Message);
                 return result;
             }
         }
@@ -214,15 +201,13 @@ namespace PCN_Integration.Services.Services
             var result = new List<OSGPCN300>();
             try
             {
-                using (var context = new PCNEntities())
-                {
-                    var res = context.OSGPCN300.Where(o => orderIds.Contains(o.ORDERID)).ToList();
-                    return res;
-                }
+                var context = new PCNEntities();
+                var res = context.OSGPCN300.Where(o => orderIds.Contains(o.ORDERID)).ToList();
+                return res;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                //TODO Add error handling and logging.
+                EventLog.WriteEntry(ex.Source, ex.Message);
                 return result;
             }
         }
