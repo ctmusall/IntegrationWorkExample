@@ -14,6 +14,7 @@ namespace PCN_Integration.WindowsService
         protected override void OnStart(string[] args)
         {
             EventLog.WriteEntry(PcnIntegrationServiceConstants.PcnIntegrationServiceStatusMessages.IntegrationStarted);
+            CreateAndStartFassIntegrationService();
         }    
 
         protected override void OnStop()
