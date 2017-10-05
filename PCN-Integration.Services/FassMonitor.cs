@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Globalization;
 using System.Linq;
 using PCN_Integration.DataModels;
@@ -10,15 +9,14 @@ namespace PCN_Integration.Services
 {
     public class FassMonitor
     {
-        private int _daysToLookBack;
-        private int _mirthChannel;
-        private string _mirthIpAddress;
+        private readonly int _daysToLookBack;
+        private readonly int _mirthChannel;
+        private readonly string _mirthIpAddress;
         public FassMonitor()
         {
-            //TODO Set from config - add production settings
-            _mirthIpAddress = ConfigurationManager.AppSettings.Get("mirthIPAddress");  //"10.250.161.135"; //Mirthtest
-            _mirthChannel = int.Parse(ConfigurationManager.AppSettings.Get("mirthChannel"));
-            _daysToLookBack = int.Parse(ConfigurationManager.AppSettings.Get("daysToLookBack"));
+            _mirthIpAddress = Properties.Settings.Default.mirthIPAddress;
+            _mirthChannel = Properties.Settings.Default.mirthChannel;
+            _daysToLookBack = Properties.Settings.Default.daysToLookBack;
         }
 
         public void TrackNewFassOrders()
