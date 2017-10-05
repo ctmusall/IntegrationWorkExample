@@ -5,9 +5,9 @@ using System.Linq;
 using PCN_Integration.DataModels;
 using PCN_Integration.Services.PcnIntegrationServiceTest;
 
-namespace PCN_Integration.Services
+namespace PCN_Integration.Services.Services
 {
-    public class FassMonitor
+    public class FassMonitor : IntegrationServiceBase
     {
         private readonly int _daysToLookBack;
         private readonly int _mirthChannel;
@@ -19,7 +19,7 @@ namespace PCN_Integration.Services
             _daysToLookBack = Properties.Settings.Default.daysToLookBack;
         }
 
-        public void TrackNewFassOrders()
+        private void TrackNewFassOrders()
         {
             List<OSGPCN300> orders = GetRecentOrdersFromPCN();
             if (orders.Count > 0)
@@ -41,7 +41,7 @@ namespace PCN_Integration.Services
             }
         }
 
-        public void SendFassNotificationOnUpdate()
+        private void SendFassNotificationOnUpdate()
         {
             //1. Get all the TrackedFassOrders with pending status. Get thier Id's into a list.
             //2. Get those ids from PCN into a list.
@@ -126,7 +126,8 @@ namespace PCN_Integration.Services
             string pcnNote;
             switch (order.Status)
             {
-                case "Unable to Fill" : pcnNote = order.UnableReason ;
+                case "Unable to Fill" :
+                    pcnNote = order.UnableReason;
                     break;
                 case "Cancelled":
                     pcnNote = order.CancelledReason;          
@@ -256,6 +257,12 @@ namespace PCN_Integration.Services
         
         
             context.SaveChanges();
+        }
+
+        public override void BeginIntegrationProcessing()
+        {
+            TrackNewFassOrders();
+            SendFassNotificationOnUpdate();
         }
     }
 }

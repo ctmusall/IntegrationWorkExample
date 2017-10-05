@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using PCN_Integration.DataModels;
 using System.Data;
 using PCN_Integration.Services;
+using PCN_Integration.Services.Services;
+using PCN_Integration.Services.Services.IntegrationServiceFactory;
 
 namespace PCN_Integration.Console 
 {
@@ -13,10 +15,8 @@ namespace PCN_Integration.Console
   {
     static void Main(string[] args)
     {
-      //TODO - Move to Windows Service
-      var fass = new FassMonitor();
-      fass.TrackNewFassOrders();
-      fass.SendFassNotificationOnUpdate();
+      var serviceFactory = new ServiceFactory();
+      serviceFactory.ResolveIntegrationService(typeof(FassMonitor)).BeginIntegrationProcessing();
     }
   }
 }
