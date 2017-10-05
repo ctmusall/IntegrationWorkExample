@@ -2,13 +2,8 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using PCN_Integration.DataModels;
-using PCN_Integration.Services;
-using System.Data;
 using PCN_Integration.Services.PcnIntegrationServiceTest;
-using System.Xml;
 
 namespace PCN_Integration.Services
 {
