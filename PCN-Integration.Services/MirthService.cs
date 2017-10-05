@@ -128,13 +128,12 @@ namespace PCN_Integration.Services
           }
           return Result.CreateSuccess();
         }
-        catch (Exception e)
+        catch (Exception ex)
         {
           sock.Close();
 
           //Log.Trace(String.Format("Failed to send xml to mirth: {0}", e));
           //TODO add logging and file handling.
-
           return Result.CreateFailure("Failed to send XML to Mirth");
         }
       }
