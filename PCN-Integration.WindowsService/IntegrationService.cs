@@ -1,30 +1,31 @@
 ﻿using System.ServiceProcess;
 using PCN_Integration.Services;
+using PCN_Integration.WindowsService.Common;
 
 namespace PCN_Integration.WindowsService
 {
-  public partial class IntegrationService : ServiceBase
-  {
-    public IntegrationService()
+    internal partial class IntegrationService : ServiceBase
     {
-      InitializeComponent();
-    }
+        internal IntegrationService()
+        {
+            InitializeComponent();
+        }
 
-    protected override void OnStart(string[] args)
-    {
-      EventLog.WriteEntry("PCN-Integration Windows Service has started.");
-    }    
+        protected override void OnStart(string[] args)
+        {
+            EventLog.WriteEntry(PcnIntegrationServiceConstants.PcnIntegrationServiceStatusMessages.IntegrationStarted);
+        }    
 
-    protected override void OnStop()
-    {
-      EventLog.WriteEntry("PCN-Integration Windows Service has stopped.");
-    }
+        protected override void OnStop()
+        {
+            EventLog.WriteEntry(PcnIntegrationServiceConstants.PcnIntegrationServiceProperies.ServiceName);
+        }
 
-    private void CreateAndStartFassIntegrationService()
-    {
-      var fass = new FassMonitor();
-      fass.TrackNewFassOrders();
-      fass.SendFassNotificationOnUpdate();
+        private void CreateAndStartFassIntegrationService()
+        {
+            var fass = new FassMonitor();
+            fass.TrackNewFassOrders();
+            fass.SendFassNotificationOnUpdate();
+        }
     }
-  }
 }

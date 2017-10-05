@@ -5,7 +5,7 @@ namespace PCN_Integration.WindowsService
     static class Program
     {
         /// <summary>
-        /// The main entry point for the application.
+        /// Creates array containing integration service and calls the static ServiceBase.Run() method to begin processing.
         /// </summary>
         static void Main()
         {
