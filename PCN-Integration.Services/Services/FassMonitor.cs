@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using PCN_Integration.DataModels;
+using PCN_Integration.Services.Common;
 using PCN_Integration.Services.PcnIntegrationServiceTest;
 
 namespace PCN_Integration.Services.Services
@@ -21,7 +22,7 @@ namespace PCN_Integration.Services.Services
 
         private void TrackNewFassOrders()
         {
-            var orders = GetRecentOrdersFromPCN();
+            var orders = GetRecentOrdersFromPcn();
             if (orders.Count <= 0) return;
 
             foreach (var order in orders)
@@ -41,112 +42,98 @@ namespace PCN_Integration.Services.Services
         }
 
         private void SendFassNotificationOnUpdate()
-        {
-            //1. Get all the TrackedFassOrders with pending status. Get thier Id's into a list.
-            //2. Get those ids from PCN into a list.
-            //3. Compare the orders. If there is a change in STATUS, send the message. 
-      
-            var TrackedFassOrders = GetTrackedOrders();
-            var TrackedFassOrderIds = new List<string>();
-            foreach (var fassOrder in TrackedFassOrders)
+        {     
+            var trackedFassOrders = GetTrackedOrders();
+            var trackedFassOrderIds = trackedFassOrders.Select(fassOrder => fassOrder.OrderId).ToList();
+
+            var pcnOrders = GetOrdersFromPcnById(trackedFassOrderIds);
+
+            foreach (var trackedOrder in trackedFassOrders)
             {
-                TrackedFassOrderIds.Add(fassOrder.OrderId);
-            }
+                var pcnOrder = pcnOrders.FirstOrDefault(o => string.Equals(o.ORDERID, trackedOrder.OrderId, StringComparison.InvariantCultureIgnoreCase));
 
-            var PcnOrders = GetOrdersFromPcnById(TrackedFassOrderIds);
+                if (pcnOrder == null) continue;
 
-            foreach (var trackedOrder in TrackedFassOrders)
-            {
-                //Check pcn for the Ids we have
-                var pcnOrder = PcnOrders.Where(o => o.ORDERID.ToUpper() == trackedOrder.OrderId.ToUpper()).FirstOrDefault();
-                //OrderId, Status, DateTimeLastUpdated, StatusLastUpdated, DateTimeCreated, DateTimeCompleted
+                if (trackedOrder.Status == ConvertStatusIdToString(pcnOrder.STATUS)) continue;
 
-                //IF STATUS CHANGES.
+                var pcnWebService = new PcnWebServiceInvoker();
+                bool success;
 
-                if (trackedOrder.Status != ConvertStatusIdToString(pcnOrder.STATUS))
+                var response = pcnWebService.GetOrderFromService("F55137", pcnOrder.ORDERID, out success); //Being used for testing //also F55144                
+
+                var order = response.GetOrderResult.Order;
+                var status = order.Status;
+                var note = GetNote(order);
+
+                var fassMessage = new FassMonitorResponseMessage
                 {
-                    var pcnWebService = new PcnWebServiceInvoker();
-                    bool success;
+                    OrderId = order.OrderId,
+                    OrderStatus = status,
+                    AttorneyFirstName = order.ClosingAttorney.FirstName,
+                    AttorneyLastName = order.ClosingAttorney.LastName,
+                    HomeNumber = order.ClosingAttorney.HomePhone,
+                    CellNumber = order.ClosingAttorney.CellPhone,
+                    WorkNumber = order.ClosingAttorney.WorkPhone,
+                    Fax = order.ClosingAttorney.FaxNumber1,
+                    Email = order.ClosingAttorney.Email1,
+                    Notes = note,
+                };
 
-                    //need to know the customer id on the observed order.... so need to query some id's on the first query... F55144 F55137
-          
-                    //var response = pcnWebService.GetOrderFromService("F55137", trackedOrder.OrderId.ToUpper().ToString(), out success); //also F55144 //todo handle this one also.                    
+                ConvertAndAssignFee(fassMessage, order);
 
-                    var response = pcnWebService.GetOrderFromService("F55137", pcnOrder.ORDERID, out success); //Being used for testing //also F55144 //todo handle this one also.                    
-
-                    var order = response.GetOrderResult.Order;
-                    var status = order.Status; // Pending, Scheduled, Cancelled, Unable to Fill, Closed, Adjourned
-                    var note = GetNote(order);
-
-                    var fassMessage = new FassMonitorResponseMessage()
-                    {
-                        OrderId = order.OrderId,
-                        OrderStatus = status,
-                        AttorneyFirstName = order.ClosingAttorney.FirstName,
-                        AttorneyLastName = order.ClosingAttorney.LastName,
-                        HomeNumber = order.ClosingAttorney.HomePhone,
-                        CellNumber = order.ClosingAttorney.CellPhone,
-                        WorkNumber = order.ClosingAttorney.WorkPhone,
-                        Fax = order.ClosingAttorney.FaxNumber1,
-                        Email = order.ClosingAttorney.Email1,
-                        Notes = note,
-                    };
-
-                    //Convert and assign the fee
-                    string fee;
-                    NumberFormatInfo nfi = CultureInfo.CurrentCulture.NumberFormat;
-                    nfi = (NumberFormatInfo)nfi.Clone();
-                    nfi.CurrencySymbol = "";
-                    fee = string.Format(nfi, "{0:c}", order.TotalBillRate);
-                    fassMessage.Fee = fee;
-
-                    //Send Update
-                    var mirthSender = new MirthService()
-                    {
-                        Ip = _mirthIpAddress,
-                        Port = _mirthChannel,
-                    };
-
-                    var result = mirthSender.SendFassMessageToMirth(fassMessage.ToSerializedXml());
-                    if (result.Success)
-                    {
-                        UpdateRecordOfActionTaken(trackedOrder, pcnOrder);
-                    }
-                    else
-                    {
-                        //error handling.
-                    }
-                }
+                SendUpdateToMirth(fassMessage, trackedOrder, pcnOrder);
             }
         }
 
-        private string GetNote(OutboundOrder order)
+        private void SendUpdateToMirth(FassMonitorResponseMessage fassMessage, FassOrder trackedOrder, OSGPCN300 pcnOrder)
+        {
+            var mirthSender = new MirthService
+            {
+                Ip = _mirthIpAddress,
+                Port = _mirthChannel,
+            };
+
+            var result = mirthSender.SendFassMessageToMirth(fassMessage.ToSerializedXml());
+            if (result.Success)
+            {
+                UpdateRecordOfActionTaken(trackedOrder, pcnOrder);
+            }
+            else
+            {
+                //error handling.
+            }
+        }
+
+        private static void ConvertAndAssignFee(FassMonitorResponseMessage fassMessage, OutboundOrder order)
+        {
+            var nfi = CultureInfo.CurrentCulture.NumberFormat;
+            nfi = (NumberFormatInfo) nfi.Clone();
+            nfi.CurrencySymbol = string.Empty;
+            fassMessage.Fee = string.Format(nfi, "{0:c}", order.TotalBillRate);
+        }
+
+        private static string GetNote(OutboundOrder order)
         {
             string pcnNote;
             switch (order.Status)
             {
-                case "Unable to Fill" :
+                case PcnIntegrationServicesConstants.OrderStatus.UnableToFill:
                     pcnNote = order.UnableReason;
                     break;
-                case "Cancelled":
+                case PcnIntegrationServicesConstants.OrderStatus.Cancelled:
                     pcnNote = order.CancelledReason;          
                     break;
-                case "Adjourned":
+                case PcnIntegrationServicesConstants.OrderStatus.Adjourned:
                     pcnNote = order.AdjournedReason;
                     break;
                 default:
-                    pcnNote = "";
+                    pcnNote = string.Empty;
                     break;
             }
-
-            //Now, we need to get that note from local db.
-            //Add notes to local db.
-            //create a call to get them.
-
-            return "";
+            return pcnNote;
         }
 
-        private List<OSGPCN300> GetRecentOrdersFromPCN()
+        private List<OSGPCN300> GetRecentOrdersFromPcn()
         {
             var result = new List<OSGPCN300>();
             try
@@ -163,15 +150,14 @@ namespace PCN_Integration.Services.Services
                     return res.ToList();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                var errorMessage = ex.Message;
                 //TODO Add error handling and logging.
                 return result;
             }
         }
 
-        private void AddOrderToMonitorDb(FassOrder order)
+        private static void AddOrderToMonitorDb(FassOrder order)
         {
             try
             {
@@ -184,66 +170,62 @@ namespace PCN_Integration.Services.Services
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //TODO Add error handling and logging.
-                var message = ex.Message;
             }
         }
 
-        private string ConvertStatusIdToString(int statusId)
+        private static string ConvertStatusIdToString(int statusId)
         {
             switch (statusId)
             {
-                case 0: return "Pending";
-                case 1: return "Scheduled";
-                case 2: return "Cancelled";
-                case 3: return "Unable to Fill";
-                case 4: return "Closed";
-                case 5: return "Adjourned";
-                default: return "";
+                case 0: return PcnIntegrationServicesConstants.OrderStatus.Pending;
+                case 1: return PcnIntegrationServicesConstants.OrderStatus.Scheduled;
+                case 2: return PcnIntegrationServicesConstants.OrderStatus.Cancelled;
+                case 3: return PcnIntegrationServicesConstants.OrderStatus.UnableToFill;
+                case 4: return PcnIntegrationServicesConstants.OrderStatus.Closed;
+                case 5: return PcnIntegrationServicesConstants.OrderStatus.Adjourned;
+                default: return string.Empty;
             }
         }
 
-        private List<FassOrder> GetTrackedOrders()
+        private static List<FassOrder> GetTrackedOrders()
         {
             var result = new List<FassOrder>();
 
             try
             {
-                using (var context = new PCNIntegrationEntities())
-                {
-                    result = context.FassOrders.ToList();
-                    return result;
-                }
+                var context= new PCNIntegrationEntities();
+                result = context.FassOrders.ToList();
+                return result;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 //TODO Add error handling and logging.
                 return result;
             }
         }
 
-        private List<OSGPCN300> GetOrdersFromPcnById(List<string> OrderIds)
+        private static List<OSGPCN300> GetOrdersFromPcnById(List<string> orderIds)
         {
             var result = new List<OSGPCN300>();
             try
             {
                 using (var context = new PCNEntities())
                 {
-                    var res = context.OSGPCN300.Where(o => OrderIds.Contains(o.ORDERID)).ToList();
+                    var res = context.OSGPCN300.Where(o => orderIds.Contains(o.ORDERID)).ToList();
                     return res;
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                var errorMessage = ex.Message;
                 //TODO Add error handling and logging.
                 return result;
             }
         }
 
-        private void UpdateRecordOfActionTaken(FassOrder fassOrder, OSGPCN300 order)
+        private static void UpdateRecordOfActionTaken(FassOrder fassOrder, OSGPCN300 order)
         {
             var context = new PCNIntegrationEntities();
             var fOrder = context.FassOrders.FirstOrDefault(f => f.OrderId == fassOrder.OrderId);
@@ -253,7 +235,6 @@ namespace PCN_Integration.Services.Services
             fOrder.StatusLastUpdated = fassOrder.Status;
             fOrder.Status = ConvertStatusIdToString(order.STATUS);
             fOrder.DateTimeLastUpdated = DateTime.Now;
-        
         
             context.SaveChanges();
         }

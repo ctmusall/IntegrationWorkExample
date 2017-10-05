@@ -18,13 +18,13 @@ namespace PCN_Integration.WindowsService
 
         protected override void OnStart(string[] args)
         {
-            EventLog.WriteEntry(PcnIntegrationServiceConstants.PcnIntegrationServiceStatusMessages.IntegrationStarted);
+            EventLog.WriteEntry(PcnIntegrationWindowsServiceConstants.PcnIntegrationServiceStatusMessages.IntegrationStarted);
             _serviceFactory.ResolveIntegrationService(typeof(FassMonitor)).BeginIntegrationProcessing();
         }    
 
         protected override void OnStop()
         {
-            EventLog.WriteEntry(PcnIntegrationServiceConstants.PcnIntegrationServiceStatusMessages.IntegrationStopped);
+            EventLog.WriteEntry(PcnIntegrationWindowsServiceConstants.PcnIntegrationServiceStatusMessages.IntegrationStopped);
         }
     }
 }

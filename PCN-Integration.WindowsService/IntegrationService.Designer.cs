@@ -29,7 +29,7 @@ namespace PCN_Integration.WindowsService
         /// </summary>
         private void InitializeComponent()
         {
-            ServiceName = PcnIntegrationServiceConstants.PcnIntegrationServiceProperies.ServiceName;
+            ServiceName = PcnIntegrationWindowsServiceConstants.PcnIntegrationServiceProperies.ServiceName;
         }
         #endregion
     }

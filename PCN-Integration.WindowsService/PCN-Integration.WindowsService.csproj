@@ -61,7 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\PcnIntegrationServiceConstants.cs" />
+    <Compile Include="Common\PcnIntegrationWindowsServiceConstants.cs" />
     <Compile Include="IntegrationService.cs">
       <SubType>Component</SubType>
     </Compile>

@@ -1,19 +1,19 @@
 ﻿namespace PCN_Integration.WindowsService.Common
 {
-    internal static class PcnIntegrationServiceConstants
+    internal static class PcnIntegrationWindowsServiceConstants
     {
         #region ServiceProperties
         internal static class PcnIntegrationServiceProperies
         {
-            internal static string ServiceName = "PCN-Integration";
+            internal const string ServiceName = "PCN-Integration";
         }
         #endregion
 
         #region ServiceStatusMessages
         internal static class PcnIntegrationServiceStatusMessages
         {
-            internal static string IntegrationStarted = "PCN-Integration Windows Service has started.";
-            internal static string IntegrationStopped = "PCN-Integration Windows Service has stopped.";
+            internal const string IntegrationStarted = "PCN-Integration Windows Service has started.";
+            internal const string IntegrationStopped = "PCN-Integration Windows Service has stopped.";
         }
         #endregion
     }
