@@ -21,23 +21,22 @@ namespace PCN_Integration.Services.Services
 
         private void TrackNewFassOrders()
         {
-            List<OSGPCN300> orders = GetRecentOrdersFromPCN();
-            if (orders.Count > 0)
+            var orders = GetRecentOrdersFromPCN();
+            if (orders.Count <= 0) return;
+
+            foreach (var order in orders)
             {
-                foreach (var order in orders)
+                var fassOrder = new FassOrder
                 {
-                    var fassOrder = new FassOrder()
-                    {
-                        OrderId = order.ORDERID,
-                        FileNo = order.FILE_NUM.ToString(),           
-                        DateTimeLastUpdated = order.CREATE_DATE,
-                        Status = ConvertStatusIdToString(order.STATUS),
-                        StatusLastUpdated = ConvertStatusIdToString(order.STATUS),
-                        DateTimeCreated = order.CREATE_DATE,
-                        CustomerId = order.CUSTOMERID,
-                    };                   
-                    AddOrderToMonitorDb(fassOrder);
-                }
+                    OrderId = order.ORDERID,
+                    FileNo = order.FILE_NUM,           
+                    DateTimeLastUpdated = order.CREATE_DATE,
+                    Status = ConvertStatusIdToString(order.STATUS),
+                    StatusLastUpdated = ConvertStatusIdToString(order.STATUS),
+                    DateTimeCreated = order.CREATE_DATE,
+                    CustomerId = order.CUSTOMERID
+                };                   
+                AddOrderToMonitorDb(fassOrder);
             }
         }
 
