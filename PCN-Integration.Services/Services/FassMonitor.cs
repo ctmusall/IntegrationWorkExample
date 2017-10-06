@@ -7,12 +7,13 @@ using PCN_Integration.DataModels;
 using PCN_Integration.Services.Common;
 using PCN_Integration.Services.Models;
 using PCN_Integration.Services.PcnIntegrationServiceTest;
+using PCN_Integration.Services.Utilities;
 
 namespace PCN_Integration.Services.Services
 {
     public class FassMonitor : IntegrationServiceBase
     {
-        private void TrackNewFassOrders()
+        private static void TrackNewFassOrders()
         {
             var orders = GetRecentOrdersFromPcn();
             if (orders.Count <= 0) return;
@@ -33,7 +34,7 @@ namespace PCN_Integration.Services.Services
             }
         }
 
-        private void SendFassNotificationOnUpdate()
+        private static void SendFassNotificationOnUpdate()
         {     
             var trackedFassOrders = GetTrackedOrders();
             var trackedFassOrderIds = trackedFassOrders.Select(fassOrder => fassOrder.OrderId).ToList();
@@ -46,7 +47,7 @@ namespace PCN_Integration.Services.Services
             }
         }
 
-        private void BuildFassResponseMessageAndSendUpdate(IEnumerable<OSGPCN300> pcnOrders, FassOrder trackedOrder)
+        private static void BuildFassResponseMessageAndSendUpdate(IEnumerable<OSGPCN300> pcnOrders, FassOrder trackedOrder)
         {
             var pcnOrder = pcnOrders.FirstOrDefault(o =>
                 string.Equals(o.ORDERID, trackedOrder.OrderId, StringComparison.InvariantCultureIgnoreCase));
@@ -75,7 +76,7 @@ namespace PCN_Integration.Services.Services
                 WorkNumber = order.ClosingAttorney.WorkPhone,
                 Fax = order.ClosingAttorney.FaxNumber1,
                 Email = order.ClosingAttorney.Email1,
-                Notes = note,
+                Notes = note
             };
 
             ConvertAndAssignFee(fassMessage, order);
@@ -83,16 +84,11 @@ namespace PCN_Integration.Services.Services
             SendUpdateToMirth(fassMessage, trackedOrder, pcnOrder);
         }
 
-        private void SendUpdateToMirth(FassMonitorResponseMessage fassMessage, FassOrder trackedOrder, OSGPCN300 pcnOrder)
+        private static void SendUpdateToMirth(FassMonitorResponseMessage fassMessage, FassOrder trackedOrder, OSGPCN300 pcnOrder)
         {
-            var mirthSender = new MirthService
-            {
-                Ip = Properties.Settings.Default.mirthIPAddress,
-                Port = Properties.Settings.Default.mirthChannel
-            };
-
+            var mirthSender = new Mirth();
             var result = mirthSender.SendFassMessageToMirth(fassMessage.ToSerializedXml());
-            if (result.Success)
+            if (result)
             {
                 UpdateRecordOfActionTaken(trackedOrder, pcnOrder);
             }
@@ -127,7 +123,7 @@ namespace PCN_Integration.Services.Services
             return pcnNote;
         }
 
-        private List<OSGPCN300> GetRecentOrdersFromPcn()
+        private static List<OSGPCN300> GetRecentOrdersFromPcn()
         {
             var result = new List<OSGPCN300>();
             try

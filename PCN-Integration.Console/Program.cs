@@ -5,7 +5,7 @@ namespace PCN_Integration.Console
 {
   class Program
   {
-    static void Main(string[] args)
+    static void Main()
     {
       var serviceFactory = new ServiceFactory();
       serviceFactory.ResolveIntegrationService(typeof(FassMonitor)).BeginIntegrationProcessing();
