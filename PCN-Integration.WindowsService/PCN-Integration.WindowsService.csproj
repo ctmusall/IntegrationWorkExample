@@ -81,9 +81,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\PCN-Integration.Services\PCN-Integration.Services.csproj">
       <Project>{eb762de1-fb1e-4457-abcc-3984354b1005}</Project>
       <Name>PCN-Integration.Services</Name>
