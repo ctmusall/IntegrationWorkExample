@@ -49,5 +49,23 @@ namespace PCN_Integration.Services.Properties {
                 return ((int)(this["daysToLookBack"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("F55137")]
+        public string famsCustomerId {
+            get {
+                return ((string)(this["famsCustomerId"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("F55144")]
+        public string famsModificationsCustomerId {
+            get {
+                return ((string)(this["famsModificationsCustomerId"]));
+            }
+        }
     }
 }

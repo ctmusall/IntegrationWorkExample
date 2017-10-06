@@ -23,7 +23,7 @@ namespace PCN_Integration.Services.Utilities
         public GetOrderResponse GetOrderFromService(string customerId, string orderId, out bool success)
         {
             _getOrderResponse = _client.GetOrder(new GetOrderRequest(customerId, orderId));    
-            success = _getOrderResponse.GetOrderResult.Message.Contains(PcnIntegrationServicesConstants.OrderValidationMessages.OrderFound);   
+            success = _getOrderResponse.GetOrderResult.Message.Contains(PcnIntegrationServicesConstants.OrderValidationMessages.OrderFound);
             return _getOrderResponse;
         }
 

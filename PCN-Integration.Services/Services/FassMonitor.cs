@@ -59,7 +59,7 @@ namespace PCN_Integration.Services.Services
             var pcnWebService = new PcnWebServiceInvoker();
             bool success;
 
-            var response = pcnWebService.GetOrderFromService("F55137", pcnOrder.ORDERID,out success); //Being used for testing //also F55144                
+            var response = pcnWebService.GetOrderFromService(pcnOrder.CUSTOMERID, pcnOrder.ORDERID, out success);
 
             var order = response.GetOrderResult.Order;
             var status = order.Status;
@@ -132,8 +132,8 @@ namespace PCN_Integration.Services.Services
                 var currentDate = DateTime.Now.Date.AddDays(-Properties.Settings.Default.daysToLookBack);
 
                 var res = context.OSGPCN300.Where(o =>
-                (o.STATUS == 0 || o.STATUS == 1) && //o.ORDERID == "03072017" && //For testing
-                (o.CUSTOMERID == "F55137" || o.CUSTOMERID == "F55144") && //FAMS (F55137) and FAMS (F55144) loss mit
+                (o.STATUS == 0 || o.STATUS == 1) && 
+                (o.CUSTOMERID == Properties.Settings.Default.famsCustomerId || o.CUSTOMERID == Properties.Settings.Default.famsModificationsCustomerId) && 
                 o.CREATE_DATE > currentDate
                 );
                 return res.ToList();
