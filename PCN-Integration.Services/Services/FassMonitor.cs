@@ -60,15 +60,12 @@ namespace PCN_Integration.Services.Services
             bool success;
 
             var response = pcnWebService.GetOrderFromService(pcnOrder.CUSTOMERID, pcnOrder.ORDERID, out success);
-
             var order = response.GetOrderResult.Order;
-            var status = order.Status;
-            var note = GetNote(order);
 
             var fassMessage = new FassMonitorResponseMessage
             {
                 OrderId = order.OrderId,
-                OrderStatus = status,
+                OrderStatus = order.Status,
                 AttorneyFirstName = order.ClosingAttorney.FirstName,
                 AttorneyLastName = order.ClosingAttorney.LastName,
                 HomeNumber = order.ClosingAttorney.HomePhone,
@@ -76,7 +73,7 @@ namespace PCN_Integration.Services.Services
                 WorkNumber = order.ClosingAttorney.WorkPhone,
                 Fax = order.ClosingAttorney.FaxNumber1,
                 Email = order.ClosingAttorney.Email1,
-                Notes = note
+                Notes = GetNote(order)
             };
 
             ConvertAndAssignFee(fassMessage, order);
