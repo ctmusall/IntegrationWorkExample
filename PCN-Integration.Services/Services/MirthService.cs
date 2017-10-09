@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PCN_Integration.Services.Services
 {
-    internal class Mirth
+    internal class MirthService
     {
         private readonly string _ip = Properties.Settings.Default.mirthIPAddress;
         private readonly int _port = Properties.Settings.Default.mirthChannel;

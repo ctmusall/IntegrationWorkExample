@@ -83,7 +83,7 @@ namespace PCN_Integration.Services.Services
 
         private static void SendUpdateToMirth(FassMonitorResponseMessage fassMessage, FassOrder trackedOrder, OSGPCN300 pcnOrder)
         {
-            var mirthSender = new Mirth();
+            var mirthSender = new MirthService();
             var result = mirthSender.SendFassMessageToMirth(fassMessage.ToSerializedXml());
             if (result)
             {
