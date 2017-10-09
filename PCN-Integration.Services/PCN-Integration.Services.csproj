@@ -38,8 +38,10 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
@@ -51,17 +53,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FassMonitor.cs" />
-    <Compile Include="FassMonitorResponseMessage.cs" />
-    <Compile Include="MirthService.cs" />
-    <Compile Include="OrderMessage.cs" />
-    <Compile Include="PCNWebServiceInvoker.cs" />
+    <Compile Include="Common\PcnIntegrationServicesConstants.cs" />
+    <Compile Include="Services\FassMonitor.cs" />
+    <Compile Include="Models\FassMonitorResponseMessage.cs" />
+    <Compile Include="Services\MirthService.cs" />
+    <Compile Include="Utilities\PCNWebServiceInvoker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Service References\PcnIntegrationServiceTest\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Services\IntegrationServiceBase.cs" />
+    <Compile Include="Services\IntegrationServiceFactory\IServiceFactory.cs" />
+    <Compile Include="Services\IntegrationServiceFactory\ServiceFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -69,6 +79,10 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Service References\PcnIntegrationServiceTest\IntegrationService.wsdl" />
     <None Include="Service References\PcnIntegrationServiceTest\IntegrationService.xsd">
       <SubType>Designer</SubType>

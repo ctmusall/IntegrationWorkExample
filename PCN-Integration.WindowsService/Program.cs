@@ -1,25 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.ServiceProcess;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ServiceProcess;
 
 namespace PCN_Integration.WindowsService
 {
-  static class Program
-  {
-    /// <summary>
-    /// The main entry point for the application.
-    /// </summary>
-    static void Main()
+    static class Program
     {
-      ServiceBase[] ServicesToRun;
-      ServicesToRun = new ServiceBase[]
-      {
+        /// <summary>
+        /// Creates array containing integration service and calls the static ServiceBase.Run() method to begin processing.
+        /// </summary>
+        static void Main()
+        {
+            var servicesToRun = new ServiceBase[]
+            {
                 new IntegrationService()
-      };
-      ServiceBase.Run(ServicesToRun);
+            };
+            ServiceBase.Run(servicesToRun);
+        }
     }
-  }
 }

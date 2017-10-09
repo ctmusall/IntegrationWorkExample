@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\PcnIntegrationWindowsServiceConstants.cs" />
     <Compile Include="IntegrationService.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -78,9 +79,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PCN-Integration.Services\PCN-Integration.Services.csproj">

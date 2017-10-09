@@ -1,38 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
-using System.Linq;
-using System.ServiceProcess;
-using System.Text;
-using System.Threading.Tasks;
-using PCN_Integration.Services;
+﻿using System.ServiceProcess;
+using PCN_Integration.Services.Services;
+using PCN_Integration.Services.Services.IntegrationServiceFactory;
+using PCN_Integration.WindowsService.Common;
 
 namespace PCN_Integration.WindowsService
 {
-  public partial class IntegrationService : ServiceBase
-  {
-    public IntegrationService()
+    internal partial class IntegrationService : ServiceBase
     {
-      InitializeComponent();
-    }
+        private readonly IServiceFactory _serviceFactory;
 
-    protected override void OnStart(string[] args)
-    {
-      EventLog.WriteEntry("PCN-Integration Windows Service has started.");
-    }    
+        internal IntegrationService(IServiceFactory serviceFactory = null)
+        {
+            InitializeComponent();
+            _serviceFactory = serviceFactory ?? new ServiceFactory();
+        }
 
-    protected override void OnStop()
-    {
-      EventLog.WriteEntry("PCN-Integration Windows Service has stopped.");
-    }
+        protected override void OnStart(string[] args)
+        {
+            EventLog.WriteEntry(PcnIntegrationWindowsServiceConstants.PcnIntegrationServiceStatusMessages.IntegrationStarted);
+            _serviceFactory.ResolveIntegrationService(typeof(FassMonitor)).BeginIntegrationProcessing();
+        }    
 
-    private void CreateAndStartFassIntegrationService()
-    {
-      var fass = new FassMonitor();
-      fass.TrackNewFassOrders();
-      fass.SendFassNotificationOnUpdate();
+        protected override void OnStop()
+        {
+            EventLog.WriteEntry(PcnIntegrationWindowsServiceConstants.PcnIntegrationServiceStatusMessages.IntegrationStopped);
+        }
     }
-  }
 }

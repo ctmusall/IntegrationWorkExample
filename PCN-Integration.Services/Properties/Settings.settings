@@ -1,0 +1,21 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PCN_Integration.Services.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="mirthIPAddress" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">10.250.161.135</Value>
+    </Setting>
+    <Setting Name="mirthChannel" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">7751</Value>
+    </Setting>
+    <Setting Name="daysToLookBack" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">7</Value>
+    </Setting>
+    <Setting Name="famsCustomerId" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">F55137</Value>
+    </Setting>
+    <Setting Name="famsModificationsCustomerId" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">F55144</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
