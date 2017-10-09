@@ -60,6 +60,9 @@ namespace PCN_Integration.Services.Services
             bool success;
 
             var response = pcnWebService.GetOrderFromService(pcnOrder.CUSTOMERID, pcnOrder.ORDERID, out success);
+
+            if (IsNotMostRecentOrder(response)) return;
+
             var order = response.GetOrderResult.Order;
 
             var fassMessage = new FassMonitorResponseMessage
@@ -79,6 +82,13 @@ namespace PCN_Integration.Services.Services
             ConvertAndAssignFee(fassMessage, order);
 
             SendUpdateToMirth(fassMessage, trackedOrder, pcnOrder);
+        }
+
+        private static bool IsNotMostRecentOrder(GetOrderResponse response)
+        {
+            if (response.GetOrderResult.Order == null) return true;
+
+            return response.GetOrderResult.Order1 != null;
         }
 
         private static void SendUpdateToMirth(FassMonitorResponseMessage fassMessage, FassOrder trackedOrder, OSGPCN300 pcnOrder)
