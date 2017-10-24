@@ -64,13 +64,19 @@ namespace PCN_Integration.Services.Services
             if (IsNotMostRecentOrder(response)) return;
 
             var order = response.GetOrderResult.Order;
-
+                        
             var fassMessage = new FassMonitorResponseMessage
             {
                 OrderId = order.OrderId,
                 OrderStatus = order.Status,
                 AttorneyFirstName = order.ClosingAttorney.FirstName,
                 AttorneyLastName = order.ClosingAttorney.LastName,
+                AttorneyStreetAddress1 = order.ClosingAddress.Address1,
+                AttorneyStreetAddress2 = order.ClosingAddress.Address2,
+                AttorneyStreetAddress3 = order.ClosingAddress.Address3,
+                AttorneyCity = order.ClosingAddress.City,
+                AttorneyState = order.ClosingAddress.State,
+                AttorneyZipCode = order.ClosingAddress.ZipCode,
                 HomeNumber = order.ClosingAttorney.HomePhone,
                 CellNumber = order.ClosingAttorney.CellPhone,
                 WorkNumber = order.ClosingAttorney.WorkPhone,

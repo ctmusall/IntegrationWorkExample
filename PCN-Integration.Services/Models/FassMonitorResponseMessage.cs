@@ -9,6 +9,12 @@ namespace PCN_Integration.Services.Models
         public string OrderStatus { get; set; }
         public string AttorneyFirstName { get; set; }
         public string AttorneyLastName { get; set; }
+        public string AttorneyStreetAddress1 { get; set; }
+        public string AttorneyStreetAddress2 { get; set; }
+        public string AttorneyStreetAddress3 { get; set; }
+        public string AttorneyCity { get; set; }
+        public string AttorneyState { get; set; }
+        public string AttorneyZipCode { get; set; }
         public string HomeNumber { get; set; }
         public string CellNumber { get; set; }
         public string WorkNumber { get; set; }
