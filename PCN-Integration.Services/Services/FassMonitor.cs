@@ -60,7 +60,7 @@ namespace PCN_Integration.Services.Services
             bool success;
 
             var response = pcnWebService.GetOrderFromService(pcnOrder.CUSTOMERID, pcnOrder.ORDERID, out success);
-
+            
             if (IsNotMostRecentOrder(response)) return;
 
             var order = response.GetOrderResult.Order;
@@ -71,12 +71,12 @@ namespace PCN_Integration.Services.Services
                 OrderStatus = order.Status,
                 AttorneyFirstName = order.ClosingAttorney.FirstName,
                 AttorneyLastName = order.ClosingAttorney.LastName,
-                AttorneyStreetAddress1 = order.ClosingAddress.Address1,
-                AttorneyStreetAddress2 = order.ClosingAddress.Address2,
-                AttorneyStreetAddress3 = order.ClosingAddress.Address3,
-                AttorneyCity = order.ClosingAddress.City,
-                AttorneyState = order.ClosingAddress.State,
-                AttorneyZipCode = order.ClosingAddress.ZipCode,
+                AttorneyStreetAddress1 = order.ClosingAttorney.Address.Address1,
+                AttorneyStreetAddress2 = order.ClosingAttorney.Address.Address2,
+                AttorneyStreetAddress3 = order.ClosingAttorney.Address.Address3,
+                AttorneyCity = order.ClosingAttorney.Address.City,
+                AttorneyState = order.ClosingAttorney.Address.State,
+                AttorneyZipCode = order.ClosingAttorney.Address.ZipCode,
                 HomeNumber = order.ClosingAttorney.HomePhone,
                 CellNumber = order.ClosingAttorney.CellPhone,
                 WorkNumber = order.ClosingAttorney.WorkPhone,
@@ -84,7 +84,6 @@ namespace PCN_Integration.Services.Services
                 Email = order.ClosingAttorney.Email1,
                 Notes = GetNote(order)
             };
-
             ConvertAndAssignFee(fassMessage, order);
 
             SendUpdateToMirth(fassMessage, trackedOrder, pcnOrder);
