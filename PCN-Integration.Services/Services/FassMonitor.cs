@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
+using System.Text;
 using PCN_Integration.DataModels;
 using PCN_Integration.Services.Common;
 using PCN_Integration.Services.Models;
@@ -128,12 +129,29 @@ namespace PCN_Integration.Services.Services
                 case PcnIntegrationServicesConstants.OrderStatus.Adjourned:
                     pcnNote = order.AdjournedReason;
                     break;
+                case PcnIntegrationServicesConstants.OrderStatus.Closed:
+                    pcnNote = GetOrderTrackingNumbers(order.Couriers);
+                    break;
                 default:
                     pcnNote = string.Empty;
                     break;
             }
             return pcnNote;
         }
+
+      private static string GetOrderTrackingNumbers(IReadOnlyCollection<Courier> couriers)
+      {
+        if (couriers.Count == 0) return string.Empty;
+
+        var courierTrackingNumbers = new StringBuilder();
+
+        foreach (var courier in couriers)
+        {
+          courierTrackingNumbers.Append(string.Format("Name: {0}, Tracking #: {1} ", courier.Name, courier.TrackingNumber));
+        }
+
+        return courierTrackingNumbers.ToString();
+      }
 
         private static List<OSGPCN300> GetRecentOrdersFromPcn()
         {

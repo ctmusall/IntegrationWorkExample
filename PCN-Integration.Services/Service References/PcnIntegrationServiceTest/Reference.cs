@@ -1333,7 +1333,48 @@ namespace PCN_Integration.Services.PcnIntegrationServiceTest {
     [System.Runtime.Serialization.DataContractAttribute(Name="Courier", Namespace="http://schemas.datacontract.org/2004/07/PCN.WebService.Data")]
     [System.SerializableAttribute()]
     public partial class Courier : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
+
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+
+
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name
+        {
+            get
+            {
+                return NameField;
+            }
+            set
+            {
+                if ((ReferenceEquals(NameField, value) != true))
+                {
+                    NameField = value;
+                    RaisePropertyChanged("Name");
+                }
+            }
+        }
+
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TrackingNumberField;
+
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TrackingNumber
+        {
+            get
+            {
+                return TrackingNumberField;
+            }
+            set
+            {
+                if ((ReferenceEquals(TrackingNumberField, value) != true))
+                {
+                    TrackingNumberField = value;
+                    RaisePropertyChanged("TrackingNumber");
+                }
+            }
+        }
+
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
@@ -1346,7 +1387,7 @@ namespace PCN_Integration.Services.PcnIntegrationServiceTest {
                 this.extensionDataField = value;
             }
         }
-        
+
         public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
         
         protected void RaisePropertyChanged(string propertyName) {
