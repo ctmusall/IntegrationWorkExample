@@ -22,6 +22,7 @@ namespace PCN_Integration.Services.Models
         public string Email { get; set; }
         public string Notes { get; set; }
         public string Fee { get; set; }
+        public string CancellationCode { get; set; }
         internal string ToSerializedXml()
         {
             var serializer = new XmlSerializer(typeof(FassMonitorResponseMessage));

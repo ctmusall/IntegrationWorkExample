@@ -85,11 +85,102 @@ namespace PCN_Integration.Services.Services
                 Email = order.ClosingAttorney.Email1,
                 Notes = GetNote(order)
             };
+            
+            if (FassOrderIsCancelled(fassMessage, order.CancelledReason)) SetFassCancellationCodeAndNotesBasedOnOrderCancelledReason(fassMessage, order.CancelledReason);
+
             ConvertAndAssignFee(fassMessage, order);
 
             SendUpdateToMirth(fassMessage, trackedOrder, pcnOrder);
         }
 
+        private static bool FassOrderIsCancelled(FassMonitorResponseMessage fassMessage, string orderCancelledReason)
+        {
+            if (!string.Equals(fassMessage.OrderStatus, PcnIntegrationServicesConstants.OrderStatus.Cancelled)) return false;
+
+            return !string.IsNullOrWhiteSpace(fassMessage.OrderStatus) && !string.IsNullOrWhiteSpace(orderCancelledReason);
+        }
+        private static void SetFassCancellationCodeAndNotesBasedOnOrderCancelledReason(FassMonitorResponseMessage fassMessage, string orderCancelledReason)
+        {
+            switch (orderCancelledReason.Trim())
+            {
+                case PcnIntegrationServicesConstants.PcnCancellationReasons.AssociateChange:
+                    fassMessage.CancellationCode = PcnIntegrationServicesConstants.FassCancellationReasons.NotaryBackedOutofSigningAppointment;
+                    fassMessage.Notes = PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.AssociateChangeLongDescription;
+                    break;
+                case PcnIntegrationServicesConstants.PcnCancellationReasons.AttorneyCancelled:
+                    fassMessage.CancellationCode = PcnIntegrationServicesConstants.FassCancellationReasons.NotaryBackedOutofSigningAppointment;
+                    fassMessage.Notes = PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.AttorneyCancelledLongDescription;
+                    break;
+                case PcnIntegrationServicesConstants.PcnCancellationReasons.AttorneyCancelledDueToAFamilyEmergency:
+                    fassMessage.CancellationCode = PcnIntegrationServicesConstants.FassCancellationReasons.NotaryBackedOutofSigningAppointment;
+                    fassMessage.Notes = PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.AttorneyCancelledDueToAFamilyEmergencyLongDescription;
+                    break;
+                case PcnIntegrationServicesConstants.PcnCancellationReasons.AttorneyCancelledDueToCourt:
+                    fassMessage.CancellationCode = PcnIntegrationServicesConstants.FassCancellationReasons.NotaryBackedOutofSigningAppointment;
+                    fassMessage.Notes = PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.AttorneyCancelledDueToCourtLongDescription;
+                    break;
+                case PcnIntegrationServicesConstants.PcnCancellationReasons.AttorneyCancelledDueToASchedulingConflict:
+                    fassMessage.CancellationCode = PcnIntegrationServicesConstants.FassCancellationReasons.NotaryBackedOutofSigningAppointment;
+                    fassMessage.Notes = PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.AttorneyCancelledDueToASchedulingConflictLongDescription;
+                    break;
+                case PcnIntegrationServicesConstants.PcnCancellationReasons.AttorneyCancelledUnapproved:
+                    fassMessage.CancellationCode = PcnIntegrationServicesConstants.FassCancellationReasons.NotaryBackedOutofSigningAppointment;
+                    fassMessage.Notes = PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.AttorneyCancelledUnapprovedLongDescription;
+                    break;
+                case PcnIntegrationServicesConstants.PcnCancellationReasons.AttorneyCancelledDueToInclementWeather:
+                    fassMessage.CancellationCode = PcnIntegrationServicesConstants.FassCancellationReasons.NotaryBackedOutofSigningAppointment;
+                    fassMessage.Notes = PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.AttorneyCancelledDueToInclementWeatherLongDescription;
+                    break;
+                case PcnIntegrationServicesConstants.PcnCancellationReasons.AttorneyCancelledFaxbacks:
+                    fassMessage.CancellationCode = PcnIntegrationServicesConstants.FassCancellationReasons.NotaryBackedOutofSigningAppointment;
+                    fassMessage.Notes = PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.AttorneyCancelledFaxbacksLongDescription;
+                    break;
+                case PcnIntegrationServicesConstants.PcnCancellationReasons.BorrowerCancelled:
+                    fassMessage.CancellationCode = PcnIntegrationServicesConstants.FassCancellationReasons.BorrowerCancelledSigningNotaryDidNotMakeATrip;
+                    fassMessage.Notes = PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.BorrowerCancelledLongDescription;
+                    break;
+                case PcnIntegrationServicesConstants.PcnCancellationReasons.ClientCancelled:
+                    fassMessage.CancellationCode = PcnIntegrationServicesConstants.FassCancellationReasons.FassCancelledSigningAppointment;
+                    fassMessage.Notes = PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.ClientCancelledLongDescription;
+                    break;
+                case PcnIntegrationServicesConstants.PcnCancellationReasons.ClientError:
+                    fassMessage.CancellationCode = PcnIntegrationServicesConstants.FassCancellationReasons.FassCancelledSigningAppointment;
+                    fassMessage.Notes = PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.ClientErrorLongDescription;
+                    break;
+                case PcnIntegrationServicesConstants.PcnCancellationReasons.ClientRescheduledForANewDateTime:
+                    fassMessage.CancellationCode = PcnIntegrationServicesConstants.FassCancellationReasons.AppointmentRescheduled;
+                    fassMessage.Notes = PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.ClientRescheduledForANewDateTimeLongDescription;
+                    break;
+                case PcnIntegrationServicesConstants.PcnCancellationReasons.ClientRescheduledForANewClosingLocation:
+                    fassMessage.CancellationCode = PcnIntegrationServicesConstants.FassCancellationReasons.AppointmentRescheduled;
+                    fassMessage.Notes = PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.ClientRescheduledForANewClosingLocationLongDescription;
+                    break;
+                case PcnIntegrationServicesConstants.PcnCancellationReasons.DocumentsNotReadyInTime:
+                    fassMessage.CancellationCode = PcnIntegrationServicesConstants.FassCancellationReasons.LoanDocumentsNotAvailable;
+                    fassMessage.Notes = PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.DocumentsNotReadyInTimeLongDescription;
+                    break;
+                case PcnIntegrationServicesConstants.PcnCancellationReasons.LenderCancelled:
+                    fassMessage.CancellationCode = PcnIntegrationServicesConstants.FassCancellationReasons.EscrowLenderCancelledSigningAppointment;
+                    fassMessage.Notes = PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.LenderCancelledLongDescription;
+                    break;
+                case PcnIntegrationServicesConstants.PcnCancellationReasons.NoClientResponseDocuments:
+                    fassMessage.CancellationCode = PcnIntegrationServicesConstants.FassCancellationReasons.LoanDocumentsNotAvailable;
+                    fassMessage.Notes = PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.NoClientResponseDocumentsLongDescription;
+                    break;
+                case PcnIntegrationServicesConstants.PcnCancellationReasons.NotaryDidNotCompleteConferenceCall:
+                    fassMessage.CancellationCode = PcnIntegrationServicesConstants.FassCancellationReasons.NotaryDidNotShowToSigningAppointment;
+                    fassMessage.Notes = PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.NotaryDidNotCompleteConferenceCallLongDescription;
+                    break;
+                case PcnIntegrationServicesConstants.PcnCancellationReasons.AttorneyNoShow:
+                    fassMessage.CancellationCode = PcnIntegrationServicesConstants.FassCancellationReasons.NotaryDidNotShowToSigningAppointment;
+                    fassMessage.Notes = PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.AttorneyNoShowLongDescription;
+                    break;
+                case PcnIntegrationServicesConstants.PcnCancellationReasons.ModCancellationAttorneyCouldNotScheduleWithBorrower:
+                    fassMessage.CancellationCode = PcnIntegrationServicesConstants.FassCancellationReasons.NotaryUnableToScheduleLoanModSigning;
+                    fassMessage.Notes = PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.ModCancellationAttorneyCouldNotScheduleWithBorrowerLongDescription;
+                    break;
+            }
+        }
         private static bool IsNotMostRecentOrder(GetOrderResponse response)
         {
             if (response.GetOrderResult.Order == null) return true;
@@ -122,9 +213,6 @@ namespace PCN_Integration.Services.Services
             {
                 case PcnIntegrationServicesConstants.OrderStatus.UnableToFill:
                     pcnNote = order.UnableReason;
-                    break;
-                case PcnIntegrationServicesConstants.OrderStatus.Cancelled:
-                    pcnNote = order.CancelledReason;          
                     break;
                 case PcnIntegrationServicesConstants.OrderStatus.Adjourned:
                     pcnNote = order.AdjournedReason;
