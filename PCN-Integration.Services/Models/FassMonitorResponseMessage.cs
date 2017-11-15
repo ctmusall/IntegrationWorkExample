@@ -23,6 +23,8 @@ namespace PCN_Integration.Services.Models
         public string Notes { get; set; }
         public string Fee { get; set; }
         public string CancellationCode { get; set; }
+        public string AdjournedCode { get; set; }
+        public string UnableToFillCode { get; set; }
         internal string ToSerializedXml()
         {
             var serializer = new XmlSerializer(typeof(FassMonitorResponseMessage));
