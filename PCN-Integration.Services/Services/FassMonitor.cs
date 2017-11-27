@@ -137,7 +137,7 @@ namespace PCN_Integration.Services.Services
         }
         private static void SetFassAdjournedCodeAndNotesBasedOnOrderAdjournedReason(FassMonitorResponseMessage fassMessage, string orderAdjournedReason)
         {
-            if (string.IsNullOrWhiteSpace(orderAdjournedReason) || orderAdjournedReason.Contains("||")) return;
+            if (string.IsNullOrWhiteSpace(orderAdjournedReason) || !orderAdjournedReason.Contains("||")) return;
 
             var adjournedContent = orderAdjournedReason.Split(new [] {"||"}, StringSplitOptions.None);
 
