@@ -55,7 +55,10 @@ namespace PCN_Integration.Services.Services
 
             if (pcnOrder == null) return;
 
-            if (trackedOrder.Status == ConvertStatusIdToString(pcnOrder.STATUS)) return;
+            // For initial implementation (11/28/2017) do not send them orders with unable to fill. Should be included after initial implementation.
+            var status = ConvertStatusIdToString(pcnOrder.STATUS);
+            if (string.Equals(PcnIntegrationServicesConstants.OrderStatus.UnableToFill, status)) return;
+            if (string.Equals(trackedOrder.Status, status)) return;
 
             var pcnWebService = new PcnWebServiceInvoker();
             bool success;
@@ -68,9 +71,8 @@ namespace PCN_Integration.Services.Services
                         
             var fassMessage = new FassMonitorResponseMessage
             {
-                OrderId = order.OrderId,
-                OrderStatus = order.Status,
-                Notes = GetNote(order)
+                OrderId = order.FileNumber,
+                OrderStatus = order.Status
             };
 
             if (order.ClosingAttorney != null) SetFassClosingAttorney(fassMessage, order);
@@ -115,6 +117,9 @@ namespace PCN_Integration.Services.Services
                     break;
                 case PcnIntegrationServicesConstants.OrderStatus.Adjourned:
                     SetFassAdjournedCodeAndNotesBasedOnOrderAdjournedReason(fassMessage, order.AdjournedReason);
+                    break;
+                case PcnIntegrationServicesConstants.OrderStatus.Closed:
+                    fassMessage.Notes = $"{GetOrderTrackingNumbers(order.Couriers)} {FilterOutNotesFromOrder(order.Notes)}";
                     break;
             }
         }
@@ -255,34 +260,19 @@ namespace PCN_Integration.Services.Services
             fassMessage.Fee = string.Format(nfi, "{0:c}", order.TotalBillRate);
         }
 
-        private static string GetNote(OutboundOrder order)
+        private static string GetOrderTrackingNumbers(IReadOnlyCollection<Courier> couriers)
         {
-            string pcnNote;
-            switch (order.Status)
+            if (couriers.Count == 0) return string.Empty;
+
+            var courierTrackingNumbers = new StringBuilder();
+
+            foreach (var courier in couriers)
             {
-                case PcnIntegrationServicesConstants.OrderStatus.Closed:
-                    pcnNote = GetOrderTrackingNumbers(order.Couriers);
-                    break;
-                default:
-                    pcnNote = string.Empty;
-                    break;
+                courierTrackingNumbers.Append($"Name: {courier.Name}, Tracking #: {courier.TrackingNumber} ");
             }
-            return pcnNote;
+
+            return courierTrackingNumbers.ToString();
         }
-
-      private static string GetOrderTrackingNumbers(IReadOnlyCollection<Courier> couriers)
-      {
-        if (couriers.Count == 0) return string.Empty;
-
-        var courierTrackingNumbers = new StringBuilder();
-
-        foreach (var courier in couriers)
-        {
-          courierTrackingNumbers.Append(string.Format("Name: {0}, Tracking #: {1} ", courier.Name, courier.TrackingNumber));
-        }
-
-        return courierTrackingNumbers.ToString();
-      }
 
         private static List<OSGPCN300> GetRecentOrdersFromPcn()
         {
