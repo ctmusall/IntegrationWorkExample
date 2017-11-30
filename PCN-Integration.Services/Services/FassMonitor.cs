@@ -377,8 +377,15 @@ namespace PCN_Integration.Services.Services
 
         public override void BeginIntegrationProcessing()
         {
-            TrackNewFassOrders();
-            SendFassNotificationOnUpdate();
+            try
+            {
+                TrackNewFassOrders();
+                SendFassNotificationOnUpdate();
+            }
+            catch(Exception ex)
+            {
+                EventLog.WriteEntry(ex.Source, ex.Message);
+            }
         }
     }
 }

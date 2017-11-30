@@ -128,7 +128,10 @@
   </xs:complexType>
   <xs:element name="ArrayOfCourier" nillable="true" type="tns:ArrayOfCourier" />
   <xs:complexType name="Courier">
-    <xs:sequence />
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TrackingNumber" nillable="true" type="xs:string" />
+    </xs:sequence>
   </xs:complexType>
   <xs:element name="Courier" nillable="true" type="tns:Courier" />
   <xs:complexType name="DelawareCompliance">

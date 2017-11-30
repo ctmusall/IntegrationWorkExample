@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="mirthIPAddress" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">10.250.161.135</Value>
+      <Value Profile="(Default)">10.250.161.57</Value>
     </Setting>
     <Setting Name="mirthChannel" Type="System.Int32" Scope="Application">
       <Value Profile="(Default)">7751</Value>
