@@ -1,4 +1,6 @@
-﻿using System.ServiceProcess;
+﻿using System;
+using System.Diagnostics;
+using System.ServiceProcess;
 
 namespace PCN_Integration.WindowsService
 {
@@ -9,11 +11,19 @@ namespace PCN_Integration.WindowsService
         /// </summary>
         static void Main()
         {
-            var servicesToRun = new ServiceBase[]
+            try
             {
-                new IntegrationService()
-            };
-            ServiceBase.Run(servicesToRun);
+                var servicesToRun = new ServiceBase[]
+                {
+                    new IntegrationService()
+                };
+                ServiceBase.Run(servicesToRun);
+            }
+            catch (Exception ex)
+            {
+                EventLog.WriteEntry(ex.Source, ex.Message);
+            }
+
         }
     }
 }

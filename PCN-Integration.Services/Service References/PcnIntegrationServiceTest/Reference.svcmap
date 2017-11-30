@@ -19,16 +19,16 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://mirthtest/IntegrationService.svc?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://mirthserver/IntegrationService.svc?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="IntegrationService.xsd" MetadataType="Schema" ID="094a221e-ae78-41fe-ae03-0f29353e85e6" SourceId="1" SourceUrl="http://mirthtest/IntegrationService.svc?xsd=xsd3" />
-    <MetadataFile FileName="IntegrationService1.xsd" MetadataType="Schema" ID="cf1f4435-5a45-4ce6-979e-26e62da225a4" SourceId="1" SourceUrl="http://mirthtest/IntegrationService.svc?xsd=xsd5" />
-    <MetadataFile FileName="IntegrationService2.xsd" MetadataType="Schema" ID="6d5cbf17-ae4c-44d9-97b5-379baf76c480" SourceId="1" SourceUrl="http://mirthtest/IntegrationService.svc?xsd=xsd0" />
-    <MetadataFile FileName="IntegrationService3.xsd" MetadataType="Schema" ID="a21ebbf8-9e92-4687-a097-29f19061a971" SourceId="1" SourceUrl="http://mirthtest/IntegrationService.svc?xsd=xsd2" />
-    <MetadataFile FileName="IntegrationService4.xsd" MetadataType="Schema" ID="7f35f9d5-fc3c-4532-8bbc-c37fdfdd214a" SourceId="1" SourceUrl="http://mirthtest/IntegrationService.svc?xsd=xsd4" />
-    <MetadataFile FileName="IntegrationService.wsdl" MetadataType="Wsdl" ID="f94b4cc3-cdd2-4de8-bafe-1817ffaeabc6" SourceId="1" SourceUrl="http://mirthtest/IntegrationService.svc?wsdl" />
-    <MetadataFile FileName="IntegrationService5.xsd" MetadataType="Schema" ID="68ac469d-07bb-4d24-ad21-1b02d7600128" SourceId="1" SourceUrl="http://mirthtest/IntegrationService.svc?xsd=xsd1" />
+    <MetadataFile FileName="IntegrationService6.xsd" MetadataType="Schema" ID="2240ec54-1595-4294-adef-6fea929cd734" SourceId="1" SourceUrl="http://mirthserver/IntegrationService.svc?xsd=xsd4" />
+    <MetadataFile FileName="IntegrationService61.xsd" MetadataType="Schema" ID="dfb7dd24-9ab7-46c3-b0f5-c135575f7bbb" SourceId="1" SourceUrl="http://mirthserver/IntegrationService.svc?xsd=xsd5" />
+    <MetadataFile FileName="IntegrationService62.xsd" MetadataType="Schema" ID="7a0a17f3-1655-4288-86e0-ec0931a2c16b" SourceId="1" SourceUrl="http://mirthserver/IntegrationService.svc?xsd=xsd2" />
+    <MetadataFile FileName="IntegrationService63.xsd" MetadataType="Schema" ID="049c3984-ae6d-4407-b6ca-54a9428a6e99" SourceId="1" SourceUrl="http://mirthserver/IntegrationService.svc?xsd=xsd3" />
+    <MetadataFile FileName="IntegrationService64.xsd" MetadataType="Schema" ID="b0a29d64-9764-4482-89c4-a8c15101d066" SourceId="1" SourceUrl="http://mirthserver/IntegrationService.svc?xsd=xsd0" />
+    <MetadataFile FileName="IntegrationService65.xsd" MetadataType="Schema" ID="6e6fa4c9-d320-4689-9848-c0f158bf3371" SourceId="1" SourceUrl="http://mirthserver/IntegrationService.svc?xsd=xsd1" />
+    <MetadataFile FileName="IntegrationService1.wsdl" MetadataType="Wsdl" ID="c8355428-efb3-4063-b0f3-eacd5d8c77ac" SourceId="1" SourceUrl="http://mirthserver/IntegrationService.svc?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
