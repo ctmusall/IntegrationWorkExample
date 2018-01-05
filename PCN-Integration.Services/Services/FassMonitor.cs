@@ -55,9 +55,7 @@ namespace PCN_Integration.Services.Services
 
             if (pcnOrder == null) return;
 
-            // For initial implementation (11/28/2017) do not send them orders with unable to fill. Should be included after initial implementation.
             var status = ConvertStatusIdToString(pcnOrder.STATUS);
-            if (string.Equals(PcnIntegrationServicesConstants.OrderStatus.UnableToFill, status)) return;
             if (string.Equals(trackedOrder.Status, status)) return;
 
             var pcnWebService = new PcnWebServiceInvoker();
