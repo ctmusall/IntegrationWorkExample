@@ -83,23 +83,23 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Service References\PcnIntegrationServiceTest\IntegrationService1.wsdl" />
-    <None Include="Service References\PcnIntegrationServiceTest\IntegrationService6.xsd">
+    <None Include="Service References\PcnIntegrationServiceTest\IntegrationService.wsdl" />
+    <None Include="Service References\PcnIntegrationServiceTest\IntegrationService.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\PcnIntegrationServiceTest\IntegrationService61.xsd">
+    <None Include="Service References\PcnIntegrationServiceTest\IntegrationService1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\PcnIntegrationServiceTest\IntegrationService62.xsd">
+    <None Include="Service References\PcnIntegrationServiceTest\IntegrationService2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\PcnIntegrationServiceTest\IntegrationService63.xsd">
+    <None Include="Service References\PcnIntegrationServiceTest\IntegrationService3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\PcnIntegrationServiceTest\IntegrationService64.xsd">
+    <None Include="Service References\PcnIntegrationServiceTest\IntegrationService4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\PcnIntegrationServiceTest\IntegrationService65.xsd">
+    <None Include="Service References\PcnIntegrationServiceTest\IntegrationService5.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\PcnIntegrationServiceTest\PCN_Integration.Services.PcnIntegrationServiceTest.GetOrderResponse.datasource">
