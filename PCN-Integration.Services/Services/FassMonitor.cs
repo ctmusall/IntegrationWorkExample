@@ -152,65 +152,83 @@ namespace PCN_Integration.Services.Services
         private static void SetFassCancellationCodeAndNotesBasedOnOrderCancelledReason(FassMonitorResponseMessage fassMessage, string orderCancelledReason, string orderNotes)
         {
             if (string.IsNullOrWhiteSpace(orderCancelledReason)) return;
-            fassMessage.CancellationCode = orderCancelledReason;
             switch (orderCancelledReason.Trim())
             {
                 case PcnIntegrationServicesConstants.PcnCancellationReasons.AssociateChange:
-                    fassMessage.Notes = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.AssociateChangeLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.CancellationCode = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.AssociateChangeLongDescription}";
+                    fassMessage.Notes = $"{FilterOutNotesFromOrder(orderNotes)}";
                     break;
                 case PcnIntegrationServicesConstants.PcnCancellationReasons.AttorneyCancelled:
-                    fassMessage.Notes = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.AttorneyCancelledLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.CancellationCode = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.AttorneyCancelledLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.Notes = $"{FilterOutNotesFromOrder(orderNotes)}";
                     break;
                 case PcnIntegrationServicesConstants.PcnCancellationReasons.AttorneyCancelledDueToAFamilyEmergency:
-                    fassMessage.Notes = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.AttorneyCancelledDueToAFamilyEmergencyLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.CancellationCode = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.AttorneyCancelledDueToAFamilyEmergencyLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.Notes = $"{FilterOutNotesFromOrder(orderNotes)}";
                     break;
                 case PcnIntegrationServicesConstants.PcnCancellationReasons.AttorneyCancelledDueToCourt:
-                    fassMessage.Notes = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.AttorneyCancelledDueToCourtLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.CancellationCode = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.AttorneyCancelledDueToCourtLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.Notes = $"{FilterOutNotesFromOrder(orderNotes)}";
                     break;
                 case PcnIntegrationServicesConstants.PcnCancellationReasons.AttorneyCancelledDueToASchedulingConflict:
-                    fassMessage.Notes = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.AttorneyCancelledDueToASchedulingConflictLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.CancellationCode = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.AttorneyCancelledDueToASchedulingConflictLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.Notes = $"{FilterOutNotesFromOrder(orderNotes)}";
                     break;
                 case PcnIntegrationServicesConstants.PcnCancellationReasons.AttorneyCancelledUnapproved:
-                    fassMessage.Notes = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.AttorneyCancelledUnapprovedLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.CancellationCode = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.AttorneyCancelledUnapprovedLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.Notes = $"{FilterOutNotesFromOrder(orderNotes)}";
                     break;
                 case PcnIntegrationServicesConstants.PcnCancellationReasons.AttorneyCancelledDueToInclementWeather:
-                    fassMessage.Notes = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.AttorneyCancelledDueToInclementWeatherLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.CancellationCode = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.AttorneyCancelledDueToInclementWeatherLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.Notes = $"{FilterOutNotesFromOrder(orderNotes)}";
                     break;
                 case PcnIntegrationServicesConstants.PcnCancellationReasons.AttorneyCancelledFaxbacks:
-                    fassMessage.Notes = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.AttorneyCancelledFaxbacksLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.CancellationCode = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.AttorneyCancelledFaxbacksLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.Notes = $"{FilterOutNotesFromOrder(orderNotes)}";
                     break;
                 case PcnIntegrationServicesConstants.PcnCancellationReasons.BorrowerCancelled:
-                    fassMessage.Notes = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.BorrowerCancelledLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.CancellationCode = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.BorrowerCancelledLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.Notes = $"{FilterOutNotesFromOrder(orderNotes)}";
                     break;
                 case PcnIntegrationServicesConstants.PcnCancellationReasons.ClientCancelled:
-                    fassMessage.Notes = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.ClientCancelledLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.CancellationCode = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.ClientCancelledLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.Notes = $"{FilterOutNotesFromOrder(orderNotes)}";
                     break;
                 case PcnIntegrationServicesConstants.PcnCancellationReasons.ClientError:
-                    fassMessage.Notes = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.ClientErrorLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.CancellationCode = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.ClientErrorLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.Notes = $"{FilterOutNotesFromOrder(orderNotes)}";
                     break;
                 case PcnIntegrationServicesConstants.PcnCancellationReasons.ClientRescheduledForANewDateTime:
-                    fassMessage.Notes = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.ClientRescheduledForANewDateTimeLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.CancellationCode = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.ClientRescheduledForANewDateTimeLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.Notes = $"{FilterOutNotesFromOrder(orderNotes)}";
                     break;
                 case PcnIntegrationServicesConstants.PcnCancellationReasons.ClientRescheduledForANewClosingLocation:
-                    fassMessage.Notes = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.ClientRescheduledForANewClosingLocationLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.CancellationCode = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.ClientRescheduledForANewClosingLocationLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.Notes = $"{FilterOutNotesFromOrder(orderNotes)}";
                     break;
                 case PcnIntegrationServicesConstants.PcnCancellationReasons.DocumentsNotReadyInTime:
-                    fassMessage.Notes = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.DocumentsNotReadyInTimeLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.CancellationCode = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.DocumentsNotReadyInTimeLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.Notes = $"{FilterOutNotesFromOrder(orderNotes)}";
                     break;
                 case PcnIntegrationServicesConstants.PcnCancellationReasons.LenderCancelled:
-                    fassMessage.Notes = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.LenderCancelledLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.CancellationCode = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.LenderCancelledLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.Notes = $"{FilterOutNotesFromOrder(orderNotes)}";
                     break;
                 case PcnIntegrationServicesConstants.PcnCancellationReasons.NoClientResponseDocuments:
-                    fassMessage.Notes = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.NoClientResponseDocumentsLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.CancellationCode = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.NoClientResponseDocumentsLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.Notes = $"{FilterOutNotesFromOrder(orderNotes)}";
                     break;
                 case PcnIntegrationServicesConstants.PcnCancellationReasons.NotaryDidNotCompleteConferenceCall:
-                    fassMessage.Notes = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.NotaryDidNotCompleteConferenceCallLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.CancellationCode = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.NotaryDidNotCompleteConferenceCallLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.Notes = $"{FilterOutNotesFromOrder(orderNotes)}";
                     break;
                 case PcnIntegrationServicesConstants.PcnCancellationReasons.AttorneyNoShow:
-                    fassMessage.Notes = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.AttorneyNoShowLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.CancellationCode = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.AttorneyNoShowLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.Notes = $"{FilterOutNotesFromOrder(orderNotes)}";
                     break;
                 case PcnIntegrationServicesConstants.PcnCancellationReasons.ModCancellationAttorneyCouldNotScheduleWithBorrower:
-                    fassMessage.Notes = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.ModCancellationAttorneyCouldNotScheduleWithBorrowerLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+                    fassMessage.CancellationCode = $"{PcnIntegrationServicesConstants.PcnCancellationReasonsLongDescriptions.ModCancellationAttorneyCouldNotScheduleWithBorrowerLongDescription} {FilterOutNotesFromOrder(orderNotes)}";
+
                     break;
             }
         }

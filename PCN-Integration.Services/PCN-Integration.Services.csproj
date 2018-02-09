@@ -57,6 +57,7 @@
     <Compile Include="Services\FassMonitor.cs" />
     <Compile Include="Models\FassMonitorResponseMessage.cs" />
     <Compile Include="Services\MirthService.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="Utilities\PCNWebServiceInvoker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">

@@ -25,15 +25,6 @@ namespace PCN_Integration.Services.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10.250.161.57")]
-        public string mirthIPAddress {
-            get {
-                return ((string)(this["mirthIPAddress"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("7751")]
         public int mirthChannel {
             get {
@@ -65,6 +56,15 @@ namespace PCN_Integration.Services.Properties {
         public string famsModificationsCustomerId {
             get {
                 return ((string)(this["famsModificationsCustomerId"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("10.250.161.135")]
+        public string mirthIPAddress {
+            get {
+                return ((string)(this["mirthIPAddress"]));
             }
         }
     }
