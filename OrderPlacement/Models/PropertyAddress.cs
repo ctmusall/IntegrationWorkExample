@@ -1,13 +1,15 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OrderPlacement.Models
 {
     internal class PropertyAddress
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         internal Guid Id { get; set; }
+        [ForeignKey("Order")]
+        internal Guid OrderId { get; set; }
+
         internal string StreetNumber { get; set; }
         internal string StreetDirection { get; set; }
         internal string StreetName { get; set; }
