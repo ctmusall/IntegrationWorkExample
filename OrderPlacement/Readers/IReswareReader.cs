@@ -5,7 +5,7 @@ namespace OrderPlacement.Readers
 {
     public interface IReswareReader
     {
-        Order ParseInput(int clientId, int officeId, string fileNumber,
+        ReaderResult ParseInput(int clientId, int officeId, string fileNumber,
             OrderPlacementServicePropertyAddress propertyAddress, int clientsClientId, int transactionTypeId,
             int productId, int underwriterId, int primaryContactId, DateTime? estimatedSettlementDate,
             decimal salesPrice, decimal loanAmount, string loanNumber, decimal cashOut, string[] payoffMortgagees,

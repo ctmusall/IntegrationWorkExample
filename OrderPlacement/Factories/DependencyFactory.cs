@@ -1,4 +1,6 @@
-﻿using OrderPlacement.Managers;
+﻿using OrderPlacement.Data;
+using OrderPlacement.Managers;
+using OrderPlacement.Repositories;
 using Unity;
 
 namespace OrderPlacement.Factories
@@ -47,7 +49,9 @@ namespace OrderPlacement.Factories
         private static void RegisterTypes(IUnityContainer container)
         {
             container.RegisterType<ReswareReaderFactory>();
+            container.RegisterType<ReswareOrderContext>();
             container.RegisterType<IOrderPlacementManager, OrderPlacementManager>();
+            container.RegisterType<IReswareOrderRepository, ReswareOrderRepository>();
         }
     }
 }

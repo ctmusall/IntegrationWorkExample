@@ -4,7 +4,7 @@ namespace OrderPlacement.Managers
 {
     public interface IOrderPlacementManager
     {
-        PlaceOrderResponse PlaceOrder(
+        int PlaceOrder(
             int clientId,
             int officeId,
             string fileNumber,

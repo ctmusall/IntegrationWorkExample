@@ -1,23 +1,28 @@
 ﻿using System;
+using OrderPlacement.Data;
 using OrderPlacement.Factories;
+using OrderPlacement.Models;
+using OrderPlacement.Repositories;
 
 namespace OrderPlacement.Managers
 {
     public class OrderPlacementManager : IOrderPlacementManager
     {
         private readonly ReswareReaderFactory _reswareReaderFactory;
-
-        public OrderPlacementManager():this(DependencyFactory.Resolve<ReswareReaderFactory>())
+        private readonly IReswareOrderRepository _reswareOrderRepository;
+        public OrderPlacementManager():this(DependencyFactory.Resolve<ReswareReaderFactory>(), DependencyFactory.Resolve<IReswareOrderRepository>())
         {
             
         }
 
-        public OrderPlacementManager(ReswareReaderFactory reswareReaderFactory)
+        public OrderPlacementManager(ReswareReaderFactory reswareReaderFactory, IReswareOrderRepository reswareOrderRepository)
         {
             _reswareReaderFactory = reswareReaderFactory;
+            _reswareOrderRepository = reswareOrderRepository;
         }
 
-        public PlaceOrderResponse PlaceOrder(int clientId, int officeId, string fileNumber,
+        // TODO - Remove data not needed from method
+        public int PlaceOrder(int clientId, int officeId, string fileNumber,
             OrderPlacementServicePropertyAddress propertyAddress, int clientsClientId, int transactionTypeId,
             int productId, int underwriterId, int primaryContactId, DateTime? estimatedSettlementDate,
             decimal salesPrice, decimal loanAmount, string loanNumber, decimal cashOut, string[] payoffMortgagees,
@@ -30,22 +35,15 @@ namespace OrderPlacement.Managers
             OrderPlacementServicePriorPolicy priorOwnerPolicy, OrderPlacementServiceBuyerPayoff[] buyerPayoffs,
             OrderPlacementServiceSellerPayoff[] sellerPayoffs)
         {
-            var order = _reswareReaderFactory.ResolveReader(clientId).ParseInput(clientId, officeId, fileNumber,propertyAddress, clientsClientId,
+            var readerResult = _reswareReaderFactory.ResolveReader(clientId).ParseInput(clientId, officeId, fileNumber,propertyAddress, clientsClientId,
                 transactionTypeId, productId, underwriterId, primaryContactId, estimatedSettlementDate, salesPrice,loanAmount, loanNumber, cashOut,
                 payoffMortgagees, optionalActionGroupIDs, lender, isLender, buyers, sellers, additionalPartners,clientsClient, notes, requestAquaDecision,
                 originalDebtAmount, isWholesaleOrder, cplCompany, cplDivision, cplStreet1, cplStreet2, cplCity,cplState, cplZip, assetNumber,
                 priorLenderPolicy, priorOwnerPolicy, buyerPayoffs, sellerPayoffs);
 
-            // TODO - Save order context to db
-
-            return new PlaceOrderResponse
-            {
-                Response = "(Test) OrderPlacement Received",
-                ResponseCode = 0,
-                Timestamp = DateTime.Now,
-                ResWareFileID = 233,
-                ResWareFileNumber = "233456"
-            };
+            return _reswareOrderRepository.SaveReaderResult(readerResult);
         }
+
+        
     }
 }

@@ -5,7 +5,9 @@ namespace OrderPlacement.Readers
 {
     internal class LinearReswareReader : ReswareReader
     {
-        public override Order ParseInput(int clientId, int officeId, string fileNumber, OrderPlacementServicePropertyAddress propertyAddress,
+        private const string LinearCustomerContact = "TEAM CLOSINGS";
+
+        public override ReaderResult ParseInput(int clientId, int officeId, string fileNumber, OrderPlacementServicePropertyAddress propertyAddress,
             int clientsClientId, int transactionTypeId, int productId, int underwriterId, int primaryContactId,
             DateTime? estimatedSettlementDate, decimal salesPrice, decimal loanAmount, string loanNumber, decimal cashOut,
             string[] payoffMortgagees, int[] optionalActionGroupIDs, OrderPlacementServicePartner lender, bool isLender,
@@ -16,8 +18,23 @@ namespace OrderPlacement.Readers
             OrderPlacementServicePriorPolicy priorLenderPolicy, OrderPlacementServicePriorPolicy priorOwnerPolicy,
             OrderPlacementServiceBuyerPayoff[] buyerPayoffs, OrderPlacementServiceSellerPayoff[] sellerPayoffs)
         {
-            // TODO - All parsing logic (ex. customer contact, customer name, product, action event, etc.)
-            throw new NotImplementedException();
+            var order = new Order
+            {
+                FileNumber = fileNumber,
+                // CustomerName = MapCustomerName(),
+                // CustomerId = MapClientIdToEClosingsCustomerId(clientId),
+                CustomerContact = LinearCustomerContact,
+                LenderName = lender.Name,
+                // Product = MapProduct(),
+                ClosingDateTime = estimatedSettlementDate,
+                // DeliveryMethod = eDocs,
+                CreatedDateTime = DateTime.Now
+            };
+
+            return new ReaderResult
+            {
+                Order = order
+            };
         }
     }
 }
