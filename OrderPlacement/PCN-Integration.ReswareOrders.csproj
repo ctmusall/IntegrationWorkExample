@@ -84,7 +84,27 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\BuyerSellerEnum.cs" />
+    <Compile Include="Data\ReswareOrderContext.cs" />
     <Compile Include="IOrderPlacementService.cs" />
+    <Compile Include="Migrations\201802152042408_Init.cs" />
+    <Compile Include="Migrations\201802152042408_Init.Designer.cs">
+      <DependentUpon>201802152042408_Init.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802152045466_InitBuyerSellerAddresses.cs" />
+    <Compile Include="Migrations\201802152045466_InitBuyerSellerAddresses.Designer.cs">
+      <DependentUpon>201802152045466_InitBuyerSellerAddresses.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802152051093_RemoveNullableClosingDateTime.cs" />
+    <Compile Include="Migrations\201802152051093_RemoveNullableClosingDateTime.Designer.cs">
+      <DependentUpon>201802152051093_RemoveNullableClosingDateTime.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\BuyerSeller.cs" />
+    <Compile Include="Models\BuyerSellerAddress.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\Address.cs" />
+    <Compile Include="Models\PropertyAddress.cs" />
     <Compile Include="OrderPlacementService.svc.cs">
       <DependentUpon>OrderPlacementService.svc</DependentUpon>
     </Compile>
@@ -106,6 +126,17 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201802152042408_Init.resx">
+      <DependentUpon>201802152042408_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802152045466_InitBuyerSellerAddresses.resx">
+      <DependentUpon>201802152045466_InitBuyerSellerAddresses.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802152051093_RemoveNullableClosingDateTime.resx">
+      <DependentUpon>201802152051093_RemoveNullableClosingDateTime.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

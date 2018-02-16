@@ -3,21 +3,36 @@ using OrderPlacement.Models;
 
 namespace OrderPlacement.Data
 {
-    internal class ReswareOrderContext : DbContext
+    public class ReswareOrderContext : DbContext
     {
-        internal ReswareOrderContext() : base("name=ReswareOrderContext")
+        public ReswareOrderContext() : base("name=ReswareOrderContext")
         {
         }
         
-        internal virtual DbSet<Order> Orders { get; set; } 
-        internal virtual DbSet<PropertyAddress> PropertyAddresses { get; set; }
+        public virtual DbSet<Order> Orders { get; set; } 
+        public virtual DbSet<PropertyAddress> PropertyAddresses { get; set; }
+        public virtual DbSet<BuyerSellerAddress> BuyerSellerAddresses { get; set; }
+        public virtual DbSet<BuyerSeller> BuyerSellers { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Order>().ToTable("Order");
+            modelBuilder.Entity<Order>().ToTable("Order")
+                .HasKey(o => o.Id);
+
             modelBuilder.Entity<PropertyAddress>().ToTable("PropertyAddress")
-                .HasRequired(o => o.Order)
-                .WithRequiredPrincipal(o => o.PropertyAddress);
+                .HasKey(a => a.Id)
+                .HasRequired(a => a.Order)
+                .WithMany(o => o.PropertyAddress);
+
+            modelBuilder.Entity<BuyerSellerAddress>().ToTable("BuyerSellerAddress")
+                .HasKey(bs => bs.Id)
+                .HasRequired(bsa => bsa.BuyerSeller)
+                .WithMany(bs => bs.Address);
+
+            modelBuilder.Entity<BuyerSeller>().ToTable("BuyerSeller")
+                .HasKey(bs => bs.Id)
+                .HasRequired(bs => bs.Order)
+                .WithMany(o => o.BuyerAndSellers);
         }
     }
 }

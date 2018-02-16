@@ -1,23 +1,28 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OrderPlacement.Models
 {
-    internal class Order
+    public class Order
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        internal Guid Id { get; set; }
-        internal int ClientId { get; set; }
-        internal string FileNumber { get; set; }
-        internal string CustomerName { get; set; }
-        internal string CustomerId { get; set; }
-        internal string LenderName { get; set; }
-        internal DateTime? ClosingDateTime { get; set; }
-        internal string DeliveryMethod { get; set; }
-        internal virtual PropertyAddress PropertyAddress { get; set; }
+        public Guid Id { get; set; }
 
-        // TODO - Product
-        // TODO - CustomerContact
+        public string FileNumber { get; set; }
+        public string CustomerName { get; set; }
+        public string CustomerId { get; set; }
+        public string LenderName { get; set; }
+        public DateTime ClosingDateTime { get; set; }
+        public string DeliveryMethod { get; set; }
+        public string Product { get; set; }
+        public string CustomerContact { get; set; }
+        public DateTime CreatedDateTime { get; set; }
+        public bool Processed { get; set; }
+        public DateTime? ProcessedDateTime { get; set; }
+
+        public virtual ICollection<PropertyAddress> PropertyAddress { get; set; }
+        public virtual ICollection<BuyerSeller> BuyerAndSellers { get; set; }
     }
 }
