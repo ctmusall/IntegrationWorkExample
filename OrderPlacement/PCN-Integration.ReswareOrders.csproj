@@ -155,6 +155,7 @@
     <Compile Include="Common\BuyerSellerEnum.cs" />
     <Compile Include="Data\ReswareOrderContext.cs" />
     <Compile Include="Factories\DependencyFactory.cs" />
+    <Compile Include="Factories\ReswareReaderFactory.cs" />
     <Compile Include="IOrderPlacementService.cs" />
     <Compile Include="Managers\IOrderPlacementManager.cs" />
     <Compile Include="Managers\OrderPlacementManager.cs" />
@@ -180,6 +181,9 @@
       <DependentUpon>OrderPlacementService.svc</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Readers\IReswareReader.cs" />
+    <Compile Include="Readers\LinearReswareReader.cs" />
+    <Compile Include="Readers\ReswareReader.cs" />
     <Compile Include="UserNameValidator.cs" />
   </ItemGroup>
   <ItemGroup>

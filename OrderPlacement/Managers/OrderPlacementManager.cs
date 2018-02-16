@@ -1,9 +1,22 @@
 ﻿using System;
+using OrderPlacement.Factories;
 
 namespace OrderPlacement.Managers
 {
     public class OrderPlacementManager : IOrderPlacementManager
     {
+        private readonly ReswareReaderFactory _reswareReaderFactory;
+
+        public OrderPlacementManager():this(DependencyFactory.Resolve<ReswareReaderFactory>())
+        {
+            
+        }
+
+        public OrderPlacementManager(ReswareReaderFactory reswareReaderFactory)
+        {
+            _reswareReaderFactory = reswareReaderFactory;
+        }
+
         public PlaceOrderResponse PlaceOrder(int clientId, int officeId, string fileNumber,
             OrderPlacementServicePropertyAddress propertyAddress, int clientsClientId, int transactionTypeId,
             int productId, int underwriterId, int primaryContactId, DateTime? estimatedSettlementDate,
@@ -17,20 +30,13 @@ namespace OrderPlacement.Managers
             OrderPlacementServicePriorPolicy priorOwnerPolicy, OrderPlacementServiceBuyerPayoff[] buyerPayoffs,
             OrderPlacementServiceSellerPayoff[] sellerPayoffs)
         {
+            var order = _reswareReaderFactory.ResolveReader(clientId).ParseInput(clientId, officeId, fileNumber,propertyAddress, clientsClientId,
+                transactionTypeId, productId, underwriterId, primaryContactId, estimatedSettlementDate, salesPrice,loanAmount, loanNumber, cashOut,
+                payoffMortgagees, optionalActionGroupIDs, lender, isLender, buyers, sellers, additionalPartners,clientsClient, notes, requestAquaDecision,
+                originalDebtAmount, isWholesaleOrder, cplCompany, cplDivision, cplStreet1, cplStreet2, cplCity,cplState, cplZip, assetNumber,
+                priorLenderPolicy, priorOwnerPolicy, buyerPayoffs, sellerPayoffs);
 
-            // TODO - Determine reader (LSI, etc.) based on ClientID
-
-            // var order = ReswareOrderFactory.ResolveReader(ClientID).ParseInput(ClientID, OfficeID, FileNumber, PropertyAddress, ClientsClientID, TransactionTypeID, ProductID, UnderwriterID, PrimaryContactID, EstimatedSettlementDate, SalesPrice, LoanAmount, LoanNumber, CashOut, PayoffMortgagees, OptionalActionGroupIDs, Lender, IsLender, Buyers, Sellers, AdditionalPartners, ClientsClient, Notes, RequestAQUADecision, OriginalDebtAmount, IsWholesaleOrder, CPLCompany, CPLDivision, CPLStreet1, CPLStreet2, CPLCity, CPLState, CPLZip, AssetNumber, PriorLenderPolicy, PriorOwnerPolicy, BuyerPayoffs, SellerPayoffs)
-
-
-
-            // Reader parses and maps
-            // Parses product, action events, and doc types
-            // Assigns Customer Name and Customer Contact
-
-            //throw new NotImplementedException();
-
-
+            // TODO - Save order context to db
 
             return new PlaceOrderResponse
             {

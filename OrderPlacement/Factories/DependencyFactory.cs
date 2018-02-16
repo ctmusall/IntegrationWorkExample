@@ -46,6 +46,7 @@ namespace OrderPlacement.Factories
 
         private static void RegisterTypes(IUnityContainer container)
         {
+            container.RegisterType<ReswareReaderFactory>();
             container.RegisterType<IOrderPlacementManager, OrderPlacementManager>();
         }
     }
