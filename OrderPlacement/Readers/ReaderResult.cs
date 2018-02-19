@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
+using OrderPlacement.Models;
 
-namespace OrderPlacement.Models
+namespace OrderPlacement.Readers
 {
     public class ReaderResult
     {
         internal Order Order { get; set; }
         internal PropertyAddress PropertyAddress { get; set; }
-        internal ICollection<BuyerSeller> BuyerSellers { get; set; }
-        internal ICollection<BuyerSellerAddress> BuyerSellerAddresses { get; set; }
+        internal BuyerSellerReaderResult BuyerSellersReaderResult { get; set; }
     }
 }

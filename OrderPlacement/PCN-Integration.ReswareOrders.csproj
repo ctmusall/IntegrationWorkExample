@@ -175,9 +175,9 @@
     <Compile Include="Migrations\201802161938190_MakeDateTimeOpt.Designer.cs">
       <DependentUpon>201802161938190_MakeDateTimeOpt.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201802161940128_MakeDateTimeOpt1.cs" />
-    <Compile Include="Migrations\201802161940128_MakeDateTimeOpt1.Designer.cs">
-      <DependentUpon>201802161940128_MakeDateTimeOpt1.cs</DependentUpon>
+    <Compile Include="Migrations\201802191406069_RemoveCounty.cs" />
+    <Compile Include="Migrations\201802191406069_RemoveCounty.Designer.cs">
+      <DependentUpon>201802191406069_RemoveCounty.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BuyerSeller.cs" />
@@ -185,6 +185,7 @@
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\PropertyAddress.cs" />
+    <Compile Include="Readers\BuyerSellerReaderResult.cs" />
     <Compile Include="Readers\ReaderResult.cs" />
     <Compile Include="OrderPlacementService.svc.cs">
       <DependentUpon>OrderPlacementService.svc</DependentUpon>
@@ -196,6 +197,7 @@
     <Compile Include="Repositories\IReswareOrderRepository.cs" />
     <Compile Include="Repositories\ReswareOrderRepository.cs" />
     <Compile Include="UserNameValidator.cs" />
+    <Compile Include="Utilities\BuyerSellerReaderResultUtility.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -226,8 +228,8 @@
     <EmbeddedResource Include="Migrations\201802161938190_MakeDateTimeOpt.resx">
       <DependentUpon>201802161938190_MakeDateTimeOpt.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802161940128_MakeDateTimeOpt1.resx">
-      <DependentUpon>201802161940128_MakeDateTimeOpt1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201802191406069_RemoveCounty.resx">
+      <DependentUpon>201802191406069_RemoveCounty.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

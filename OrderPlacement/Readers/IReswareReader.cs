@@ -5,6 +5,7 @@ namespace OrderPlacement.Readers
 {
     public interface IReswareReader
     {
+        // TODO - Remove data not needed from method
         ReaderResult ParseInput(int clientId, int officeId, string fileNumber,
             OrderPlacementServicePropertyAddress propertyAddress, int clientsClientId, int transactionTypeId,
             int productId, int underwriterId, int primaryContactId, DateTime? estimatedSettlementDate,

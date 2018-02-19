@@ -31,6 +31,8 @@ namespace OrderPlacement
                     IsWholesaleOrder, CPLCompany, CPLDivision, CPLStreet1, CPLStreet2, CPLCity, CPLState, CPLZip,
                     AssetNumber, PriorLenderPolicy, PriorOwnerPolicy, BuyerPayoffs, SellerPayoffs);
 
+                // TODO - Check result to determine response
+
                 placeOrderResponse = new PlaceOrderResponse
                 {
                     Response = $"FileNumber {FileNumber}: OrderPlacement Received",

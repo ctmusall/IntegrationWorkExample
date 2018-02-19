@@ -7,13 +7,13 @@ namespace OrderPlacement.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class MakeDateTimeOpt1 : IMigrationMetadata
+    public sealed partial class RemoveCounty : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(MakeDateTimeOpt1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(RemoveCounty));
         
         string IMigrationMetadata.Id
         {
-            get { return "201802161940128_MakeDateTimeOpt1"; }
+            get { return "201802191406069_RemoveCounty"; }
         }
         
         string IMigrationMetadata.Source

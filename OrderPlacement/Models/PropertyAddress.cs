@@ -9,5 +9,6 @@ namespace OrderPlacement.Models
         public Guid OrderId { get; set; }
 
         public virtual Order Order { get; set; }
+        public string County { get; set; }
     }
 }

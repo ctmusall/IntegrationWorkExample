@@ -1,6 +1,6 @@
 ﻿using OrderPlacement.Data;
 using OrderPlacement.Factories;
-using OrderPlacement.Models;
+using OrderPlacement.Readers;
 
 namespace OrderPlacement.Repositories
 {
@@ -24,9 +24,9 @@ namespace OrderPlacement.Repositories
 
             _reswareOrderContext.PropertyAddresses.Add(readerResult.PropertyAddress);
 
-            _reswareOrderContext.BuyerSellers.AddRange(readerResult.BuyerSellers);
+            _reswareOrderContext.BuyerSellers.AddRange(readerResult.BuyerSellersReaderResult.BuyerSellers);
 
-            _reswareOrderContext.BuyerSellerAddresses.AddRange(readerResult.BuyerSellerAddresses);
+            _reswareOrderContext.BuyerSellerAddresses.AddRange(readerResult.BuyerSellersReaderResult.BuyerSellerAddresses);
 
             return _reswareOrderContext.SaveChanges();
         }

@@ -5,35 +5,23 @@ namespace OrderPlacement.Readers
 {
     internal class LinearReswareReader : ReswareReader
     {
-        private const string LinearCustomerContact = "TEAM CLOSINGS";
+        private const string CustomerContact = "TEAM CLOSINGS";
+        private const string DeliveryMethod = "eDoc";
 
-        public override ReaderResult ParseInput(int clientId, int officeId, string fileNumber, OrderPlacementServicePropertyAddress propertyAddress,
-            int clientsClientId, int transactionTypeId, int productId, int underwriterId, int primaryContactId,
-            DateTime? estimatedSettlementDate, decimal salesPrice, decimal loanAmount, string loanNumber, decimal cashOut,
-            string[] payoffMortgagees, int[] optionalActionGroupIDs, OrderPlacementServicePartner lender, bool isLender,
-            OrderPlacementServiceBuyerSeller[] buyers, OrderPlacementServiceBuyerSeller[] sellers,
-            OrderPlacementServicePartner[] additionalPartners, OrderPlacementServicePartner clientsClient, string notes,
-            bool requestAquaDecision, decimal? originalDebtAmount, bool isWholesaleOrder, string cplCompany, string cplDivision,
-            string cplStreet1, string cplStreet2, string cplCity, string cplState, string cplZip, string assetNumber,
-            OrderPlacementServicePriorPolicy priorLenderPolicy, OrderPlacementServicePriorPolicy priorOwnerPolicy,
-            OrderPlacementServiceBuyerPayoff[] buyerPayoffs, OrderPlacementServiceSellerPayoff[] sellerPayoffs)
+        internal override Order MapReswareOrder(string fileNumber, OrderPlacementServicePartner lender, DateTime? estimatedSettlementDate)
         {
-            var order = new Order
+            // TODO - CustomerName, CustomerId, and Product
+            return new Order
             {
                 FileNumber = fileNumber,
                 // CustomerName = MapCustomerName(),
                 // CustomerId = MapClientIdToEClosingsCustomerId(clientId),
-                CustomerContact = LinearCustomerContact,
+                CustomerContact = CustomerContact,
                 LenderName = lender.Name,
                 // Product = MapProduct(),
                 ClosingDateTime = estimatedSettlementDate,
-                // DeliveryMethod = eDocs,
+                DeliveryMethod = DeliveryMethod,
                 CreatedDateTime = DateTime.Now
-            };
-
-            return new ReaderResult
-            {
-                Order = order
             };
         }
     }

@@ -19,6 +19,5 @@ namespace OrderPlacement.Models
         public string State { get; set; }
         public string AddressStreetInfo { get; set; }
         public string Description { get; set; }
-        public string County { get; set; }
     }
 }

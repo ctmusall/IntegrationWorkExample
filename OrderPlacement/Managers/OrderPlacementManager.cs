@@ -1,7 +1,5 @@
 ﻿using System;
-using OrderPlacement.Data;
 using OrderPlacement.Factories;
-using OrderPlacement.Models;
 using OrderPlacement.Repositories;
 
 namespace OrderPlacement.Managers
@@ -43,7 +41,5 @@ namespace OrderPlacement.Managers
 
             return _reswareOrderRepository.SaveReaderResult(readerResult);
         }
-
-        
     }
 }
