@@ -24,28 +24,36 @@ namespace OrderPlacement
 
             try
             {
-                var result = _orderPlacementManager.PlaceOrder(ClientID, OfficeID, FileNumber, PropertyAddress,ClientsClientID,
-                    TransactionTypeID, ProductID, UnderwriterID, PrimaryContactID, EstimatedSettlementDate, SalesPrice,
-                    LoanAmount, LoanNumber, CashOut, PayoffMortgagees, OptionalActionGroupIDs, Lender, IsLender, Buyers,
-                    Sellers, AdditionalPartners, ClientsClient, Notes, RequestAQUADecision, OriginalDebtAmount,
-                    IsWholesaleOrder, CPLCompany, CPLDivision, CPLStreet1, CPLStreet2, CPLCity, CPLState, CPLZip,
-                    AssetNumber, PriorLenderPolicy, PriorOwnerPolicy, BuyerPayoffs, SellerPayoffs);
+                var placeOrderResult = _orderPlacementManager.PlaceOrder(ClientID, FileNumber, PropertyAddress, ProductID, EstimatedSettlementDate, Lender, Buyers, Sellers);
 
-                // TODO - Check result to determine response
-
-                placeOrderResponse = new PlaceOrderResponse
+                if (placeOrderResult.Result == 0 || placeOrderResult.Result == -1)
                 {
-                    Response = $"FileNumber {FileNumber}: OrderPlacement Received",
-                    ResponseCode = 0,
-                    Timestamp = DateTime.Now,
-                    ResWareFileNumber = FileNumber
-                };
+                    placeOrderResponse = new PlaceOrderResponse
+                    {
+                        Response = $"ERROR saving! Did not receive filenumber {FileNumber}. {placeOrderResult.Message}",
+                        ResponseCode = -1,
+                        Timestamp = DateTime.Now,
+                        ResWareFileNumber = FileNumber
+                    };
+                }
+                else
+                {
+                    placeOrderResponse = new PlaceOrderResponse
+                    {
+                        Response = $"FileNumber {FileNumber}: OrderPlacement Received",
+                        ResponseCode = 0,
+                        Timestamp = DateTime.Now,
+                        ResWareFileNumber = FileNumber
+                    };
+                }
+
+
             }
             catch (Exception ex)
             {
                 placeOrderResponse = new PlaceOrderResponse
                 {
-                    Response = $"{ex.Message}",
+                    Response = $"ERROR! Message: {ex.Message} \n\n Inner Exception: {ex.InnerException} \n\n Stack Trace: {ex.StackTrace}",
                     ResponseCode = -1,
                     Timestamp = DateTime.Now
                 };

@@ -22,28 +22,17 @@ namespace OrderPlacement.Readers
         }
 
 
-        // TODO - Remove data not needed from method
-        public ReaderResult ParseInput(int clientId, int officeId, string fileNumber,
-            OrderPlacementServicePropertyAddress propertyAddress, int clientsClientId, int transactionTypeId,
-            int productId, int underwriterId, int primaryContactId, DateTime? estimatedSettlementDate,
-            decimal salesPrice, decimal loanAmount, string loanNumber, decimal cashOut, string[] payoffMortgagees,
-            int[] optionalActionGroupIDs, OrderPlacementServicePartner lender, bool isLender,
-            OrderPlacementServiceBuyerSeller[] buyers, OrderPlacementServiceBuyerSeller[] sellers,
-            OrderPlacementServicePartner[] additionalPartners, OrderPlacementServicePartner clientsClient, string notes,
-            bool requestAquaDecision, decimal? originalDebtAmount, bool isWholesaleOrder, string cplCompany,
-            string cplDivision, string cplStreet1, string cplStreet2, string cplCity, string cplState, string cplZip,
-            string assetNumber, OrderPlacementServicePriorPolicy priorLenderPolicy,
-            OrderPlacementServicePriorPolicy priorOwnerPolicy, OrderPlacementServiceBuyerPayoff[] buyerPayoffs,
-            OrderPlacementServiceSellerPayoff[] sellerPayoffs)
+        public ReaderResult ParseInput(string fileNumber, OrderPlacementServicePropertyAddress propertyAddress, int productId, DateTime? estimatedSettlementDate, 
+            OrderPlacementServicePartner lender,OrderPlacementServiceBuyerSeller[] buyers, OrderPlacementServiceBuyerSeller[] sellers)
         {
-            var result = new ReaderResult {Order = MapReswareOrder(fileNumber, lender, estimatedSettlementDate)};
+            var result = new ReaderResult {Order = MapReswareOrder(fileNumber, lender, estimatedSettlementDate, productId)};
             result.PropertyAddress = MapPropertyAddress(result.Order, propertyAddress);
             result.BuyerSellersReaderResult = MapBuyerSellers(result.Order, buyers, sellers);
 
             return result;
         }
 
-        internal abstract Order MapReswareOrder(string fileNumber, OrderPlacementServicePartner lender, DateTime? estimatedSettlementDate);
+        internal abstract Order MapReswareOrder(string fileNumber, OrderPlacementServicePartner lender, DateTime? estimatedSettlementDate, int productId);
 
         internal virtual PropertyAddress MapPropertyAddress(Order order, OrderPlacementServicePropertyAddress propertyAddress)
         {

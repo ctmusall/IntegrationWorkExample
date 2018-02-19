@@ -19,27 +19,32 @@ namespace OrderPlacement.Managers
             _reswareOrderRepository = reswareOrderRepository;
         }
 
-        // TODO - Remove data not needed from method
-        public int PlaceOrder(int clientId, int officeId, string fileNumber,
-            OrderPlacementServicePropertyAddress propertyAddress, int clientsClientId, int transactionTypeId,
-            int productId, int underwriterId, int primaryContactId, DateTime? estimatedSettlementDate,
-            decimal salesPrice, decimal loanAmount, string loanNumber, decimal cashOut, string[] payoffMortgagees,
-            int[] optionalActionGroupIDs, OrderPlacementServicePartner lender, bool isLender,
-            OrderPlacementServiceBuyerSeller[] buyers, OrderPlacementServiceBuyerSeller[] sellers,
-            OrderPlacementServicePartner[] additionalPartners, OrderPlacementServicePartner clientsClient, string notes,
-            bool requestAquaDecision, decimal? originalDebtAmount, bool isWholesaleOrder, string cplCompany,
-            string cplDivision, string cplStreet1, string cplStreet2, string cplCity, string cplState, string cplZip,
-            string assetNumber, OrderPlacementServicePriorPolicy priorLenderPolicy,
-            OrderPlacementServicePriorPolicy priorOwnerPolicy, OrderPlacementServiceBuyerPayoff[] buyerPayoffs,
-            OrderPlacementServiceSellerPayoff[] sellerPayoffs)
+        public PlaceOrderResult PlaceOrder(int clientId, string fileNumber, OrderPlacementServicePropertyAddress propertyAddress, int productId, DateTime? estimatedSettlementDate,
+            OrderPlacementServicePartner lender, OrderPlacementServiceBuyerSeller[] buyers, OrderPlacementServiceBuyerSeller[] sellers)
         {
-            var readerResult = _reswareReaderFactory.ResolveReader(clientId).ParseInput(clientId, officeId, fileNumber,propertyAddress, clientsClientId,
-                transactionTypeId, productId, underwriterId, primaryContactId, estimatedSettlementDate, salesPrice,loanAmount, loanNumber, cashOut,
-                payoffMortgagees, optionalActionGroupIDs, lender, isLender, buyers, sellers, additionalPartners,clientsClient, notes, requestAquaDecision,
-                originalDebtAmount, isWholesaleOrder, cplCompany, cplDivision, cplStreet1, cplStreet2, cplCity,cplState, cplZip, assetNumber,
-                priorLenderPolicy, priorOwnerPolicy, buyerPayoffs, sellerPayoffs);
+            PlaceOrderResult placeOrderResult;
 
-            return _reswareOrderRepository.SaveReaderResult(readerResult);
+            try
+            {
+                var readerResult = _reswareReaderFactory.ResolveReader(clientId).ParseInput(fileNumber, propertyAddress, productId, estimatedSettlementDate,
+                lender, buyers, sellers);
+
+                placeOrderResult = new PlaceOrderResult
+                {
+                    Result = _reswareOrderRepository.SaveReaderResult(readerResult),
+                    Message = "Success!"
+                };
+            }
+            catch (Exception ex)
+            {
+                placeOrderResult = new PlaceOrderResult
+                {
+                    Result = -1,
+                    Message = $"ERROR! Message: {ex.Message} \n\n Inner Exception: {ex.InnerException} \n\n Stack Trace: {ex.StackTrace}"
+                };
+            }
+
+            return placeOrderResult;
         }
     }
 }

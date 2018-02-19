@@ -159,6 +159,7 @@
     <Compile Include="IOrderPlacementService.cs" />
     <Compile Include="Managers\IOrderPlacementManager.cs" />
     <Compile Include="Managers\OrderPlacementManager.cs" />
+    <Compile Include="Managers\PlaceOrderResult.cs" />
     <Compile Include="Migrations\201802152042408_Init.cs" />
     <Compile Include="Migrations\201802152042408_Init.Designer.cs">
       <DependentUpon>201802152042408_Init.cs</DependentUpon>
@@ -178,6 +179,10 @@
     <Compile Include="Migrations\201802191406069_RemoveCounty.cs" />
     <Compile Include="Migrations\201802191406069_RemoveCounty.Designer.cs">
       <DependentUpon>201802191406069_RemoveCounty.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802191514563_RemoveCustomerNameFromOrder.cs" />
+    <Compile Include="Migrations\201802191514563_RemoveCustomerNameFromOrder.Designer.cs">
+      <DependentUpon>201802191514563_RemoveCustomerNameFromOrder.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BuyerSeller.cs" />
@@ -230,6 +235,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802191406069_RemoveCounty.resx">
       <DependentUpon>201802191406069_RemoveCounty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802191514563_RemoveCustomerNameFromOrder.resx">
+      <DependentUpon>201802191514563_RemoveCustomerNameFromOrder.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

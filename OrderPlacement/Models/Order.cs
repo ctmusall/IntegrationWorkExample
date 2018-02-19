@@ -11,7 +11,6 @@ namespace OrderPlacement.Models
         public Guid Id { get; set; }
 
         public string FileNumber { get; set; }
-        public string CustomerName { get; set; }
         public string CustomerId { get; set; }
         public string LenderName { get; set; }
         public DateTime? ClosingDateTime { get; set; }
