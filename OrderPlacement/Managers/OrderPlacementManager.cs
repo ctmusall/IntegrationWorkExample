@@ -26,13 +26,12 @@ namespace OrderPlacement.Managers
 
             try
             {
-                var readerResult = _reswareReaderFactory.ResolveReader(clientId).ParseInput(fileNumber, propertyAddress, productId, estimatedSettlementDate,
-                lender, buyers, sellers);
+                var readerResult = _reswareReaderFactory.ResolveReader(clientId).ParseInput(fileNumber, propertyAddress, productId, estimatedSettlementDate, lender, buyers, sellers);
+                var saveReaderResult = _reswareOrderRepository.SaveReaderResult(readerResult);
 
                 placeOrderResult = new PlaceOrderResult
                 {
-                    Result = _reswareOrderRepository.SaveReaderResult(readerResult),
-                    Message = "Success!"
+                    Result = saveReaderResult
                 };
             }
             catch (Exception ex)

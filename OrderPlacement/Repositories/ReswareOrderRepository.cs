@@ -20,6 +20,8 @@ namespace OrderPlacement.Repositories
 
         public int SaveReaderResult(ReaderResult readerResult)
         {
+            if (readerResult?.Order == null || readerResult.PropertyAddress == null || readerResult.BuyerSellersReaderResult?.BuyerSellers == null || readerResult.BuyerSellersReaderResult.BuyerSellerAddresses == null) return -1;
+
             _reswareOrderContext.Orders.Add(readerResult.Order);
 
             _reswareOrderContext.PropertyAddresses.Add(readerResult.PropertyAddress);

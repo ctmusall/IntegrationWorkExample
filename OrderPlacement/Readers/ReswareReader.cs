@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using OrderPlacement.Common;
 using OrderPlacement.Factories;
 using OrderPlacement.Models;
@@ -25,7 +26,7 @@ namespace OrderPlacement.Readers
         public ReaderResult ParseInput(string fileNumber, OrderPlacementServicePropertyAddress propertyAddress, int productId, DateTime? estimatedSettlementDate, 
             OrderPlacementServicePartner lender,OrderPlacementServiceBuyerSeller[] buyers, OrderPlacementServiceBuyerSeller[] sellers)
         {
-            var result = new ReaderResult {Order = MapReswareOrder(fileNumber, lender, estimatedSettlementDate, productId)};
+            var result = new ReaderResult { Order = MapReswareOrder(fileNumber, lender, estimatedSettlementDate, productId) };
             result.PropertyAddress = MapPropertyAddress(result.Order, propertyAddress);
             result.BuyerSellersReaderResult = MapBuyerSellers(result.Order, buyers, sellers);
 
@@ -55,7 +56,11 @@ namespace OrderPlacement.Readers
 
         internal virtual BuyerSellerReaderResult MapBuyerSellers(Order order, OrderPlacementServiceBuyerSeller[] buyers, OrderPlacementServiceBuyerSeller[] sellers)
         {
-            var result = new BuyerSellerReaderResult();
+            var result = new BuyerSellerReaderResult
+            {
+                BuyerSellers = new List<BuyerSeller>(),
+                BuyerSellerAddresses = new List<BuyerSellerAddress>()
+            };
 
             buyers.ForEach(buyer => _buyerSellerReaderResultUtility.CreateBuyerSellerAndBuyerSellerAddressAssociation(buyer, order, BuyerSellerEnum.Buyer, result));
 

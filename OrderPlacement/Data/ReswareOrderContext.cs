@@ -16,8 +16,7 @@ namespace OrderPlacement.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Order>().ToTable("Order")
-                .HasKey(o => o.Id);
+            modelBuilder.Entity<Order>().ToTable("Order");
 
             modelBuilder.Entity<PropertyAddress>().ToTable("PropertyAddress")
                 .HasKey(a => a.Id)

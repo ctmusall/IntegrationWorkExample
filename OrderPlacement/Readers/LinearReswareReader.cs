@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using OrderPlacement.Models;
 
 namespace OrderPlacement.Readers
@@ -11,7 +12,7 @@ namespace OrderPlacement.Readers
 
         internal override Order MapReswareOrder(string fileNumber, OrderPlacementServicePartner lender, DateTime? estimatedSettlementDate, int productId)
         {
-            // TODO - Product(Need Refinance, Purchase, and Investment Property ID) map based on what Ron supplies
+            // TODO - Product(Need Refinance, Purchase, and Investment Property ID) map based on what Keith and the boyz supplies
             return new Order
             {
                 FileNumber = fileNumber,
@@ -21,7 +22,9 @@ namespace OrderPlacement.Readers
                 // Product = MapProduct(),
                 ClosingDateTime = estimatedSettlementDate,
                 DeliveryMethod = DeliveryMethod,
-                CreatedDateTime = DateTime.Now
+                CreatedDateTime = DateTime.Now,
+                PropertyAddress = new List<PropertyAddress>(),
+                BuyerAndSellers = new List<BuyerSeller>()
             };
         }
     }
