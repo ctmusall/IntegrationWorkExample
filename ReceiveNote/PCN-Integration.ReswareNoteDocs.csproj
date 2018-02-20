@@ -116,6 +116,10 @@
     <Compile Include="Migrations\201802201610019_NoteDocInit.Designer.cs">
       <DependentUpon>201802201610019_NoteDocInit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802201747306_MakeProcessedDateTimeNullable.cs" />
+    <Compile Include="Migrations\201802201747306_MakeProcessedDateTimeNullable.Designer.cs">
+      <DependentUpon>201802201747306_MakeProcessedDateTimeNullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Document.cs" />
     <Compile Include="Models\Note.cs" />
@@ -146,6 +150,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201802201610019_NoteDocInit.resx">
       <DependentUpon>201802201610019_NoteDocInit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802201747306_MakeProcessedDateTimeNullable.resx">
+      <DependentUpon>201802201747306_MakeProcessedDateTimeNullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

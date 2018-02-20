@@ -13,7 +13,7 @@ namespace ReceiveNote.Models
         public DateTime CreatedDateTime { get; set; }
         public string FileNumber { get; set; }
         public bool Processed { get; set; }
-        public DateTime ProcessedDateTime { get; set; }
+        public DateTime? ProcessedDateTime { get; set; }
         public string NoteSubject { get; set; }
         public string NoteBody { get; set; }
 
