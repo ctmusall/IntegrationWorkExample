@@ -39,11 +39,11 @@ namespace SigningService.Readers
         private static ICollection<SigningParty> MapSigningParties(Signing signing, ReceiveSigningData receiveSigningData)
         {
             return receiveSigningData.SigningParties.Select(signingParty => new SigningParty
-                {
-                    Signing = signing,
-                    Name = signingParty.Name,
-                    Phone = signingParty.Phone
-                }).ToList();
+            {
+                Signing = signing,
+                Name = signingParty.Name,
+                Phone = signingParty.Phone
+            }).ToList();
         }
     }
 }

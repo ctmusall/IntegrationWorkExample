@@ -110,6 +110,8 @@
   <ItemGroup>
     <Compile Include="Data\ReswareNoteDocContext.cs" />
     <Compile Include="IReceiveNoteService.cs" />
+    <Compile Include="Managers\INoteDocManager.cs" />
+    <Compile Include="Managers\NoteDocManager.cs" />
     <Compile Include="Migrations\201802201610019_NoteDocInit.cs" />
     <Compile Include="Migrations\201802201610019_NoteDocInit.Designer.cs">
       <DependentUpon>201802201610019_NoteDocInit.cs</DependentUpon>
@@ -117,10 +119,16 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Document.cs" />
     <Compile Include="Models\Note.cs" />
+    <Compile Include="Models\NoteDocReaderResult.cs" />
+    <Compile Include="Models\NoteDocResult.cs" />
+    <Compile Include="Factories\NoteDocDependencyFactory.cs" />
+    <Compile Include="Readers\NoteDocReader.cs" />
     <Compile Include="ReceiveNoteService.svc.cs">
       <DependentUpon>ReceiveNoteService.svc</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IReswareNoteDocRepository.cs" />
+    <Compile Include="Repositories\ReswareNoteDocRepository.cs" />
     <Compile Include="UserNameValidator.cs" />
   </ItemGroup>
   <ItemGroup>
