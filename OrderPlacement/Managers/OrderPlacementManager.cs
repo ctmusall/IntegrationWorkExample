@@ -8,7 +8,7 @@ namespace OrderPlacement.Managers
     {
         private readonly ReswareReaderFactory _reswareReaderFactory;
         private readonly IReswareOrderRepository _reswareOrderRepository;
-        public OrderPlacementManager():this(DependencyFactory.Resolve<ReswareReaderFactory>(), DependencyFactory.Resolve<IReswareOrderRepository>())
+        public OrderPlacementManager():this(OrderDependencyFactory.Resolve<ReswareReaderFactory>(), OrderDependencyFactory.Resolve<IReswareOrderRepository>())
         {
             
         }

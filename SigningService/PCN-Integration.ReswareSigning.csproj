@@ -109,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\ReswareSigningContext.cs" />
+    <Compile Include="Factories\SigningDependencyFactory.cs" />
     <Compile Include="IReceiveSigningService.cs" />
     <Compile Include="Migrations\201802201332044_FirstMigration.cs" />
     <Compile Include="Migrations\201802201332044_FirstMigration.Designer.cs">

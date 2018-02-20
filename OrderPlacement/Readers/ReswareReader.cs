@@ -12,7 +12,7 @@ namespace OrderPlacement.Readers
     {
         private readonly BuyerSellerReaderResultUtility _buyerSellerReaderResultUtility;
 
-        internal ReswareReader() : this(DependencyFactory.Resolve<BuyerSellerReaderResultUtility>())
+        internal ReswareReader() : this(OrderDependencyFactory.Resolve<BuyerSellerReaderResultUtility>())
         {
             
         }

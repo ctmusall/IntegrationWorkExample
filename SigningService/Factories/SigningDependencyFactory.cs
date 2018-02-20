@@ -1,15 +1,11 @@
-﻿using OrderPlacement.Data;
-using OrderPlacement.Managers;
-using OrderPlacement.Repositories;
-using OrderPlacement.Utilities;
-using Unity;
+﻿using Unity;
 
-namespace OrderPlacement.Factories
+namespace SigningService.Factories
 {
     /// <summary>
     /// Simple wrapper for unity resolution.
     /// </summary>
-    public class DependencyFactory
+    public class SigningDependencyFactory
     {
         /// <summary>
         /// Public reference to the unity container which will 
@@ -22,7 +18,7 @@ namespace OrderPlacement.Factories
         /// Static constructor for DependencyFactory which will 
         /// initialize the unity container.
         /// </summary>
-        static DependencyFactory()
+        static SigningDependencyFactory()
         {
             var container = new UnityContainer();
 
@@ -49,11 +45,7 @@ namespace OrderPlacement.Factories
 
         private static void RegisterTypes(IUnityContainer container)
         {
-            container.RegisterType<ReswareReaderFactory>();
-            container.RegisterType<ReswareOrderContext>();
-            container.RegisterType<BuyerSellerReaderResultUtility>();
-            container.RegisterType<IOrderPlacementManager, OrderPlacementManager>();
-            container.RegisterType<IReswareOrderRepository, ReswareOrderRepository>();
+            
         }
     }
 }

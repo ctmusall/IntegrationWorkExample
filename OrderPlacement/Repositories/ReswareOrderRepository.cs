@@ -8,7 +8,7 @@ namespace OrderPlacement.Repositories
     {
         private readonly ReswareOrderContext _reswareOrderContext;
 
-        public ReswareOrderRepository() : this(DependencyFactory.Resolve<ReswareOrderContext>())
+        public ReswareOrderRepository() : this(OrderDependencyFactory.Resolve<ReswareOrderContext>())
         {
             
         }

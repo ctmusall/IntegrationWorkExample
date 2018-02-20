@@ -8,7 +8,7 @@ namespace OrderPlacement
     {
         private readonly IOrderPlacementManager _orderPlacementManager;
 
-        public Service() : this(DependencyFactory.Resolve<IOrderPlacementManager>())
+        public Service() : this(OrderDependencyFactory.Resolve<IOrderPlacementManager>())
         {
             
         }

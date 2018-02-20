@@ -154,7 +154,7 @@
   <ItemGroup>
     <Compile Include="Common\BuyerSellerEnum.cs" />
     <Compile Include="Data\ReswareOrderContext.cs" />
-    <Compile Include="Factories\DependencyFactory.cs" />
+    <Compile Include="Factories\OrderDependencyFactory.cs" />
     <Compile Include="Factories\ReswareReaderFactory.cs" />
     <Compile Include="IOrderPlacementService.cs" />
     <Compile Include="Managers\IOrderPlacementManager.cs" />
