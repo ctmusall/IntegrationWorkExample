@@ -1,4 +1,4 @@
-﻿namespace OrderPlacement.Managers
+﻿namespace OrderPlacement.Models
 {
     public class PlaceOrderResult
     {

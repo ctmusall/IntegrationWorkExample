@@ -111,6 +111,8 @@
     <Compile Include="Data\ReswareSigningContext.cs" />
     <Compile Include="Factories\SigningDependencyFactory.cs" />
     <Compile Include="IReceiveSigningService.cs" />
+    <Compile Include="Managers\ISigningManager.cs" />
+    <Compile Include="Managers\SigningManager.cs" />
     <Compile Include="Migrations\201802201332044_FirstMigration.cs" />
     <Compile Include="Migrations\201802201332044_FirstMigration.Designer.cs">
       <DependentUpon>201802201332044_FirstMigration.cs</DependentUpon>
@@ -118,6 +120,7 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Signing.cs" />
     <Compile Include="Models\SigningParty.cs" />
+    <Compile Include="Models\SigningResult.cs" />
     <Compile Include="SigningService.svc.cs">
       <DependentUpon>SigningService.svc</DependentUpon>
     </Compile>

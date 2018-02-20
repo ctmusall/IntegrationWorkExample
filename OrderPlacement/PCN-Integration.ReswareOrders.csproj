@@ -159,7 +159,7 @@
     <Compile Include="IOrderPlacementService.cs" />
     <Compile Include="Managers\IOrderPlacementManager.cs" />
     <Compile Include="Managers\OrderPlacementManager.cs" />
-    <Compile Include="Managers\PlaceOrderResult.cs" />
+    <Compile Include="Models\PlaceOrderResult.cs" />
     <Compile Include="Migrations\201802152042408_Init.cs" />
     <Compile Include="Migrations\201802152042408_Init.Designer.cs">
       <DependentUpon>201802152042408_Init.cs</DependentUpon>
