@@ -108,6 +108,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionEventReader.cs" />
     <Compile Include="Data\ReswareActionEventContext.cs" />
     <Compile Include="Factories\ActionEventDependencyFactory.cs" />
     <Compile Include="IReceiveActionEventService.cs" />
@@ -123,11 +124,14 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActionEvent.cs" />
+    <Compile Include="Models\ActionEventReaderResult.cs" />
     <Compile Include="Models\ActionEventResult.cs" />
     <Compile Include="ReceiveActionEventService.svc.cs">
       <DependentUpon>ReceiveActionEventService.svc</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IReswareActionEventRepository.cs" />
+    <Compile Include="Repositories\ReswareActionEventRepository.cs" />
     <Compile Include="UserNameValidator.cs" />
   </ItemGroup>
   <ItemGroup>

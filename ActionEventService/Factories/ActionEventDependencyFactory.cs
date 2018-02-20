@@ -1,4 +1,5 @@
 ﻿using ActionEventService.Managers;
+using ActionEventService.Repositories;
 using Unity;
 
 namespace ActionEventService.Factories
@@ -47,6 +48,8 @@ namespace ActionEventService.Factories
         private static void RegisterTypes(IUnityContainer container)
         {
             container.RegisterType<IActionEventManager, ActionEventManager>();
+            container.RegisterType<IReswareActionEventRepository, ReswareActionEventRepository>();
+            container.RegisterType<ActionEventReader>();
         }
     }
 }
