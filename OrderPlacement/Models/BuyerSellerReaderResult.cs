@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
-using OrderPlacement.Models;
 
-namespace OrderPlacement.Readers
+namespace OrderPlacement.Models
 {
     internal class BuyerSellerReaderResult
     {

@@ -190,8 +190,8 @@
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Address.cs" />
     <Compile Include="Models\PropertyAddress.cs" />
-    <Compile Include="Readers\BuyerSellerReaderResult.cs" />
-    <Compile Include="Readers\ReaderResult.cs" />
+    <Compile Include="Models\BuyerSellerReaderResult.cs" />
+    <Compile Include="Models\ReaderResult.cs" />
     <Compile Include="OrderPlacementService.svc.cs">
       <DependentUpon>OrderPlacementService.svc</DependentUpon>
     </Compile>

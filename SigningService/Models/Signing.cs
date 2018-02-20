@@ -12,18 +12,17 @@ namespace SigningService.Models
 
         public DateTime CreatedDateTime { get; set; }
         public string FileNumber { get; set; }
-        public DateTime ClosingDateTime { get; set; }
-        public string DeliveryMethod { get; set; }
+        public DateTime? ClosingDateTime { get; set; }
         public string MobilePhone { get; set; }
         public string HomePhone { get; set; }
         public string WorkPhone { get; set; }
         public string EmailAddress { get; set; }
         public string ClosingLocation { get; set; }
         public string ClosingAddress { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public string Zip { get; set; }
-        public string County { get; set; }
+        public string ClosingCity { get; set; }
+        public string ClosingState { get; set; }
+        public string ClosingZip { get; set; }
+        public string ClosingCounty { get; set; }
 
         public virtual ICollection<SigningParty> SigningParties { get; set; }
     }

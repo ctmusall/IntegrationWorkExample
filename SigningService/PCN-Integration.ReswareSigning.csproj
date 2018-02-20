@@ -117,10 +117,26 @@
     <Compile Include="Migrations\201802201332044_FirstMigration.Designer.cs">
       <DependentUpon>201802201332044_FirstMigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802201400025_RemoveDeliveryMethodFromSigning.cs" />
+    <Compile Include="Migrations\201802201400025_RemoveDeliveryMethodFromSigning.Designer.cs">
+      <DependentUpon>201802201400025_RemoveDeliveryMethodFromSigning.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802201430093_MakeSigningDateTimeNullable.cs" />
+    <Compile Include="Migrations\201802201430093_MakeSigningDateTimeNullable.Designer.cs">
+      <DependentUpon>201802201430093_MakeSigningDateTimeNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802201434203_UpdateClosingAddressNames.cs" />
+    <Compile Include="Migrations\201802201434203_UpdateClosingAddressNames.Designer.cs">
+      <DependentUpon>201802201434203_UpdateClosingAddressNames.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Signing.cs" />
     <Compile Include="Models\SigningParty.cs" />
+    <Compile Include="Models\SigningReaderResult.cs" />
     <Compile Include="Models\SigningResult.cs" />
+    <Compile Include="Readers\SigningReader.cs" />
+    <Compile Include="Repositories\IReswareSigningRepository.cs" />
+    <Compile Include="Repositories\ReswareSigningRepository.cs" />
     <Compile Include="SigningService.svc.cs">
       <DependentUpon>SigningService.svc</DependentUpon>
     </Compile>
@@ -132,6 +148,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\File.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -142,6 +159,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201802201332044_FirstMigration.resx">
       <DependentUpon>201802201332044_FirstMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802201400025_RemoveDeliveryMethodFromSigning.resx">
+      <DependentUpon>201802201400025_RemoveDeliveryMethodFromSigning.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802201430093_MakeSigningDateTimeNullable.resx">
+      <DependentUpon>201802201430093_MakeSigningDateTimeNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802201434203_UpdateClosingAddressNames.resx">
+      <DependentUpon>201802201434203_UpdateClosingAddressNames.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

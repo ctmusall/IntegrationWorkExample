@@ -23,28 +23,23 @@ namespace OrderPlacement.Managers
         public PlaceOrderResult PlaceOrder(int clientId, string fileNumber, OrderPlacementServicePropertyAddress propertyAddress, int productId, DateTime? estimatedSettlementDate,
             OrderPlacementServicePartner lender, OrderPlacementServiceBuyerSeller[] buyers, OrderPlacementServiceBuyerSeller[] sellers)
         {
-            PlaceOrderResult placeOrderResult;
-
             try
             {
                 var readerResult = _reswareReaderFactory.ResolveReader(clientId).ParseInput(fileNumber, propertyAddress, productId, estimatedSettlementDate, lender, buyers, sellers);
-                var saveReaderResult = _reswareOrderRepository.SaveReaderResult(readerResult);
 
-                placeOrderResult = new PlaceOrderResult
+                return new PlaceOrderResult
                 {
-                    Result = saveReaderResult
+                    Result = _reswareOrderRepository.SaveReaderResult(readerResult)
                 };
             }
             catch (Exception ex)
             {
-                placeOrderResult = new PlaceOrderResult
+                return new PlaceOrderResult
                 {
                     Result = -1,
                     Message = $"ERROR! Message: {ex.Message} \n\n Inner Exception: {ex.InnerException} \n\n Stack Trace: {ex.StackTrace}"
                 };
             }
-
-            return placeOrderResult;
         }
     }
 }

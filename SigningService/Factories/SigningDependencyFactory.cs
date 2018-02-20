@@ -1,4 +1,8 @@
-﻿using Unity;
+﻿using SigningService.Data;
+using SigningService.Managers;
+using SigningService.Readers;
+using SigningService.Repositories;
+using Unity;
 
 namespace SigningService.Factories
 {
@@ -45,7 +49,10 @@ namespace SigningService.Factories
 
         private static void RegisterTypes(IUnityContainer container)
         {
-            
+            container.RegisterType<ISigningManager, SigningManager>();
+            container.RegisterType<SigningReader>();
+            container.RegisterType<IReswareSigningRepository, ReswareSigningRepository>();
+            container.RegisterType<ReswareSigningContext>();
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using OrderPlacement.Models;
-using OrderPlacement.Readers;
 
 namespace OrderPlacement.Repositories
 {
