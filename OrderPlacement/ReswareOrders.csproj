@@ -202,8 +202,10 @@
     <Compile Include="OrderPlacementService.svc.cs">
       <DependentUpon>OrderPlacementService.svc</DependentUpon>
     </Compile>
-    <Compile Include="Parser\IOrderParser.cs" />
-    <Compile Include="Parser\OrderParser.cs" />
+    <Compile Include="Parsers\IOrderParser.cs" />
+    <Compile Include="Parsers\IOrderResultParser.cs" />
+    <Compile Include="Parsers\OrderParser.cs" />
+    <Compile Include="Parsers\OrderResultParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Readers\IReswareReader.cs" />
     <Compile Include="Readers\LinearReswareReader.cs" />

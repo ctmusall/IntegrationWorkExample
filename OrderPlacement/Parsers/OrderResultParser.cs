@@ -1,19 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using OrderPlacement.Models;
+using OrderPlacement.Parser;
 
-namespace OrderPlacement.Parser
+namespace OrderPlacement.Parsers
 {
-    public class OrderParser : IOrderParser
+    public class OrderResultParser : IOrderResultParser
     {
-        public ICollection<OrderResult> ParseOrderResults(ICollection<Order> orders)
+        public ICollection<OrderResult> ParseAllOrderResults(ICollection<Order> orders)
         {
             return orders.Select(order => new OrderResult
             {
                 Id = order.Id,
                 FileNumber = order.FileNumber,
                 CustomerId = order.CustomerId,
-                BuyersAndSellers = ParseBuyersAndSellers(order.BuyerAndSellers),
+                BuyersAndSellers = ParseBuyersAndSellersResult(order.BuyerAndSellers),
                 ClosingDateTime = order.ClosingDateTime,
                 CreatedDateTime = order.CreatedDateTime,
                 CustomerContact = order.CustomerContact,
@@ -22,11 +23,31 @@ namespace OrderPlacement.Parser
                 Processed = order.Processed,
                 Product = order.Product,
                 ProcessedDateTime = order.ProcessedDateTime,
-                PropertyAddress = ParsePropertyAddress(order.PropertyAddress)
+                PropertyAddress = ParsePropertyAddressResult(order.PropertyAddress)
             }).ToList();
         }
 
-        private static ICollection<PropertyAddressResult> ParsePropertyAddress(IEnumerable<PropertyAddress> propertyAddresses)
+        public OrderResult ParseOrderResult(Order order)
+        {
+            return new OrderResult
+            {
+                Id = order.Id,
+                FileNumber = order.FileNumber,
+                CustomerId = order.CustomerId,
+                BuyersAndSellers = ParseBuyersAndSellersResult(order.BuyerAndSellers),
+                ClosingDateTime = order.ClosingDateTime,
+                CreatedDateTime = order.CreatedDateTime,
+                CustomerContact = order.CustomerContact,
+                DeliveryMethod = order.DeliveryMethod,
+                LenderName = order.LenderName,
+                Processed = order.Processed,
+                Product = order.Product,
+                ProcessedDateTime = order.ProcessedDateTime,
+                PropertyAddress = ParsePropertyAddressResult(order.PropertyAddress)
+            };
+        }
+
+        private static ICollection<PropertyAddressResult> ParsePropertyAddressResult(IEnumerable<PropertyAddress> propertyAddresses)
         {
             return propertyAddresses.Select(propertyAddress => new PropertyAddressResult
             {
@@ -45,7 +66,7 @@ namespace OrderPlacement.Parser
             }).ToList();
         }
 
-        private static ICollection<BuyerSellerResult> ParseBuyersAndSellers(IEnumerable<BuyerSeller> buyersAndSellers)
+        private static ICollection<BuyerSellerResult> ParseBuyersAndSellersResult(IEnumerable<BuyerSeller> buyersAndSellers)
         {
             return buyersAndSellers.Select(buyerAndSeller => new BuyerSellerResult
             {
@@ -62,11 +83,11 @@ namespace OrderPlacement.Parser
                 Email = buyerAndSeller.Email,
                 Spouse = buyerAndSeller.Spouse,
                 Type = buyerAndSeller.Type,
-                Address = ParseBuyerAndSellerAddress(buyerAndSeller.Address)
+                Address = ParseBuyerAndSellerAddressResult(buyerAndSeller.Address)
             }).ToList();
         }
 
-        private static ICollection<BuyerSellerAddressResult> ParseBuyerAndSellerAddress(IEnumerable<BuyerSellerAddress> buyerSellerAddresses)
+        private static ICollection<BuyerSellerAddressResult> ParseBuyerAndSellerAddressResult(IEnumerable<BuyerSellerAddress> buyerSellerAddresses)
         {
             return buyerSellerAddresses.Select(buyerSellerAddress => new BuyerSellerAddressResult
             {

@@ -28,6 +28,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -1035,6 +1036,15 @@ public interface IOrderPlacementService
 
     [OperationContract]
     ICollection<OrderResult> GetAllOrders();
+
+    [OperationContract]
+    OrderResult GetOrderById(Guid id);
+
+    [OperationContract]
+    int DeleteOrderById(Guid id);
+
+    [OperationContract]
+    int UpdateOrder(OrderResult orderResult);
 }
 namespace GeneratedNamespace1
 {

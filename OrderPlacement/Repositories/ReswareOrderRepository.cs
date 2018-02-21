@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using OrderPlacement.Data;
@@ -42,6 +43,40 @@ namespace OrderPlacement.Repositories
                 .Include(o => o.PropertyAddress)
                 .Include(o => o.BuyerAndSellers)
                 .Include(o => o.BuyerAndSellers.Select(bs => bs.Address)).ToList();
+        }
+
+        public Order GetOrderById(Guid id)
+        {
+            return _reswareOrderContext.Orders
+                .Include(o => o.PropertyAddress)
+                .Include(o => o.BuyerAndSellers)
+                .Include(o => o.BuyerAndSellers.Select(bs => bs.Address))
+                .FirstOrDefault(o => o.Id == id);
+        }
+
+        public int DeleteOrderById(Guid id)
+        {
+            var order = _reswareOrderContext.Orders.FirstOrDefault(o => o.Id == id);
+
+            if (order == null) return 0;
+
+            _reswareOrderContext.Orders.Remove(order);
+
+            return _reswareOrderContext.SaveChanges();
+        }
+
+        public int UpdateOrder(Order updatedOrder)
+        {
+            var order = _reswareOrderContext.Orders
+                .Include(o => o.PropertyAddress)
+                .Include(o => o.BuyerAndSellers)
+                .Include(o => o.BuyerAndSellers.Select(bs => bs.Address)).FirstOrDefault(o => o.Id == updatedOrder.Id);
+
+            if (order == null) return 0;
+
+            _reswareOrderContext.Entry(order).CurrentValues.SetValues(updatedOrder);
+
+            return _reswareOrderContext.SaveChanges();
         }
     }
 }
