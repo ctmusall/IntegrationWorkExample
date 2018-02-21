@@ -13,13 +13,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PCN-Integration.Services", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PCN-Integration.WindowsService", "PCN-Integration.WindowsService\PCN-Integration.WindowsService.csproj", "{8A6B4F02-F9EF-4FC5-8C21-4D7A78F4F7BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PCN-Integration.ReswareOrders", "OrderPlacement\PCN-Integration.ReswareOrders.csproj", "{D2569E71-E249-4E9E-B07F-077E1315BECE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReswareOrders", "OrderPlacement\ReswareOrders.csproj", "{D2569E71-E249-4E9E-B07F-077E1315BECE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PCN-Integration.ReswareNoteDocs", "ReceiveNote\PCN-Integration.ReswareNoteDocs.csproj", "{29160081-7B3E-41D8-9A87-3C86968DEE0C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReswareNoteDocs", "ReceiveNote\ReswareNoteDocs.csproj", "{29160081-7B3E-41D8-9A87-3C86968DEE0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PCN-Integration.ReswareSigning", "SigningService\PCN-Integration.ReswareSigning.csproj", "{A7499002-B795-4341-B6C4-7163739EC933}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReswareSigning", "SigningService\ReswareSigning.csproj", "{A7499002-B795-4341-B6C4-7163739EC933}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PCN-Integration.ReswareActionEvent", "ActionEventService\PCN-Integration.ReswareActionEvent.csproj", "{06839BDB-F490-4E96-B347-8148B43D0CAE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReswareActionEvent", "ActionEventService\ReswareActionEvent.csproj", "{06839BDB-F490-4E96-B347-8148B43D0CAE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

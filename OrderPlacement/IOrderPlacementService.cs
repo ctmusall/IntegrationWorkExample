@@ -1029,6 +1029,8 @@ public interface IOrderPlacementService
                 OrderPlacementServicePriorPolicy PriorOwnerPolicy, 
                 OrderPlacementServiceBuyerPayoff[] BuyerPayoffs, 
                 OrderPlacementServiceSellerPayoff[] SellerPayoffs);
+
+
 }
 namespace GeneratedNamespace1
 {
@@ -1307,4 +1309,10 @@ namespace GeneratedNamespace1
             }
         }
     }
+}
+
+namespace ReswareOrders
+{
+
+
 }
