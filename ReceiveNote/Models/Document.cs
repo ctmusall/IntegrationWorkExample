@@ -15,6 +15,7 @@ namespace ReceiveNote.Models
         public string FileName { get; set; }
         public string Description { get; set; }
         public byte[] DocumentBody { get; set; }
+        public int DocumentTypeId { get; set; }
 
         public virtual Note Note { get; set; }
     }

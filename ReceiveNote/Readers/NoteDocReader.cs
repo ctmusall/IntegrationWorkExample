@@ -34,7 +34,8 @@ namespace ReceiveNote.Readers
                 Note = note,
                 Description = document.Description,
                 DocumentBody = document.DocumentBody,
-                FileName = document.FileName
+                FileName = document.FileName,
+                DocumentTypeId = document.DocumentTypeID
             }).ToList();
         }
     }
