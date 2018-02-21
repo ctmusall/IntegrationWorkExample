@@ -1,4 +1,7 @@
-﻿using OrderPlacement.Data;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using OrderPlacement.Data;
 using OrderPlacement.Factories;
 using OrderPlacement.Models;
 
@@ -31,6 +34,14 @@ namespace OrderPlacement.Repositories
             _reswareOrderContext.BuyerSellerAddresses.AddRange(readerResult.BuyerSellersReaderResult.BuyerSellerAddresses);
 
             return _reswareOrderContext.SaveChanges();
+        }
+
+        public List<Order> GetAllOrders()
+        {
+            return _reswareOrderContext.Orders
+                .Include(o => o.PropertyAddress)
+                .Include(o => o.BuyerAndSellers)
+                .Include(o => o.BuyerAndSellers.Select(bs => bs.Address)).ToList();
         }
     }
 }

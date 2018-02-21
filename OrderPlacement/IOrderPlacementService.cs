@@ -28,7 +28,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.Collections.Generic;
 using System.Runtime.Serialization;
+using System.ServiceModel;
+using OrderPlacement.Models;
 
 [assembly: System.Runtime.Serialization.ContractNamespaceAttribute("", ClrNamespace="GeneratedNamespace1")]
 
@@ -1030,7 +1033,8 @@ public interface IOrderPlacementService
                 OrderPlacementServiceBuyerPayoff[] BuyerPayoffs, 
                 OrderPlacementServiceSellerPayoff[] SellerPayoffs);
 
-
+    [OperationContract]
+    ICollection<OrderResult> GetAllOrders();
 }
 namespace GeneratedNamespace1
 {
@@ -1309,10 +1313,4 @@ namespace GeneratedNamespace1
             }
         }
     }
-}
-
-namespace ReswareOrders
-{
-
-
 }

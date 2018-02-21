@@ -1,5 +1,6 @@
 ﻿using OrderPlacement.Data;
 using OrderPlacement.Managers;
+using OrderPlacement.Parser;
 using OrderPlacement.Repositories;
 using OrderPlacement.Utilities;
 using Unity;
@@ -54,6 +55,8 @@ namespace OrderPlacement.Factories
             container.RegisterType<BuyerSellerReaderResultUtility>();
             container.RegisterType<IOrderPlacementManager, OrderPlacementManager>();
             container.RegisterType<IReswareOrderRepository, ReswareOrderRepository>();
+            container.RegisterType<IOrderResultManager, OrderResultManager>();
+            container.RegisterType<IOrderParser, OrderParser>();
         }
     }
 }

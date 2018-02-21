@@ -1,21 +1,25 @@
 ﻿using System;
+using System.Collections.Generic;
 using OrderPlacement.Factories;
 using OrderPlacement.Managers;
+using OrderPlacement.Models;
 
 namespace OrderPlacement
 {    
     public class Service : IOrderPlacementService
     {
         private readonly IOrderPlacementManager _orderPlacementManager;
+        private readonly IOrderResultManager _orderResultManager;
 
-        public Service() : this(OrderDependencyFactory.Resolve<IOrderPlacementManager>())
+        public Service() : this(OrderDependencyFactory.Resolve<IOrderPlacementManager>(), OrderDependencyFactory.Resolve<IOrderResultManager>())
         {
             
         }
 
-        public Service(IOrderPlacementManager orderPlacementManager)
+        public Service(IOrderPlacementManager orderPlacementManager, IOrderResultManager orderResultManager)
         {
             _orderPlacementManager = orderPlacementManager;
+            _orderResultManager = orderResultManager;
         }
 
         public PlaceOrderResponse PlaceOrder(int ClientID, int OfficeID, string FileNumber, OrderPlacementServicePropertyAddress PropertyAddress, int ClientsClientID, int TransactionTypeID, int ProductID, int UnderwriterID, int PrimaryContactID, DateTime? EstimatedSettlementDate, decimal SalesPrice, decimal LoanAmount, string LoanNumber, decimal CashOut, string[] PayoffMortgagees, int[] OptionalActionGroupIDs, OrderPlacementServicePartner Lender, bool IsLender, OrderPlacementServiceBuyerSeller[] Buyers, OrderPlacementServiceBuyerSeller[] Sellers, OrderPlacementServicePartner[] AdditionalPartners, OrderPlacementServicePartner ClientsClient, string Notes, bool RequestAQUADecision, decimal? OriginalDebtAmount, bool IsWholesaleOrder, string CPLCompany, string CPLDivision, string CPLStreet1, string CPLStreet2, string CPLCity, string CPLState, string CPLZip, string AssetNumber, OrderPlacementServicePriorPolicy PriorLenderPolicy, OrderPlacementServicePriorPolicy PriorOwnerPolicy, OrderPlacementServiceBuyerPayoff[] BuyerPayoffs, OrderPlacementServiceSellerPayoff[] SellerPayoffs)
@@ -54,6 +58,18 @@ namespace OrderPlacement
                     ResponseCode = -1,
                     Timestamp = DateTime.Now
                 };
+            }
+        }
+
+        public ICollection<OrderResult> GetAllOrders()
+        {
+            try
+            {
+                return _orderResultManager.GetAllOrders();
+            }
+            catch (Exception)
+            {
+                return null;
             }
         }
     }
