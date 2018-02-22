@@ -650,14 +650,14 @@ public interface IReceiveSigningService
     Adeptive.ResWare.Services.ReceiveSigningResponse ReceiveSigning(Adeptive.ResWare.Services.ReceiveSigningData SigningData);
 
     [OperationContract]
-    ICollection<SigningPartyServiceResult> GetAllSignings();
+    ICollection<SigningServiceResult> GetAllSignings();
 
     [OperationContract]
-    SigningPartyServiceResult GetSigningById(Guid id);
+    SigningServiceResult GetSigningById(Guid id);
 
     [OperationContract]
     int DeleteSigningById(Guid id);
 
     [OperationContract]
-    int UpdateSigning(SigningPartyServiceResult signingPartyResult);
+    int UpdateSigning(SigningServiceResult signingPartyResult);
 }

@@ -13,7 +13,7 @@ namespace SigningService.Managers
         private readonly SigningResultParser _signingResultParser;
         private readonly SigningParser _signingParser;
 
-        internal SigningServiceResultManager() : this(SigningDependencyFactory.Resolve<IReswareSigningRepository>(),SigningDependencyFactory.Resolve<SigningResultParser>(),SigningDependencyFactory.Resolve<SigningParser>())
+        public SigningServiceResultManager() : this(SigningDependencyFactory.Resolve<IReswareSigningRepository>(),SigningDependencyFactory.Resolve<SigningResultParser>(),SigningDependencyFactory.Resolve<SigningParser>())
         {
         }
 

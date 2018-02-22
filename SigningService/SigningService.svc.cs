@@ -56,24 +56,52 @@ namespace SigningService
             }
         }
 
-        public ICollection<SigningPartyServiceResult> GetAllSignings()
+        public ICollection<SigningServiceResult> GetAllSignings()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return _signingServiceResultManager.GetAllSignings();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
-        public SigningPartyServiceResult GetSigningById(Guid id)
+        public SigningServiceResult GetSigningById(Guid id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return _signingServiceResultManager.GetSigningById(id);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
         }
 
         public int DeleteSigningById(Guid id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return _signingServiceResultManager.DeleteSigningById(id);
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
         }
 
-        public int UpdateSigning(SigningPartyServiceResult signingPartyResult)
+        public int UpdateSigning(SigningServiceResult signingServiceResult)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return _signingServiceResultManager.UpdateSigning(signingServiceResult);
+            }
+            catch (Exception)
+            {
+                return -1;
+            }
         }
     }
 }
