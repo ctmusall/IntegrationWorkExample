@@ -1,5 +1,6 @@
 ﻿using ReceiveNote.Data;
 using ReceiveNote.Managers;
+using ReceiveNote.Parsers;
 using ReceiveNote.Readers;
 using ReceiveNote.Repositories;
 using Unity;
@@ -53,6 +54,9 @@ namespace ReceiveNote.Factories
             container.RegisterType<NoteDocReader>();
             container.RegisterType<IReswareNoteDocRepository, ReswareNoteDocRepository>();
             container.RegisterType<ReswareNoteDocContext>();
+            container.RegisterType<NoteDocParser>();
+            container.RegisterType<NoteDocResultParser>();
+            container.RegisterType<INoteDocServiceResultManager, NoteDocServiceResultManager>();
         }
     }
 }

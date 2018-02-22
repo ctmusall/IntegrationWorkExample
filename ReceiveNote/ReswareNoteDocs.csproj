@@ -111,7 +111,9 @@
     <Compile Include="Data\ReswareNoteDocContext.cs" />
     <Compile Include="IReceiveNoteService.cs" />
     <Compile Include="Managers\INoteDocManager.cs" />
+    <Compile Include="Managers\INoteDocServiceResultManager.cs" />
     <Compile Include="Managers\NoteDocManager.cs" />
+    <Compile Include="Managers\NoteDocServiceResultManager.cs" />
     <Compile Include="Migrations\201802201610019_NoteDocInit.cs" />
     <Compile Include="Migrations\201802201610019_NoteDocInit.Designer.cs">
       <DependentUpon>201802201610019_NoteDocInit.cs</DependentUpon>
@@ -126,10 +128,14 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Document.cs" />
+    <Compile Include="Models\DocumentServiceResult.cs" />
     <Compile Include="Models\Note.cs" />
     <Compile Include="Models\NoteDocReaderResult.cs" />
     <Compile Include="Models\NoteDocResult.cs" />
     <Compile Include="Factories\NoteDocDependencyFactory.cs" />
+    <Compile Include="Models\NoteDocServiceResult.cs" />
+    <Compile Include="Parsers\NoteDocParser.cs" />
+    <Compile Include="Parsers\NoteDocResultParser.cs" />
     <Compile Include="Readers\NoteDocReader.cs" />
     <Compile Include="ReceiveNoteService.svc.cs">
       <DependentUpon>ReceiveNoteService.svc</DependentUpon>

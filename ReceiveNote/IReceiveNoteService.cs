@@ -28,6 +28,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.ServiceModel;
+using ReceiveNote.Models;
+
 namespace Adeptive.ResWare.Services
 {
     using System.Runtime.Serialization;
@@ -372,4 +377,17 @@ public interface IReceiveNoteService
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReceiveNoteService/ReceiveNote", ReplyAction="http://tempuri.org/IReceiveNoteService/ReceiveNoteResponse")]
     Adeptive.ResWare.Services.ReceiveNoteResponse ReceiveNote(Adeptive.ResWare.Services.ReceiveNoteData NoteData);
+
+    [OperationContract]
+    ICollection<NoteDocServiceResult> GetAllNotesAndDocs();
+
+    [OperationContract]
+    NoteDocServiceResult GetNoteDocById(Guid id);
+
+    [OperationContract]
+    int DeleteNoteDocById(Guid id);
+
+    [OperationContract]
+    int UpdateNoteDoc(NoteDocServiceResult noteDocServiceResult);
+
 }
