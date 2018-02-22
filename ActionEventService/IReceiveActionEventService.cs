@@ -8,6 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.ServiceModel;
+using ActionEventService.Models;
+
 namespace Adeptive.ResWare.Services
 {
     using System.Runtime.Serialization;
@@ -148,4 +153,16 @@ public interface IReceiveActionEventService
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReceiveActionEventService/ReceiveActionEvent", ReplyAction="http://tempuri.org/IReceiveActionEventService/ReceiveActionEventResponse")]
     Adeptive.ResWare.Services.ReceiveActionEventResponse ReceiveActionEvent(Adeptive.ResWare.Services.ReceiveActionEventData data);
+
+    [OperationContract]
+    ICollection<ActionEventServiceResult> GetAllActionEvents();
+
+    [OperationContract]
+    ActionEventServiceResult GetActionEventById(Guid id);
+
+    [OperationContract]
+    int DeleteActionEventById(Guid id);
+
+    [OperationContract]
+    int UpdateActionEvent(ActionEventServiceResult actionEventServiceResult);
 }

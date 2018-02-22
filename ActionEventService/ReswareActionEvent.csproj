@@ -113,7 +113,9 @@
     <Compile Include="Factories\ActionEventDependencyFactory.cs" />
     <Compile Include="IReceiveActionEventService.cs" />
     <Compile Include="Managers\ActionEventManager.cs" />
+    <Compile Include="Managers\ActionEventServiceResultManager.cs" />
     <Compile Include="Managers\IActionEventManager.cs" />
+    <Compile Include="Managers\IActionEventServiceResultManager.cs" />
     <Compile Include="Migrations\201802201928306_ActionEventInit.cs" />
     <Compile Include="Migrations\201802201928306_ActionEventInit.Designer.cs">
       <DependentUpon>201802201928306_ActionEventInit.cs</DependentUpon>
@@ -130,6 +132,9 @@
     <Compile Include="Models\ActionEvent.cs" />
     <Compile Include="Models\ActionEventReaderResult.cs" />
     <Compile Include="Models\ActionEventResult.cs" />
+    <Compile Include="Models\ActionEventServiceResult.cs" />
+    <Compile Include="Parsers\ActionEventParser.cs" />
+    <Compile Include="Parsers\ActionEventResultParser.cs" />
     <Compile Include="ReceiveActionEventService.svc.cs">
       <DependentUpon>ReceiveActionEventService.svc</DependentUpon>
     </Compile>

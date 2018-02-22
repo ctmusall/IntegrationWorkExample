@@ -1,4 +1,5 @@
 ﻿using ActionEventService.Managers;
+using ActionEventService.Parsers;
 using ActionEventService.Repositories;
 using Unity;
 
@@ -50,6 +51,9 @@ namespace ActionEventService.Factories
             container.RegisterType<IActionEventManager, ActionEventManager>();
             container.RegisterType<IReswareActionEventRepository, ReswareActionEventRepository>();
             container.RegisterType<ActionEventReader>();
+            container.RegisterType<ActionEventParser>();
+            container.RegisterType<ActionEventResultParser>();
+            container.RegisterType<IActionEventServiceResultManager, ActionEventServiceResultManager>();
         }
     }
 }
