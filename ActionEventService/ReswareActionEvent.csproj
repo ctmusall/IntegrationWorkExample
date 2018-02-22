@@ -122,6 +122,10 @@
     <Compile Include="Migrations\201802201929180_ActionEventCreatedDateTime.Designer.cs">
       <DependentUpon>201802201929180_ActionEventCreatedDateTime.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802221258559_AddActionCompletedField.cs" />
+    <Compile Include="Migrations\201802221258559_AddActionCompletedField.Designer.cs">
+      <DependentUpon>201802221258559_AddActionCompletedField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActionEvent.cs" />
     <Compile Include="Models\ActionEventReaderResult.cs" />
@@ -153,6 +157,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802201929180_ActionEventCreatedDateTime.resx">
       <DependentUpon>201802201929180_ActionEventCreatedDateTime.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802221258559_AddActionCompletedField.resx">
+      <DependentUpon>201802221258559_AddActionCompletedField.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

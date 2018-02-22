@@ -12,5 +12,7 @@ namespace ActionEventService.Models
         public string FileNumber { get; set; }
         public string ActionEventCode { get; set; }
         public DateTime CreatedDateTime { get; set; }
+        public bool ActionCompleted { get; set; }
+        public DateTime? ActionCompletedDateTime { get; set; }
     }
 }
