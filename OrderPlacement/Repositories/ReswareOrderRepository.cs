@@ -67,10 +67,7 @@ namespace OrderPlacement.Repositories
 
         public int UpdateOrder(Order updatedOrder)
         {
-            var order = _reswareOrderContext.Orders
-                .Include(o => o.PropertyAddress)
-                .Include(o => o.BuyerAndSellers)
-                .Include(o => o.BuyerAndSellers.Select(bs => bs.Address)).FirstOrDefault(o => o.Id == updatedOrder.Id);
+            var order = _reswareOrderContext.Orders.FirstOrDefault(o => o.Id == updatedOrder.Id);
 
             if (order == null) return 0;
 
