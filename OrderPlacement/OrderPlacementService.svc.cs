@@ -22,7 +22,6 @@ namespace OrderPlacement
             _orderResultManager = orderResultManager;
         }
 
-        // POST
         public PlaceOrderResponse PlaceOrder(int ClientID, int OfficeID, string FileNumber, OrderPlacementServicePropertyAddress PropertyAddress, int ClientsClientID, int TransactionTypeID, int ProductID, int UnderwriterID, int PrimaryContactID, DateTime? EstimatedSettlementDate, decimal SalesPrice, decimal LoanAmount, string LoanNumber, decimal CashOut, string[] PayoffMortgagees, int[] OptionalActionGroupIDs, OrderPlacementServicePartner Lender, bool IsLender, OrderPlacementServiceBuyerSeller[] Buyers, OrderPlacementServiceBuyerSeller[] Sellers, OrderPlacementServicePartner[] AdditionalPartners, OrderPlacementServicePartner ClientsClient, string Notes, bool RequestAQUADecision, decimal? OriginalDebtAmount, bool IsWholesaleOrder, string CPLCompany, string CPLDivision, string CPLStreet1, string CPLStreet2, string CPLCity, string CPLState, string CPLZip, string AssetNumber, OrderPlacementServicePriorPolicy PriorLenderPolicy, OrderPlacementServicePriorPolicy PriorOwnerPolicy, OrderPlacementServiceBuyerPayoff[] BuyerPayoffs, OrderPlacementServiceSellerPayoff[] SellerPayoffs)
         {
             try
@@ -62,7 +61,6 @@ namespace OrderPlacement
             }
         }
 
-        // GET
         public ICollection<OrderResult> GetAllOrders()
         {
             try
@@ -75,7 +73,6 @@ namespace OrderPlacement
             }
         }
 
-        // GET
         public OrderResult GetOrderById(Guid id)
         {
             try
@@ -88,7 +85,6 @@ namespace OrderPlacement
             }
         }
 
-        // DELETE
         public int DeleteOrderById(Guid id)
         {
             try
@@ -101,7 +97,6 @@ namespace OrderPlacement
             }
         }
 
-        // PUT
         public int UpdateOrder(OrderResult orderResult)
         {
             try
