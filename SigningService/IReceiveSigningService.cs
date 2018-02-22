@@ -28,6 +28,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
+using System.ServiceModel;
+using SigningService.Models;
+
 namespace Adeptive.ResWare.Services
 {
     using System.Runtime.Serialization;
@@ -642,4 +648,16 @@ public interface IReceiveSigningService
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReceiveSigningService/ReceiveSigning", ReplyAction="http://tempuri.org/IReceiveSigningService/ReceiveSigningResponse")]
     Adeptive.ResWare.Services.ReceiveSigningResponse ReceiveSigning(Adeptive.ResWare.Services.ReceiveSigningData SigningData);
+
+    [OperationContract]
+    ICollection<SigningPartyServiceResult> GetAllSignings();
+
+    [OperationContract]
+    SigningPartyServiceResult GetSigningById(Guid id);
+
+    [OperationContract]
+    int DeleteSigningById(Guid id);
+
+    [OperationContract]
+    int UpdateSigning(SigningPartyServiceResult signingPartyResult);
 }

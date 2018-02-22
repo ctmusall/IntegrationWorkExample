@@ -1,5 +1,6 @@
 ﻿using SigningService.Data;
 using SigningService.Managers;
+using SigningService.Parsers;
 using SigningService.Readers;
 using SigningService.Repositories;
 using Unity;
@@ -53,6 +54,9 @@ namespace SigningService.Factories
             container.RegisterType<SigningReader>();
             container.RegisterType<IReswareSigningRepository, ReswareSigningRepository>();
             container.RegisterType<ReswareSigningContext>();
+            container.RegisterType<ISigningServiceResultManager, SigningServiceResultManager>();
+            container.RegisterType<SigningResultParser>();
+            container.RegisterType<SigningParser>();
         }
     }
 }

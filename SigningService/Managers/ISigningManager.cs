@@ -5,6 +5,6 @@ namespace SigningService.Managers
 {
     public interface ISigningManager
     {
-        SigningResult PlaceSigning(ReceiveSigningData receiveSigningData);
+        SigningManagerResult PlaceSigning(ReceiveSigningData receiveSigningData);
     }
 }

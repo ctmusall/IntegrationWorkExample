@@ -62,7 +62,8 @@ namespace OrderPlacement.Parsers
                 State = propertyAddress.State,
                 AddressStreetInfo = propertyAddress.AddressStreetInfo,
                 Description = propertyAddress.Description,
-                County = propertyAddress.County
+                County = propertyAddress.County,
+                OrderId = propertyAddress.OrderId
             }).ToList();
         }
 

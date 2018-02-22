@@ -23,19 +23,19 @@ namespace SigningService.Managers
             _reswareSigningRepository = reswareSigningRepository;
         }
 
-        public SigningResult PlaceSigning(ReceiveSigningData receiveSigningData)
+        public SigningManagerResult PlaceSigning(ReceiveSigningData receiveSigningData)
         {
             try
             {
                 var signingReaderResult = _signingReader.ParseInput(receiveSigningData);
-                return new SigningResult
+                return new SigningManagerResult
                 {
                     Result = _reswareSigningRepository.SaveReaderResult(signingReaderResult) 
                 };
             }
             catch (Exception ex)
             {
-                return new SigningResult
+                return new SigningManagerResult
                 {
                     Result = -1,
                     Message = $"ERROR! Message: {ex.Message} \n\n Inner Exception: {ex.InnerException} \n\n Stack Trace: {ex.StackTrace}"
