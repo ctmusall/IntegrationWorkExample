@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReswareSigning", "SigningSe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReswareActionEvent", "ActionEventService\ReswareActionEvent.csproj", "{06839BDB-F490-4E96-B347-8148B43D0CAE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReswareOrderMonitorService", "ReswareOrderMonitorService\ReswareOrderMonitorService.csproj", "{43DBA399-2E78-44DD-A2F8-8529C7E9A5AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -169,6 +171,22 @@ Global
 		{06839BDB-F490-4E96-B347-8148B43D0CAE}.Release|x64.Build.0 = Release|Any CPU
 		{06839BDB-F490-4E96-B347-8148B43D0CAE}.Release|x86.ActiveCfg = Release|Any CPU
 		{06839BDB-F490-4E96-B347-8148B43D0CAE}.Release|x86.Build.0 = Release|Any CPU
+		{43DBA399-2E78-44DD-A2F8-8529C7E9A5AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43DBA399-2E78-44DD-A2F8-8529C7E9A5AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43DBA399-2E78-44DD-A2F8-8529C7E9A5AB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{43DBA399-2E78-44DD-A2F8-8529C7E9A5AB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{43DBA399-2E78-44DD-A2F8-8529C7E9A5AB}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{43DBA399-2E78-44DD-A2F8-8529C7E9A5AB}.Debug|x64.Build.0 = Debug|Any CPU
+		{43DBA399-2E78-44DD-A2F8-8529C7E9A5AB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{43DBA399-2E78-44DD-A2F8-8529C7E9A5AB}.Debug|x86.Build.0 = Debug|Any CPU
+		{43DBA399-2E78-44DD-A2F8-8529C7E9A5AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43DBA399-2E78-44DD-A2F8-8529C7E9A5AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43DBA399-2E78-44DD-A2F8-8529C7E9A5AB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{43DBA399-2E78-44DD-A2F8-8529C7E9A5AB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{43DBA399-2E78-44DD-A2F8-8529C7E9A5AB}.Release|x64.ActiveCfg = Release|Any CPU
+		{43DBA399-2E78-44DD-A2F8-8529C7E9A5AB}.Release|x64.Build.0 = Release|Any CPU
+		{43DBA399-2E78-44DD-A2F8-8529C7E9A5AB}.Release|x86.ActiveCfg = Release|Any CPU
+		{43DBA399-2E78-44DD-A2F8-8529C7E9A5AB}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
