@@ -1,11 +1,12 @@
-﻿using Unity;
+﻿using System.Timers;
+using Unity;
 
 namespace ReswareOrderMonitorService.Factories
 {
     /// <summary>
     /// Simple wrapper for unity resolution.
     /// </summary>
-    internal class OrderMonitorServiceDependencyFactory
+    internal class ReswareOrderDependencyFactory
     {
         /// <summary>
         /// Public reference to the unity container which will 
@@ -18,7 +19,7 @@ namespace ReswareOrderMonitorService.Factories
         /// Static constructor for DependencyFactory which will 
         /// initialize the unity container.
         /// </summary>
-        static OrderMonitorServiceDependencyFactory()
+        static ReswareOrderDependencyFactory()
         {
             var container = new UnityContainer();
 
@@ -45,7 +46,8 @@ namespace ReswareOrderMonitorService.Factories
 
         private static void RegisterTypes(IUnityContainer container)
         {
-
+            container.RegisterType<ReswareOrder>();
+            container.RegisterType<Timer>();
         }
     }
 }
