@@ -53,11 +53,9 @@ namespace ReswareOrderMonitorService.Factories
             container.RegisterType<ReswareOrder>();
             container.RegisterType<Timer>();
             container.RegisterType<IOrderMonitor, ReswareOrderMonitor>();
-            container.RegisterType<ActionEventReaderFactory>();
             container.RegisterType<ReceiveActionEventServiceClient>();
             container.RegisterType<OrderPlacementServiceClient>();
             container.RegisterType<IActionEventReader, ActionEventReader>();
-            container.RegisterType<IActionEventReader, LinearActionEventReader>();
         }
     }
 }

@@ -80,13 +80,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Factories\ActionEventReaderFactory.cs" />
+    <Compile Include="ActionEvents\ActionEvent.cs" />
+    <Compile Include="ActionEvents\ClosingCompleted.cs" />
+    <Compile Include="ActionEvents\Linear\LinearClosingCompleted.cs" />
+    <Compile Include="ActionEvents\Linear\LinearNotaryDocumentsPickedUp.cs" />
+    <Compile Include="ActionEvents\Linear\LinearReceiveFundingAuth.cs" />
+    <Compile Include="ActionEvents\Linear\LinearRequestClosing.cs" />
+    <Compile Include="ActionEvents\Linear\LinearSchedulingReschedule.cs" />
+    <Compile Include="ActionEvents\NotaryDocumentsPickedUp.cs" />
+    <Compile Include="ActionEvents\ReceiveFundingAuth.cs" />
+    <Compile Include="ActionEvents\RequestClosing.cs" />
+    <Compile Include="ActionEvents\SchedulingReschedule.cs" />
+    <Compile Include="Factories\ActionEventFactory.cs" />
+    <Compile Include="Factories\LinearActionEventFactory.cs" />
     <Compile Include="Factories\ReswareOrderDependencyFactory.cs" />
+    <Compile Include="Managers\ClientActionEventManager.cs" />
+    <Compile Include="Parsers\ActionEventParser.cs" />
+    <Compile Include="Parsers\IActionEventParser.cs" />
     <Compile Include="Readers\ActionEventReader.cs" />
     <Compile Include="Readers\IActionEventReader.cs" />
     <Compile Include="Monitors\IOrderMonitor.cs" />
     <Compile Include="Monitors\ReswareOrderMonitor.cs" />
-    <Compile Include="Readers\LinearActionEventReader.cs" />
     <Compile Include="ReswareOrder.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -262,6 +276,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
