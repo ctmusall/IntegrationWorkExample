@@ -30,7 +30,7 @@ namespace ReswareOrderMonitorService
 
         private static void TimerElapsed(object sender, ElapsedEventArgs elapsedEventArgs)
         {
-            ReswareOrderDependencyFactory.Resolve<IReswareOrderMonitor>().MonitorOrders();
+            ReswareOrderDependencyFactory.Resolve<IOrderMonitor>().MonitorOrders();
         }
 
         protected override void OnStop()

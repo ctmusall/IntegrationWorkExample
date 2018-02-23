@@ -1,6 +1,6 @@
 ﻿namespace ReswareOrderMonitorService.Monitors
 {
-    internal interface IReswareOrderMonitor
+    internal interface IOrderMonitor
     {
         void MonitorOrders();
     }

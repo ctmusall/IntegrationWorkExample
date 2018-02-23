@@ -41,6 +41,8 @@
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -79,7 +81,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Factories\ReswareOrderDependencyFactory.cs" />
-    <Compile Include="Monitors\IReswareOrderMonitor.cs" />
+    <Compile Include="Monitors\IOrderMonitor.cs" />
     <Compile Include="Monitors\ReswareOrderMonitor.cs" />
     <Compile Include="ReswareOrder.cs">
       <SubType>Component</SubType>
@@ -89,13 +91,172 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\ReswareActionEvent\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ReswareNoteDocs\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ReswareOrders\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ReswareSigning\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Service References\ReswareActionEvent\ReceiveActionEventService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReswareActionEvent\ReceiveActionEventService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReswareActionEvent\ReceiveActionEventService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReswareActionEvent\ReceiveActionEventService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReswareActionEvent\ReswareOrderMonitorService.ReswareActionEvent.ActionEventServiceResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ReswareActionEvent\ReswareOrderMonitorService.ReswareActionEvent.ReceiveActionEventResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ReswareActionEvent\Service.wsdl" />
+    <None Include="Service References\ReswareNoteDocs\ReceiveNoteService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReswareNoteDocs\ReceiveNoteService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReswareNoteDocs\ReceiveNoteService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReswareNoteDocs\ReceiveNoteService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReswareNoteDocs\ReswareOrderMonitorService.ReswareNoteDocs.NoteDocServiceResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ReswareNoteDocs\ReswareOrderMonitorService.ReswareNoteDocs.ReceiveNoteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ReswareNoteDocs\Service.wsdl" />
+    <None Include="Service References\ReswareOrders\OrderPlacementService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReswareOrders\OrderPlacementService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReswareOrders\OrderPlacementService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReswareOrders\OrderPlacementService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReswareOrders\OrderPlacementService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReswareOrders\OrderPlacementService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReswareOrders\OrderPlacementService6.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReswareOrders\ReswareOrderMonitorService.ReswareOrders.OrderResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ReswareOrders\ReswareOrderMonitorService.ReswareOrders.PlaceOrderResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ReswareOrders\Service.wsdl" />
+    <None Include="Service References\ReswareSigning\ReswareOrderMonitorService.ReswareSigning.ReceiveSigningResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ReswareSigning\ReswareOrderMonitorService.ReswareSigning.SigningServiceResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ReswareSigning\Service.wsdl" />
+    <None Include="Service References\ReswareSigning\SigningService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReswareSigning\SigningService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReswareSigning\SigningService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ReswareSigning\SigningService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ReswareActionEvent\" />
+    <WCFMetadataStorage Include="Service References\ReswareNoteDocs\" />
+    <WCFMetadataStorage Include="Service References\ReswareOrders\" />
+    <WCFMetadataStorage Include="Service References\ReswareSigning\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ReswareOrders\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ReswareOrders\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ReswareOrders\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ReswareSigning\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ReswareSigning\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ReswareSigning\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ReswareNoteDocs\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ReswareNoteDocs\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ReswareNoteDocs\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ReswareActionEvent\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ReswareActionEvent\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ReswareActionEvent\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,6 +1,6 @@
 ﻿namespace ReswareOrderMonitorService.Monitors
 {
-    internal class ReswareOrderMonitor : IReswareOrderMonitor
+    internal class ReswareOrderMonitor : IOrderMonitor
     {
         public void MonitorOrders()
         {
