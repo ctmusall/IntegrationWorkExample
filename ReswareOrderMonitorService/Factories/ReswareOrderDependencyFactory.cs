@@ -1,4 +1,8 @@
 ﻿using System.Timers;
+using ReswareOrderMonitorService.Monitors;
+using ReswareOrderMonitorService.Readers;
+using ReswareOrderMonitorService.ReswareActionEvent;
+using ReswareOrderMonitorService.ReswareOrders;
 using Unity;
 
 namespace ReswareOrderMonitorService.Factories
@@ -48,6 +52,12 @@ namespace ReswareOrderMonitorService.Factories
         {
             container.RegisterType<ReswareOrder>();
             container.RegisterType<Timer>();
+            container.RegisterType<IOrderMonitor, ReswareOrderMonitor>();
+            container.RegisterType<ActionEventReaderFactory>();
+            container.RegisterType<ReceiveActionEventServiceClient>();
+            container.RegisterType<OrderPlacementServiceClient>();
+            container.RegisterType<IActionEventReader, ActionEventReader>();
+            container.RegisterType<IActionEventReader, LinearActionEventReader>();
         }
     }
 }

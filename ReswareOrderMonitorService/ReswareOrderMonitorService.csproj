@@ -80,9 +80,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Factories\ActionEventReaderFactory.cs" />
     <Compile Include="Factories\ReswareOrderDependencyFactory.cs" />
+    <Compile Include="Readers\ActionEventReader.cs" />
+    <Compile Include="Readers\IActionEventReader.cs" />
     <Compile Include="Monitors\IOrderMonitor.cs" />
     <Compile Include="Monitors\ReswareOrderMonitor.cs" />
+    <Compile Include="Readers\LinearActionEventReader.cs" />
     <Compile Include="ReswareOrder.cs">
       <SubType>Component</SubType>
     </Compile>
