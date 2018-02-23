@@ -12,7 +12,7 @@ namespace ReswareOrderMonitorService
             {
                 var servicesToRun = new ServiceBase[]
                 {
-                    new OrderMonitorService()
+                    new ReswareOrderMonitor()
                 };
                 ServiceBase.Run(servicesToRun);
             }

@@ -78,11 +78,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="OrderMonitorService.cs">
+    <Compile Include="Factories\OrderMonitorServiceDependencyFactory.cs" />
+    <Compile Include="ReswareOrderMonitor.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="OrderMonitorService.Designer.cs">
-      <DependentUpon>OrderMonitorService.cs</DependentUpon>
+    <Compile Include="ReswareOrderMonitor.Designer.cs">
+      <DependentUpon>ReswareOrderMonitor.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -90,6 +91,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

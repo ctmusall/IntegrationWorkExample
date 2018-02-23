@@ -2,9 +2,9 @@
 
 namespace ReswareOrderMonitorService
 {
-    internal partial class OrderMonitorService : ServiceBase
+    internal partial class ReswareOrderMonitor : ServiceBase
     {
-        internal OrderMonitorService()
+        internal ReswareOrderMonitor()
         {
             InitializeComponent();
         }
