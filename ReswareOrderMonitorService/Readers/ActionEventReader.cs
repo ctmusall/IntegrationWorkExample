@@ -33,8 +33,7 @@ namespace ReswareOrderMonitorService.Readers
 
                 actionEvents.ForEach(actionEvent =>
                 {
-                    var result = _actionEventParser.ParseActionEvent(order.CustomerId).ResolveActionEvent(actionEvent)
-                        .PerformAction(order);
+                    var result = _actionEventParser.ParseActionEvent(order.CustomerId).ResolveActionEvent(actionEvent).PerformAction(order);
                     if (!result) return;
                     actionEvent.ActionCompleted = true;
                     actionEvent.ActionCompletedDateTime = DateTime.Now;
