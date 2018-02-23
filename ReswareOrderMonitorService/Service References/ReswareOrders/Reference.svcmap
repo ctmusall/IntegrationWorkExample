@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5bdfe531-8e97-4dca-aa6a-8f5237c3ee9f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>true</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://pcnd6.pcnclosings.com/OrderPlacementService.svc?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="OrderPlacementService.xsd" MetadataType="Schema" ID="2785c023-630f-4296-9aa3-f045ec4e88da" SourceId="1" SourceUrl="https://pcnd6.pcnclosings.com/OrderPlacementService.svc?xsd=xsd4" />
+    <MetadataFile FileName="OrderPlacementService1.xsd" MetadataType="Schema" ID="594e0be2-10fa-4f7a-a117-0e82b406764e" SourceId="1" SourceUrl="https://pcnd6.pcnclosings.com/OrderPlacementService.svc?xsd=xsd2" />
+    <MetadataFile FileName="OrderPlacementService2.xsd" MetadataType="Schema" ID="2262f468-6af4-47a5-ab02-0db8cf974060" SourceId="1" SourceUrl="https://pcnd6.pcnclosings.com/OrderPlacementService.svc?xsd=xsd1" />
+    <MetadataFile FileName="OrderPlacementService3.xsd" MetadataType="Schema" ID="8d958f9a-68f2-470a-aebf-9ee7898164f3" SourceId="1" SourceUrl="https://pcnd6.pcnclosings.com/OrderPlacementService.svc?xsd=xsd0" />
+    <MetadataFile FileName="OrderPlacementService4.xsd" MetadataType="Schema" ID="38f39cfb-3fb8-4349-a678-38c4559e7bac" SourceId="1" SourceUrl="https://pcnd6.pcnclosings.com/OrderPlacementService.svc?xsd=xsd6" />
+    <MetadataFile FileName="OrderPlacementService5.xsd" MetadataType="Schema" ID="15e27fcf-a68a-49e7-8ef6-25c37164a09a" SourceId="1" SourceUrl="https://pcnd6.pcnclosings.com/OrderPlacementService.svc?xsd=xsd3" />
+    <MetadataFile FileName="OrderPlacementService6.xsd" MetadataType="Schema" ID="5aeddd4d-9e9d-4548-aa4c-8b44c3f525c3" SourceId="1" SourceUrl="https://pcnd6.pcnclosings.com/OrderPlacementService.svc?xsd=xsd5" />
+    <MetadataFile FileName="Service.wsdl" MetadataType="Wsdl" ID="e4073000-9cf5-40de-bbba-1fd7212bfbab" SourceId="1" SourceUrl="https://pcnd6.pcnclosings.com/OrderPlacementService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

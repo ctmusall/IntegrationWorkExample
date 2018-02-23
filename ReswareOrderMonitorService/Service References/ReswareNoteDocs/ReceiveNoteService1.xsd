@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/ReceiveNote.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ReceiveNote.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://pcnd6.pcnclosings.com:446/ReceiveNoteService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfNoteDocServiceResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="NoteDocServiceResult" nillable="true" type="tns:NoteDocServiceResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfNoteDocServiceResult" nillable="true" type="tns:ArrayOfNoteDocServiceResult" />
+  <xs:complexType name="NoteDocServiceResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreatedDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Documents" nillable="true" type="tns:ArrayOfDocumentServiceResult" />
+      <xs:element minOccurs="0" name="FileNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="NoteBody" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NoteSubject" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Processed" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ProcessedDateTime" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="NoteDocServiceResult" nillable="true" type="tns:NoteDocServiceResult" />
+  <xs:complexType name="ArrayOfDocumentServiceResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="DocumentServiceResult" nillable="true" type="tns:DocumentServiceResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfDocumentServiceResult" nillable="true" type="tns:ArrayOfDocumentServiceResult" />
+  <xs:complexType name="DocumentServiceResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DocumentBody" nillable="true" type="xs:base64Binary" />
+      <xs:element minOccurs="0" name="DocumentTypeId" type="xs:int" />
+      <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="NoteId" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DocumentServiceResult" nillable="true" type="tns:DocumentServiceResult" />
+</xs:schema>

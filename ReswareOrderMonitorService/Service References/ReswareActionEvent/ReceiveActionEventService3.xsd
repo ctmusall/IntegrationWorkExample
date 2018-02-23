@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Adeptive.ResWare.Services" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Adeptive.ResWare.Services" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="ReceiveActionEventData">
+    <xs:sequence>
+      <xs:element name="ActionEventCode" nillable="true" type="xs:string" />
+      <xs:element name="FileNumber" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReceiveActionEventData" nillable="true" type="tns:ReceiveActionEventData" />
+  <xs:complexType name="ReceiveActionEventResponse">
+    <xs:sequence>
+      <xs:element name="Message" nillable="true" type="xs:string" />
+      <xs:element name="ResponseCode" type="tns:ReceiveActionEventResponseCode" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ReceiveActionEventResponse" nillable="true" type="tns:ReceiveActionEventResponse" />
+  <xs:simpleType name="ReceiveActionEventResponseCode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SUCCESS" />
+      <xs:enumeration value="INVALID_LOGIN" />
+      <xs:enumeration value="INVALID_FILE_NUMBER" />
+      <xs:enumeration value="DOWN_FOR_MAINTENANCE" />
+      <xs:enumeration value="UNEXPECTED_ERROR" />
+      <xs:enumeration value="ACTION_EVENT_NOT_FOUND" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ReceiveActionEventResponseCode" nillable="true" type="tns:ReceiveActionEventResponseCode" />
+</xs:schema>
