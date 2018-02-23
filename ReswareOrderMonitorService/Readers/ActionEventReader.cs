@@ -20,10 +20,5 @@ namespace ReswareOrderMonitorService.Readers
         }
 
         public abstract bool CompleteAction(OrderResult order);
-
-        internal virtual int UpdateActionEvent(ActionEventServiceResult actionEvent)
-        {
-            return _receiveActionEventServiceClient.UpdateActionEvent(actionEvent);
-        }
     }
 }
