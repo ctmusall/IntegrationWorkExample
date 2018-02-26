@@ -1,5 +1,4 @@
-﻿using System.Timers;
-using ReswareOrderMonitorService.Mirth;
+﻿using ReswareOrderMonitorService.Mirth;
 using ReswareOrderMonitorService.Monitors;
 using ReswareOrderMonitorService.Readers;
 using ReswareOrderMonitorService.ReswareActionEvent;
@@ -52,14 +51,12 @@ namespace ReswareOrderMonitorService.Factories
 
         private static void RegisterTypes(IUnityContainer container)
         {
-            container.RegisterType<ReswareOrder>();
-            container.RegisterType<Timer>();
             container.RegisterType<IOrderMonitor, ReswareOrderMonitor>();
             container.RegisterType<ReceiveActionEventServiceClient>();
             container.RegisterType<OrderPlacementServiceClient>();
             container.RegisterType<IActionEventReader, ActionEventReader>();
             container.RegisterType<ReceiveSigningServiceClient>();
-            container.RegisterType<MirthServiceClient>();
+            container.RegisterType<IMirthServiceClient, MirthServiceClient>();
         }
     }
 }

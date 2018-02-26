@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.ServiceProcess;
-using ReswareOrderMonitorService.Factories;
+using System.Timers;
 
 namespace ReswareOrderMonitorService
 {
@@ -13,7 +13,7 @@ namespace ReswareOrderMonitorService
             {
                 var servicesToRun = new ServiceBase[]
                 {
-                    ReswareOrderDependencyFactory.Resolve<ReswareOrder>()
+                    new ReswareOrder(new Timer()) 
                 };
                 ServiceBase.Run(servicesToRun);
             }

@@ -95,11 +95,18 @@
     <Compile Include="Factories\ActionEventFactory.cs" />
     <Compile Include="Factories\LinearActionEventFactory.cs" />
     <Compile Include="Factories\ReswareOrderDependencyFactory.cs" />
+    <Compile Include="Mirth\IMirthServiceClient.cs" />
     <Compile Include="Mirth\MirthServiceClient.cs" />
     <Compile Include="Models\RequestClosingMessage.cs" />
     <Compile Include="Managers\ClientActionEventManager.cs" />
     <Compile Include="Parsers\ActionEventFactoryParser.cs" />
     <Compile Include="Parsers\IActionEventFactoryParser.cs" />
+    <Compile Include="ProjectInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ProjectInstaller.Designer.cs">
+      <DependentUpon>ProjectInstaller.cs</DependentUpon>
+    </Compile>
     <Compile Include="Readers\ActionEventReader.cs" />
     <Compile Include="Readers\IActionEventReader.cs" />
     <Compile Include="Monitors\IOrderMonitor.cs" />
@@ -279,7 +286,11 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="ProjectInstaller.resx">
+      <DependentUpon>ProjectInstaller.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

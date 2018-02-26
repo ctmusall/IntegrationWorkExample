@@ -6,25 +6,17 @@ using System.Text;
 
 namespace ReswareOrderMonitorService.Mirth
 {
-    internal class MirthServiceClient
+    internal class MirthServiceClient : IMirthServiceClient
     {
-        private readonly int _port;
-        private readonly string _ip;
-        internal MirthServiceClient(int port, string ip)
+        public bool SendMessageToMirth(string message, int port, string ip)
         {
-            _port = port;
-            _ip = ip;
-        }
-
-        internal bool SendMessageToMirth(string message)
-        {
-            var dataToSend = Encoding.ASCII.GetBytes(message);
-            var socket = new TcpClient(_ip, _port);
-
             try
             {
+                var dataToSend = Encoding.ASCII.GetBytes(message);
+                var socket = new TcpClient(ip, port);
+
                 var stream = socket.GetStream();
-                var headerBytes = BuildMessageHeader(dataToSend);
+                var headerBytes = BuildMessageHeader(dataToSend, port);
 
                 stream.Write(headerBytes, 0, headerBytes.Length);
                 stream.Write(dataToSend, 0, dataToSend.Length);
@@ -39,11 +31,11 @@ namespace ReswareOrderMonitorService.Mirth
             }
         }
 
-        private byte[] BuildMessageHeader(IReadOnlyCollection<byte> dataToSend)
+        private static byte[] BuildMessageHeader(IReadOnlyCollection<byte> dataToSend, int port)
         {
             var sb = new StringBuilder();
             sb.Append("POST / HTTP/1.1\n");
-            sb.Append("Host: webservices.pcnclosings.com:" + _port + "\n");
+            sb.Append("Host: webservices.pcnclosings.com:" + port + "\n");
             sb.Append($"Content-Length: {dataToSend.Count}\n");
             sb.Append("Expect: 100-continue\n");
             sb.Append("Connection: Keep-Alive\n\n");

@@ -1,4 +1,5 @@
 ﻿using System;
+using ReswareOrderMonitorService.Common;
 using ReswareOrderMonitorService.Models;
 using ReswareOrderMonitorService.ReswareOrders;
 
@@ -33,6 +34,11 @@ namespace ReswareOrderMonitorService.ActionEvents.Linear
         internal override void AssignServices(RequestClosingMessage requestClosingMessage)
         {
             // TODO - Based on product/state -- waiting for requirements
+        }
+
+        internal override bool SendUpdate(RequestClosingMessage requestClosingMessage)
+        {
+            return MirthServiceClient.SendMessageToMirth(ModelSerializer.SerializeXml(requestClosingMessage), 3412, "10.250.161.135");
         }
     }
 }

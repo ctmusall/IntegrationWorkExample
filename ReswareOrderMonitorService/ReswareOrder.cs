@@ -9,7 +9,7 @@ namespace ReswareOrderMonitorService
     {
         private readonly Timer _timer;
 
-        internal ReswareOrder() : this(ReswareOrderDependencyFactory.Resolve<Timer>())
+        internal ReswareOrder() : this(new Timer())
         {
             InitializeComponent();
         }

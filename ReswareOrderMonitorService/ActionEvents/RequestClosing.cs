@@ -1,31 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using ReswareOrderMonitorService.Common;
 using ReswareOrderMonitorService.Factories;
 using ReswareOrderMonitorService.Mirth;
 using ReswareOrderMonitorService.Models;
 using ReswareOrderMonitorService.ReswareOrders;
 using ReswareOrderMonitorService.ReswareSigning;
-using Unity.Injection;
-using Unity.Resolution;
 
 namespace ReswareOrderMonitorService.ActionEvents
 {
     internal abstract class RequestClosing : ActionEvent
     {
         private readonly ReceiveSigningServiceClient _signingServiceClient;
-        private readonly MirthServiceClient _mirthServiceClient;
+        protected internal readonly IMirthServiceClient MirthServiceClient;
 
-        protected internal RequestClosing() : this(ReswareOrderDependencyFactory.Resolve<ReceiveSigningServiceClient>(), ReswareOrderDependencyFactory.Resolve<MirthServiceClient>()) { }
+        protected internal RequestClosing() : this(ReswareOrderDependencyFactory.Resolve<ReceiveSigningServiceClient>(), ReswareOrderDependencyFactory.Resolve<IMirthServiceClient>()) { }
 
-        protected internal RequestClosing(ReceiveSigningServiceClient signingServiceClient, MirthServiceClient mirthServiceClient)
+        protected internal RequestClosing(ReceiveSigningServiceClient signingServiceClient, IMirthServiceClient mirthServiceClient)
         {
             _signingServiceClient = signingServiceClient;
-            _mirthServiceClient = mirthServiceClient;
+            MirthServiceClient = mirthServiceClient;
         }
 
-        protected internal void AssignClosingInformation(RequestClosingMessage requestClosingMessage, string fileNumber)
+        internal virtual void AssignClosingInformation(RequestClosingMessage requestClosingMessage, string fileNumber)
         {
             var signing = _signingServiceClient.GetAllSignings().OrderByDescending(s => s.CreatedDateTime).FirstOrDefault(s => string.Equals(s.FileNumber, fileNumber, StringComparison.CurrentCultureIgnoreCase));
 
@@ -44,7 +41,7 @@ namespace ReswareOrderMonitorService.ActionEvents
             requestClosingMessage.ClosingCounty = signing.ClosingCounty;
         }
 
-        protected internal static void AssignBorrowerInformation(RequestClosingMessage requestClosingMessage, ICollection<BuyerSellerResult> buyerSellerResults)
+        internal virtual void AssignBorrowerInformation(RequestClosingMessage requestClosingMessage, ICollection<BuyerSellerResult> buyerSellerResults)
         {
             var borrower = buyerSellerResults.FirstOrDefault(b => b.Type == BuyerSellerEnum.Buyer && !b.Spouse);
 
@@ -79,9 +76,6 @@ namespace ReswareOrderMonitorService.ActionEvents
 
         internal abstract void AssignServices(RequestClosingMessage requestClosingMessage);
 
-        internal virtual bool SendUpdate(RequestClosingMessage requestClosingMessage)
-        {
-            return _mirthServiceClient.SendMessageToMirth(ModelSerializer.SerializeXml(requestClosingMessage));
-        }
+        internal abstract bool SendUpdate(RequestClosingMessage requestClosingMessage);
     }
 }
