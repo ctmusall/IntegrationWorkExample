@@ -10,7 +10,7 @@ namespace OrderPlacement.Readers
         private const string DeliveryMethod = "eDoc";
         private const string CustomerId = "L17100";
 
-        internal override Order MapReswareOrder(string fileNumber, OrderPlacementServicePartner lender, DateTime? estimatedSettlementDate, int productId)
+        internal override Order MapReswareOrder(string fileNumber, OrderPlacementServicePartner lender, DateTime? estimatedSettlementDate, int productId, string notes)
         {
             // TODO - Product(Need Refinance, Purchase, and Investment Property ID) map based on what Keith and the boyz supplies
             return new Order
@@ -20,6 +20,7 @@ namespace OrderPlacement.Readers
                 CustomerContact = CustomerContact,
                 LenderName = lender.Name,
                 // Product = MapProduct(),
+                Notes = notes,
                 ClosingDateTime = estimatedSettlementDate,
                 DeliveryMethod = DeliveryMethod,
                 CreatedDateTime = DateTime.Now,

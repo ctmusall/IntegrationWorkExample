@@ -20,6 +20,7 @@ namespace OrderPlacement.Parsers
                 DeliveryMethod = orderResult.DeliveryMethod,
                 LenderName = orderResult.LenderName,
                 Product = orderResult.Product,
+                Notes = orderResult.Notes,
                 PropertyAddress = ParsePropertyAddress(orderResult.PropertyAddress)
             };
         }

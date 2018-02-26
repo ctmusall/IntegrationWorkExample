@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using OrderPlacement.Factories;
 using OrderPlacement.Models;
 using OrderPlacement.Repositories;
@@ -22,11 +21,11 @@ namespace OrderPlacement.Managers
         }
 
         public PlaceOrderResult PlaceOrder(int clientId, string fileNumber, OrderPlacementServicePropertyAddress propertyAddress, int productId, DateTime? estimatedSettlementDate,
-            OrderPlacementServicePartner lender, OrderPlacementServiceBuyerSeller[] buyers, OrderPlacementServiceBuyerSeller[] sellers)
+            OrderPlacementServicePartner lender, OrderPlacementServiceBuyerSeller[] buyers, OrderPlacementServiceBuyerSeller[] sellers, string notes)
         {
             try
             {
-                var readerResult = _reswareReaderFactory.ResolveReader(clientId).ParseInput(fileNumber, propertyAddress, productId, estimatedSettlementDate, lender, buyers, sellers);
+                var readerResult = _reswareReaderFactory.ResolveReader(clientId).ParseInput(fileNumber, propertyAddress, productId, estimatedSettlementDate, lender, buyers, sellers, notes);
 
                 return new PlaceOrderResult
                 {

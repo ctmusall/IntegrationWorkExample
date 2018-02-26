@@ -26,7 +26,7 @@ namespace OrderPlacement
         {
             try
             {
-                var placeOrderResult = _orderPlacementManager.PlaceOrder(ClientID, FileNumber, PropertyAddress, ProductID, EstimatedSettlementDate, Lender, Buyers, Sellers);
+                var placeOrderResult = _orderPlacementManager.PlaceOrder(ClientID, FileNumber, PropertyAddress, ProductID, EstimatedSettlementDate, Lender, Buyers, Sellers, Notes);
 
                 if (placeOrderResult.Result > 0)
                 {
