@@ -19,6 +19,7 @@
       <xs:element minOccurs="0" name="FileNumber" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" type="ser:guid" />
       <xs:element minOccurs="0" name="LenderName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Notes" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Product" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PropertyAddress" nillable="true" type="tns:ArrayOfPropertyAddressResult" />
     </xs:sequence>

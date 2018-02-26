@@ -1420,6 +1420,9 @@ namespace ReswareOrderMonitorService.ReswareOrders {
         private string LenderNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NotesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ProductField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1548,6 +1551,19 @@ namespace ReswareOrderMonitorService.ReswareOrders {
                 if ((object.ReferenceEquals(this.LenderNameField, value) != true)) {
                     this.LenderNameField = value;
                     this.RaisePropertyChanged("LenderName");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string Notes {
+            get {
+                return this.NotesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NotesField, value) != true)) {
+                    this.NotesField = value;
+                    this.RaisePropertyChanged("Notes");
                 }
             }
         }
