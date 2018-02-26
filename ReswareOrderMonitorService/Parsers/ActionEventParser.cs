@@ -4,7 +4,7 @@ namespace ReswareOrderMonitorService.Parsers
 {
     internal class ActionEventParser : IActionEventParser
     {
-        public ActionEventFactory ParseActionEvent(string customerId)
+        public ActionEventFactory ParseActionEventFactory(string customerId)
         {
             switch (customerId)
             {

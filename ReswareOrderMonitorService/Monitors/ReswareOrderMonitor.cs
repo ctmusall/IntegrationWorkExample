@@ -30,7 +30,7 @@ namespace ReswareOrderMonitorService.Monitors
                 
                 orders.ForEach(order =>
                 {
-                    var result = _actionEventReader.CompleteAction(order);
+                    var result = _actionEventReader.CompleteActions(order);
                     if (!result) return;
                     order.Processed = true;
                     order.ProcessedDateTime = DateTime.Now;

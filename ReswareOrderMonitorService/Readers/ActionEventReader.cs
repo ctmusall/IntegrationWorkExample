@@ -25,15 +25,17 @@ namespace ReswareOrderMonitorService.Readers
             _actionEventParser = actionEventParser;
         }
 
-        public bool CompleteAction(OrderResult order)
+        public bool CompleteActions(OrderResult order)
         {
             try
             {
                 var actionEvents = ActionEvents.Where(actionEvent => string.Equals(actionEvent.FileNumber,order.FileNumber, StringComparison.CurrentCultureIgnoreCase));
 
+                var actionEventFactory = _actionEventParser.ParseActionEventFactory(order.CustomerId);
+
                 actionEvents.ForEach(actionEvent =>
                 {
-                    var result = _actionEventParser.ParseActionEvent(order.CustomerId).ResolveActionEvent(actionEvent).PerformAction(order);
+                    var result = actionEventFactory.ResolveActionEvent(actionEvent).PerformAction(order);
                     if (!result) return;
                     actionEvent.ActionCompleted = true;
                     actionEvent.ActionCompletedDateTime = DateTime.Now;
