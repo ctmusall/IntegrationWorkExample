@@ -12,24 +12,29 @@ namespace ReswareOrderMonitorService.Readers
 {
     internal class ActionEventReader : IActionEventReader
     {
-        private readonly IActionEventParser _actionEventParser;
+        private readonly IActionEventFactoryParser _actionEventParser;
         private readonly ReceiveActionEventServiceClient _receiveActionEventServiceClient;
 
         internal IEnumerable<ActionEventServiceResult> ActionEvents => _receiveActionEventServiceClient.GetAllActionEvents().Where(actionEvent => !actionEvent.ActionCompleted && actionEvent.ActionCompletedDateTime == null);
 
-        internal ActionEventReader() : this(ReswareOrderDependencyFactory.Resolve<ReceiveActionEventServiceClient>(), ReswareOrderDependencyFactory.Resolve<IActionEventParser>()) { }
+        internal ActionEventReader() : this(ReswareOrderDependencyFactory.Resolve<ReceiveActionEventServiceClient>(), ReswareOrderDependencyFactory.Resolve<IActionEventFactoryParser>()) { }
 
-        internal ActionEventReader(ReceiveActionEventServiceClient receiveActionEventServiceClient, IActionEventParser actionEventParser)
+        internal ActionEventReader(ReceiveActionEventServiceClient receiveActionEventServiceClient, IActionEventFactoryParser actionEventParser)
         {
             _receiveActionEventServiceClient = receiveActionEventServiceClient;
             _actionEventParser = actionEventParser;
+        }
+
+        private IEnumerable<ActionEventServiceResult> MatchingActionEvents(OrderResult order)
+        {
+            return ActionEvents.Where(actionEvent => string.Equals(actionEvent.FileNumber, order.FileNumber, StringComparison.CurrentCultureIgnoreCase));
         }
 
         public bool CompleteActions(OrderResult order)
         {
             try
             {
-                var actionEvents = ActionEvents.Where(actionEvent => string.Equals(actionEvent.FileNumber,order.FileNumber, StringComparison.CurrentCultureIgnoreCase));
+                var actionEvents = MatchingActionEvents(order);
 
                 var actionEventFactory = _actionEventParser.ParseActionEventFactory(order.CustomerId);
 

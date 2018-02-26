@@ -95,8 +95,8 @@
     <Compile Include="Factories\LinearActionEventFactory.cs" />
     <Compile Include="Factories\ReswareOrderDependencyFactory.cs" />
     <Compile Include="Managers\ClientActionEventManager.cs" />
-    <Compile Include="Parsers\ActionEventParser.cs" />
-    <Compile Include="Parsers\IActionEventParser.cs" />
+    <Compile Include="Parsers\ActionEventFactoryParser.cs" />
+    <Compile Include="Parsers\IActionEventFactoryParser.cs" />
     <Compile Include="Readers\ActionEventReader.cs" />
     <Compile Include="Readers\IActionEventReader.cs" />
     <Compile Include="Monitors\IOrderMonitor.cs" />
