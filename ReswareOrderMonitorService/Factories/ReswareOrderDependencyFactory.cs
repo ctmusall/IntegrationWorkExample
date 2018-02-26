@@ -3,6 +3,7 @@ using ReswareOrderMonitorService.Monitors;
 using ReswareOrderMonitorService.Readers;
 using ReswareOrderMonitorService.ReswareActionEvent;
 using ReswareOrderMonitorService.ReswareOrders;
+using ReswareOrderMonitorService.ReswareSigning;
 using Unity;
 
 namespace ReswareOrderMonitorService.Factories
@@ -56,6 +57,7 @@ namespace ReswareOrderMonitorService.Factories
             container.RegisterType<ReceiveActionEventServiceClient>();
             container.RegisterType<OrderPlacementServiceClient>();
             container.RegisterType<IActionEventReader, ActionEventReader>();
+            container.RegisterType<ReceiveSigningServiceClient>();
         }
     }
 }

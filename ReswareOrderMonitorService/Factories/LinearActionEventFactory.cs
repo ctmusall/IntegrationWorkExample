@@ -6,7 +6,6 @@ namespace ReswareOrderMonitorService.Factories
 {
     internal class LinearActionEventFactory : ActionEventFactory
     {
-
         internal override ActionEvent ResolveActionEvent(ActionEventServiceResult actionEvent)
         {
             if (string.Equals(actionEvent.ActionEventCode, ClosingCompletedEventCode))
