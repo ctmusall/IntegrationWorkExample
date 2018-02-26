@@ -4,6 +4,6 @@ namespace ReswareOrderMonitorService.Readers
 {
     internal interface IActionEventReader
     {
-        bool CompleteActions(OrderResult order);
+        void CompleteActions(OrderResult order);
     }
 }

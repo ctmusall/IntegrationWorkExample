@@ -161,6 +161,10 @@
     <Compile Include="Managers\IOrderResultManager.cs" />
     <Compile Include="Managers\OrderPlacementManager.cs" />
     <Compile Include="Managers\OrderResultManager.cs" />
+    <Compile Include="Migrations\201802262042248_RemoveProcessed.cs" />
+    <Compile Include="Migrations\201802262042248_RemoveProcessed.Designer.cs">
+      <DependentUpon>201802262042248_RemoveProcessed.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\AddressResult.cs" />
     <Compile Include="Models\BuyerSellerAddressResult.cs" />
     <Compile Include="Models\BuyerSellerResult.cs" />
@@ -249,6 +253,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802191514563_RemoveCustomerNameFromOrder.resx">
       <DependentUpon>201802191514563_RemoveCustomerNameFromOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802262042248_RemoveProcessed.resx">
+      <DependentUpon>201802262042248_RemoveProcessed.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

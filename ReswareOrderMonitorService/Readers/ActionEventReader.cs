@@ -30,7 +30,7 @@ namespace ReswareOrderMonitorService.Readers
             return ActionEvents.OrderByDescending(actionEvent => actionEvent.CreatedDateTime).Where(actionEvent => string.Equals(actionEvent.FileNumber, order.FileNumber, StringComparison.CurrentCultureIgnoreCase));
         }
 
-        public bool CompleteActions(OrderResult order)
+        public void CompleteActions(OrderResult order)
         {
             try
             {
@@ -46,13 +46,10 @@ namespace ReswareOrderMonitorService.Readers
                     actionEvent.ActionCompletedDateTime = DateTime.Now;
                     _receiveActionEventServiceClient.UpdateActionEvent(actionEvent);
                 });
-
-                return true;
             }
             catch (Exception ex)
             {
                 EventLog.WriteEntry(ex.Source, ex.Message);
-                return false;
             }
         }
     }

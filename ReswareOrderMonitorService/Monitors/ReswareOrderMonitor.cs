@@ -26,15 +26,11 @@ namespace ReswareOrderMonitorService.Monitors
         {
             try
             {
-                var orders = _orderPlacementServiceClient.GetAllOrders().OrderByDescending(o => o.CreatedDateTime).Where(order => !order.Processed && order.ProcessedDateTime == null);
+                var orders = _orderPlacementServiceClient.GetAllOrders();
                 
                 orders.ForEach(order =>
                 {
-                    var result = _actionEventReader.CompleteActions(order);
-                    if (!result) return;
-                    order.Processed = true;
-                    order.ProcessedDateTime = DateTime.Now;
-                    _orderPlacementServiceClient.UpdateOrder(order);
+                     _actionEventReader.CompleteActions(order);
                 }); 
             }
             catch (Exception ex)

@@ -20,9 +20,7 @@ namespace OrderPlacement.Parsers
                 CustomerContact = order.CustomerContact,
                 DeliveryMethod = order.DeliveryMethod,
                 LenderName = order.LenderName,
-                Processed = order.Processed,
                 Product = order.Product,
-                ProcessedDateTime = order.ProcessedDateTime,
                 PropertyAddress = ParsePropertyAddressResult(order.PropertyAddress)
             }).ToList();
         }
@@ -40,9 +38,7 @@ namespace OrderPlacement.Parsers
                 CustomerContact = order.CustomerContact,
                 DeliveryMethod = order.DeliveryMethod,
                 LenderName = order.LenderName,
-                Processed = order.Processed,
                 Product = order.Product,
-                ProcessedDateTime = order.ProcessedDateTime,
                 PropertyAddress = ParsePropertyAddressResult(order.PropertyAddress)
             };
         }

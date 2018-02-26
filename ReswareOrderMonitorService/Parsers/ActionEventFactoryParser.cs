@@ -10,7 +10,7 @@ namespace ReswareOrderMonitorService.Parsers
             switch (customerId)
             {
                default:
-                   return new LinearActionEventFactory("19", "22", "214", "234", "240");
+                   return new LinearClosingActionEventFactory("19", "22", "214", "234", "240");
             }
         }
     }

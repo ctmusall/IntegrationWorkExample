@@ -27,10 +27,6 @@ namespace OrderPlacement.Models
         [DataMember]
         public DateTime CreatedDateTime { get; set; }
         [DataMember]
-        public bool Processed { get; set; }
-        [DataMember]
-        public DateTime? ProcessedDateTime { get; set; }
-        [DataMember]
         public ICollection<PropertyAddressResult> PropertyAddress { get; set; }
         [DataMember]
         public ICollection<BuyerSellerResult> BuyersAndSellers { get; set; }

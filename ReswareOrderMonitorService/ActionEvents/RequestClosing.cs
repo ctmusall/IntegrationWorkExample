@@ -24,7 +24,7 @@ namespace ReswareOrderMonitorService.ActionEvents
 
         internal virtual void AssignClosingInformation(RequestClosingMessage requestClosingMessage, string fileNumber)
         {
-            var signing = _signingServiceClient.GetAllSignings().OrderByDescending(s => s.CreatedDateTime).FirstOrDefault(s => string.Equals(s.FileNumber, fileNumber, StringComparison.CurrentCultureIgnoreCase));
+            var signing = _signingServiceClient.GetAllSignings().FirstOrDefault(s => string.Equals(s.FileNumber, fileNumber, StringComparison.CurrentCultureIgnoreCase));
 
             if (signing == null) return;
 
@@ -47,7 +47,7 @@ namespace ReswareOrderMonitorService.ActionEvents
 
             if (borrower == null) return;
 
-            requestClosingMessage.BorrowerFirstName = borrower.FirstName;
+            requestClosingMessage.BorrowerFirstName = string.IsNullOrWhiteSpace(borrower.EntityName) ? borrower.FirstName : borrower.EntityName;
             requestClosingMessage.BorrowerLastName = borrower.LastName;
             requestClosingMessage.BorrowerMiddleName = borrower.MiddleName;
             requestClosingMessage.BorrowerSuffix = borrower.Suffix;
@@ -56,13 +56,14 @@ namespace ReswareOrderMonitorService.ActionEvents
 
             var coBorrower = buyerSellerResults.FirstOrDefault(b => b.Type == BuyerSellerEnum.Buyer && b.Spouse);
 
-            if (coBorrower == null) return;
-
-            requestClosingMessage.CoBorrowerFirstName = coBorrower.FirstName;
-            requestClosingMessage.CoBorrowerLastName = coBorrower.LastName;
-            requestClosingMessage.CoBorrowerMiddleName = coBorrower.MiddleName;
-            requestClosingMessage.CoBorrowerSuffix = coBorrower.Suffix;
-            requestClosingMessage.BorrowerPhone2 = coBorrower.Phone;
+            if (coBorrower != null)
+            {
+                requestClosingMessage.CoBorrowerFirstName = string.IsNullOrWhiteSpace(coBorrower.EntityName) ? coBorrower.FirstName : coBorrower.EntityName;
+                requestClosingMessage.CoBorrowerLastName = coBorrower.LastName;
+                requestClosingMessage.CoBorrowerMiddleName = coBorrower.MiddleName;
+                requestClosingMessage.CoBorrowerSuffix = coBorrower.Suffix;
+                requestClosingMessage.BorrowerPhone2 = coBorrower.Phone;
+            }
 
             var address = borrower.Address.FirstOrDefault(a => a.BuyerSellerId == borrower.Id);
 

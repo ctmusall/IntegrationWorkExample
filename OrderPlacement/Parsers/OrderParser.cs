@@ -19,9 +19,7 @@ namespace OrderPlacement.Parsers
                 CustomerContact = orderResult.CustomerContact,
                 DeliveryMethod = orderResult.DeliveryMethod,
                 LenderName = orderResult.LenderName,
-                Processed = orderResult.Processed,
                 Product = orderResult.Product,
-                ProcessedDateTime = orderResult.ProcessedDateTime,
                 PropertyAddress = ParsePropertyAddress(orderResult.PropertyAddress)
             };
         }

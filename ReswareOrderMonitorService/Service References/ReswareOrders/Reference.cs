@@ -1420,12 +1420,6 @@ namespace ReswareOrderMonitorService.ReswareOrders {
         private string LenderNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool ProcessedField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> ProcessedDateTimeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string ProductField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1554,32 +1548,6 @@ namespace ReswareOrderMonitorService.ReswareOrders {
                 if ((object.ReferenceEquals(this.LenderNameField, value) != true)) {
                     this.LenderNameField = value;
                     this.RaisePropertyChanged("LenderName");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal bool Processed {
-            get {
-                return this.ProcessedField;
-            }
-            set {
-                if ((this.ProcessedField.Equals(value) != true)) {
-                    this.ProcessedField = value;
-                    this.RaisePropertyChanged("Processed");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal System.Nullable<System.DateTime> ProcessedDateTime {
-            get {
-                return this.ProcessedDateTimeField;
-            }
-            set {
-                if ((this.ProcessedDateTimeField.Equals(value) != true)) {
-                    this.ProcessedDateTimeField = value;
-                    this.RaisePropertyChanged("ProcessedDateTime");
                 }
             }
         }

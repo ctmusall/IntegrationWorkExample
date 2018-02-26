@@ -4,7 +4,7 @@ using ReswareOrderMonitorService.ReswareActionEvent;
 
 namespace ReswareOrderMonitorService.Factories
 {
-    internal class LinearActionEventFactory : ActionEventFactory
+    internal class LinearClosingActionEventFactory : ActionEventFactory
     {
         internal override ActionEvent ResolveActionEvent(ActionEventServiceResult actionEvent)
         {
@@ -28,7 +28,7 @@ namespace ReswareOrderMonitorService.Factories
         }
 
 
-        public LinearActionEventFactory(string closingCompletedEventCode, string receiveFundingEventCode, string notaryDocumentsPickedUpEventCode, string requestClosingEventCode, string schedulingRescheduleEventCode) : base(closingCompletedEventCode, receiveFundingEventCode, notaryDocumentsPickedUpEventCode, requestClosingEventCode, schedulingRescheduleEventCode)
+        public LinearClosingActionEventFactory(string closingCompletedEventCode, string receiveFundingEventCode, string notaryDocumentsPickedUpEventCode, string requestClosingEventCode, string schedulingRescheduleEventCode) : base(closingCompletedEventCode, receiveFundingEventCode, notaryDocumentsPickedUpEventCode, requestClosingEventCode, schedulingRescheduleEventCode)
         {
         }
     }
