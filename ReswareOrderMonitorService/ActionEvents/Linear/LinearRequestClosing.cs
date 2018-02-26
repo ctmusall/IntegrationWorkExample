@@ -18,24 +18,21 @@ namespace ReswareOrderMonitorService.ActionEvents.Linear
                 FileNumber = order.FileNumber,
                 OrderRequestedDate = DateTime.Now.ToShortDateString(),
                 OrderRequestedTime = DateTime.Now.ToShortTimeString(),
+                DocsToAttorney = order.DeliveryMethod
             };
 
-            // Retrieve borrower/sellers from buyers and sellers
             AssignBorrowerInformation(linearClosingOrderMessage, order.BuyersAndSellers);
 
-            // Retrieve signing info for closing date/time
+            AssignClosingInformation(linearClosingOrderMessage, order.FileNumber);
 
+            AssignServices(linearClosingOrderMessage);
 
-
-            // Build order closing details XML message
-            // Match XML formatting on mirth
-            // Send XML message to mirth channel 'Linear Closing'
-            throw new InvalidOperationException();
+            return SendUpdate(linearClosingOrderMessage);
         }
 
-        internal override bool SendUpdate()
+        internal override void AssignServices(RequestClosingMessage requestClosingMessage)
         {
-            throw new System.NotImplementedException();
+            // TODO - Based on product/state -- waiting for requirements
         }
     }
 }

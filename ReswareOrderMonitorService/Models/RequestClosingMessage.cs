@@ -9,6 +9,7 @@
         internal string BorrowerFirstName { get; set; }
         internal string BorrowerLastName { get; set; }
         internal string BorrowerSuffix { get; set; }
+        internal string BorrowerMiddleName { get; set; }
         internal string Product { get; set; }
         internal string FileNumber { get; set; }
         internal string OrderRequestedDate { get; set; }
@@ -19,10 +20,13 @@
         internal string BorrowerCity { get; set; }
         internal string BorrowerState { get; set; }
         internal string BorrowerZipCode { get; set; }
-        internal string BorrowerCounty { get; set; }
         internal string BorrowerPhone1 { get; set; }
         internal string BorrowerPhone2 { get; set; }
         internal string BorrowerEmail { get; set; }
+        internal string CoBorrowerFirstName { get; set; }
+        internal string CoBorrowerLastName { get; set; }
+        internal string CoBorrowerMiddleName { get; set; }
+        internal string CoBorrowerSuffix { get; set; }
         internal string ClosingAddress1 { get; set; }
         internal string ClosingCity { get; set; }
         internal string ClosingState { get; set; }

@@ -5,6 +5,5 @@ namespace ReswareOrderMonitorService.ActionEvents
     internal abstract class ActionEvent
     {
         internal abstract bool PerformAction(OrderResult order);
-        internal abstract bool SendUpdate();
     }
 }

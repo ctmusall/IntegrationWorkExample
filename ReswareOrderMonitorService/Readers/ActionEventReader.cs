@@ -27,7 +27,7 @@ namespace ReswareOrderMonitorService.Readers
 
         private IEnumerable<ActionEventServiceResult> MatchingActionEvents(OrderResult order)
         {
-            return ActionEvents.Where(actionEvent => string.Equals(actionEvent.FileNumber, order.FileNumber, StringComparison.CurrentCultureIgnoreCase));
+            return ActionEvents.OrderByDescending(actionEvent => actionEvent.CreatedDateTime).Where(actionEvent => string.Equals(actionEvent.FileNumber, order.FileNumber, StringComparison.CurrentCultureIgnoreCase));
         }
 
         public bool CompleteActions(OrderResult order)

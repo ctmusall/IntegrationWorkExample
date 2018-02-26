@@ -8,10 +8,5 @@ namespace ReswareOrderMonitorService.ActionEvents.Linear
         {
             throw new System.NotImplementedException();
         }
-
-        internal override bool SendUpdate()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

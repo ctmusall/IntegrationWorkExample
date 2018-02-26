@@ -26,7 +26,7 @@ namespace ReswareOrderMonitorService.Monitors
         {
             try
             {
-                var orders = _orderPlacementServiceClient.GetAllOrders().Where(order => !order.Processed && order.ProcessedDateTime == null);
+                var orders = _orderPlacementServiceClient.GetAllOrders().OrderByDescending(o => o.CreatedDateTime).Where(order => !order.Processed && order.ProcessedDateTime == null);
                 
                 orders.ForEach(order =>
                 {
