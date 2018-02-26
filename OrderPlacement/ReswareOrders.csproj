@@ -165,6 +165,10 @@
     <Compile Include="Migrations\201802262042248_RemoveProcessed.Designer.cs">
       <DependentUpon>201802262042248_RemoveProcessed.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802262051465_AddNotesFieldToOrder.cs" />
+    <Compile Include="Migrations\201802262051465_AddNotesFieldToOrder.Designer.cs">
+      <DependentUpon>201802262051465_AddNotesFieldToOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\AddressResult.cs" />
     <Compile Include="Models\BuyerSellerAddressResult.cs" />
     <Compile Include="Models\BuyerSellerResult.cs" />
@@ -256,6 +260,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802262042248_RemoveProcessed.resx">
       <DependentUpon>201802262042248_RemoveProcessed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802262051465_AddNotesFieldToOrder.resx">
+      <DependentUpon>201802262051465_AddNotesFieldToOrder.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
