@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Net.Sockets;
 using System.Text;
 
@@ -26,7 +25,9 @@ namespace ReswareOrderMonitorService.Mirth
             }
             catch (Exception ex)
             {
-                EventLog.WriteEntry(ex.Source, ex.Message);
+                Console.WriteLine(ex.GetType().FullName);
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
                 return false;
             }
         }

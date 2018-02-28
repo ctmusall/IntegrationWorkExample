@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using ReswareOrderMonitorService.Factories;
 using ReswareOrderMonitorService.Readers;
 using ReswareOrderMonitorService.ReswareOrders;
@@ -13,7 +12,7 @@ namespace ReswareOrderMonitorService.Monitors
         private readonly OrderPlacementServiceClient _orderPlacementServiceClient;
         private readonly IActionEventReader _actionEventReader;
 
-        internal OrderActionEventMonitor(): this(ReswareOrderDependencyFactory.Resolve<OrderPlacementServiceClient>(), ReswareOrderDependencyFactory.Resolve<IActionEventReader>()) { }
+        public OrderActionEventMonitor(): this(new OrderPlacementServiceClient(), ReswareOrderDependencyFactory.Resolve<IActionEventReader>()) { }
 
         internal OrderActionEventMonitor(OrderPlacementServiceClient orderPlacementServiceClient, IActionEventReader actionEventReader)
         {
@@ -26,6 +25,8 @@ namespace ReswareOrderMonitorService.Monitors
             try
             {
                 var orders = _orderPlacementServiceClient.GetAllOrders();
+
+                if (orders.Length == 0) return;
                 
                 orders.ForEach(order =>
                 {
@@ -34,7 +35,9 @@ namespace ReswareOrderMonitorService.Monitors
             }
             catch (Exception ex)
             {
-                EventLog.WriteEntry(ex.Source, ex.Message);
+                Console.WriteLine(ex.GetType().FullName);
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
             }
         }
     }

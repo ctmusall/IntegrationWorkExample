@@ -1,4 +1,5 @@
-﻿using System.ServiceProcess;
+﻿using System;
+using System.ServiceProcess;
 using System.Timers;
 using ReswareOrderMonitorService.Factories;
 using ReswareOrderMonitorService.Monitors;
@@ -9,19 +10,14 @@ namespace ReswareOrderMonitorService
     {
         private readonly Timer _timer;
 
-        internal ReswareMonitor() : this(new Timer())
+        public ReswareMonitor()
         {
             InitializeComponent();
-        }
-
-        internal ReswareMonitor(Timer timer)
-        {
-            _timer = timer;
+            _timer = new Timer();
         }
 
         protected override void OnStart(string[] args)
         {
-            System.Diagnostics.Debugger.Launch();
             EventLog.WriteEntry("Resware incoming service started");
 
             _timer.Enabled = true;

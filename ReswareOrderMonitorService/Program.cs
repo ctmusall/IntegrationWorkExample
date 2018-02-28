@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
 using System.ServiceProcess;
-using System.Timers;
 
 namespace ReswareOrderMonitorService
 {
@@ -13,12 +12,16 @@ namespace ReswareOrderMonitorService
             {
                 var servicesToRun = new ServiceBase[]
                 {
-                    new ReswareMonitor(new Timer()) 
+                    new ReswareMonitor() 
                 };
+
                 ServiceBase.Run(servicesToRun);
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.GetType().FullName);
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
                 EventLog.WriteEntry(ex.Source, ex.Message);
             }
         }

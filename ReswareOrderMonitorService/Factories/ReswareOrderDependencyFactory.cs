@@ -1,5 +1,6 @@
 ﻿using ReswareOrderMonitorService.Mirth;
 using ReswareOrderMonitorService.Monitors;
+using ReswareOrderMonitorService.Parsers;
 using ReswareOrderMonitorService.Readers;
 using ReswareOrderMonitorService.ReswareActionEvent;
 using ReswareOrderMonitorService.ReswareOrders;
@@ -11,7 +12,7 @@ namespace ReswareOrderMonitorService.Factories
     /// <summary>
     /// Simple wrapper for unity resolution.
     /// </summary>
-    internal class ReswareOrderDependencyFactory
+    internal static class ReswareOrderDependencyFactory
     {
         /// <summary>
         /// Public reference to the unity container which will 
@@ -52,11 +53,9 @@ namespace ReswareOrderMonitorService.Factories
         private static void RegisterTypes(IUnityContainer container)
         {
             container.RegisterType<IOrderActionEventMonitor, OrderActionEventMonitor>();
-            container.RegisterType<IReceiveActionEventService, ReceiveActionEventServiceClient>();
-            container.RegisterType<IOrderPlacementService, OrderPlacementServiceClient>();
             container.RegisterType<IActionEventReader, ActionEventReader>();
-            container.RegisterType<IReceiveSigningService, ReceiveSigningServiceClient>();
             container.RegisterType<IMirthServiceClient, MirthServiceClient>();
+            container.RegisterType<IActionEventFactoryParser, ActionEventFactoryParser>();
         }
     }
 }
