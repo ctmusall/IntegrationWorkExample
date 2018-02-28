@@ -13,7 +13,7 @@ namespace ReswareOrderMonitorService
             {
                 var servicesToRun = new ServiceBase[]
                 {
-                    new ReswareIncoming(new Timer()) 
+                    new ReswareMonitor(new Timer()) 
                 };
                 ServiceBase.Run(servicesToRun);
             }

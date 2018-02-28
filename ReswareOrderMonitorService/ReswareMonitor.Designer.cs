@@ -1,6 +1,6 @@
 ﻿namespace ReswareOrderMonitorService
 {
-    partial class ReswareIncoming
+    partial class ReswareMonitor
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            ServiceName = "ReswareIncoming";
+            ServiceName = "ReswareMonitor";
         }
 
         #endregion

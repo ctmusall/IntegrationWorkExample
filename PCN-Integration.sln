@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReswareSigning", "SigningSe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReswareActionEvent", "ActionEventService\ReswareActionEvent.csproj", "{06839BDB-F490-4E96-B347-8148B43D0CAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReswareIncomingMonitor", "ReswareOrderMonitorService\ReswareIncomingMonitor.csproj", "{43DBA399-2E78-44DD-A2F8-8529C7E9A5AB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReswareMonitor", "ReswareOrderMonitorService\ReswareMonitor.csproj", "{43DBA399-2E78-44DD-A2F8-8529C7E9A5AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

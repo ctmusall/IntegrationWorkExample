@@ -105,11 +105,11 @@
     <Compile Include="Readers\IActionEventReader.cs" />
     <Compile Include="Monitors\IOrderActionEventMonitor.cs" />
     <Compile Include="Monitors\OrderActionEventMonitor.cs" />
-    <Compile Include="ReswareIncoming.cs">
+    <Compile Include="ReswareMonitor.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ReswareIncoming.Designer.cs">
-      <DependentUpon>ReswareIncoming.cs</DependentUpon>
+    <Compile Include="ReswareMonitor.Designer.cs">
+      <DependentUpon>ReswareMonitor.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
