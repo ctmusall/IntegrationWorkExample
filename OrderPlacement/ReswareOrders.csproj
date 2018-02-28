@@ -173,6 +173,10 @@
     <Compile Include="Migrations\201802281430548_AddClientId.Designer.cs">
       <DependentUpon>201802281430548_AddClientId.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802281926553_AddCustomerProduct.cs" />
+    <Compile Include="Migrations\201802281926553_AddCustomerProduct.Designer.cs">
+      <DependentUpon>201802281926553_AddCustomerProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\AddressResult.cs" />
     <Compile Include="Models\BuyerSellerAddressResult.cs" />
     <Compile Include="Models\BuyerSellerResult.cs" />
@@ -270,6 +274,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802281430548_AddClientId.resx">
       <DependentUpon>201802281430548_AddClientId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802281926553_AddCustomerProduct.resx">
+      <DependentUpon>201802281926553_AddCustomerProduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

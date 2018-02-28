@@ -22,6 +22,7 @@ namespace OrderPlacement.Parsers
                 Product = orderResult.Product,
                 Notes = orderResult.Notes,
                 ClientId = orderResult.ClientId,
+                CustomerProduct = orderResult.CustomerProduct,
                 PropertyAddress = ParsePropertyAddress(orderResult.PropertyAddress)
             };
         }

@@ -43,5 +43,7 @@
         internal string Service9 { get; set; }
         internal string Service10 { get; set; }
         internal string DocsToAttorney { get; set; }
+        internal string Notes { get; set; }
+        internal string CustomerProduct { get; set; }
     }
 }

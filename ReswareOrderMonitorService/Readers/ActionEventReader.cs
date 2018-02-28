@@ -24,8 +24,8 @@ namespace ReswareOrderMonitorService.Readers
         {
             try
             {
-                var actionEvents = _receiveActionEventServiceClient.GetAllActionEvents().Where(ae =>
-                    !ae.ActionCompleted && ae.ActionCompletedDateTime == null && string.Equals(ae.FileNumber,
+                var actionEvents = _receiveActionEventServiceClient.GetAllActionEvents()
+                    .Where(ae => !ae.ActionCompleted && ae.ActionCompletedDateTime == null && string.Equals(ae.FileNumber,
                         order.FileNumber, StringComparison.CurrentCultureIgnoreCase)).ToList();
 
                 if (actionEvents.Any()) return;
@@ -34,8 +34,8 @@ namespace ReswareOrderMonitorService.Readers
 
                 actionEvents.ForEach(actionEvent =>
                 {
-                    var result = actionEventFactory.ResolveActionEvent(actionEvent.ActionEventCode).PerformAction(order);
-                    if (!result) return;
+                    var result = actionEventFactory?.ResolveActionEvent(actionEvent.ActionEventCode)?.PerformAction(order);
+                    if (result == null || result.Value == false) return;
                     actionEvent.ActionCompleted = true;
                     actionEvent.ActionCompletedDateTime = DateTime.Now;
                     _receiveActionEventServiceClient.UpdateActionEvent(actionEvent);

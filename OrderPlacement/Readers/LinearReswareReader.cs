@@ -23,6 +23,7 @@ namespace OrderPlacement.Readers
                 // Product = MapProduct(),
                 Notes = notes,
                 ClientId = clientId,
+                // CustomerProduct = MapCustomerProduct(),
                 ClosingDateTime = estimatedSettlementDate,
                 DeliveryMethod = DeliveryMethod,
                 CreatedDateTime = DateTime.Now,

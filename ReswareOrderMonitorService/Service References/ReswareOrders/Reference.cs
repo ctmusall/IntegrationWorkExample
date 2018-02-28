@@ -1411,6 +1411,9 @@ namespace ReswareOrderMonitorService.ReswareOrders {
         private string CustomerIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CustomerProductField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string DeliveryMethodField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1515,6 +1518,19 @@ namespace ReswareOrderMonitorService.ReswareOrders {
                 if ((object.ReferenceEquals(this.CustomerIdField, value) != true)) {
                     this.CustomerIdField = value;
                     this.RaisePropertyChanged("CustomerId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string CustomerProduct {
+            get {
+                return this.CustomerProductField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CustomerProductField, value) != true)) {
+                    this.CustomerProductField = value;
+                    this.RaisePropertyChanged("CustomerProduct");
                 }
             }
         }

@@ -20,6 +20,7 @@ namespace OrderPlacement.Models
         public DateTime CreatedDateTime { get; set; }
         public string Notes { get; set; }
         public int ClientId { get; set; }
+        public string CustomerProduct { get; set; }
 
         public virtual ICollection<PropertyAddress> PropertyAddress { get; set; }
         public virtual ICollection<BuyerSeller> BuyerAndSellers { get; set; }

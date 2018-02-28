@@ -16,6 +16,7 @@
       <xs:element minOccurs="0" name="CreatedDateTime" type="xs:dateTime" />
       <xs:element minOccurs="0" name="CustomerContact" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CustomerId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomerProduct" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="DeliveryMethod" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FileNumber" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" type="ser:guid" />
