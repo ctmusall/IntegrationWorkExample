@@ -29,6 +29,8 @@ namespace OrderPlacement.Models
         [DataMember]
         public string Notes { get; set; }
         [DataMember]
+        public int ClientId { get; set; }
+        [DataMember]
         public ICollection<PropertyAddressResult> PropertyAddress { get; set; }
         [DataMember]
         public ICollection<BuyerSellerResult> BuyersAndSellers { get; set; }

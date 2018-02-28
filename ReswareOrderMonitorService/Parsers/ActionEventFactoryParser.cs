@@ -4,13 +4,13 @@ namespace ReswareOrderMonitorService.Parsers
 {
     internal class ActionEventFactoryParser : IActionEventFactoryParser
     {
-        public ActionEventFactory ParseActionEventFactory(string customerId)
+        public ActionEventFactory ParseActionEventFactory(int clientId)
         {
-            // TODO - Switch based on customer id
-            switch (customerId)
+            // TODO - Switch based on client id
+            switch (clientId)
             {
-               default:
-                   return new LinearClosingActionEventFactory("19", "22", "214", "234", "240");
+                default:
+                   return new LinearClosingActionEventFactory();
             }
         }
     }

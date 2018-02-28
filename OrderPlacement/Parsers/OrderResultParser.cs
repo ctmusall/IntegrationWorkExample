@@ -19,6 +19,7 @@ namespace OrderPlacement.Parsers
                 CreatedDateTime = order.CreatedDateTime,
                 CustomerContact = order.CustomerContact,
                 Notes = order.Notes,
+                ClientId = order.ClientId,
                 DeliveryMethod = order.DeliveryMethod,
                 LenderName = order.LenderName,
                 Product = order.Product,
@@ -40,6 +41,7 @@ namespace OrderPlacement.Parsers
                 DeliveryMethod = order.DeliveryMethod,
                 LenderName = order.LenderName,
                 Product = order.Product,
+                ClientId = order.ClientId,
                 Notes = order.Notes,
                 PropertyAddress = ParsePropertyAddressResult(order.PropertyAddress)
             };

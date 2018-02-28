@@ -101,21 +101,15 @@
     <Compile Include="Managers\ClientActionEventManager.cs" />
     <Compile Include="Parsers\ActionEventFactoryParser.cs" />
     <Compile Include="Parsers\IActionEventFactoryParser.cs" />
-    <Compile Include="ProjectInstaller.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ProjectInstaller.Designer.cs">
-      <DependentUpon>ProjectInstaller.cs</DependentUpon>
-    </Compile>
     <Compile Include="Readers\ActionEventReader.cs" />
     <Compile Include="Readers\IActionEventReader.cs" />
-    <Compile Include="Monitors\IOrderMonitor.cs" />
-    <Compile Include="Monitors\ReswareOrderMonitor.cs" />
-    <Compile Include="ReswareOrder.cs">
+    <Compile Include="Monitors\IOrderActionEventMonitor.cs" />
+    <Compile Include="Monitors\OrderActionEventMonitor.cs" />
+    <Compile Include="ReswareIncoming.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ReswareOrder.Designer.cs">
-      <DependentUpon>ReswareOrder.cs</DependentUpon>
+    <Compile Include="ReswareIncoming.Designer.cs">
+      <DependentUpon>ReswareIncoming.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -285,11 +279,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="ProjectInstaller.resx">
-      <DependentUpon>ProjectInstaller.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

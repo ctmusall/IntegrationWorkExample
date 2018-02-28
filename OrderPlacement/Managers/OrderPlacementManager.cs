@@ -25,7 +25,7 @@ namespace OrderPlacement.Managers
         {
             try
             {
-                var readerResult = _reswareReaderFactory.ResolveReader(clientId).ParseInput(fileNumber, propertyAddress, productId, estimatedSettlementDate, lender, buyers, sellers, notes);
+                var readerResult = _reswareReaderFactory.ResolveReader(clientId).ParseInput(fileNumber, propertyAddress, productId, estimatedSettlementDate, lender, buyers, sellers, notes, clientId);
 
                 return new PlaceOrderResult
                 {

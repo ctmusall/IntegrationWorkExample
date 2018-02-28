@@ -4,6 +4,6 @@ namespace ReswareOrderMonitorService.Parsers
 {
     internal interface IActionEventFactoryParser
     {
-        ActionEventFactory ParseActionEventFactory(string customerId);
+        ActionEventFactory ParseActionEventFactory(int clientId);
     }
 }

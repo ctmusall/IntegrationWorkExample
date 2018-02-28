@@ -11,6 +11,7 @@
   <xs:complexType name="OrderResult">
     <xs:sequence>
       <xs:element minOccurs="0" name="BuyersAndSellers" nillable="true" type="tns:ArrayOfBuyerSellerResult" />
+      <xs:element minOccurs="0" name="ClientId" type="xs:int" />
       <xs:element minOccurs="0" name="ClosingDateTime" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="CreatedDateTime" type="xs:dateTime" />
       <xs:element minOccurs="0" name="CustomerContact" nillable="true" type="xs:string" />

@@ -11,12 +11,12 @@ namespace ReswareOrderMonitorService.ActionEvents
 {
     internal abstract class RequestClosing : ActionEvent
     {
-        private readonly ReceiveSigningServiceClient _signingServiceClient;
+        private readonly IReceiveSigningService _signingServiceClient;
         protected internal readonly IMirthServiceClient MirthServiceClient;
 
-        protected internal RequestClosing() : this(ReswareOrderDependencyFactory.Resolve<ReceiveSigningServiceClient>(), ReswareOrderDependencyFactory.Resolve<IMirthServiceClient>()) { }
+        protected internal RequestClosing() : this(ReswareOrderDependencyFactory.Resolve<IReceiveSigningService>(), ReswareOrderDependencyFactory.Resolve<IMirthServiceClient>()) { }
 
-        protected internal RequestClosing(ReceiveSigningServiceClient signingServiceClient, IMirthServiceClient mirthServiceClient)
+        protected internal RequestClosing(IReceiveSigningService signingServiceClient, IMirthServiceClient mirthServiceClient)
         {
             _signingServiceClient = signingServiceClient;
             MirthServiceClient = mirthServiceClient;

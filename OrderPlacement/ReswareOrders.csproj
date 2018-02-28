@@ -169,6 +169,10 @@
     <Compile Include="Migrations\201802262051465_AddNotesFieldToOrder.Designer.cs">
       <DependentUpon>201802262051465_AddNotesFieldToOrder.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201802281430548_AddClientId.cs" />
+    <Compile Include="Migrations\201802281430548_AddClientId.Designer.cs">
+      <DependentUpon>201802281430548_AddClientId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\AddressResult.cs" />
     <Compile Include="Models\BuyerSellerAddressResult.cs" />
     <Compile Include="Models\BuyerSellerResult.cs" />
@@ -263,6 +267,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802262051465_AddNotesFieldToOrder.resx">
       <DependentUpon>201802262051465_AddNotesFieldToOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802281430548_AddClientId.resx">
+      <DependentUpon>201802281430548_AddClientId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

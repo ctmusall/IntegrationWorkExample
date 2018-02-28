@@ -5,23 +5,23 @@ using ReswareOrderMonitorService.Monitors;
 
 namespace ReswareOrderMonitorService
 {
-    internal partial class ReswareOrder : ServiceBase
+    internal partial class ReswareIncoming : ServiceBase
     {
         private readonly Timer _timer;
 
-        internal ReswareOrder() : this(new Timer())
+        internal ReswareIncoming() : this(new Timer())
         {
             InitializeComponent();
         }
 
-        internal ReswareOrder(Timer timer)
+        internal ReswareIncoming(Timer timer)
         {
             _timer = timer;
         }
 
         protected override void OnStart(string[] args)
         {
-            EventLog.WriteEntry("Resware order monitor service started.");
+            EventLog.WriteEntry("Resware incoming service started");
 
             _timer.Enabled = true;
             _timer.Interval = 60000;
@@ -30,12 +30,12 @@ namespace ReswareOrderMonitorService
 
         private static void TimerElapsed(object sender, ElapsedEventArgs elapsedEventArgs)
         {
-            ReswareOrderDependencyFactory.Resolve<IOrderMonitor>().MonitorOrders();
+            ReswareOrderDependencyFactory.Resolve<IOrderActionEventMonitor>().MonitorOrderActionEvents();
         }
 
         protected override void OnStop()
         {
-            EventLog.WriteEntry("Resware order monitor service stopped.");
+            EventLog.WriteEntry("Resware incoming service stopped");
         }
     }
 }

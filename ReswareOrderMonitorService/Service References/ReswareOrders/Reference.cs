@@ -1396,6 +1396,9 @@ namespace ReswareOrderMonitorService.ReswareOrders {
         private ReswareOrderMonitorService.ReswareOrders.BuyerSellerResult[] BuyersAndSellersField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ClientIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<System.DateTime> ClosingDateTimeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1447,6 +1450,19 @@ namespace ReswareOrderMonitorService.ReswareOrders {
                 if ((object.ReferenceEquals(this.BuyersAndSellersField, value) != true)) {
                     this.BuyersAndSellersField = value;
                     this.RaisePropertyChanged("BuyersAndSellers");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal int ClientId {
+            get {
+                return this.ClientIdField;
+            }
+            set {
+                if ((this.ClientIdField.Equals(value) != true)) {
+                    this.ClientIdField = value;
+                    this.RaisePropertyChanged("ClientId");
                 }
             }
         }

@@ -24,16 +24,16 @@ namespace OrderPlacement.Readers
 
 
         public ReaderResult ParseInput(string fileNumber, OrderPlacementServicePropertyAddress propertyAddress, int productId, DateTime? estimatedSettlementDate, 
-            OrderPlacementServicePartner lender,OrderPlacementServiceBuyerSeller[] buyers, OrderPlacementServiceBuyerSeller[] sellers, string notes)
+            OrderPlacementServicePartner lender,OrderPlacementServiceBuyerSeller[] buyers, OrderPlacementServiceBuyerSeller[] sellers, string notes, int clientId)
         {
-            var result = new ReaderResult { Order = MapReswareOrder(fileNumber, lender, estimatedSettlementDate, productId, notes) };
+            var result = new ReaderResult { Order = MapReswareOrder(fileNumber, lender, estimatedSettlementDate, productId, notes, clientId) };
             result.PropertyAddress = MapPropertyAddress(result.Order, propertyAddress);
             result.BuyerSellersReaderResult = MapBuyerSellers(result.Order, buyers, sellers);
 
             return result;
         }
 
-        internal abstract Order MapReswareOrder(string fileNumber, OrderPlacementServicePartner lender, DateTime? estimatedSettlementDate, int productId, string notes);
+        internal abstract Order MapReswareOrder(string fileNumber, OrderPlacementServicePartner lender, DateTime? estimatedSettlementDate, int productId, string notes, int clientId);
 
         internal virtual PropertyAddress MapPropertyAddress(Order order, OrderPlacementServicePropertyAddress propertyAddress)
         {

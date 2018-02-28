@@ -51,11 +51,11 @@ namespace ReswareOrderMonitorService.Factories
 
         private static void RegisterTypes(IUnityContainer container)
         {
-            container.RegisterType<IOrderMonitor, ReswareOrderMonitor>();
-            container.RegisterType<ReceiveActionEventServiceClient>();
-            container.RegisterType<OrderPlacementServiceClient>();
+            container.RegisterType<IOrderActionEventMonitor, OrderActionEventMonitor>();
+            container.RegisterType<IReceiveActionEventService, ReceiveActionEventServiceClient>();
+            container.RegisterType<IOrderPlacementService, OrderPlacementServiceClient>();
             container.RegisterType<IActionEventReader, ActionEventReader>();
-            container.RegisterType<ReceiveSigningServiceClient>();
+            container.RegisterType<IReceiveSigningService, ReceiveSigningServiceClient>();
             container.RegisterType<IMirthServiceClient, MirthServiceClient>();
         }
     }
