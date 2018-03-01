@@ -1,5 +1,6 @@
 ﻿using ReswareOrderMonitorService.ActionEvents;
 using ReswareOrderMonitorService.ActionEvents.Linear;
+using ReswareOrderMonitorService.Common;
 
 namespace ReswareOrderMonitorService.Factories
 {
@@ -15,7 +16,7 @@ namespace ReswareOrderMonitorService.Factories
                 case RescheduleActionEventCode:
                     return new LinearSchedulingReschedule();
                 case RequestClosingActionEventCode:
-                    return new LinearRequestClosing();
+                    return new LinearRequestClosing(ServiceUtilityFactory.ResolveServiceUtility(ServiceUtilityTypeEnum.Closing));
                  default:
                     return null;   
             }

@@ -3,11 +3,14 @@ using ReswareOrderMonitorService.Common;
 using ReswareOrderMonitorService.Models;
 using ReswareOrderMonitorService.Properties;
 using ReswareOrderMonitorService.ReswareOrders;
+using ReswareOrderMonitorService.Utilities;
 
 namespace ReswareOrderMonitorService.ActionEvents.Linear
 {
     internal class LinearRequestClosing : RequestClosing
     {
+        internal LinearRequestClosing(IOrderServiceUtility orderServiceUtility) : base(orderServiceUtility) { }
+
         internal override bool PerformAction(OrderResult order)
         {
             var linearClosingOrderMessage = new RequestClosingMessage
@@ -28,7 +31,7 @@ namespace ReswareOrderMonitorService.ActionEvents.Linear
 
             AssignClosingInformation(linearClosingOrderMessage, order.FileNumber);
 
-            ClosingServiceUtility.AssignServices(linearClosingOrderMessage);
+            OrderServiceUtility.AssignServices(linearClosingOrderMessage);
 
             return MirthServiceClient.SendMessageToMirth(ModelSerializer.SerializeXml(linearClosingOrderMessage), Settings.Default.MirthLinearClosingPort, Settings.Default.MirthIPAddress);
         }

@@ -14,10 +14,15 @@ namespace ReswareOrderMonitorService.ActionEvents
     {
         private readonly ReceiveSigningServiceClient _signingServiceClient;
         protected internal readonly IMirthServiceClient MirthServiceClient;
-        protected internal readonly IClosingServiceUtility ClosingServiceUtility;
+        protected internal readonly IOrderServiceUtility OrderServiceUtility;
 
 
         protected internal RequestClosing() : this(new ReceiveSigningServiceClient(), ReswareOrderDependencyFactory.Resolve<IMirthServiceClient>()) { }
+
+        internal RequestClosing(IOrderServiceUtility orderServiceUtility) : this(new ReceiveSigningServiceClient(), ReswareOrderDependencyFactory.Resolve<IMirthServiceClient>())
+        {
+            OrderServiceUtility = orderServiceUtility;
+        }
 
         protected internal RequestClosing(ReceiveSigningServiceClient signingServiceClient, IMirthServiceClient mirthServiceClient)
         {

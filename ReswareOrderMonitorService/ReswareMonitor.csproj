@@ -94,10 +94,13 @@
     <Compile Include="Common\ModelSerializer.cs" />
     <Compile Include="Common\ProductNameConstants.cs" />
     <Compile Include="Common\ServiceNameConstants.cs" />
+    <Compile Include="Common\ServiceUtilityTypeEnum.cs" />
     <Compile Include="Common\StateConstants.cs" />
     <Compile Include="Factories\ActionEventFactory.cs" />
+    <Compile Include="Factories\IServiceUtilityFactory.cs" />
     <Compile Include="Factories\LinearActionEventFactory.cs" />
     <Compile Include="Factories\ReswareOrderDependencyFactory.cs" />
+    <Compile Include="Factories\ServiceUtilityFactory.cs" />
     <Compile Include="Mirth\IMirthServiceClient.cs" />
     <Compile Include="Mirth\MirthServiceClient.cs" />
     <Compile Include="Models\RequestClosingMessage.cs" />
@@ -148,7 +151,7 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Utilities\ClosingServiceUtility.cs" />
-    <Compile Include="Utilities\IClosingServiceUtility.cs" />
+    <Compile Include="Utilities\IOrderServiceUtility.cs" />
     <Compile Include="Utilities\LinearClosingServiceUtility.cs" />
   </ItemGroup>
   <ItemGroup>

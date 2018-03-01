@@ -6,7 +6,6 @@
         {
             switch (clientId)
             {
-
                 default:
                    return new LinearActionEventFactory();
             }
