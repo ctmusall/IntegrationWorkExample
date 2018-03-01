@@ -13,5 +13,6 @@
         internal const string AttorneyProvidedFaxedDocs = "Attorney Provided Faxed Docs";
         internal const string DisbursementPurchase = "Disbursement - Purchase";
         internal const string EdocsReducedPackage = "eDocs - Reduced Package";
+        internal const string RecordingSupervision = "Recording Supervision";
     }
 }

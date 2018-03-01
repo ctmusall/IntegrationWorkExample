@@ -6,14 +6,7 @@ namespace ReswareOrderMonitorService.Factories
 {
     internal class LinearActionEventFactory : ActionEventFactory
     {
-        private readonly IServiceUtilityFactory _serviceUtilityFactory;
-
-        internal LinearActionEventFactory() : this(ReswareOrderDependencyFactory.Resolve<IServiceUtilityFactory>()) { }
-
-        internal LinearActionEventFactory(IServiceUtilityFactory serviceUtilityFactory)
-        {
-            _serviceUtilityFactory = serviceUtilityFactory;
-        }
+        internal LinearActionEventFactory(IServiceUtilityFactory serviceUtilityFactory) : base(serviceUtilityFactory) { }
 
         private const string RequestClosingActionEventCode = "234";
         private const string RescheduleActionEventCode = "240";
@@ -25,7 +18,7 @@ namespace ReswareOrderMonitorService.Factories
                 case RescheduleActionEventCode:
                     return new LinearSchedulingReschedule();
                 case RequestClosingActionEventCode:
-                    return new LinearRequestClosing(_serviceUtilityFactory.ResolveServiceUtility(ServiceUtilityTypeEnum.Closing));
+                    return new LinearRequestClosing(ServiceUtilityFactory.ResolveServiceUtility(ServiceUtilityTypeEnum.Closing));
                  default:
                     return null;   
             }
