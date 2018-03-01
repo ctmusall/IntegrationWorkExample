@@ -3,7 +3,7 @@ using ReswareOrderMonitorService.ActionEvents.Linear;
 
 namespace ReswareOrderMonitorService.Factories
 {
-    internal class LinearClosingActionEventFactory : ActionEventFactory
+    internal class LinearActionEventFactory : ActionEventFactory
     {
         private const string RequestClosingActionEventCode = "234";
         private const string RescheduleActionEventCode = "240";

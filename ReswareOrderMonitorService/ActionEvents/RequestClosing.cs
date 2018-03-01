@@ -6,6 +6,7 @@ using ReswareOrderMonitorService.Mirth;
 using ReswareOrderMonitorService.Models;
 using ReswareOrderMonitorService.ReswareOrders;
 using ReswareOrderMonitorService.ReswareSigning;
+using ReswareOrderMonitorService.Utilities;
 
 namespace ReswareOrderMonitorService.ActionEvents
 {
@@ -13,6 +14,8 @@ namespace ReswareOrderMonitorService.ActionEvents
     {
         private readonly ReceiveSigningServiceClient _signingServiceClient;
         protected internal readonly IMirthServiceClient MirthServiceClient;
+        protected internal readonly IClosingServiceUtility ClosingServiceUtility;
+
 
         protected internal RequestClosing() : this(new ReceiveSigningServiceClient(), ReswareOrderDependencyFactory.Resolve<IMirthServiceClient>()) { }
 
@@ -74,9 +77,5 @@ namespace ReswareOrderMonitorService.ActionEvents
             requestClosingMessage.BorrowerState = address.State;
             requestClosingMessage.BorrowerZipCode = address.Zip;
         }
-
-        internal abstract void AssignServices(RequestClosingMessage requestClosingMessage);
-
-        internal abstract bool SendUpdate(RequestClosingMessage requestClosingMessage);
     }
 }

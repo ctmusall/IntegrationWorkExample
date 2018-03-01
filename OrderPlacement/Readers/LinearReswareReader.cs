@@ -6,6 +6,7 @@ namespace OrderPlacement.Readers
 {
     internal class LinearReswareReader : ReswareReader
     {
+        // TODO - Map based on action event?
         private const string CustomerContact = "TEAM CLOSINGS";
         private const string DeliveryMethod = "eDoc";
         private const string CustomerId = "L17100";

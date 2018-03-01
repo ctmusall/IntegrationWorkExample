@@ -1,10 +1,6 @@
 ﻿using ReswareOrderMonitorService.Mirth;
 using ReswareOrderMonitorService.Monitors;
-using ReswareOrderMonitorService.Parsers;
 using ReswareOrderMonitorService.Readers;
-using ReswareOrderMonitorService.ReswareActionEvent;
-using ReswareOrderMonitorService.ReswareOrders;
-using ReswareOrderMonitorService.ReswareSigning;
 using Unity;
 
 namespace ReswareOrderMonitorService.Factories
@@ -55,7 +51,7 @@ namespace ReswareOrderMonitorService.Factories
             container.RegisterType<IOrderActionEventMonitor, OrderActionEventMonitor>();
             container.RegisterType<IActionEventReader, ActionEventReader>();
             container.RegisterType<IMirthServiceClient, MirthServiceClient>();
-            container.RegisterType<IActionEventFactoryParser, ActionEventFactoryParser>();
+            container.RegisterType<IParentActionEventFactory, ParentActionEventFactory>();
         }
     }
 }
