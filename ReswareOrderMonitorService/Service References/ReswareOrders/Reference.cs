@@ -1405,16 +1405,10 @@ namespace ReswareOrderMonitorService.ReswareOrders {
         private System.DateTime CreatedDateTimeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string CustomerContactField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CustomerIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CustomerProductField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string DeliveryMethodField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string FileNumberField;
@@ -1497,19 +1491,6 @@ namespace ReswareOrderMonitorService.ReswareOrders {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string CustomerContact {
-            get {
-                return this.CustomerContactField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.CustomerContactField, value) != true)) {
-                    this.CustomerContactField = value;
-                    this.RaisePropertyChanged("CustomerContact");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
         internal string CustomerId {
             get {
                 return this.CustomerIdField;
@@ -1531,19 +1512,6 @@ namespace ReswareOrderMonitorService.ReswareOrders {
                 if ((object.ReferenceEquals(this.CustomerProductField, value) != true)) {
                     this.CustomerProductField = value;
                     this.RaisePropertyChanged("CustomerProduct");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string DeliveryMethod {
-            get {
-                return this.DeliveryMethodField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.DeliveryMethodField, value) != true)) {
-                    this.DeliveryMethodField = value;
-                    this.RaisePropertyChanged("DeliveryMethod");
                 }
             }
         }
