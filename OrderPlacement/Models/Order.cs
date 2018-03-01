@@ -14,9 +14,7 @@ namespace OrderPlacement.Models
         public string CustomerId { get; set; }
         public string LenderName { get; set; }
         public DateTime? ClosingDateTime { get; set; }
-        public string DeliveryMethod { get; set; }
         public string Product { get; set; }
-        public string CustomerContact { get; set; }
         public DateTime CreatedDateTime { get; set; }
         public string Notes { get; set; }
         public int ClientId { get; set; }

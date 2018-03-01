@@ -1,49 +1,49 @@
 ﻿namespace ReswareOrderMonitorService.Models
 {
-    internal class RequestClosingMessage
+    public class RequestClosingMessage
     {
-        internal string OrderId { get; set; }
-        internal string CustomerId { get; set; }
-        internal string CustomerContact { get; set; }
-        internal string LenderName { get; set; }
-        internal string BorrowerFirstName { get; set; }
-        internal string BorrowerLastName { get; set; }
-        internal string BorrowerSuffix { get; set; }
-        internal string BorrowerMiddleName { get; set; }
-        internal string Product { get; set; }
-        internal string FileNumber { get; set; }
-        internal string OrderRequestedDate { get; set; }
-        internal string OrderRequestedTime { get; set; }
-        internal string ClosingDate { get; set; }
-        internal string ClosingTime { get; set;}
-        internal string BorrowerAddress1 { get; set; }
-        internal string BorrowerCity { get; set; }
-        internal string BorrowerState { get; set; }
-        internal string BorrowerZipCode { get; set; }
-        internal string BorrowerPhone1 { get; set; }
-        internal string BorrowerPhone2 { get; set; }
-        internal string BorrowerEmail { get; set; }
-        internal string CoBorrowerFirstName { get; set; }
-        internal string CoBorrowerLastName { get; set; }
-        internal string CoBorrowerMiddleName { get; set; }
-        internal string CoBorrowerSuffix { get; set; }
-        internal string ClosingAddress1 { get; set; }
-        internal string ClosingCity { get; set; }
-        internal string ClosingState { get; set; }
-        internal string ClosingZipCode { get; set; }
-        internal string ClosingCounty { get; set; }
-        internal string Service1 { get; set; }
-        internal string Service2 { get; set; }
-        internal string Service3 { get; set; }
-        internal string Service4 { get; set; }
-        internal string Service5 { get; set; }
-        internal string Service6 { get; set; }
-        internal string Service7 { get; set; }
-        internal string Service8 { get; set; }
-        internal string Service9 { get; set; }
-        internal string Service10 { get; set; }
-        internal string DocsToAttorney { get; set; }
-        internal string Notes { get; set; }
-        internal string CustomerProduct { get; set; }
+        public string OrderId { get; set; }
+        public string CustomerId { get; set; }
+        public string CustomerContact { get; set; }
+        public string LenderName { get; set; }
+        public string BorrowerFirstName { get; set; }
+        public string BorrowerLastName { get; set; }
+        public string BorrowerSuffix { get; set; }
+        public string BorrowerMiddleName { get; set; }
+        public string Product { get; set; }
+        public string FileNumber { get; set; }
+        public string OrderRequestedDate { get; set; }
+        public string OrderRequestedTime { get; set; }
+        public string ClosingDate { get; set; }
+        public string ClosingTime { get; set;}
+        public string BorrowerAddress1 { get; set; }
+        public string BorrowerCity { get; set; }
+        public string BorrowerState { get; set; }
+        public string BorrowerZipCode { get; set; }
+        public string BorrowerPhone1 { get; set; }
+        public string BorrowerPhone2 { get; set; }
+        public string BorrowerEmail { get; set; }
+        public string CoBorrowerFirstName { get; set; }
+        public string CoBorrowerLastName { get; set; }
+        public string CoBorrowerMiddleName { get; set; }
+        public string CoBorrowerSuffix { get; set; }
+        public string ClosingAddress1 { get; set; }
+        public string ClosingCity { get; set; }
+        public string ClosingState { get; set; }
+        public string ClosingZipCode { get; set; }
+        public string ClosingCounty { get; set; }
+        public string Service1 { get; set; }
+        public string Service2 { get; set; }
+        public string Service3 { get; set; }
+        public string Service4 { get; set; }
+        public string Service5 { get; set; }
+        public string Service6 { get; set; }
+        public string Service7 { get; set; }
+        public string Service8 { get; set; }
+        public string Service9 { get; set; }
+        public string Service10 { get; set; }
+        public string DocsToAttorney { get; set; }
+        public string Notes { get; set; }
+        public string CustomerProduct { get; set; }
     }
 }

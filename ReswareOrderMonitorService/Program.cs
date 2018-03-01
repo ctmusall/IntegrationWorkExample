@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
 using System.ServiceProcess;
+using ReswareOrderMonitorService.Factories;
+using ReswareOrderMonitorService.Monitors;
 
 namespace ReswareOrderMonitorService
 {
@@ -10,12 +12,17 @@ namespace ReswareOrderMonitorService
         {
             try
             {
+#if (!DEBUG)
                 var servicesToRun = new ServiceBase[]
                 {
                     new ReswareMonitor() 
                 };
 
                 ServiceBase.Run(servicesToRun);
+#else
+                ReswareOrderDependencyFactory.Resolve<IOrderActionEventMonitor>().MonitorOrderActionEvents();
+#endif
+
             }
             catch (Exception ex)
             {

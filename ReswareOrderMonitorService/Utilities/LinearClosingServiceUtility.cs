@@ -38,6 +38,7 @@ namespace ReswareOrderMonitorService.Utilities
                     DetermineWestVirginiaServices(requestClosingMessage);
                     return;
                 default:
+                    requestClosingMessage.Notes += $"Did not apply any services because the closing state is '{requestClosingMessage.ClosingState}'.";
                     return;
             }
         }

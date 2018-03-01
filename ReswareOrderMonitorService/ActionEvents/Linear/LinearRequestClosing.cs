@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using ReswareOrderMonitorService.Common;
 using ReswareOrderMonitorService.Models;
 using ReswareOrderMonitorService.Properties;
@@ -9,25 +10,32 @@ namespace ReswareOrderMonitorService.ActionEvents.Linear
 {
     internal class LinearRequestClosing : RequestClosing
     {
+        private const string CustomerContact = "TEAM CLOSINGS";
+        private const string DocsToAttorney = "eDoc";
+
         internal LinearRequestClosing(IOrderServiceUtility orderServiceUtility) : base(orderServiceUtility) { }
 
         internal override bool PerformAction(OrderResult order)
         {
+            var signing = SigningServiceClient.GetAllSignings().FirstOrDefault(s => string.Equals(s.FileNumber, order.FileNumber, StringComparison.CurrentCultureIgnoreCase));
+
+            if (signing == null) return false;
+
             var linearClosingOrderMessage = new RequestClosingMessage
             {
                 OrderId = order.FileNumber,
                 CustomerId = order.CustomerId,
-                CustomerContact = order.CustomerContact,
+                CustomerContact = CustomerContact,
                 LenderName = order.LenderName,
                 Product = order.Product,
                 CustomerProduct = order.CustomerProduct,
                 FileNumber = order.FileNumber,
                 OrderRequestedDate = DateTime.Now.ToShortDateString(),
                 OrderRequestedTime = DateTime.Now.ToShortTimeString(),
-                DocsToAttorney = order.DeliveryMethod
+                DocsToAttorney = DocsToAttorney
             };
 
-            AssignClosingInformation(linearClosingOrderMessage, order.FileNumber);
+            AssignClosingInformation(linearClosingOrderMessage, signing);
 
             AssignBorrowerInformation(linearClosingOrderMessage, order.BuyersAndSellers);
 

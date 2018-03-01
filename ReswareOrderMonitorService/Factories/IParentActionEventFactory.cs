@@ -2,6 +2,6 @@
 {
     internal interface IParentActionEventFactory
     {
-        ActionEventFactory ParseActionEventFactory(int clientId);
+        ActionEventFactory ResolveActionEventFactory(int clientId);
     }
 }

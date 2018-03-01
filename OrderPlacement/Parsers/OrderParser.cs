@@ -16,8 +16,6 @@ namespace OrderPlacement.Parsers
                 BuyerAndSellers = ParseBuyersAndSellers(orderResult.BuyersAndSellers),
                 ClosingDateTime = orderResult.ClosingDateTime,
                 CreatedDateTime = orderResult.CreatedDateTime,
-                CustomerContact = orderResult.CustomerContact,
-                DeliveryMethod = orderResult.DeliveryMethod,
                 LenderName = orderResult.LenderName,
                 Product = orderResult.Product,
                 Notes = orderResult.Notes,

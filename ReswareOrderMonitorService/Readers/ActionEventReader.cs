@@ -8,15 +8,15 @@ namespace ReswareOrderMonitorService.Readers
 {
     internal class ActionEventReader : IActionEventReader
     {
-        private readonly IParentActionEventFactory _actionEventParser;
+        private readonly IParentActionEventFactory _parentActionEventFactory;
         private readonly ReceiveActionEventServiceClient _receiveActionEventServiceClient;
 
         public ActionEventReader() : this(new ReceiveActionEventServiceClient(), ReswareOrderDependencyFactory.Resolve<IParentActionEventFactory>()) { }
 
-        internal ActionEventReader(ReceiveActionEventServiceClient receiveActionEventServiceClient, IParentActionEventFactory actionEventParser)
+        internal ActionEventReader(ReceiveActionEventServiceClient receiveActionEventServiceClient, IParentActionEventFactory parentActionEventParser)
         {
             _receiveActionEventServiceClient = receiveActionEventServiceClient;
-            _actionEventParser = actionEventParser;
+            _parentActionEventFactory = parentActionEventParser;
         }
 
         public void CompleteActions(OrderResult order)
@@ -27,11 +27,11 @@ namespace ReswareOrderMonitorService.Readers
                     .Where(ae => !ae.ActionCompleted && ae.ActionCompletedDateTime == null 
                     && string.Equals(ae.FileNumber,order.FileNumber, StringComparison.CurrentCultureIgnoreCase)).ToList();
 
-                if (actionEvents.Any()) return;
+                if (actionEvents.Count == 0) return;
 
                 actionEvents.ForEach(actionEvent =>
                 {
-                    var result = _actionEventParser.ParseActionEventFactory(order.ClientId).ResolveActionEvent(actionEvent.ActionEventCode).PerformAction(order);
+                    var result = _parentActionEventFactory.ResolveActionEventFactory(order.ClientId).ResolveActionEvent(actionEvent.ActionEventCode).PerformAction(order);
                     if (!result) return;
                     actionEvent.ActionCompleted = true;
                     actionEvent.ActionCompletedDateTime = DateTime.Now;

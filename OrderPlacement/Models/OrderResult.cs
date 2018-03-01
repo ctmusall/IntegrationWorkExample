@@ -19,11 +19,7 @@ namespace OrderPlacement.Models
         [DataMember]
         public DateTime? ClosingDateTime { get; set; }
         [DataMember]
-        public string DeliveryMethod { get; set; }
-        [DataMember]
         public string Product { get; set; }
-        [DataMember]
-        public string CustomerContact { get; set; }
         [DataMember]
         public DateTime CreatedDateTime { get; set; }
         [DataMember]

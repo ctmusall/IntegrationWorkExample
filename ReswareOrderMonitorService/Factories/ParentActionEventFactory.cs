@@ -4,14 +4,14 @@
     {
         private readonly IParentServiceUtilityFactory _parentServiceUtilityFactory;
 
-        internal ParentActionEventFactory() : this(ReswareOrderDependencyFactory.Resolve<IParentServiceUtilityFactory>()) { }
+        public ParentActionEventFactory() : this(ReswareOrderDependencyFactory.Resolve<IParentServiceUtilityFactory>()) { }
 
         internal ParentActionEventFactory(IParentServiceUtilityFactory parentServiceUtilityFactory)
         {
             _parentServiceUtilityFactory = parentServiceUtilityFactory;
         }
 
-        public ActionEventFactory ParseActionEventFactory(int clientId)
+        public ActionEventFactory ResolveActionEventFactory(int clientId)
         {
             switch (clientId)
             {

@@ -177,6 +177,10 @@
     <Compile Include="Migrations\201802281926553_AddCustomerProduct.Designer.cs">
       <DependentUpon>201802281926553_AddCustomerProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803012040320_RemoveCustomerContactandDeliveryMethod.cs" />
+    <Compile Include="Migrations\201803012040320_RemoveCustomerContactandDeliveryMethod.Designer.cs">
+      <DependentUpon>201803012040320_RemoveCustomerContactandDeliveryMethod.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\AddressResult.cs" />
     <Compile Include="Models\BuyerSellerAddressResult.cs" />
     <Compile Include="Models\BuyerSellerResult.cs" />
@@ -277,6 +281,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201802281926553_AddCustomerProduct.resx">
       <DependentUpon>201802281926553_AddCustomerProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803012040320_RemoveCustomerContactandDeliveryMethod.resx">
+      <DependentUpon>201803012040320_RemoveCustomerContactandDeliveryMethod.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

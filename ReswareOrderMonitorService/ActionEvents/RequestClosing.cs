@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using ReswareOrderMonitorService.Factories;
 using ReswareOrderMonitorService.Mirth;
@@ -12,7 +11,7 @@ namespace ReswareOrderMonitorService.ActionEvents
 {
     internal abstract class RequestClosing : ActionEvent
     {
-        private readonly ReceiveSigningServiceClient _signingServiceClient;
+        internal readonly ReceiveSigningServiceClient SigningServiceClient;
         protected internal readonly IMirthServiceClient MirthServiceClient;
         protected internal readonly IOrderServiceUtility OrderServiceUtility;
 
@@ -23,16 +22,12 @@ namespace ReswareOrderMonitorService.ActionEvents
 
         protected internal RequestClosing(ReceiveSigningServiceClient signingServiceClient, IMirthServiceClient mirthServiceClient)
         {
-            _signingServiceClient = signingServiceClient;
+            SigningServiceClient = signingServiceClient;
             MirthServiceClient = mirthServiceClient;
         }
 
-        internal virtual void AssignClosingInformation(RequestClosingMessage requestClosingMessage, string fileNumber)
+        internal void AssignClosingInformation(RequestClosingMessage requestClosingMessage, SigningServiceResult signing)
         {
-            var signing = _signingServiceClient.GetAllSignings().FirstOrDefault(s => string.Equals(s.FileNumber, fileNumber, StringComparison.CurrentCultureIgnoreCase));
-
-            if (signing == null) return;
-
             if (signing.ClosingDateTime != null)
             {
                 requestClosingMessage.ClosingDate = signing.ClosingDateTime.Value.ToShortDateString();
@@ -46,7 +41,7 @@ namespace ReswareOrderMonitorService.ActionEvents
             requestClosingMessage.ClosingCounty = signing.ClosingCounty;
         }
 
-        internal virtual void AssignBorrowerInformation(RequestClosingMessage requestClosingMessage, ICollection<BuyerSellerResult> buyerSellerResults)
+        internal void AssignBorrowerInformation(RequestClosingMessage requestClosingMessage, ICollection<BuyerSellerResult> buyerSellerResults)
         {
             var borrower = buyerSellerResults.FirstOrDefault(b => b.Type == BuyerSellerEnum.Buyer && !b.Spouse);
 
