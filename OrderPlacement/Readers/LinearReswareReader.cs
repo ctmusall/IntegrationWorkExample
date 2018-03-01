@@ -18,7 +18,6 @@ namespace OrderPlacement.Readers
             {
                 FileNumber = fileNumber,
                 CustomerId = CustomerId,
-
                 CustomerContact = CustomerContact,
                 LenderName = lender.Name,
                 // Product = MapProduct(),

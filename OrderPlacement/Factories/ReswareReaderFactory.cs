@@ -6,8 +6,11 @@ namespace OrderPlacement.Factories
     {
         internal IReswareReader ResolveReader(int clientId)
         {
-            // TODO - Resolve reader based on resware client ID sent (ex. 1 = Linear, etc.)
-            return new LinearReswareReader();    
+            switch (clientId)
+            {
+                default:
+                    return new LinearReswareReader();
+            }
         }
     }
 }
