@@ -53,7 +53,7 @@ namespace ReswareOrderMonitorService.Factories
             container.RegisterType<IActionEventReader, ActionEventReader>();
             container.RegisterType<IMirthServiceClient, MirthServiceClient>();
             container.RegisterType<IParentActionEventFactory, ParentActionEventFactory>();
-            container.RegisterType<IServiceUtilityFactory, ServiceUtilityFactory>();
+            container.RegisterType<IParentServiceUtilityFactory, ParentServiceUtilityFactory>();
         }
     }
 }

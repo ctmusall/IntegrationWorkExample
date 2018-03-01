@@ -16,9 +16,6 @@ namespace ReswareOrderMonitorService.ActionEvents
         protected internal readonly IMirthServiceClient MirthServiceClient;
         protected internal readonly IOrderServiceUtility OrderServiceUtility;
 
-
-        protected internal RequestClosing() : this(new ReceiveSigningServiceClient(), ReswareOrderDependencyFactory.Resolve<IMirthServiceClient>()) { }
-
         internal RequestClosing(IOrderServiceUtility orderServiceUtility) : this(new ReceiveSigningServiceClient(), ReswareOrderDependencyFactory.Resolve<IMirthServiceClient>())
         {
             OrderServiceUtility = orderServiceUtility;

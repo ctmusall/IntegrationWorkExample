@@ -27,9 +27,9 @@ namespace ReswareOrderMonitorService.ActionEvents.Linear
                 DocsToAttorney = order.DeliveryMethod
             };
 
-            AssignBorrowerInformation(linearClosingOrderMessage, order.BuyersAndSellers);
-
             AssignClosingInformation(linearClosingOrderMessage, order.FileNumber);
+
+            AssignBorrowerInformation(linearClosingOrderMessage, order.BuyersAndSellers);
 
             OrderServiceUtility.AssignServices(linearClosingOrderMessage);
 

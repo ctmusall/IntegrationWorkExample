@@ -97,8 +97,11 @@
     <Compile Include="Common\ServiceUtilityTypeEnum.cs" />
     <Compile Include="Common\StateConstants.cs" />
     <Compile Include="Factories\ActionEventFactory.cs" />
+    <Compile Include="Factories\IParentServiceUtilityFactory.cs" />
     <Compile Include="Factories\IServiceUtilityFactory.cs" />
     <Compile Include="Factories\LinearActionEventFactory.cs" />
+    <Compile Include="Factories\LinearServiceUtilityFactory.cs" />
+    <Compile Include="Factories\ParentServiceUtilityFactory.cs" />
     <Compile Include="Factories\ReswareOrderDependencyFactory.cs" />
     <Compile Include="Factories\ServiceUtilityFactory.cs" />
     <Compile Include="Mirth\IMirthServiceClient.cs" />
