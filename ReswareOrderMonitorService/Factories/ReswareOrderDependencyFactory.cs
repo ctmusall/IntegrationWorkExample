@@ -1,6 +1,7 @@
 ﻿using ReswareOrderMonitorService.Mirth;
 using ReswareOrderMonitorService.Monitors;
 using ReswareOrderMonitorService.Readers;
+using ReswareOrderMonitorService.Utilities;
 using Unity;
 
 namespace ReswareOrderMonitorService.Factories
@@ -52,6 +53,7 @@ namespace ReswareOrderMonitorService.Factories
             container.RegisterType<IActionEventReader, ActionEventReader>();
             container.RegisterType<IMirthServiceClient, MirthServiceClient>();
             container.RegisterType<IParentActionEventFactory, ParentActionEventFactory>();
+            container.RegisterType<IServiceUtilityFactory, ServiceUtilityFactory>();
         }
     }
 }
