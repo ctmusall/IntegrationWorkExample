@@ -46,5 +46,17 @@ namespace ReswareOrderMonitorService.Properties {
                 this["MirthLinearClosingPort"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("4413")]
+        public int MirthLinearTitleOpinionPort {
+            get {
+                return ((int)(this["MirthLinearTitleOpinionPort"]));
+            }
+            set {
+                this["MirthLinearTitleOpinionPort"] = value;
+            }
+        }
     }
 }
