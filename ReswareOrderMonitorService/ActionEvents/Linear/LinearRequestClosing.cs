@@ -21,7 +21,7 @@ namespace ReswareOrderMonitorService.ActionEvents.Linear
 
             if (signing == null) return false;
 
-            var linearClosingOrderMessage = new RequestClosingMessage
+            var linearClosingOrderMessage = new RequestMessage
             {
                 OrderId = order.FileNumber,
                 CustomerId = order.CustomerId,

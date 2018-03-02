@@ -1,6 +1,6 @@
 ﻿namespace ReswareOrderMonitorService.Models
 {
-    public class RequestClosingMessage
+    public class RequestMessage
     {
         public string OrderId { get; set; }
         public string CustomerId { get; set; }

@@ -26,7 +26,7 @@ namespace ReswareOrderMonitorService.ActionEvents
             MirthServiceClient = mirthServiceClient;
         }
 
-        internal void AssignClosingInformation(RequestClosingMessage requestClosingMessage, SigningServiceResult signing)
+        internal void AssignClosingInformation(RequestMessage requestClosingMessage, SigningServiceResult signing)
         {
             if (signing.ClosingDateTime != null)
             {
@@ -41,7 +41,7 @@ namespace ReswareOrderMonitorService.ActionEvents
             requestClosingMessage.ClosingCounty = signing.ClosingCounty;
         }
 
-        internal void AssignBorrowerInformation(RequestClosingMessage requestClosingMessage, ICollection<BuyerSellerResult> buyerSellerResults)
+        internal void AssignBorrowerInformation(RequestMessage requestClosingMessage, ICollection<BuyerSellerResult> buyerSellerResults)
         {
             var borrower = buyerSellerResults.FirstOrDefault(b => b.Type == BuyerSellerEnum.Buyer && !b.Spouse);
 

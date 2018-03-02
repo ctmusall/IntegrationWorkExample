@@ -6,7 +6,7 @@ namespace ReswareOrderMonitorService.Utilities
 {
     internal class LinearClosingServiceUtility : ClosingServiceUtility
     {
-        public override void AssignServices(RequestClosingMessage requestClosingMessage)
+        public override void AssignServices(RequestMessage requestClosingMessage)
         {
             if (!string.Equals(requestClosingMessage.ClosingState, requestClosingMessage.BorrowerState, StringComparison.CurrentCultureIgnoreCase))
             {
@@ -43,7 +43,7 @@ namespace ReswareOrderMonitorService.Utilities
             }
         }
 
-        private static void DetermineDelawareServices(RequestClosingMessage requestClosingMessage)
+        private static void DetermineDelawareServices(RequestMessage requestClosingMessage)
         {
             if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.EClosingsProductNames.Refinance, StringComparison.CurrentCultureIgnoreCase) 
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.Refinance, StringComparison.CurrentCultureIgnoreCase))
@@ -110,7 +110,7 @@ namespace ReswareOrderMonitorService.Utilities
             }
         }
 
-        private static void DetermineGeorgiaServices(RequestClosingMessage requestClosingMessage)
+        private static void DetermineGeorgiaServices(RequestMessage requestClosingMessage)
         {
             if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.EClosingsProductNames.Refinance, StringComparison.CurrentCultureIgnoreCase)
                             && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.Refinance, StringComparison.CurrentCultureIgnoreCase))
@@ -172,7 +172,7 @@ namespace ReswareOrderMonitorService.Utilities
             }
         }
 
-        private static void DetermineMassachusettsServices(RequestClosingMessage requestClosingMessage)
+        private static void DetermineMassachusettsServices(RequestMessage requestClosingMessage)
         {
             if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.EClosingsProductNames.Refinance, StringComparison.CurrentCultureIgnoreCase)
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.Refinance, StringComparison.CurrentCultureIgnoreCase))
@@ -244,7 +244,7 @@ namespace ReswareOrderMonitorService.Utilities
             }
         }
 
-        private static void DetermineNorthCarolinaServices(RequestClosingMessage requestClosingMessage)
+        private static void DetermineNorthCarolinaServices(RequestMessage requestClosingMessage)
         {
             if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.EClosingsProductNames.Refinance, StringComparison.CurrentCultureIgnoreCase)
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.Refinance, StringComparison.CurrentCultureIgnoreCase))
@@ -307,7 +307,7 @@ namespace ReswareOrderMonitorService.Utilities
             }
         }
 
-        private static void DetermineNewYorkServices(RequestClosingMessage requestClosingMessage)
+        private static void DetermineNewYorkServices(RequestMessage requestClosingMessage)
         {
             if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.EClosingsProductNames.Refinance, StringComparison.CurrentCultureIgnoreCase)
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.Refinance, StringComparison.CurrentCultureIgnoreCase))
@@ -370,7 +370,7 @@ namespace ReswareOrderMonitorService.Utilities
             }
         }
 
-        private static void DetermineVermontServices(RequestClosingMessage requestClosingMessage)
+        private static void DetermineVermontServices(RequestMessage requestClosingMessage)
         {
             if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.EClosingsProductNames.Refinance, StringComparison.CurrentCultureIgnoreCase)
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.Refinance, StringComparison.CurrentCultureIgnoreCase))
@@ -423,7 +423,7 @@ namespace ReswareOrderMonitorService.Utilities
             }
         }
 
-        private static void DetermineWestVirginiaServices(RequestClosingMessage requestClosingMessage)
+        private static void DetermineWestVirginiaServices(RequestMessage requestClosingMessage)
         {
             if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.EClosingsProductNames.Refinance, StringComparison.CurrentCultureIgnoreCase)
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.Refinance, StringComparison.CurrentCultureIgnoreCase))
