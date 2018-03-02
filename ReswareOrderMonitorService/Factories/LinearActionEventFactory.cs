@@ -10,6 +10,7 @@ namespace ReswareOrderMonitorService.Factories
 
         private const string RequestClosingActionEventCode = "234";
         private const string RescheduleActionEventCode = "240";
+        private const string RequestTitleOpinion = "";
 
         internal override ActionEvent ResolveActionEvent(string actionEventCode)
         {
@@ -19,6 +20,8 @@ namespace ReswareOrderMonitorService.Factories
                     return new LinearSchedulingReschedule(ServiceUtilityFactory.ResolveServiceUtility(ServiceUtilityTypeEnum.Closing));
                 case RequestClosingActionEventCode:
                     return new LinearRequestClosing(ServiceUtilityFactory.ResolveServiceUtility(ServiceUtilityTypeEnum.Closing));
+                case RequestTitleOpinion:
+                    return new LinearRequestTitleOpinion();
                  default:
                     return null;   
             }
