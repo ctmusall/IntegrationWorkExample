@@ -73,6 +73,7 @@ namespace ReswareOrderMonitorService.ActionEvents
             requestClosingMessage.BorrowerCity = address.City;
             requestClosingMessage.BorrowerState = address.State;
             requestClosingMessage.BorrowerZipCode = address.Zip;
+            requestClosingMessage.BorrowerCounty = address.County;
         }
     }
 }

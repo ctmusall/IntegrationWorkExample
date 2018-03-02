@@ -7,6 +7,7 @@ namespace OrderPlacement.Models
     {
         [ForeignKey("BuyerSeller")]
         public Guid BuyerSellerId { get; set; }
+        public string County { get; set; }
 
         public virtual BuyerSeller BuyerSeller { get; set; }
     }

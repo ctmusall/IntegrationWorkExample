@@ -6,7 +6,7 @@
       <Value Profile="(Default)">10.250.161.135</Value>
     </Setting>
     <Setting Name="MirthLinearClosingPort" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">3412</Value>
+      <Value Profile="(Default)">4412</Value>
     </Setting>
   </Settings>
 </SettingsFile>

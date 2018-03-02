@@ -20,6 +20,7 @@
         public string BorrowerCity { get; set; }
         public string BorrowerState { get; set; }
         public string BorrowerZipCode { get; set; }
+        public string BorrowerCounty { get; set; }
         public string BorrowerPhone1 { get; set; }
         public string BorrowerPhone2 { get; set; }
         public string BorrowerEmail { get; set; }

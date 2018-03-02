@@ -59,7 +59,8 @@ namespace OrderPlacement.Parsers
                 City = buyerSellerAddress.City,
                 State = buyerSellerAddress.State,
                 AddressStreetInfo = buyerSellerAddress.AddressStreetInfo,
-                Description = buyerSellerAddress.Description
+                Description = buyerSellerAddress.Description,
+                County = buyerSellerAddress.County
             }).ToList();
         }
         private static ICollection<PropertyAddress> ParsePropertyAddress(IEnumerable<PropertyAddressResult> propertyAddresses)

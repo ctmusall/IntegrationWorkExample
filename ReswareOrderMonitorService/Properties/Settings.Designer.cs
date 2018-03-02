@@ -37,7 +37,7 @@ namespace ReswareOrderMonitorService.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("3412")]
+        [global::System.Configuration.DefaultSettingValueAttribute("4412")]
         public int MirthLinearClosingPort {
             get {
                 return ((int)(this["MirthLinearClosingPort"]));

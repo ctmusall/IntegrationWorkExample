@@ -61,6 +61,7 @@
       <xs:extension base="tns:AddressResult">
         <xs:sequence>
           <xs:element minOccurs="0" name="BuyerSellerId" type="ser:guid" />
+          <xs:element minOccurs="0" name="County" nillable="true" type="xs:string" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>

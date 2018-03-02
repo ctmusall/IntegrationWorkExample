@@ -1905,6 +1905,9 @@ namespace ReswareOrderMonitorService.ReswareOrders {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Guid BuyerSellerIdField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CountyField;
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
         internal System.Guid BuyerSellerId {
             get {
@@ -1914,6 +1917,19 @@ namespace ReswareOrderMonitorService.ReswareOrders {
                 if ((this.BuyerSellerIdField.Equals(value) != true)) {
                     this.BuyerSellerIdField = value;
                     this.RaisePropertyChanged("BuyerSellerId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string County {
+            get {
+                return this.CountyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CountyField, value) != true)) {
+                    this.CountyField = value;
+                    this.RaisePropertyChanged("County");
                 }
             }
         }

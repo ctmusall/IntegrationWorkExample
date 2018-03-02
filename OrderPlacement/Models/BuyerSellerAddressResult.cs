@@ -9,5 +9,7 @@ namespace OrderPlacement.Models
     {
         [DataMember]
         public Guid BuyerSellerId { get; set; }
+        [DataMember]
+        public string County { get; set; }
     }
 }
