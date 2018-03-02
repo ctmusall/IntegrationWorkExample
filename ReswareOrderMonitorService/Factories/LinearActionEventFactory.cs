@@ -16,7 +16,7 @@ namespace ReswareOrderMonitorService.Factories
             switch (actionEventCode)
             {
                 case RescheduleActionEventCode:
-                    return new LinearSchedulingReschedule();
+                    return new LinearSchedulingReschedule(ServiceUtilityFactory.ResolveServiceUtility(ServiceUtilityTypeEnum.Closing));
                 case RequestClosingActionEventCode:
                     return new LinearRequestClosing(ServiceUtilityFactory.ResolveServiceUtility(ServiceUtilityTypeEnum.Closing));
                  default:

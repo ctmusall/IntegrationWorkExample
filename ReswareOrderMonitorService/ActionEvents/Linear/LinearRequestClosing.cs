@@ -17,7 +17,7 @@ namespace ReswareOrderMonitorService.ActionEvents.Linear
 
         internal override bool PerformAction(OrderResult order)
         {
-            var signing = SigningServiceClient.GetAllSignings().FirstOrDefault(s => string.Equals(s.FileNumber, order.FileNumber, StringComparison.CurrentCultureIgnoreCase));
+            var signing = SigningServiceClient.GetAllSignings().OrderByDescending(s => s.CreatedDateTime).FirstOrDefault(s => string.Equals(s.FileNumber, order.FileNumber, StringComparison.CurrentCultureIgnoreCase));
 
             if (signing == null) return false;
 

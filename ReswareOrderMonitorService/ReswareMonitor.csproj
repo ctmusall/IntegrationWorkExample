@@ -148,6 +148,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\eClosingIntegrationService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Service References\ReswareActionEvent\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -178,6 +183,40 @@
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\eClosingIntegrationService\IntegrationService.wsdl" />
+    <None Include="Service References\eClosingIntegrationService\IntegrationService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\eClosingIntegrationService\IntegrationService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\eClosingIntegrationService\IntegrationService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\eClosingIntegrationService\IntegrationService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\eClosingIntegrationService\IntegrationService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\eClosingIntegrationService\IntegrationService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\eClosingIntegrationService\ReswareOrderMonitorService.eClosingIntegrationService.GetOrderResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eClosingIntegrationService\ReswareOrderMonitorService.eClosingIntegrationService.IntegrationServiceInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eClosingIntegrationService\ReswareOrderMonitorService.eClosingIntegrationService.ServiceResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eClosingIntegrationService\ReswareOrderMonitorService.eClosingIntegrationService.SubmitOrderResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eClosingIntegrationService\ReswareOrderMonitorService.eClosingIntegrationService.TSISubmitOrderResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ReswareActionEvent\ReceiveActionEventService.xsd">
       <SubType>Designer</SubType>
@@ -269,6 +308,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Service References\eClosingIntegrationService\" />
     <WCFMetadataStorage Include="Service References\ReswareActionEvent\" />
     <WCFMetadataStorage Include="Service References\ReswareNoteDocs\" />
     <WCFMetadataStorage Include="Service References\ReswareOrders\" />
@@ -338,6 +378,18 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\eClosingIntegrationService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\eClosingIntegrationService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\eClosingIntegrationService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
