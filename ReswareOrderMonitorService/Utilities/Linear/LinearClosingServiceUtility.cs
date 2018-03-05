@@ -4,7 +4,7 @@ using ReswareOrderMonitorService.Models;
 
 namespace ReswareOrderMonitorService.Utilities.Linear
 {
-    internal class LinearClosingServiceUtility : ClosingServiceUtility
+    internal class LinearClosingServiceUtility : ServiceUtility
     {
         public override void AssignServices(RequestMessage requestClosingMessage)
         {

@@ -3,7 +3,7 @@ using ReswareOrderMonitorService.Models;
 
 namespace ReswareOrderMonitorService.Utilities.Linear
 {
-    internal class LinearTitleOpinionServiceUtility : ClosingServiceUtility
+    internal class LinearTitleOpinionServiceUtility : ServiceUtility
     {
         public override void AssignServices(RequestMessage requestClosingMessage)
         {

@@ -101,6 +101,7 @@
     <Compile Include="ActionEvents\Linear\LinearNotaryDocumentsPickedUp.cs" />
     <Compile Include="ActionEvents\Linear\LinearReceiveFundingAuth.cs" />
     <Compile Include="ActionEvents\Linear\LinearRequestClosing.cs" />
+    <Compile Include="ActionEvents\Linear\LinearRequestDocPrep.cs" />
     <Compile Include="ActionEvents\Linear\LinearRequestTitleOpinion.cs" />
     <Compile Include="ActionEvents\Linear\LinearSchedulingReschedule.cs" />
     <Compile Include="ActionEvents\NotaryDocumentsPickedUp.cs" />
@@ -173,7 +174,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Utilities\ClosingServiceUtility.cs" />
+    <Compile Include="Utilities\ServiceUtility.cs" />
     <Compile Include="Utilities\DateTimeUtility.cs" />
     <Compile Include="Utilities\IDateTimeUtility.cs" />
     <Compile Include="Utilities\IOrderServiceUtility.cs" />
