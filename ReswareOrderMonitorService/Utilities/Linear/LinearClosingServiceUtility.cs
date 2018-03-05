@@ -2,7 +2,7 @@
 using ReswareOrderMonitorService.Common;
 using ReswareOrderMonitorService.Models;
 
-namespace ReswareOrderMonitorService.Utilities
+namespace ReswareOrderMonitorService.Utilities.Linear
 {
     internal class LinearClosingServiceUtility : ClosingServiceUtility
     {

@@ -1,5 +1,6 @@
 ﻿using ReswareOrderMonitorService.Common;
 using ReswareOrderMonitorService.Utilities;
+using ReswareOrderMonitorService.Utilities.Linear;
 
 namespace ReswareOrderMonitorService.Factories
 {
@@ -12,7 +13,7 @@ namespace ReswareOrderMonitorService.Factories
                 case ServiceUtilityTypeEnum.Closing:
                     return new LinearClosingServiceUtility();
                 case ServiceUtilityTypeEnum.TitleOpinion:
-                    return null;
+                    return new LinearTitleOpinionServiceUtility();
                 case ServiceUtilityTypeEnum.DocPrep:
                     return null;
                 default:

@@ -1,27 +1,23 @@
 ﻿using System;
-using System.Linq;
 using ReswareOrderMonitorService.Common;
 using ReswareOrderMonitorService.Models;
 using ReswareOrderMonitorService.Properties;
 using ReswareOrderMonitorService.ReswareOrders;
+using ReswareOrderMonitorService.ReswareSigning;
 using ReswareOrderMonitorService.Utilities;
 
 namespace ReswareOrderMonitorService.ActionEvents.Linear
 {
-    internal class LinearRequestClosing : RequestClosing
+    internal class LinearRequestClosing : RequestOrder
     {
         private const string CustomerContact = "TEAM CLOSINGS";
         private const string DocsToAttorney = "eDoc";
 
         internal LinearRequestClosing(IOrderServiceUtility orderServiceUtility) : base(orderServiceUtility) { }
 
-        internal override bool PerformAction(OrderResult order)
+        internal override RequestMessage BuildRequestMessage(OrderResult order, SigningServiceResult signing)
         {
-            var signing = SigningServiceClient.GetAllSignings().OrderByDescending(s => s.CreatedDateTime).FirstOrDefault(s => string.Equals(s.FileNumber, order.FileNumber, StringComparison.CurrentCultureIgnoreCase));
-
-            if (signing == null) return false;
-
-            var linearClosingOrderMessage = new RequestMessage
+            return new RequestMessage
             {
                 OrderId = order.FileNumber,
                 CustomerId = order.CustomerId,
@@ -32,16 +28,20 @@ namespace ReswareOrderMonitorService.ActionEvents.Linear
                 FileNumber = order.FileNumber,
                 OrderRequestedDate = DateTime.Now.ToShortDateString(),
                 OrderRequestedTime = DateTime.Now.ToShortTimeString(),
-                DocsToAttorney = DocsToAttorney
+                DocsToAttorney = DocsToAttorney,
+                ClosingDate = signing.ClosingDateTime?.ToShortDateString() ?? DateTime.Now.ToShortDateString(),
+                ClosingTime = signing.ClosingDateTime?.ToShortTimeString() ?? DateTime.Now.ToShortTimeString(),
+                ClosingAddress1 = signing.ClosingAddress,
+                ClosingCity = signing.ClosingCity,
+                ClosingState = signing.ClosingState,
+                ClosingZipCode = signing.ClosingZip,
+                ClosingCounty = signing.ClosingCounty
             };
+        }
 
-            AssignClosingInformation(linearClosingOrderMessage, signing);
-
-            AssignBorrowerInformation(linearClosingOrderMessage, order.BuyersAndSellers);
-
-            OrderServiceUtility.AssignServices(linearClosingOrderMessage);
-
-            return MirthServiceClient.SendMessageToMirth(ModelSerializer.SerializeXml(linearClosingOrderMessage), Settings.Default.MirthLinearClosingPort, Settings.Default.MirthIPAddress);
+        internal override bool SendRequestMessage(RequestMessage requestMessage)
+        {
+            return MirthServiceClient.SendMessageToMirth(ModelSerializer.SerializeXml(requestMessage), Settings.Default.MirthLinearClosingPort, Settings.Default.MirthIPAddress);
         }
     }
 }

@@ -21,7 +21,7 @@ namespace ReswareOrderMonitorService.Factories
                 case RequestClosingActionEventCode:
                     return new LinearRequestClosing(ServiceUtilityFactory.ResolveServiceUtility(ServiceUtilityTypeEnum.Closing));
                 case RequestTitleOpinion:
-                    return new LinearRequestTitleOpinion();
+                    return new LinearRequestTitleOpinion(ServiceUtilityFactory.ResolveServiceUtility(ServiceUtilityTypeEnum.TitleOpinion));
                  default:
                     return null;   
             }

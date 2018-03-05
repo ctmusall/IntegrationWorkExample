@@ -54,6 +54,7 @@ namespace ReswareOrderMonitorService.Factories
             container.RegisterType<IMirthServiceClient, MirthServiceClient>();
             container.RegisterType<IParentActionEventFactory, ParentActionEventFactory>();
             container.RegisterType<IParentServiceUtilityFactory, ParentServiceUtilityFactory>();
+            container.RegisterType<IDateTimeUtility, DateTimeUtility>();
         }
     }
 }

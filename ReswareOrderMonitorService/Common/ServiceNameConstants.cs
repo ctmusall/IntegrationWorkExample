@@ -14,5 +14,8 @@
         internal const string DisbursementPurchase = "Disbursement - Purchase";
         internal const string EdocsReducedPackage = "eDocs - Reduced Package";
         internal const string RecordingSupervision = "Recording Supervision";
+        internal const string TitleOpinionLetter = "Title Opinion Letter";
+        internal const string TitleOpinionPreparationAndReview = "Title Opinion Preparation and Review";
+        internal const string MaMarketableTitleLetter = "MA Marketable Title Letter";
     }
 }

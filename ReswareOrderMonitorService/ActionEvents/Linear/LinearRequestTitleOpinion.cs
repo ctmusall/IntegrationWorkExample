@@ -1,16 +1,32 @@
 ﻿using System;
 using ReswareOrderMonitorService.Common;
+using ReswareOrderMonitorService.Factories;
 using ReswareOrderMonitorService.Models;
 using ReswareOrderMonitorService.Properties;
 using ReswareOrderMonitorService.ReswareOrders;
+using ReswareOrderMonitorService.ReswareSigning;
+using ReswareOrderMonitorService.Utilities;
 
 namespace ReswareOrderMonitorService.ActionEvents.Linear
 {
-    internal class LinearRequestTitleOpinion : RequestTitleOpinion
+    internal class LinearRequestTitleOpinion : RequestOrder
     {
-        private const string CustomerContact = "KRISTEN MILLER";
+        private readonly IDateTimeUtility _dateTimeUtility;
 
-        internal override bool PerformAction(OrderResult order)
+        private const string CustomerContact = "KRISTEN MILLER";
+        private const string Product = "INT--Search/Opinion";
+
+        internal LinearRequestTitleOpinion(IOrderServiceUtility orderServiceUtility) : this(orderServiceUtility, ReswareOrderDependencyFactory.Resolve<IDateTimeUtility>())
+        {
+
+        }
+
+        internal LinearRequestTitleOpinion(IOrderServiceUtility orderServiceUtility, IDateTimeUtility dateTimeUtility) : base(orderServiceUtility)
+        {
+            _dateTimeUtility = dateTimeUtility;
+        }
+
+        internal override RequestMessage BuildRequestMessage(OrderResult order, SigningServiceResult signing)
         {
             var requestMessage = new RequestMessage
             {
@@ -18,19 +34,33 @@ namespace ReswareOrderMonitorService.ActionEvents.Linear
                 CustomerId = order.CustomerId,
                 CustomerContact = CustomerContact,
                 LenderName = order.LenderName,
-                Product = order.Product,
+                Product = Product,
                 FileNumber = order.FileNumber,
                 OrderRequestedDate = DateTime.Now.ToShortDateString(),
                 OrderRequestedTime = DateTime.Now.ToShortTimeString(),
+                ClosingAddress1 = signing.ClosingAddress,
+                ClosingCity = signing.ClosingCity,
+                ClosingState = signing.ClosingState,
+                ClosingZipCode = signing.ClosingZip,
+                ClosingCounty = signing.ClosingCounty
             };
 
-            // TODO - Closing information 
+            SetClosingDateTime(requestMessage, DateTime.Now);
 
-            // TODO - Services
+            return requestMessage;
+        }
 
-            // TODO - Borrower information
-
+        internal override bool SendRequestMessage(RequestMessage requestMessage)
+        {
             return MirthServiceClient.SendMessageToMirth(ModelSerializer.SerializeXml(requestMessage), Settings.Default.MirthLinearTitleOpinionPort, Settings.Default.MirthIPAddress);
+        }
+
+        private void SetClosingDateTime(RequestMessage requestMessage, DateTime requestedClosingDateTime)
+        {
+            var closingDateTime = _dateTimeUtility.ResolveTitleOpinionClosingDateTime(requestedClosingDateTime);
+
+            requestMessage.ClosingDate = closingDateTime.ToShortDateString();
+            requestMessage.ClosingTime = closingDateTime.ToShortTimeString();
         }
     }
 }

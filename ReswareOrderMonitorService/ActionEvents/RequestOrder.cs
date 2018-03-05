@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using ReswareOrderMonitorService.Factories;
 using ReswareOrderMonitorService.Mirth;
@@ -9,36 +10,40 @@ using ReswareOrderMonitorService.Utilities;
 
 namespace ReswareOrderMonitorService.ActionEvents
 {
-    internal abstract class RequestClosing : ActionEvent
+    internal abstract class RequestOrder : ActionEvent
     {
         internal readonly ReceiveSigningServiceClient SigningServiceClient;
         protected internal readonly IMirthServiceClient MirthServiceClient;
         protected internal readonly IOrderServiceUtility OrderServiceUtility;
 
-        internal RequestClosing(IOrderServiceUtility orderServiceUtility) : this(new ReceiveSigningServiceClient(), ReswareOrderDependencyFactory.Resolve<IMirthServiceClient>())
+        internal RequestOrder(IOrderServiceUtility orderServiceUtility) : this(new ReceiveSigningServiceClient(), ReswareOrderDependencyFactory.Resolve<IMirthServiceClient>())
         {
             OrderServiceUtility = orderServiceUtility;
         }
 
-        protected internal RequestClosing(ReceiveSigningServiceClient signingServiceClient, IMirthServiceClient mirthServiceClient)
+        protected internal RequestOrder(ReceiveSigningServiceClient signingServiceClient, IMirthServiceClient mirthServiceClient)
         {
             SigningServiceClient = signingServiceClient;
             MirthServiceClient = mirthServiceClient;
         }
 
-        internal void AssignClosingInformation(RequestMessage requestClosingMessage, SigningServiceResult signing)
-        {
-            if (signing.ClosingDateTime != null)
-            {
-                requestClosingMessage.ClosingDate = signing.ClosingDateTime.Value.ToShortDateString();
-                requestClosingMessage.ClosingTime = signing.ClosingDateTime.Value.ToShortTimeString();
-            }
+        internal abstract RequestMessage BuildRequestMessage(OrderResult order, SigningServiceResult signing);
 
-            requestClosingMessage.ClosingAddress1 = signing.ClosingAddress;
-            requestClosingMessage.ClosingCity = signing.ClosingCity;
-            requestClosingMessage.ClosingState = signing.ClosingState;
-            requestClosingMessage.ClosingZipCode = signing.ClosingZip;
-            requestClosingMessage.ClosingCounty = signing.ClosingCounty;
+        internal abstract bool SendRequestMessage(RequestMessage requestMessage);
+
+        internal override bool PerformAction(OrderResult order)
+        {
+            var signing = SigningServiceClient.GetAllSignings().OrderByDescending(s => s.CreatedDateTime).FirstOrDefault(s => string.Equals(s.FileNumber, order.FileNumber, StringComparison.CurrentCultureIgnoreCase));
+
+            if (signing == null) return false;
+
+            var requestMessage = BuildRequestMessage(order, signing);
+
+            AssignBorrowerInformation(requestMessage, order.BuyersAndSellers);
+
+            OrderServiceUtility.AssignServices(requestMessage);
+
+            return SendRequestMessage(requestMessage);
         }
 
         internal void AssignBorrowerInformation(RequestMessage requestClosingMessage, ICollection<BuyerSellerResult> buyerSellerResults)
