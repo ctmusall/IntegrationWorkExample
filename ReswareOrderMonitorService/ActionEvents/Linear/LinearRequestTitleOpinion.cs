@@ -1,8 +1,6 @@
 ﻿using System;
-using ReswareOrderMonitorService.Common;
 using ReswareOrderMonitorService.Factories;
 using ReswareOrderMonitorService.Models;
-using ReswareOrderMonitorService.Properties;
 using ReswareOrderMonitorService.ReswareOrders;
 using ReswareOrderMonitorService.ReswareSigning;
 using ReswareOrderMonitorService.Utilities;
