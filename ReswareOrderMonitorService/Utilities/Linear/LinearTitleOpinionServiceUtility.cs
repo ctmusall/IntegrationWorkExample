@@ -7,6 +7,12 @@ namespace ReswareOrderMonitorService.Utilities.Linear
     {
         public override void AssignServices(RequestMessage requestClosingMessage)
         {
+            if (string.IsNullOrWhiteSpace(requestClosingMessage.ClosingState))
+            {
+                requestClosingMessage.Notes += "Did not apply any services because the closing state was empty.";
+                return;
+            }
+
             switch (requestClosingMessage.ClosingState)
             {
                 case StateConstants.Georgia:
