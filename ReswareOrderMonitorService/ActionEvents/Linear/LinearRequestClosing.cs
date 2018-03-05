@@ -38,10 +38,5 @@ namespace ReswareOrderMonitorService.ActionEvents.Linear
                 ClosingCounty = signing.ClosingCounty
             };
         }
-
-        internal override bool SendRequestMessage(RequestMessage requestMessage)
-        {
-            return MirthServiceClient.SendMessageToMirth(ModelSerializer.SerializeXml(requestMessage), Settings.Default.MirthLinearClosingPort, Settings.Default.MirthIPAddress);
-        }
     }
 }

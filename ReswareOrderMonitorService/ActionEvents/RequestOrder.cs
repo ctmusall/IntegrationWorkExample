@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ReswareOrderMonitorService.Common;
 using ReswareOrderMonitorService.Factories;
 using ReswareOrderMonitorService.Mirth;
 using ReswareOrderMonitorService.Models;
+using ReswareOrderMonitorService.Properties;
 using ReswareOrderMonitorService.ReswareOrders;
 using ReswareOrderMonitorService.ReswareSigning;
 using ReswareOrderMonitorService.Utilities;
@@ -29,7 +31,10 @@ namespace ReswareOrderMonitorService.ActionEvents
 
         internal abstract RequestMessage BuildRequestMessage(OrderResult order, SigningServiceResult signing);
 
-        internal abstract bool SendRequestMessage(RequestMessage requestMessage);
+        internal bool SendRequestMessage(RequestMessage requestMessage)
+        {
+            return MirthServiceClient.SendMessageToMirth(ModelSerializer.SerializeXml(requestMessage), Settings.Default.MirthLinearRequestPort, Settings.Default.MirthIPAddress);
+        }
 
         internal override bool PerformAction(OrderResult order)
         {

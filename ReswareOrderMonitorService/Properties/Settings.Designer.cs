@@ -38,24 +38,12 @@ namespace ReswareOrderMonitorService.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("4412")]
-        public int MirthLinearClosingPort {
+        public int MirthLinearRequestPort {
             get {
-                return ((int)(this["MirthLinearClosingPort"]));
+                return ((int)(this["MirthLinearRequestPort"]));
             }
             set {
-                this["MirthLinearClosingPort"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("4413")]
-        public int MirthLinearTitleOpinionPort {
-            get {
-                return ((int)(this["MirthLinearTitleOpinionPort"]));
-            }
-            set {
-                this["MirthLinearTitleOpinionPort"] = value;
+                this["MirthLinearRequestPort"] = value;
             }
         }
     }

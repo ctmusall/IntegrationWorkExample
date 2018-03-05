@@ -50,11 +50,6 @@ namespace ReswareOrderMonitorService.ActionEvents.Linear
             return requestMessage;
         }
 
-        internal override bool SendRequestMessage(RequestMessage requestMessage)
-        {
-            return MirthServiceClient.SendMessageToMirth(ModelSerializer.SerializeXml(requestMessage), Settings.Default.MirthLinearTitleOpinionPort, Settings.Default.MirthIPAddress);
-        }
-
         private void SetClosingDateTime(RequestMessage requestMessage, DateTime requestedClosingDateTime)
         {
             var closingDateTime = _dateTimeUtility.ResolveTitleOpinionClosingDateTime(requestedClosingDateTime);

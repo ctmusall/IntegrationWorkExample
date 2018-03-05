@@ -10,7 +10,7 @@ namespace ReswareOrderMonitorService.Factories
 
         private const string RequestClosingActionEventCode = "234";
         private const string RescheduleActionEventCode = "240";
-        private const string RequestTitleOpinion = "";
+        private const string RequestTitleOpinion = "235"; // TODO - Change to linear request title opinion action event
 
         internal override ActionEvent ResolveActionEvent(string actionEventCode)
         {
