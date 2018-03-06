@@ -19,6 +19,8 @@
             internal const string ModAssumptionDil = "MOD/Assumption/DIL";
             internal const string ConferenceCall = "Conference Call";
             internal const string Online = "Online";
+            internal const string DeedPrepInternal = "Deed Prep--Internal";
+            internal const string DeedPrepExternal = "Deed Prep--External";
         }
     }
 }

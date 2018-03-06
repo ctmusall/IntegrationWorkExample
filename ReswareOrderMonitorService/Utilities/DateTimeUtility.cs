@@ -37,6 +37,31 @@ namespace ReswareOrderMonitorService.Utilities
             return AdjustForWeekendAndHoliday(closingDateTime, holidays);
         }
 
+        public DateTime ResolveDocPrepClosingDateTime()
+        {
+            var returnedTime = DateTime.Now;
+            var dayOfTheWeek = returnedTime.DayOfWeek;
+
+            if (DateTime.Now.Hour < 8)
+            {
+                return DateTime.Now.Date.AddHours(12);
+            }
+
+            if (DateTime.Now.Hour >= 8 && DateTime.Now.Hour < 16)
+            {
+                return DateTime.Now.AddHours(4);
+            }
+
+            if (DateTime.Now.Hour >= 16 && DateTime.Now.Hour < 20)
+            {
+                return DateTime.Now.DayOfWeek == DayOfWeek.Friday ? DateTime.Now.AddHours(16).AddDays(2) : DateTime.Now.AddHours(16);
+            }
+
+            if (DateTime.Now.Hour < 20) return DateTime.Now.AddHours(4);
+
+            return dayOfTheWeek == DayOfWeek.Friday ? DateTime.Now.Date.AddHours(12).AddDays(1).AddDays(2) : DateTime.Now.Date.AddHours(12).AddDays(1);
+        }
+
         private static ICollection<DateTime> GetPcnHolidaysBasedOnClosingDateYear(int year)
         {
             var holidays = new List<DateTime>

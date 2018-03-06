@@ -15,7 +15,7 @@ namespace ReswareOrderMonitorService.Factories
                 case ServiceUtilityTypeEnum.TitleOpinion:
                     return new LinearTitleOpinionServiceUtility();
                 case ServiceUtilityTypeEnum.DocPrep:
-                    return null;
+                    return new LinearDocPrepServiceUtility();
                 default:
                     return null;
             }

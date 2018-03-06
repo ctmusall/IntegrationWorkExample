@@ -17,5 +17,7 @@
         internal const string TitleOpinionLetter = "Title Opinion Letter";
         internal const string TitleOpinionPreparationAndReview = "Title Opinion Preparation and Review";
         internal const string MaMarketableTitleLetter = "MA Marketable Title Letter";
+        internal const string DeedPreparationAndReview = "Deed Preparation & Review";
+        internal const string DeedPreparation = "Deed Preparation";
     }
 }
