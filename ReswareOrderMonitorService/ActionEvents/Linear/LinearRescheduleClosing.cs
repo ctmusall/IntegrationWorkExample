@@ -4,9 +4,9 @@ using ReswareOrderMonitorService.Utilities;
 
 namespace ReswareOrderMonitorService.ActionEvents.Linear
 {
-    internal class LinearSchedulingReschedule : SchedulingReschedule
+    internal class LinearRescheduleClosing : SchedulingReschedule
     {
-        internal LinearSchedulingReschedule(IOrderServiceUtility orderServiceUtility) : base(orderServiceUtility)
+        internal LinearRescheduleClosing(IOrderServiceUtility orderServiceUtility) : base(orderServiceUtility)
         {
         }
 

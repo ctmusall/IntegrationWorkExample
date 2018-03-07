@@ -99,13 +99,13 @@
     <Compile Include="ActionEvents\ClosingCompleted.cs" />
     <Compile Include="ActionEvents\Linear\LinearClosingCompleted.cs" />
     <Compile Include="ActionEvents\Linear\LinearNotaryDocumentsPickedUp.cs" />
-    <Compile Include="ActionEvents\Linear\LinearReceiveFundingAuth.cs" />
+    <Compile Include="ActionEvents\Linear\LinearFundingAuth.cs" />
     <Compile Include="ActionEvents\Linear\LinearRequestClosing.cs" />
     <Compile Include="ActionEvents\Linear\LinearRequestDocPrep.cs" />
     <Compile Include="ActionEvents\Linear\LinearRequestTitleOpinion.cs" />
-    <Compile Include="ActionEvents\Linear\LinearSchedulingReschedule.cs" />
+    <Compile Include="ActionEvents\Linear\LinearRescheduleClosing.cs" />
     <Compile Include="ActionEvents\NotaryDocumentsPickedUp.cs" />
-    <Compile Include="ActionEvents\ReceiveFundingAuth.cs" />
+    <Compile Include="ActionEvents\FundingAuth.cs" />
     <Compile Include="ActionEvents\RequestOrder.cs" />
     <Compile Include="ActionEvents\SchedulingReschedule.cs" />
     <Compile Include="Common\ModelSerializer.cs" />
@@ -140,7 +140,7 @@
     <Compile Include="Readers\ActionEventReader.cs" />
     <Compile Include="Readers\IActionEventReader.cs" />
     <Compile Include="Monitors\IOrderActionEventMonitor.cs" />
-    <Compile Include="Monitors\OrderActionEventMonitor.cs" />
+    <Compile Include="Monitors\IncomingOrderActionEventMonitor.cs" />
     <Compile Include="ReswareMonitor.cs">
       <SubType>Component</SubType>
     </Compile>

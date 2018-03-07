@@ -49,7 +49,7 @@ namespace ReswareOrderMonitorService.Factories
 
         private static void RegisterTypes(IUnityContainer container)
         {
-            container.RegisterType<IOrderActionEventMonitor, OrderActionEventMonitor>();
+            container.RegisterType<IOrderActionEventMonitor, IncomingOrderActionEventMonitor>();
             container.RegisterType<IActionEventReader, ActionEventReader>();
             container.RegisterType<IMirthServiceClient, MirthServiceClient>();
             container.RegisterType<IParentActionEventFactory, ParentActionEventFactory>();
