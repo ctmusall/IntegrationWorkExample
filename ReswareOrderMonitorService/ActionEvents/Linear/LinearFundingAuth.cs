@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Net;
 using System.Net.Mail;
 using System.Text;
 using ReswareOrderMonitorService.ReswareOrders;
@@ -21,14 +22,14 @@ namespace ReswareOrderMonitorService.ActionEvents.Linear
             var mailMessage = new MailMessage
             {
                 From = new MailAddress("solidifiresware@pcnclosings.com", "Solidifi Resware"),
-                To = { "cmusall@pcnclosings.com" },
-                Subject = $"{propertyAddress.AddressStreetInfo}, {propertyAddress.City}, {propertyAddress.State} {propertyAddress.Zip}: {borrower} {coBorrower}: Authorization to Disburse",
+                To = { "disbursements@pcnclosings.com" },
+                Subject = $"{propertyAddress.AddressStreetInfo}, {propertyAddress.City}, {propertyAddress.State}, {propertyAddress.Zip}: {borrower.FirstName} {borrower.MiddleName} {borrower.LastName} {coBorrower?.FirstName} {coBorrower?.MiddleName} {coBorrower?.LastName}: Authorization to Disburse"
             };
 
             var body = new StringBuilder();
             body.AppendLine("You are authorized to fund this file. Please contact us immediately if anything is missing (funds/documents) that will be needed to disburse.");
             body.AppendLine($"Property: {propertyAddress.AddressStreetInfo}, {propertyAddress.City}, {propertyAddress.State} {propertyAddress.Zip}");
-            body.AppendLine($"Borrowers: {borrower} {coBorrower}");
+            body.AppendLine($"Borrowers: {borrower.FirstName} {borrower.MiddleName} {borrower.LastName} {coBorrower?.FirstName} {coBorrower?.MiddleName} {coBorrower?.LastName}");
             body.AppendLine($"Loan Number: {order.FileNumber}");
             body.AppendLine("Thank you");
             mailMessage.Body = body.ToString();
