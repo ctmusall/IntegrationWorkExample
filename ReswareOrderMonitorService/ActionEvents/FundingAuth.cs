@@ -8,7 +8,8 @@ namespace ReswareOrderMonitorService.ActionEvents
         internal override bool PerformAction(OrderResult order)
         {
             var mailMessage = BuildFundingAuthMailMessage(order);
-            return SendFundingAuthMailMessage(mailMessage);
+
+            return mailMessage != null && SendFundingAuthMailMessage(mailMessage);
         }
 
         internal abstract MailMessage BuildFundingAuthMailMessage(OrderResult order);

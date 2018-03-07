@@ -97,14 +97,11 @@
   <ItemGroup>
     <Compile Include="ActionEvents\ActionEvent.cs" />
     <Compile Include="ActionEvents\ClosingCompleted.cs" />
-    <Compile Include="ActionEvents\Linear\LinearClosingCompleted.cs" />
-    <Compile Include="ActionEvents\Linear\LinearNotaryDocumentsPickedUp.cs" />
     <Compile Include="ActionEvents\Linear\LinearFundingAuth.cs" />
     <Compile Include="ActionEvents\Linear\LinearRequestClosing.cs" />
     <Compile Include="ActionEvents\Linear\LinearRequestDocPrep.cs" />
     <Compile Include="ActionEvents\Linear\LinearRequestTitleOpinion.cs" />
     <Compile Include="ActionEvents\Linear\LinearRescheduleClosing.cs" />
-    <Compile Include="ActionEvents\NotaryDocumentsPickedUp.cs" />
     <Compile Include="ActionEvents\FundingAuth.cs" />
     <Compile Include="ActionEvents\RequestOrder.cs" />
     <Compile Include="ActionEvents\SchedulingReschedule.cs" />
@@ -113,10 +110,17 @@
     <Compile Include="Common\ServiceNameConstants.cs" />
     <Compile Include="Common\ServiceUtilityTypeEnum.cs" />
     <Compile Include="Common\StateConstants.cs" />
+    <Compile Include="DocumentSender\DocumentSender.cs" />
+    <Compile Include="DocumentSender\LinearClosingDocumentSender.cs" />
+    <Compile Include="DocumentSender\ClosingDocumentSender.cs" />
     <Compile Include="Factories\ActionEventFactory.cs" />
+    <Compile Include="Factories\ClientDocumentFactory.cs" />
+    <Compile Include="Factories\DocumentReaderFactory.cs" />
+    <Compile Include="Factories\IClientDocumentFactory.cs" />
     <Compile Include="Factories\IParentServiceUtilityFactory.cs" />
     <Compile Include="Factories\IServiceUtilityFactory.cs" />
     <Compile Include="Factories\LinearActionEventFactory.cs" />
+    <Compile Include="Factories\LinearDocumentReaderFactory.cs" />
     <Compile Include="Factories\LinearServiceUtilityFactory.cs" />
     <Compile Include="Factories\ParentServiceUtilityFactory.cs" />
     <Compile Include="Factories\ReswareOrderDependencyFactory.cs" />
@@ -126,6 +130,8 @@
     <Compile Include="Models\RequestMessage.cs" />
     <Compile Include="Factories\ParentActionEventFactory.cs" />
     <Compile Include="Factories\IParentActionEventFactory.cs" />
+    <Compile Include="Monitors\IDocumentMonitor.cs" />
+    <Compile Include="Monitors\DocumentMonitor.cs" />
     <Compile Include="ProjectInstaller.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -138,9 +144,10 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Readers\ActionEventReader.cs" />
+    <Compile Include="Factories\IDocumentReaderFactory.cs" />
     <Compile Include="Readers\IActionEventReader.cs" />
     <Compile Include="Monitors\IOrderActionEventMonitor.cs" />
-    <Compile Include="Monitors\IncomingOrderActionEventMonitor.cs" />
+    <Compile Include="Monitors\OrderActionEventMonitor.cs" />
     <Compile Include="ReswareMonitor.cs">
       <SubType>Component</SubType>
     </Compile>

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.ServiceProcess;
 using ReswareOrderMonitorService.Factories;
 using ReswareOrderMonitorService.Monitors;
 
@@ -21,8 +20,8 @@ namespace ReswareOrderMonitorService
                 ServiceBase.Run(servicesToRun);
 #else
                 ReswareOrderDependencyFactory.Resolve<IOrderActionEventMonitor>().MonitorOrderActionEvents();
+                ReswareOrderDependencyFactory.Resolve<IDocumentMonitor>().MonitorClosingDocuments();
 #endif
-
             }
             catch (Exception ex)
             {

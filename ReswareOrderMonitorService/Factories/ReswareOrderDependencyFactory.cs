@@ -49,12 +49,14 @@ namespace ReswareOrderMonitorService.Factories
 
         private static void RegisterTypes(IUnityContainer container)
         {
-            container.RegisterType<IOrderActionEventMonitor, IncomingOrderActionEventMonitor>();
+            container.RegisterType<IOrderActionEventMonitor, OrderActionEventMonitor>();
             container.RegisterType<IActionEventReader, ActionEventReader>();
             container.RegisterType<IMirthServiceClient, MirthServiceClient>();
             container.RegisterType<IParentActionEventFactory, ParentActionEventFactory>();
             container.RegisterType<IParentServiceUtilityFactory, ParentServiceUtilityFactory>();
             container.RegisterType<IDateTimeUtility, DateTimeUtility>();
+            container.RegisterType<IDocumentMonitor, DocumentMonitor>();
+            container.RegisterType<IClientDocumentFactory, ClientDocumentFactory>();
         }
     }
 }

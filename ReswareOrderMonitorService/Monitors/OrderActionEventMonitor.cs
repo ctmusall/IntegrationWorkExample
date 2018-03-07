@@ -7,14 +7,14 @@ using Unity.Interception.Utilities;
 
 namespace ReswareOrderMonitorService.Monitors
 {
-    internal class IncomingOrderActionEventMonitor : IOrderActionEventMonitor
+    internal class OrderActionEventMonitor : IOrderActionEventMonitor
     {
         private readonly OrderPlacementServiceClient _orderPlacementServiceClient;
         private readonly IActionEventReader _actionEventReader;
 
-        public IncomingOrderActionEventMonitor(): this(new OrderPlacementServiceClient(), ReswareOrderDependencyFactory.Resolve<IActionEventReader>()) { }
+        public OrderActionEventMonitor(): this(new OrderPlacementServiceClient(), ReswareOrderDependencyFactory.Resolve<IActionEventReader>()) { }
 
-        internal IncomingOrderActionEventMonitor(OrderPlacementServiceClient orderPlacementServiceClient, IActionEventReader actionEventReader)
+        internal OrderActionEventMonitor(OrderPlacementServiceClient orderPlacementServiceClient, IActionEventReader actionEventReader)
         {
             _orderPlacementServiceClient = orderPlacementServiceClient;
             _actionEventReader = actionEventReader;

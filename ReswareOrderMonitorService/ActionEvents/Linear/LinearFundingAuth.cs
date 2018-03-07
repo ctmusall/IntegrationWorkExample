@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Net;
 using System.Net.Mail;
 using System.Text;
 using ReswareOrderMonitorService.ReswareOrders;
@@ -47,8 +46,7 @@ namespace ReswareOrderMonitorService.ActionEvents.Linear
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.GetType());
-                Console.WriteLine(ex.Source);
+                Console.WriteLine(ex.GetType().FullName);
                 Console.WriteLine(ex.Message);
                 Console.WriteLine(ex.StackTrace);
                 return false;
