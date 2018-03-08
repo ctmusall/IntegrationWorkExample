@@ -26,12 +26,15 @@ namespace ReswareOrderMonitorService.Monitors
         {
             try
             {
-                var notesAndDocs = _receiveNoteServiceClient.GetAllNotesAndDocs().Where(nd => !nd.Processed && nd.ProcessedDateTime == null);
+                var notesAndDocs = _receiveNoteServiceClient.GetAllNotesAndDocs().Where(nd => !nd.Processed && nd.ProcessedDateTime == null).ToList();
+
+                if (notesAndDocs.Count == 0) return;
+                
                 var orders = _orderPlacementServiceClient.GetAllOrders();
 
                 if (orders.Length == 0) return;
 
-                notesAndDocs.ForEach(noteDoc =>
+                notesAndDocs.ForEach(noteDoc => 
                 {
                     if (noteDoc.Documents.Length == 0) return;
 
