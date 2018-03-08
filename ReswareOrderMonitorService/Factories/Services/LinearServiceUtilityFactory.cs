@@ -2,7 +2,7 @@
 using ReswareOrderMonitorService.Utilities;
 using ReswareOrderMonitorService.Utilities.Linear;
 
-namespace ReswareOrderMonitorService.Factories
+namespace ReswareOrderMonitorService.Factories.Services
 {
     internal class LinearServiceUtilityFactory : ServiceUtilityFactory
     {

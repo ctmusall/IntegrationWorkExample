@@ -105,6 +105,7 @@
     <Compile Include="ActionEvents\FundingAuth.cs" />
     <Compile Include="ActionEvents\RequestOrder.cs" />
     <Compile Include="ActionEvents\SchedulingReschedule.cs" />
+    <Compile Include="Common\EClosingOrderStatusConstants.cs" />
     <Compile Include="Common\ModelSerializer.cs" />
     <Compile Include="Common\ProductNameConstants.cs" />
     <Compile Include="Common\ServiceNameConstants.cs" />
@@ -113,25 +114,36 @@
     <Compile Include="DocumentSenders\DocumentSender.cs" />
     <Compile Include="DocumentSenders\LinearClosingDocumentSender.cs" />
     <Compile Include="DocumentSenders\ClosingDocumentSender.cs" />
-    <Compile Include="Factories\ActionEventFactory.cs" />
-    <Compile Include="Factories\ClientDocumentFactory.cs" />
-    <Compile Include="Factories\DocumentReaderFactory.cs" />
-    <Compile Include="Factories\IClientDocumentFactory.cs" />
-    <Compile Include="Factories\IParentServiceUtilityFactory.cs" />
-    <Compile Include="Factories\IServiceUtilityFactory.cs" />
-    <Compile Include="Factories\LinearActionEventFactory.cs" />
-    <Compile Include="Factories\LinearDocumentReaderFactory.cs" />
-    <Compile Include="Factories\LinearServiceUtilityFactory.cs" />
-    <Compile Include="Factories\ParentServiceUtilityFactory.cs" />
+    <Compile Include="Factories\ActionEvents\ActionEventFactory.cs" />
+    <Compile Include="Factories\Documents\ClientDocumentFactory.cs" />
+    <Compile Include="Factories\OrderStatusSenders\ClientOrderStatusSenderFactory.cs" />
+    <Compile Include="Factories\Documents\DocumentReaderFactory.cs" />
+    <Compile Include="Factories\Documents\IClientDocumentFactory.cs" />
+    <Compile Include="Factories\OrderStatusSenders\IClientOrderStatusSenderFactory.cs" />
+    <Compile Include="Factories\OrderStatusSenders\IOrderStatusReaderFactory.cs" />
+    <Compile Include="Factories\Services\IParentServiceUtilityFactory.cs" />
+    <Compile Include="Factories\Services\IServiceUtilityFactory.cs" />
+    <Compile Include="Factories\ActionEvents\LinearActionEventFactory.cs" />
+    <Compile Include="Factories\Documents\LinearDocumentReaderFactory.cs" />
+    <Compile Include="Factories\OrderStatusSenders\LinearOrderStatusSenderFactory.cs" />
+    <Compile Include="Factories\Services\LinearServiceUtilityFactory.cs" />
+    <Compile Include="Factories\OrderStatusSenders\OrderStatusSenderFactory.cs" />
+    <Compile Include="Factories\Services\ParentServiceUtilityFactory.cs" />
     <Compile Include="Factories\ReswareOrderDependencyFactory.cs" />
-    <Compile Include="Factories\ServiceUtilityFactory.cs" />
+    <Compile Include="Factories\Services\ServiceUtilityFactory.cs" />
     <Compile Include="Mirth\IMirthServiceClient.cs" />
     <Compile Include="Mirth\MirthServiceClient.cs" />
     <Compile Include="Models\RequestMessage.cs" />
-    <Compile Include="Factories\ParentActionEventFactory.cs" />
-    <Compile Include="Factories\IParentActionEventFactory.cs" />
+    <Compile Include="Factories\ActionEvents\ParentActionEventFactory.cs" />
+    <Compile Include="Factories\ActionEvents\IParentActionEventFactory.cs" />
     <Compile Include="Monitors\IDocumentMonitor.cs" />
     <Compile Include="Monitors\DocumentMonitor.cs" />
+    <Compile Include="Monitors\IOutgoingMonitor.cs" />
+    <Compile Include="Monitors\OutgoingMonitor.cs" />
+    <Compile Include="StatusSenders\AssignedAttorney.cs" />
+    <Compile Include="StatusSenders\ClosingCompleted.cs" />
+    <Compile Include="StatusSenders\Linear\LinearAssignedAttorney.cs" />
+    <Compile Include="StatusSenders\Linear\LinearClosingCompleted.cs" />
     <Compile Include="ProjectInstaller.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -144,10 +156,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Readers\ActionEventReader.cs" />
-    <Compile Include="Factories\IDocumentReaderFactory.cs" />
+    <Compile Include="Factories\Documents\IDocumentReaderFactory.cs" />
     <Compile Include="Readers\IActionEventReader.cs" />
     <Compile Include="Monitors\IOrderActionEventMonitor.cs" />
     <Compile Include="Monitors\OrderActionEventMonitor.cs" />
+    <Compile Include="StatusSenders\IStatusSender.cs" />
     <Compile Include="ReswareMonitor.cs">
       <SubType>Component</SubType>
     </Compile>

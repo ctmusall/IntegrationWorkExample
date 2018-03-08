@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using ReswareOrderMonitorService.Factories;
+using ReswareOrderMonitorService.Factories.Documents;
 using ReswareOrderMonitorService.ReswareNoteDocs;
 using ReswareOrderMonitorService.ReswareOrders;
 using Unity.Interception.Utilities;

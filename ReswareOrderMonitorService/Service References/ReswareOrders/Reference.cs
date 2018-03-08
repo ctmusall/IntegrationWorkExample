@@ -1428,6 +1428,9 @@ namespace ReswareOrderMonitorService.ReswareOrders {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private ReswareOrderMonitorService.ReswareOrders.PropertyAddressResult[] PropertyAddressField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StatusField;
+        
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
             get {
@@ -1590,6 +1593,19 @@ namespace ReswareOrderMonitorService.ReswareOrders {
                 if ((object.ReferenceEquals(this.PropertyAddressField, value) != true)) {
                     this.PropertyAddressField = value;
                     this.RaisePropertyChanged("PropertyAddress");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string Status {
+            get {
+                return this.StatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
+                    this.StatusField = value;
+                    this.RaisePropertyChanged("Status");
                 }
             }
         }

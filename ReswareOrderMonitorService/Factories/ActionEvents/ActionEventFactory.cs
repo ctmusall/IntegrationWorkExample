@@ -1,6 +1,7 @@
 ﻿using ReswareOrderMonitorService.ActionEvents;
+using ReswareOrderMonitorService.Factories.Services;
 
-namespace ReswareOrderMonitorService.Factories
+namespace ReswareOrderMonitorService.Factories.ActionEvents
 {
     internal abstract class ActionEventFactory
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using ReswareOrderMonitorService.DocumentSenders;
 
-namespace ReswareOrderMonitorService.Factories
+namespace ReswareOrderMonitorService.Factories.Documents
 {
     internal class LinearDocumentReaderFactory : DocumentReaderFactory
     {

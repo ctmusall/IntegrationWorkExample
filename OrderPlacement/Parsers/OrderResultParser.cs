@@ -18,6 +18,7 @@ namespace OrderPlacement.Parsers
                 ClosingDateTime = order.ClosingDateTime,
                 CreatedDateTime = order.CreatedDateTime,
                 Notes = order.Notes,
+                Status = order.Status,
                 ClientId = order.ClientId,
                 CustomerProduct = order.CustomerProduct,
                 LenderName = order.LenderName,
@@ -41,6 +42,7 @@ namespace OrderPlacement.Parsers
                 CustomerProduct = order.CustomerProduct,
                 ClientId = order.ClientId,
                 Notes = order.Notes,
+                Status = order.Status,
                 PropertyAddress = ParsePropertyAddressResult(order.PropertyAddress)
             };
         }

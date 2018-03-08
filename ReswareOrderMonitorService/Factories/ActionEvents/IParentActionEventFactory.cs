@@ -1,4 +1,4 @@
-﻿namespace ReswareOrderMonitorService.Factories
+﻿namespace ReswareOrderMonitorService.Factories.ActionEvents
 {
     internal interface IParentActionEventFactory
     {

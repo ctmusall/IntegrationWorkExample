@@ -1,6 +1,6 @@
 ﻿using ReswareOrderMonitorService.DocumentSenders;
 
-namespace ReswareOrderMonitorService.Factories
+namespace ReswareOrderMonitorService.Factories.Documents
 {
     internal interface IDocumentReaderFactory
     {

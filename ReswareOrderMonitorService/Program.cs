@@ -21,6 +21,7 @@ namespace ReswareOrderMonitorService
 #else
                 ReswareOrderDependencyFactory.Resolve<IOrderActionEventMonitor>().MonitorOrderActionEvents();
                 ReswareOrderDependencyFactory.Resolve<IDocumentMonitor>().MonitorDocuments();
+                ReswareOrderDependencyFactory.Resolve<IOutgoingMonitor>().MonitorOrders();
 #endif
             }
             catch (Exception ex)

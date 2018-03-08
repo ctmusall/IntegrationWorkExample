@@ -1,8 +1,9 @@
 ﻿using ReswareOrderMonitorService.ActionEvents;
 using ReswareOrderMonitorService.ActionEvents.Linear;
 using ReswareOrderMonitorService.Common;
+using ReswareOrderMonitorService.Factories.Services;
 
-namespace ReswareOrderMonitorService.Factories
+namespace ReswareOrderMonitorService.Factories.ActionEvents
 {
     internal class LinearActionEventFactory : ActionEventFactory
     {

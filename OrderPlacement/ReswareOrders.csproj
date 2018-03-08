@@ -185,6 +185,10 @@
     <Compile Include="Migrations\201803021357285_AddCountyToBuyerSellerAddress.Designer.cs">
       <DependentUpon>201803021357285_AddCountyToBuyerSellerAddress.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803081706470_AddStatusField.cs" />
+    <Compile Include="Migrations\201803081706470_AddStatusField.Designer.cs">
+      <DependentUpon>201803081706470_AddStatusField.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\AddressResult.cs" />
     <Compile Include="Models\BuyerSellerAddressResult.cs" />
     <Compile Include="Models\BuyerSellerResult.cs" />
@@ -291,6 +295,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803021357285_AddCountyToBuyerSellerAddress.resx">
       <DependentUpon>201803021357285_AddCountyToBuyerSellerAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803081706470_AddStatusField.resx">
+      <DependentUpon>201803081706470_AddStatusField.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

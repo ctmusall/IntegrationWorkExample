@@ -25,6 +25,8 @@ namespace OrderPlacement.Models
         [DataMember]
         public string Notes { get; set; }
         [DataMember]
+        public string Status { get; set; }
+        [DataMember]
         public int ClientId { get; set; }
         [DataMember]
         public string CustomerProduct { get; set; }

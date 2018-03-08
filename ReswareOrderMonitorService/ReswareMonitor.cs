@@ -1,5 +1,4 @@
-﻿using System;
-using System.ServiceProcess;
+﻿using System.ServiceProcess;
 using System.Timers;
 using ReswareOrderMonitorService.Factories;
 using ReswareOrderMonitorService.Monitors;
@@ -18,7 +17,7 @@ namespace ReswareOrderMonitorService
 
         protected override void OnStart(string[] args)
         {
-            EventLog.WriteEntry("Resware incoming service started");
+            EventLog.WriteEntry("Resware monitor started");
 
             _timer.Enabled = true;
             _timer.Interval = 60000;
@@ -28,11 +27,13 @@ namespace ReswareOrderMonitorService
         private static void TimerElapsed(object sender, ElapsedEventArgs elapsedEventArgs)
         {
             ReswareOrderDependencyFactory.Resolve<IOrderActionEventMonitor>().MonitorOrderActionEvents();
+            ReswareOrderDependencyFactory.Resolve<IDocumentMonitor>().MonitorDocuments();
+            ReswareOrderDependencyFactory.Resolve<IOutgoingMonitor>().MonitorOrders();
         }
 
         protected override void OnStop()
         {
-            EventLog.WriteEntry("Resware incoming service stopped");
+            EventLog.WriteEntry("Resware monitor stopped");
         }
     }
 }

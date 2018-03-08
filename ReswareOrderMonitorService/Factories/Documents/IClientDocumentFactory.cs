@@ -1,4 +1,4 @@
-﻿namespace ReswareOrderMonitorService.Factories
+﻿namespace ReswareOrderMonitorService.Factories.Documents
 {
     internal interface IClientDocumentFactory
     {
