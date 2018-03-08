@@ -1,4 +1,4 @@
-﻿namespace ReswareOrderMonitorService.OrderStatusSenders
+﻿namespace ReswareOrderMonitorService.StatusSenders
 {
     internal abstract class ClosingCompleted : IStatusSender
     {

@@ -110,27 +110,35 @@
     <Compile Include="Common\ProductNameConstants.cs" />
     <Compile Include="Common\ServiceNameConstants.cs" />
     <Compile Include="Common\ServiceUtilityTypeEnum.cs" />
+    <Compile Include="Common\Solidifi\SolidifiActionEventConstants.cs" />
     <Compile Include="Common\StateConstants.cs" />
     <Compile Include="DocumentSenders\DocumentSender.cs" />
     <Compile Include="DocumentSenders\Solidifi\SolidifiClosingDocumentSender.cs" />
     <Compile Include="DocumentSenders\ClosingDocumentSender.cs" />
     <Compile Include="Factories\ActionEvents\ActionEventFactory.cs" />
+    <Compile Include="Factories\CompletedActionEvents\ClientCompletedActionEventFactory.cs" />
+    <Compile Include="Factories\CompletedActionEvents\IClientCompletedActionEventFactory.cs" />
+    <Compile Include="Factories\CompletedActionEvents\IParentClientCompletedActionEventFactory.cs" />
+    <Compile Include="Factories\CompletedActionEvents\ParentClientCompletedActionEventFactory.cs" />
+    <Compile Include="Factories\CompletedActionEvents\Solidifi\SolidifiCompletedActionEventFactory.cs" />
     <Compile Include="Factories\Documents\ClientDocumentFactory.cs" />
-    <Compile Include="Factories\OrderStatusSenders\ClientOrderStatusSenderFactory.cs" />
     <Compile Include="Factories\Documents\DocumentReaderFactory.cs" />
     <Compile Include="Factories\Documents\IClientDocumentFactory.cs" />
-    <Compile Include="Factories\OrderStatusSenders\IClientOrderStatusSenderFactory.cs" />
-    <Compile Include="Factories\OrderStatusSenders\IOrderStatusReaderFactory.cs" />
     <Compile Include="Factories\Services\IParentServiceUtilityFactory.cs" />
     <Compile Include="Factories\Services\IServiceUtilityFactory.cs" />
     <Compile Include="Factories\ActionEvents\SolidifiActionEventFactory.cs" />
     <Compile Include="Factories\Documents\SolidifiDocumentReaderFactory.cs" />
-    <Compile Include="Factories\OrderStatusSenders\SolidifiOrderStatusSenderFactory.cs" />
     <Compile Include="Factories\Services\SolidifiServiceUtilityFactory.cs" />
-    <Compile Include="Factories\OrderStatusSenders\OrderStatusSenderFactory.cs" />
     <Compile Include="Factories\Services\ParentServiceUtilityFactory.cs" />
     <Compile Include="Factories\ReswareOrderDependencyFactory.cs" />
     <Compile Include="Factories\Services\ServiceUtilityFactory.cs" />
+    <Compile Include="Factories\StatusSendersOrders\IStatusSenderOrderFactory.cs" />
+    <Compile Include="Factories\StatusSendersOrders\StatusSenderOrderFactory.cs" />
+    <Compile Include="Factories\StatusSenders\IStatusSenderFactory.cs" />
+    <Compile Include="Factories\StatusSenders\Solidifi\SolidifiClosingStatusSenderFactory.cs" />
+    <Compile Include="Factories\StatusSenders\Solidifi\SolidifiDocPrepStatusSenderFactory.cs" />
+    <Compile Include="Factories\StatusSenders\Solidifi\SolidifiTitleOpinionStatusSenderFactory.cs" />
+    <Compile Include="Factories\StatusSenders\StatusSenderFactory.cs" />
     <Compile Include="Mirth\IMirthServiceClient.cs" />
     <Compile Include="Mirth\MirthServiceClient.cs" />
     <Compile Include="Models\RequestMessage.cs" />
@@ -142,8 +150,10 @@
     <Compile Include="Monitors\OutgoingMonitor.cs" />
     <Compile Include="StatusSenders\AssignedAttorney.cs" />
     <Compile Include="StatusSenders\ClosingCompleted.cs" />
-    <Compile Include="StatusSenders\Solidifi\LinearAssignedAttorney.cs" />
-    <Compile Include="StatusSenders\Solidifi\LinearClosingCompleted.cs" />
+    <Compile Include="StatusSenders\Solidifi\SolidifiAssignedClosingAttorney.cs" />
+    <Compile Include="StatusSenders\Solidifi\SolidifiAssignedDocPrepAttorney.cs" />
+    <Compile Include="StatusSenders\Solidifi\SolidifiAssignedTitleOpinionAttorney.cs" />
+    <Compile Include="StatusSenders\Solidifi\SolidifiClosingCompleted.cs" />
     <Compile Include="ProjectInstaller.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -416,6 +426,7 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

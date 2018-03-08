@@ -1,7 +1,8 @@
 ﻿using System;
-using ReswareOrderMonitorService.eClosingIntegrationService;
+using System.Linq;
 using ReswareOrderMonitorService.Factories;
-using ReswareOrderMonitorService.Factories.OrderStatusSenders;
+using ReswareOrderMonitorService.Factories.CompletedActionEvents;
+using ReswareOrderMonitorService.ReswareActionEvent;
 using ReswareOrderMonitorService.ReswareOrders;
 using Unity.Interception.Utilities;
 
@@ -10,16 +11,16 @@ namespace ReswareOrderMonitorService.Monitors
     internal class OutgoingMonitor : IOutgoingMonitor
     {
         private readonly OrderPlacementServiceClient _orderPlacementServiceClient;
-        private readonly IntegrationServiceClient _integrationServiceClient;
-        private readonly IClientOrderStatusSenderFactory _clientOrderStatusReaderFactory;
+        private readonly ReceiveActionEventServiceClient _receiveActionEventServiceClient;
+        private readonly IParentClientCompletedActionEventFactory _parentClientCompletedActionEventFactory;
 
-        public OutgoingMonitor() : this (new OrderPlacementServiceClient(), new IntegrationServiceClient(), ReswareOrderDependencyFactory.Resolve<IClientOrderStatusSenderFactory>()) { }
+        public OutgoingMonitor() : this (new OrderPlacementServiceClient(), new ReceiveActionEventServiceClient(), ReswareOrderDependencyFactory.Resolve<IParentClientCompletedActionEventFactory>()) { }
 
-        internal OutgoingMonitor(OrderPlacementServiceClient orderPlacementServiceClient, IntegrationServiceClient integrationServiceClient, IClientOrderStatusSenderFactory clientOrderStatusReaderFactory)
+        internal OutgoingMonitor(OrderPlacementServiceClient orderPlacementServiceClient, ReceiveActionEventServiceClient receiveActionEventServiceClient, IParentClientCompletedActionEventFactory parentClientCompletedActionEventFactory)
         {
             _orderPlacementServiceClient = orderPlacementServiceClient;
-            _integrationServiceClient = integrationServiceClient;
-            _clientOrderStatusReaderFactory = clientOrderStatusReaderFactory;
+            _receiveActionEventServiceClient = receiveActionEventServiceClient;
+            _parentClientCompletedActionEventFactory = parentClientCompletedActionEventFactory;
         }
 
         public void MonitorOrders()
@@ -27,27 +28,26 @@ namespace ReswareOrderMonitorService.Monitors
             try
             {
                 var orders = _orderPlacementServiceClient.GetAllOrders();
+
                 if (orders.Length == 0) return;
 
                 orders.ForEach(order =>
                 {
-                    var eClosingOrder = _integrationServiceClient.GetOrder(order.CustomerId, order.FileNumber);
+                    var actionEvents = _receiveActionEventServiceClient.GetAllActionEvents().Where(ae =>
+                        string.Equals(ae.FileNumber, order.FileNumber, StringComparison.CurrentCultureIgnoreCase) &&
+                        ae.ActionCompleted && ae.ActionCompletedDateTime != null).ToList();
 
-                    if (eClosingOrder.Outcome == OutcomeEnum.Fail || eClosingOrder.Order == null) return;
+                    if (actionEvents.Count == 0) return;
 
-                    if (string.Equals(order.Status, eClosingOrder.Order.Status, StringComparison.CurrentCultureIgnoreCase)) return;
+                    var clientCompletedActionEventFactory = _parentClientCompletedActionEventFactory.ResolveClientCompletedActionEventFactory(order.ClientId);
 
-                    if (string.IsNullOrWhiteSpace(order.Status))
+                    actionEvents.ForEach(actionEvent =>
                     {
-                        order.Status = eClosingOrder.Order.Status;
-                        _orderPlacementServiceClient.UpdateOrder(order);
-                        return;
-                    }
-                    
-                    var result = _clientOrderStatusReaderFactory.ResolveClientOrderStatusReaderFactory(order.ClientId)?.ResolveOrderStatusSender(order.Status, eClosingOrder.Order.Status)?.SendStatusUpdate();
-                    if (result == null || !result.Value) return;
-                    order.Status = eClosingOrder.Order.Status;
-                    _orderPlacementServiceClient.UpdateOrder(order);
+                        var result = clientCompletedActionEventFactory 
+                            ?.ResolveCompletedActionEventStatusSenderFactory(actionEvent.ActionEventCode, order.CustomerId, order.FileNumber)
+                            ?.ResolveStatusSender(order)
+                            ?.SendStatusUpdate();
+                    });
                 });
             }
             catch (Exception ex)

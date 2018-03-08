@@ -189,6 +189,10 @@
     <Compile Include="Migrations\201803081706470_AddStatusField.Designer.cs">
       <DependentUpon>201803081706470_AddStatusField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803082055387_ChangeStatusToThreeFields.cs" />
+    <Compile Include="Migrations\201803082055387_ChangeStatusToThreeFields.Designer.cs">
+      <DependentUpon>201803082055387_ChangeStatusToThreeFields.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\AddressResult.cs" />
     <Compile Include="Models\BuyerSellerAddressResult.cs" />
     <Compile Include="Models\BuyerSellerResult.cs" />
@@ -298,6 +302,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803081706470_AddStatusField.resx">
       <DependentUpon>201803081706470_AddStatusField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803082055387_ChangeStatusToThreeFields.resx">
+      <DependentUpon>201803082055387_ChangeStatusToThreeFields.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

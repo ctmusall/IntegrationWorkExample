@@ -13,16 +13,18 @@
       <xs:element minOccurs="0" name="BuyersAndSellers" nillable="true" type="tns:ArrayOfBuyerSellerResult" />
       <xs:element minOccurs="0" name="ClientId" type="xs:int" />
       <xs:element minOccurs="0" name="ClosingDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ClosingStatus" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CreatedDateTime" type="xs:dateTime" />
       <xs:element minOccurs="0" name="CustomerId" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CustomerProduct" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DocPrepStatus" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FileNumber" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" type="ser:guid" />
       <xs:element minOccurs="0" name="LenderName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Notes" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Product" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PropertyAddress" nillable="true" type="tns:ArrayOfPropertyAddressResult" />
-      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TitleOpinionStatus" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="OrderResult" nillable="true" type="tns:OrderResult" />

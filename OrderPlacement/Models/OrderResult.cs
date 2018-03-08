@@ -25,7 +25,11 @@ namespace OrderPlacement.Models
         [DataMember]
         public string Notes { get; set; }
         [DataMember]
-        public string Status { get; set; }
+        public string ClosingStatus { get; set; }
+        [DataMember]
+        public string TitleOpinionStatus { get; set; }
+        [DataMember]
+        public string DocPrepStatus { get; set; }
         [DataMember]
         public int ClientId { get; set; }
         [DataMember]

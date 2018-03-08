@@ -1,6 +1,6 @@
 ﻿using ReswareOrderMonitorService.Factories.ActionEvents;
+using ReswareOrderMonitorService.Factories.CompletedActionEvents;
 using ReswareOrderMonitorService.Factories.Documents;
-using ReswareOrderMonitorService.Factories.OrderStatusSenders;
 using ReswareOrderMonitorService.Mirth;
 using ReswareOrderMonitorService.Monitors;
 using ReswareOrderMonitorService.Readers;
@@ -61,7 +61,7 @@ namespace ReswareOrderMonitorService.Factories
             container.RegisterType<IDocumentMonitor, DocumentMonitor>();
             container.RegisterType<IClientDocumentFactory, ClientDocumentFactory>();
             container.RegisterType<IOutgoingMonitor, OutgoingMonitor>();
-            container.RegisterType<IClientOrderStatusSenderFactory, ClientOrderStatusSenderFactory>();
+            container.RegisterType<IParentClientCompletedActionEventFactory, ParentClientCompletedActionEventFactory>();
         }
     }
 }

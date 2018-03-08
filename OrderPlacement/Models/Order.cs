@@ -19,7 +19,9 @@ namespace OrderPlacement.Models
         public string Notes { get; set; }
         public int ClientId { get; set; }
         public string CustomerProduct { get; set; }
-        public string Status { get; set; }
+        public string ClosingStatus { get; set; }
+        public string TitleOpinionStatus { get; set; }
+        public string DocPrepStatus { get; set; }
 
         public virtual ICollection<PropertyAddress> PropertyAddress { get; set; }
         public virtual ICollection<BuyerSeller> BuyerAndSellers { get; set; }

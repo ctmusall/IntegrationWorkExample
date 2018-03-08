@@ -1,9 +1,8 @@
 ﻿using System;
-using ReswareOrderMonitorService.OrderStatusSenders;
 
 namespace ReswareOrderMonitorService.StatusSenders.Solidifi
 {
-    internal class SolidifiAssignedAttorney : AssignedAttorney
+    internal class SolidifiAssignedTitleOpinionAttorney : AssignedAttorney
     {
         public override bool SendStatusUpdate()
         {

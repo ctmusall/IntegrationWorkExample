@@ -1402,6 +1402,9 @@ namespace ReswareOrderMonitorService.ReswareOrders {
         private System.Nullable<System.DateTime> ClosingDateTimeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ClosingStatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime CreatedDateTimeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -1409,6 +1412,9 @@ namespace ReswareOrderMonitorService.ReswareOrders {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string CustomerProductField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DocPrepStatusField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string FileNumberField;
@@ -1429,7 +1435,7 @@ namespace ReswareOrderMonitorService.ReswareOrders {
         private ReswareOrderMonitorService.ReswareOrders.PropertyAddressResult[] PropertyAddressField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string StatusField;
+        private string TitleOpinionStatusField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -1481,6 +1487,19 @@ namespace ReswareOrderMonitorService.ReswareOrders {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string ClosingStatus {
+            get {
+                return this.ClosingStatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ClosingStatusField, value) != true)) {
+                    this.ClosingStatusField = value;
+                    this.RaisePropertyChanged("ClosingStatus");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
         internal System.DateTime CreatedDateTime {
             get {
                 return this.CreatedDateTimeField;
@@ -1515,6 +1534,19 @@ namespace ReswareOrderMonitorService.ReswareOrders {
                 if ((object.ReferenceEquals(this.CustomerProductField, value) != true)) {
                     this.CustomerProductField = value;
                     this.RaisePropertyChanged("CustomerProduct");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        internal string DocPrepStatus {
+            get {
+                return this.DocPrepStatusField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DocPrepStatusField, value) != true)) {
+                    this.DocPrepStatusField = value;
+                    this.RaisePropertyChanged("DocPrepStatus");
                 }
             }
         }
@@ -1598,14 +1630,14 @@ namespace ReswareOrderMonitorService.ReswareOrders {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        internal string Status {
+        internal string TitleOpinionStatus {
             get {
-                return this.StatusField;
+                return this.TitleOpinionStatusField;
             }
             set {
-                if ((object.ReferenceEquals(this.StatusField, value) != true)) {
-                    this.StatusField = value;
-                    this.RaisePropertyChanged("Status");
+                if ((object.ReferenceEquals(this.TitleOpinionStatusField, value) != true)) {
+                    this.TitleOpinionStatusField = value;
+                    this.RaisePropertyChanged("TitleOpinionStatus");
                 }
             }
         }

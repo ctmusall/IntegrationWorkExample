@@ -1,6 +1,4 @@
-﻿using ReswareOrderMonitorService.OrderStatusSenders;
-
-namespace ReswareOrderMonitorService.StatusSenders.Solidifi
+﻿namespace ReswareOrderMonitorService.StatusSenders.Solidifi
 {
     internal class SolidifiClosingCompleted : ClosingCompleted
     {

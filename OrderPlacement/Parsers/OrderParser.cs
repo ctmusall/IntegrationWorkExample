@@ -19,7 +19,9 @@ namespace OrderPlacement.Parsers
                 LenderName = orderResult.LenderName,
                 Product = orderResult.Product,
                 Notes = orderResult.Notes,
-                Status = orderResult.Status,
+                ClosingStatus = orderResult.ClosingStatus,
+                TitleOpinionStatus = orderResult.TitleOpinionStatus,
+                DocPrepStatus = orderResult.DocPrepStatus,
                 ClientId = orderResult.ClientId,
                 CustomerProduct = orderResult.CustomerProduct,
                 PropertyAddress = ParsePropertyAddress(orderResult.PropertyAddress)
