@@ -20,7 +20,7 @@ namespace ReswareOrderMonitorService
                 ServiceBase.Run(servicesToRun);
 #else
                 ReswareOrderDependencyFactory.Resolve<IOrderActionEventMonitor>().MonitorOrderActionEvents();
-                ReswareOrderDependencyFactory.Resolve<IDocumentMonitor>().MonitorClosingDocuments();
+                ReswareOrderDependencyFactory.Resolve<IDocumentMonitor>().MonitorDocuments();
 #endif
             }
             catch (Exception ex)

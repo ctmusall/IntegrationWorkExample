@@ -2,6 +2,6 @@
 {
     internal interface IDocumentMonitor
     {
-        void MonitorClosingDocuments();
+        void MonitorDocuments();
     }
 }

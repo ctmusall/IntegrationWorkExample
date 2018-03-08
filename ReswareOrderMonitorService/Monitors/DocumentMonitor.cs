@@ -22,11 +22,11 @@ namespace ReswareOrderMonitorService.Monitors
             _clientClosingDocumentFactory = clientClosingDocumentFactory;
         }
 
-        public void MonitorClosingDocuments()
+        public void MonitorDocuments()
         {
             try
             {
-                var notesAndDocs = _receiveNoteServiceClient.GetAllNotesAndDocs();
+                var notesAndDocs = _receiveNoteServiceClient.GetAllNotesAndDocs().Where(nd => !nd.Processed && nd.ProcessedDateTime == null);
                 var orders = _orderPlacementServiceClient.GetAllOrders();
 
                 if (orders.Length == 0) return;
@@ -40,12 +40,11 @@ namespace ReswareOrderMonitorService.Monitors
 
                     noteDoc.Documents.ForEach(doc =>
                     {
-                        var result = _clientClosingDocumentFactory.ResolveDocumentReaderFactory(noteDocOrder.ClientId).ResolveDocumentSender(doc.DocumentTypeId).SendDocs(doc, noteDocOrder);
-                        if (!result) return;
-                        // TODO - Update document if sent! (add field sent and senddatetime to document object)
-                        //doc.Sent = true;
-                        //doc.SendDateTime = DateTime.Now;
-                        //_receiveNoteServiceClient.UpdateNoteDoc(noteDoc);
+                        var result = _clientClosingDocumentFactory.ResolveDocumentReaderFactory(noteDocOrder.ClientId)?.ResolveDocumentSender(doc.DocumentTypeId)?.SendDocs(doc, noteDocOrder);
+                        if (result == null || !result.Value) return;
+                        noteDoc.Processed = true;
+                        noteDoc.ProcessedDateTime = DateTime.Now;
+                        _receiveNoteServiceClient.UpdateNoteDoc(noteDoc);
                     });
                 });
             }
