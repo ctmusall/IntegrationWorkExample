@@ -26,7 +26,7 @@ namespace ReswareOrderMonitorService.Factories.StatusSenders
         {
             if (string.IsNullOrWhiteSpace(previousOrderStatus) || string.IsNullOrWhiteSpace(currentOrderStatus)) return false;
 
-            return string.Equals(previousOrderStatus, EClosingOrderStatusConstants.Pending, StringComparison.CurrentCultureIgnoreCase) && string.Equals(Order.Order.Status, EClosingOrderStatusConstants.Scheduled);
+            return string.Equals(previousOrderStatus, EClosingOrderStatusConstants.Pending, StringComparison.CurrentCultureIgnoreCase) && string.Equals(Order.Order.Status, EClosingOrderStatusConstants.Scheduled, StringComparison.CurrentCultureIgnoreCase);
         }
     }
 }
