@@ -110,9 +110,9 @@
     <Compile Include="Common\ServiceNameConstants.cs" />
     <Compile Include="Common\ServiceUtilityTypeEnum.cs" />
     <Compile Include="Common\StateConstants.cs" />
-    <Compile Include="DocumentSender\DocumentSender.cs" />
-    <Compile Include="DocumentSender\LinearClosingDocumentSender.cs" />
-    <Compile Include="DocumentSender\ClosingDocumentSender.cs" />
+    <Compile Include="DocumentSenders\DocumentSender.cs" />
+    <Compile Include="DocumentSenders\LinearClosingDocumentSender.cs" />
+    <Compile Include="DocumentSenders\ClosingDocumentSender.cs" />
     <Compile Include="Factories\ActionEventFactory.cs" />
     <Compile Include="Factories\ClientDocumentFactory.cs" />
     <Compile Include="Factories\DocumentReaderFactory.cs" />

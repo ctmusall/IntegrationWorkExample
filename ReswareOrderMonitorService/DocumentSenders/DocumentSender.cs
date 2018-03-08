@@ -1,7 +1,7 @@
 ﻿using ReswareOrderMonitorService.ReswareNoteDocs;
 using ReswareOrderMonitorService.ReswareOrders;
 
-namespace ReswareOrderMonitorService.DocumentSender
+namespace ReswareOrderMonitorService.DocumentSenders
 {
     internal abstract class DocumentSender
     {

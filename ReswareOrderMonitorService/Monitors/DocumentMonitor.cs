@@ -42,6 +42,7 @@ namespace ReswareOrderMonitorService.Monitors
                     {
                         var result = _clientClosingDocumentFactory.ResolveDocumentReaderFactory(noteDocOrder.ClientId).ResolveDocumentSender(doc.DocumentTypeId).SendDocs(doc, noteDocOrder);
                         if (!result) return;
+                        // TODO - Update document if sent! (add field sent and senddatetime to document object)
                         //doc.Sent = true;
                         //doc.SendDateTime = DateTime.Now;
                         //_receiveNoteServiceClient.UpdateNoteDoc(noteDoc);

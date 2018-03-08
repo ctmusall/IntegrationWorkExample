@@ -6,7 +6,7 @@ using System.Text;
 using ReswareOrderMonitorService.ReswareNoteDocs;
 using ReswareOrderMonitorService.ReswareOrders;
 
-namespace ReswareOrderMonitorService.DocumentSender
+namespace ReswareOrderMonitorService.DocumentSenders
 {
     internal class LinearClosingDocumentSender : ClosingDocumentSender
     {

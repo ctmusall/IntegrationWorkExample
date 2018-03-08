@@ -1,7 +1,9 @@
-﻿namespace ReswareOrderMonitorService.Factories
+﻿using ReswareOrderMonitorService.DocumentSenders;
+
+namespace ReswareOrderMonitorService.Factories
 {
     internal abstract class DocumentReaderFactory : IDocumentReaderFactory
     {
-        public abstract DocumentSender.DocumentSender ResolveDocumentSender(int documentTypeId);
+        public abstract DocumentSender ResolveDocumentSender(int documentTypeId);
     }
 }
