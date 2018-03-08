@@ -1,5 +1,4 @@
 ﻿using ReswareOrderMonitorService.Common.Solidifi;
-using ReswareOrderMonitorService.eClosingIntegrationService;
 using ReswareOrderMonitorService.Factories.StatusSenders;
 using ReswareOrderMonitorService.Factories.StatusSenders.Solidifi;
 
@@ -7,9 +6,6 @@ namespace ReswareOrderMonitorService.Factories.CompletedActionEvents.Solidifi
 {
     internal class SolidifiCompletedActionEventFactory : ClientCompletedActionEventFactory
     {
-        internal SolidifiCompletedActionEventFactory() { }
-        internal SolidifiCompletedActionEventFactory(IntegrationServiceClient integrationServiceClient) : base(integrationServiceClient) { }
-
         public override IStatusSenderFactory ResolveCompletedActionEventStatusSenderFactory(string actionEventCode, string customerId, string fileNumber)
         {
             switch (actionEventCode)
@@ -24,7 +20,6 @@ namespace ReswareOrderMonitorService.Factories.CompletedActionEvents.Solidifi
                     return null;
             }
         }
-
 
     }
 }
