@@ -9,7 +9,7 @@ namespace ReswareOrderMonitorService.Factories
             switch (clientId)
             {
                 default:
-                    return new LinearServiceUtilityFactory();
+                    return new SolidifiServiceUtilityFactory();
             }
         }
     }

@@ -6,9 +6,9 @@ using System.Text;
 using ReswareOrderMonitorService.ReswareNoteDocs;
 using ReswareOrderMonitorService.ReswareOrders;
 
-namespace ReswareOrderMonitorService.DocumentSenders
+namespace ReswareOrderMonitorService.DocumentSenders.Solidifi
 {
-    internal class LinearClosingDocumentSender : ClosingDocumentSender
+    internal class SolidifiClosingDocumentSender : ClosingDocumentSender
     {
         internal override bool SendDocumentsToDocumentTeam(DocumentServiceResult document, OrderResult order)
         {

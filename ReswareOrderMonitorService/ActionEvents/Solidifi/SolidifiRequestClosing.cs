@@ -4,14 +4,14 @@ using ReswareOrderMonitorService.ReswareOrders;
 using ReswareOrderMonitorService.ReswareSigning;
 using ReswareOrderMonitorService.Utilities;
 
-namespace ReswareOrderMonitorService.ActionEvents.Linear
+namespace ReswareOrderMonitorService.ActionEvents.Solidifi
 {
-    internal class LinearRequestClosing : RequestOrder
+    internal class SolidifiRequestClosing : RequestOrder
     {
         private const string CustomerContact = "TEAM CLOSINGS";
         private const string DocsToAttorney = "eDoc";
 
-        internal LinearRequestClosing(IOrderServiceUtility orderServiceUtility) : base(orderServiceUtility) { }
+        internal SolidifiRequestClosing(IOrderServiceUtility orderServiceUtility) : base(orderServiceUtility) { }
 
         internal override RequestMessage BuildRequestMessage(OrderResult order, SigningServiceResult signing)
         {

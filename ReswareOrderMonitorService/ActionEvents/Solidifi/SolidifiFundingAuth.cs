@@ -4,9 +4,9 @@ using System.Net.Mail;
 using System.Text;
 using ReswareOrderMonitorService.ReswareOrders;
 
-namespace ReswareOrderMonitorService.ActionEvents.Linear
+namespace ReswareOrderMonitorService.ActionEvents.Solidifi
 {
-    internal class LinearFundingAuth : FundingAuth
+    internal class SolidifiFundingAuth : FundingAuth
     {
         internal override MailMessage BuildFundingAuthMailMessage(OrderResult order)
         {

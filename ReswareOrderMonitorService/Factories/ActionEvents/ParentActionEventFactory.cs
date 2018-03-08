@@ -16,7 +16,7 @@
             switch (clientId)
             {
                 default:
-                   return new LinearActionEventFactory(_parentServiceUtilityFactory.ResolveServiceUtilityFactory(clientId));
+                   return new SolidifiActionEventFactory(_parentServiceUtilityFactory.ResolveServiceUtilityFactory(clientId));
             }
         }
     }

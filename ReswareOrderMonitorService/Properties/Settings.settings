@@ -5,7 +5,7 @@
     <Setting Name="MirthIPAddress" Type="System.String" Scope="User">
       <Value Profile="(Default)">10.250.161.135</Value>
     </Setting>
-    <Setting Name="MirthLinearRequestPort" Type="System.Int32" Scope="User">
+    <Setting Name="MirthSolidifiRequestPort" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">4412</Value>
     </Setting>
   </Settings>

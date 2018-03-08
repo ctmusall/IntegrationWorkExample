@@ -5,21 +5,21 @@ using ReswareOrderMonitorService.ReswareOrders;
 using ReswareOrderMonitorService.ReswareSigning;
 using ReswareOrderMonitorService.Utilities;
 
-namespace ReswareOrderMonitorService.ActionEvents.Linear
+namespace ReswareOrderMonitorService.ActionEvents.Solidifi
 {
-    internal class LinearRequestTitleOpinion : RequestOrder
+    internal class SolidifiRequestTitleOpinion : RequestOrder
     {
         private readonly IDateTimeUtility _dateTimeUtility;
 
         private const string CustomerContact = "KRISTEN MILLER";
         private const string Product = "INT--Search/Opinion";
 
-        internal LinearRequestTitleOpinion(IOrderServiceUtility orderServiceUtility) : this(orderServiceUtility, ReswareOrderDependencyFactory.Resolve<IDateTimeUtility>())
+        internal SolidifiRequestTitleOpinion(IOrderServiceUtility orderServiceUtility) : this(orderServiceUtility, ReswareOrderDependencyFactory.Resolve<IDateTimeUtility>())
         {
 
         }
 
-        internal LinearRequestTitleOpinion(IOrderServiceUtility orderServiceUtility, IDateTimeUtility dateTimeUtility) : base(orderServiceUtility)
+        internal SolidifiRequestTitleOpinion(IOrderServiceUtility orderServiceUtility, IDateTimeUtility dateTimeUtility) : base(orderServiceUtility)
         {
             _dateTimeUtility = dateTimeUtility;
         }

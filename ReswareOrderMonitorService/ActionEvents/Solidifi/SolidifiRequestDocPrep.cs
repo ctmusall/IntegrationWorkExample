@@ -6,19 +6,19 @@ using ReswareOrderMonitorService.ReswareOrders;
 using ReswareOrderMonitorService.ReswareSigning;
 using ReswareOrderMonitorService.Utilities;
 
-namespace ReswareOrderMonitorService.ActionEvents.Linear
+namespace ReswareOrderMonitorService.ActionEvents.Solidifi
 {
-    internal class LinearRequestDocPrep : RequestOrder
+    internal class SolidifiRequestDocPrep : RequestOrder
     {
         private readonly IDateTimeUtility _dateTimeUtility;
 
         private const string CustomerContact = "DOC DEED";
 
-        public LinearRequestDocPrep(IOrderServiceUtility orderServiceUtility) : this(orderServiceUtility, ReswareOrderDependencyFactory.Resolve<IDateTimeUtility>())
+        public SolidifiRequestDocPrep(IOrderServiceUtility orderServiceUtility) : this(orderServiceUtility, ReswareOrderDependencyFactory.Resolve<IDateTimeUtility>())
         {
         }
 
-        internal LinearRequestDocPrep(IOrderServiceUtility orderServiceUtility, IDateTimeUtility dateTimeUtility) : base(orderServiceUtility)
+        internal SolidifiRequestDocPrep(IOrderServiceUtility orderServiceUtility, IDateTimeUtility dateTimeUtility) : base(orderServiceUtility)
         {
             _dateTimeUtility = dateTimeUtility;
         }

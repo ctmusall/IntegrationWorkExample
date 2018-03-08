@@ -8,7 +8,7 @@
             {
                 // TODO - Switch on the client ID
                 default:
-                    return new LinearOrderStatusSenderFactory();
+                    return new SolidifiOrderStatusSenderFactory();
             }
         }
     }

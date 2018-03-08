@@ -2,11 +2,11 @@
 using ReswareOrderMonitorService.ReswareOrders;
 using ReswareOrderMonitorService.Utilities;
 
-namespace ReswareOrderMonitorService.ActionEvents.Linear
+namespace ReswareOrderMonitorService.ActionEvents.Solidifi
 {
-    internal class LinearRescheduleClosing : SchedulingReschedule
+    internal class SolidifiRescheduleClosing : SchedulingReschedule
     {
-        internal LinearRescheduleClosing(IOrderServiceUtility orderServiceUtility) : base(orderServiceUtility)
+        internal SolidifiRescheduleClosing(IOrderServiceUtility orderServiceUtility) : base(orderServiceUtility)
         {
         }
 
@@ -18,7 +18,7 @@ namespace ReswareOrderMonitorService.ActionEvents.Linear
                 order.Notes += $"Received Reschedule Action Event from Resware for file number {order.FileNumber}.";
             }
 
-            return new LinearRequestClosing(OrderServiceUtility).PerformAction(order);
+            return new SolidifiRequestClosing(OrderServiceUtility).PerformAction(order);
         }
     }
 }

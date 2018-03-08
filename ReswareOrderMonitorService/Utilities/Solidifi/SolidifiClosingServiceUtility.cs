@@ -2,9 +2,9 @@
 using ReswareOrderMonitorService.Common;
 using ReswareOrderMonitorService.Models;
 
-namespace ReswareOrderMonitorService.Utilities.Linear
+namespace ReswareOrderMonitorService.Utilities.Solidifi
 {
-    internal class LinearClosingServiceUtility : ServiceUtility
+    internal class SolidifiClosingServiceUtility : ServiceUtility
     {
         public override void AssignServices(RequestMessage requestClosingMessage)
         {
@@ -54,7 +54,7 @@ namespace ReswareOrderMonitorService.Utilities.Linear
                 return;
             }
 
-            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.LinearProductNames.RefinanceInvestment, StringComparison.CurrentCultureIgnoreCase)
+            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.SolidifiProductNames.RefinanceInvestment, StringComparison.CurrentCultureIgnoreCase)
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.Investment, StringComparison.CurrentCultureIgnoreCase))
             {
                 requestClosingMessage.Service1 = ServiceNameConstants.AttorneyAssistedClosing;
@@ -74,7 +74,7 @@ namespace ReswareOrderMonitorService.Utilities.Linear
                 return;
             }
 
-            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.LinearProductNames.PurchaseBuyersSide,StringComparison.CurrentCultureIgnoreCase) 
+            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.SolidifiProductNames.PurchaseBuyersSide,StringComparison.CurrentCultureIgnoreCase) 
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.Purchase, StringComparison.CurrentCultureIgnoreCase))
             {
                 requestClosingMessage.Service1 = ServiceNameConstants.AttorneyAssistedPurchaseReoBuyerSide;
@@ -84,7 +84,7 @@ namespace ReswareOrderMonitorService.Utilities.Linear
                 return;
             }
 
-            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.LinearProductNames.DeedInLieu,StringComparison.CurrentCultureIgnoreCase)
+            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.SolidifiProductNames.DeedInLieu,StringComparison.CurrentCultureIgnoreCase)
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.ModAssumptionDil,StringComparison.CurrentCultureIgnoreCase))
             {
                 requestClosingMessage.Service1 = ServiceNameConstants.AttorneyAssistedDeedInLieu;
@@ -93,7 +93,7 @@ namespace ReswareOrderMonitorService.Utilities.Linear
                 return;
             }
 
-            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.LinearProductNames.PhoneSigning,StringComparison.CurrentCultureIgnoreCase) 
+            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.SolidifiProductNames.PhoneSigning,StringComparison.CurrentCultureIgnoreCase) 
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.ConferenceCall, StringComparison.CurrentCultureIgnoreCase))
             {
                 requestClosingMessage.Service1 = ServiceNameConstants.ConferenceCallClosing;
@@ -101,7 +101,7 @@ namespace ReswareOrderMonitorService.Utilities.Linear
                 return;
             }
 
-            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.LinearProductNames.ESigning, StringComparison.CurrentCultureIgnoreCase) 
+            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.SolidifiProductNames.ESigning, StringComparison.CurrentCultureIgnoreCase) 
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.Online, StringComparison.CurrentCultureIgnoreCase))
             {
                 requestClosingMessage.Service1 = ServiceNameConstants.AttorneyAssistedEsignClosingF2F;
@@ -122,7 +122,7 @@ namespace ReswareOrderMonitorService.Utilities.Linear
                 return;
             }
 
-            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.LinearProductNames.RefinanceInvestment, StringComparison.CurrentCultureIgnoreCase)
+            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.SolidifiProductNames.RefinanceInvestment, StringComparison.CurrentCultureIgnoreCase)
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.Investment, StringComparison.CurrentCultureIgnoreCase))
             {
                 requestClosingMessage.Service1 = ServiceNameConstants.AttorneyAssistedClosing;
@@ -144,7 +144,7 @@ namespace ReswareOrderMonitorService.Utilities.Linear
                 return;
             }
 
-            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.LinearProductNames.PurchaseBuyersSide, StringComparison.CurrentCultureIgnoreCase)
+            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.SolidifiProductNames.PurchaseBuyersSide, StringComparison.CurrentCultureIgnoreCase)
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.Purchase, StringComparison.CurrentCultureIgnoreCase))
             {
                 requestClosingMessage.Service1 = ServiceNameConstants.AttorneyAssistedPurchaseReoBuyerSide;
@@ -155,7 +155,7 @@ namespace ReswareOrderMonitorService.Utilities.Linear
                 return;
             }
 
-            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.LinearProductNames.DeedInLieu, StringComparison.CurrentCultureIgnoreCase)
+            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.SolidifiProductNames.DeedInLieu, StringComparison.CurrentCultureIgnoreCase)
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.ModAssumptionDil, StringComparison.CurrentCultureIgnoreCase))
             {
                 requestClosingMessage.Service1 = ServiceNameConstants.AttorneyAssistedDeedInLieu;
@@ -164,7 +164,7 @@ namespace ReswareOrderMonitorService.Utilities.Linear
                 return;
             }
 
-            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.LinearProductNames.PhoneSigning, StringComparison.CurrentCultureIgnoreCase)
+            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.SolidifiProductNames.PhoneSigning, StringComparison.CurrentCultureIgnoreCase)
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.ConferenceCall, StringComparison.CurrentCultureIgnoreCase))
             {
                 requestClosingMessage.Service1 = ServiceNameConstants.ConferenceCallClosing;
@@ -184,7 +184,7 @@ namespace ReswareOrderMonitorService.Utilities.Linear
                 return;
             }
 
-            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.LinearProductNames.RefinanceInvestment, StringComparison.CurrentCultureIgnoreCase)
+            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.SolidifiProductNames.RefinanceInvestment, StringComparison.CurrentCultureIgnoreCase)
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.Investment, StringComparison.CurrentCultureIgnoreCase))
             {
                 requestClosingMessage.Service1 = ServiceNameConstants.AttorneyAssistedClosing;
@@ -206,7 +206,7 @@ namespace ReswareOrderMonitorService.Utilities.Linear
                 return;
             }
 
-            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.LinearProductNames.PurchaseBuyersSide, StringComparison.CurrentCultureIgnoreCase)
+            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.SolidifiProductNames.PurchaseBuyersSide, StringComparison.CurrentCultureIgnoreCase)
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.Purchase, StringComparison.CurrentCultureIgnoreCase))
             {
                 requestClosingMessage.Service1 = ServiceNameConstants.AttorneyAssistedPurchaseReoBuyerSide;
@@ -217,7 +217,7 @@ namespace ReswareOrderMonitorService.Utilities.Linear
                 return;
             }
 
-            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.LinearProductNames.DeedInLieu, StringComparison.CurrentCultureIgnoreCase)
+            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.SolidifiProductNames.DeedInLieu, StringComparison.CurrentCultureIgnoreCase)
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.ModAssumptionDil, StringComparison.CurrentCultureIgnoreCase))
             {
                 requestClosingMessage.Service1 = ServiceNameConstants.AttorneyAssistedDeedInLieu;
@@ -226,7 +226,7 @@ namespace ReswareOrderMonitorService.Utilities.Linear
                 return;
             }
 
-            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.LinearProductNames.PhoneSigning, StringComparison.CurrentCultureIgnoreCase)
+            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.SolidifiProductNames.PhoneSigning, StringComparison.CurrentCultureIgnoreCase)
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.ConferenceCall, StringComparison.CurrentCultureIgnoreCase))
             {
                 requestClosingMessage.Service1 = ServiceNameConstants.ConferenceCallClosing;
@@ -234,7 +234,7 @@ namespace ReswareOrderMonitorService.Utilities.Linear
                 return;
             }
 
-            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.LinearProductNames.ESigning, StringComparison.CurrentCultureIgnoreCase)
+            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.SolidifiProductNames.ESigning, StringComparison.CurrentCultureIgnoreCase)
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.Online, StringComparison.CurrentCultureIgnoreCase))
             {
                 requestClosingMessage.Service1 = ServiceNameConstants.AttorneyAssistedEsignClosingF2F;
@@ -254,7 +254,7 @@ namespace ReswareOrderMonitorService.Utilities.Linear
                 return;
             }
 
-            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.LinearProductNames.RefinanceInvestment, StringComparison.CurrentCultureIgnoreCase)
+            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.SolidifiProductNames.RefinanceInvestment, StringComparison.CurrentCultureIgnoreCase)
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.Investment, StringComparison.CurrentCultureIgnoreCase))
             {
                 requestClosingMessage.Service1 = ServiceNameConstants.AttorneyAssistedClosing;
@@ -273,7 +273,7 @@ namespace ReswareOrderMonitorService.Utilities.Linear
                 return;
             }
 
-            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.LinearProductNames.PurchaseBuyersSide, StringComparison.CurrentCultureIgnoreCase)
+            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.SolidifiProductNames.PurchaseBuyersSide, StringComparison.CurrentCultureIgnoreCase)
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.Purchase, StringComparison.CurrentCultureIgnoreCase))
             {
                 requestClosingMessage.Service1 = ServiceNameConstants.AttorneyAssistedPurchaseReoBuyerSide;
@@ -283,7 +283,7 @@ namespace ReswareOrderMonitorService.Utilities.Linear
                 return;
             }
 
-            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.LinearProductNames.DeedInLieu, StringComparison.CurrentCultureIgnoreCase)
+            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.SolidifiProductNames.DeedInLieu, StringComparison.CurrentCultureIgnoreCase)
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.ModAssumptionDil, StringComparison.CurrentCultureIgnoreCase))
             {
                 requestClosingMessage.Service1 = ServiceNameConstants.AttorneyAssistedDeedInLieu;
@@ -292,14 +292,14 @@ namespace ReswareOrderMonitorService.Utilities.Linear
                 return;
             }
 
-            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.LinearProductNames.PhoneSigning, StringComparison.CurrentCultureIgnoreCase)
+            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.SolidifiProductNames.PhoneSigning, StringComparison.CurrentCultureIgnoreCase)
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.ConferenceCall, StringComparison.CurrentCultureIgnoreCase))
             {
                 requestClosingMessage.Service1 = ServiceNameConstants.ConferenceCallClosing;
                 return;
             }
 
-            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.LinearProductNames.ESigning, StringComparison.CurrentCultureIgnoreCase)
+            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.SolidifiProductNames.ESigning, StringComparison.CurrentCultureIgnoreCase)
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.Online, StringComparison.CurrentCultureIgnoreCase))
             {
                 requestClosingMessage.Service1 = ServiceNameConstants.AttorneyAssistedEsignClosingF2F;
@@ -317,7 +317,7 @@ namespace ReswareOrderMonitorService.Utilities.Linear
                 return;
             }
 
-            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.LinearProductNames.RefinanceInvestment, StringComparison.CurrentCultureIgnoreCase)
+            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.SolidifiProductNames.RefinanceInvestment, StringComparison.CurrentCultureIgnoreCase)
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.Investment, StringComparison.CurrentCultureIgnoreCase))
             {
                 requestClosingMessage.Service1 = ServiceNameConstants.AttorneyAssistedClosing;
@@ -336,7 +336,7 @@ namespace ReswareOrderMonitorService.Utilities.Linear
                 return;
             }
 
-            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.LinearProductNames.PurchaseBuyersSide, StringComparison.CurrentCultureIgnoreCase)
+            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.SolidifiProductNames.PurchaseBuyersSide, StringComparison.CurrentCultureIgnoreCase)
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.Purchase, StringComparison.CurrentCultureIgnoreCase))
             {
                 requestClosingMessage.Service1 = ServiceNameConstants.AttorneyAssistedPurchaseReoBuyerSide;
@@ -346,7 +346,7 @@ namespace ReswareOrderMonitorService.Utilities.Linear
                 return;
             }
 
-            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.LinearProductNames.DeedInLieu, StringComparison.CurrentCultureIgnoreCase)
+            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.SolidifiProductNames.DeedInLieu, StringComparison.CurrentCultureIgnoreCase)
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.ModAssumptionDil, StringComparison.CurrentCultureIgnoreCase))
             {
                 requestClosingMessage.Service1 = ServiceNameConstants.AttorneyAssistedDeedInLieu;
@@ -355,14 +355,14 @@ namespace ReswareOrderMonitorService.Utilities.Linear
                 return;
             }
 
-            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.LinearProductNames.PhoneSigning, StringComparison.CurrentCultureIgnoreCase)
+            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.SolidifiProductNames.PhoneSigning, StringComparison.CurrentCultureIgnoreCase)
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.ConferenceCall, StringComparison.CurrentCultureIgnoreCase))
             {
                 requestClosingMessage.Service1 = ServiceNameConstants.ConferenceCallClosing;
                 return;
             }
 
-            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.LinearProductNames.ESigning, StringComparison.CurrentCultureIgnoreCase)
+            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.SolidifiProductNames.ESigning, StringComparison.CurrentCultureIgnoreCase)
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.Online, StringComparison.CurrentCultureIgnoreCase))
             {
                 requestClosingMessage.Service1 = ServiceNameConstants.AttorneyAssistedEsignClosingF2F;
@@ -380,7 +380,7 @@ namespace ReswareOrderMonitorService.Utilities.Linear
                 return;
             }
 
-            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.LinearProductNames.RefinanceInvestment, StringComparison.CurrentCultureIgnoreCase)
+            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.SolidifiProductNames.RefinanceInvestment, StringComparison.CurrentCultureIgnoreCase)
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.Investment, StringComparison.CurrentCultureIgnoreCase))
             {
                 requestClosingMessage.Service1 = ServiceNameConstants.AttorneyAssistedClosing;
@@ -398,7 +398,7 @@ namespace ReswareOrderMonitorService.Utilities.Linear
                 return;
             }
 
-            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.LinearProductNames.PurchaseBuyersSide, StringComparison.CurrentCultureIgnoreCase)
+            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.SolidifiProductNames.PurchaseBuyersSide, StringComparison.CurrentCultureIgnoreCase)
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.Purchase, StringComparison.CurrentCultureIgnoreCase))
             {
                 requestClosingMessage.Service1 = ServiceNameConstants.AttorneyAssistedPurchaseReoBuyerSide;
@@ -407,7 +407,7 @@ namespace ReswareOrderMonitorService.Utilities.Linear
                 return;
             }
 
-            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.LinearProductNames.DeedInLieu, StringComparison.CurrentCultureIgnoreCase)
+            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.SolidifiProductNames.DeedInLieu, StringComparison.CurrentCultureIgnoreCase)
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.ModAssumptionDil, StringComparison.CurrentCultureIgnoreCase))
             {
                 requestClosingMessage.Service1 = ServiceNameConstants.AttorneyAssistedDeedInLieu;
@@ -416,7 +416,7 @@ namespace ReswareOrderMonitorService.Utilities.Linear
                 return;
             }
 
-            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.LinearProductNames.PhoneSigning, StringComparison.CurrentCultureIgnoreCase)
+            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.SolidifiProductNames.PhoneSigning, StringComparison.CurrentCultureIgnoreCase)
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.ConferenceCall, StringComparison.CurrentCultureIgnoreCase))
             {
                 requestClosingMessage.Service1 = ServiceNameConstants.ConferenceCallClosing;
@@ -434,7 +434,7 @@ namespace ReswareOrderMonitorService.Utilities.Linear
                 return;
             }
 
-            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.LinearProductNames.RefinanceInvestment, StringComparison.CurrentCultureIgnoreCase)
+            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.SolidifiProductNames.RefinanceInvestment, StringComparison.CurrentCultureIgnoreCase)
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.Investment, StringComparison.CurrentCultureIgnoreCase))
             {
                 requestClosingMessage.Service1 = ServiceNameConstants.AttorneyAssistedClosing;
@@ -454,7 +454,7 @@ namespace ReswareOrderMonitorService.Utilities.Linear
                 return;
             }
 
-            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.LinearProductNames.PurchaseBuyersSide, StringComparison.CurrentCultureIgnoreCase)
+            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.SolidifiProductNames.PurchaseBuyersSide, StringComparison.CurrentCultureIgnoreCase)
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.Purchase, StringComparison.CurrentCultureIgnoreCase))
             {
                 requestClosingMessage.Service1 = ServiceNameConstants.AttorneyAssistedPurchaseReoBuyerSide;
@@ -464,7 +464,7 @@ namespace ReswareOrderMonitorService.Utilities.Linear
                 return;
             }
 
-            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.LinearProductNames.DeedInLieu, StringComparison.CurrentCultureIgnoreCase)
+            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.SolidifiProductNames.DeedInLieu, StringComparison.CurrentCultureIgnoreCase)
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.ModAssumptionDil, StringComparison.CurrentCultureIgnoreCase))
             {
                 requestClosingMessage.Service1 = ServiceNameConstants.AttorneyAssistedDeedInLieu;
@@ -473,7 +473,7 @@ namespace ReswareOrderMonitorService.Utilities.Linear
                 return;
             }
 
-            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.LinearProductNames.PhoneSigning, StringComparison.CurrentCultureIgnoreCase)
+            if (string.Equals(requestClosingMessage.CustomerProduct, ProductNameConstants.SolidifiProductNames.PhoneSigning, StringComparison.CurrentCultureIgnoreCase)
                 && string.Equals(requestClosingMessage.Product, ProductNameConstants.EClosingsProductNames.ConferenceCall, StringComparison.CurrentCultureIgnoreCase))
             {
                 requestClosingMessage.Service1 = ServiceNameConstants.ConferenceCallClosing;

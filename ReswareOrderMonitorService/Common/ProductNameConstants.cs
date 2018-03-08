@@ -2,7 +2,7 @@
 {
     internal static class ProductNameConstants
     {
-        internal static class LinearProductNames
+        internal static class SolidifiProductNames
         {
             internal const string RefinanceInvestment = "Refinance/Investment";
             internal const string PurchaseBuyersSide = "Purchase - Buyer's side";

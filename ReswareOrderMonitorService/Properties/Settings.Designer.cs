@@ -38,12 +38,12 @@ namespace ReswareOrderMonitorService.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("4412")]
-        public int MirthLinearRequestPort {
+        public int MirthSolidifiRequestPort {
             get {
-                return ((int)(this["MirthLinearRequestPort"]));
+                return ((int)(this["MirthSolidifiRequestPort"]));
             }
             set {
-                this["MirthLinearRequestPort"] = value;
+                this["MirthSolidifiRequestPort"] = value;
             }
         }
     }

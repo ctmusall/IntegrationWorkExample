@@ -1,8 +1,8 @@
 ﻿using ReswareOrderMonitorService.OrderStatusSenders;
 
-namespace ReswareOrderMonitorService.StatusSenders.Linear
+namespace ReswareOrderMonitorService.StatusSenders.Solidifi
 {
-    internal class LinearClosingCompleted : ClosingCompleted
+    internal class SolidifiClosingCompleted : ClosingCompleted
     {
         public override bool SendStatusUpdate()
         {

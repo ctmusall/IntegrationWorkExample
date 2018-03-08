@@ -1,21 +1,21 @@
 ﻿using ReswareOrderMonitorService.Common;
 using ReswareOrderMonitorService.Utilities;
-using ReswareOrderMonitorService.Utilities.Linear;
+using ReswareOrderMonitorService.Utilities.Solidifi;
 
 namespace ReswareOrderMonitorService.Factories.Services
 {
-    internal class LinearServiceUtilityFactory : ServiceUtilityFactory
+    internal class SolidifiServiceUtilityFactory : ServiceUtilityFactory
     {
         public override IOrderServiceUtility ResolveServiceUtility(ServiceUtilityTypeEnum serviceUtilityType)
         {
             switch (serviceUtilityType)
             {
                 case ServiceUtilityTypeEnum.Closing:
-                    return new LinearClosingServiceUtility();
+                    return new SolidifiClosingServiceUtility();
                 case ServiceUtilityTypeEnum.TitleOpinion:
-                    return new LinearTitleOpinionServiceUtility();
+                    return new SolidifiTitleOpinionServiceUtility();
                 case ServiceUtilityTypeEnum.DocPrep:
-                    return new LinearDocPrepServiceUtility();
+                    return new SolidifiDocPrepServiceUtility();
                 default:
                     return null;
             }

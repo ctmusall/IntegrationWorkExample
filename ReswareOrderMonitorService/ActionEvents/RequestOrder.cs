@@ -33,7 +33,7 @@ namespace ReswareOrderMonitorService.ActionEvents
 
         internal bool SendRequestMessage(RequestMessage requestMessage)
         {
-            return MirthServiceClient.SendMessageToMirth(ModelSerializer.SerializeXml(requestMessage), Settings.Default.MirthLinearRequestPort, Settings.Default.MirthIPAddress);
+            return MirthServiceClient.SendMessageToMirth(ModelSerializer.SerializeXml(requestMessage), Settings.Default.MirthSolidifiRequestPort, Settings.Default.MirthIPAddress);
         }
 
         internal override bool PerformAction(OrderResult order)

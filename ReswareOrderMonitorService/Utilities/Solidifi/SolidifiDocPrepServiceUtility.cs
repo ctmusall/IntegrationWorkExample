@@ -1,9 +1,9 @@
 ﻿using ReswareOrderMonitorService.Common;
 using ReswareOrderMonitorService.Models;
 
-namespace ReswareOrderMonitorService.Utilities.Linear
+namespace ReswareOrderMonitorService.Utilities.Solidifi
 {
-    internal class LinearDocPrepServiceUtility : ServiceUtility
+    internal class SolidifiDocPrepServiceUtility : ServiceUtility
     {
         public override void AssignServices(RequestMessage requestClosingMessage)
         {
