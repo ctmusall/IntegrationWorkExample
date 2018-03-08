@@ -132,8 +132,6 @@
     <Compile Include="Factories\Services\ParentServiceUtilityFactory.cs" />
     <Compile Include="Factories\ReswareOrderDependencyFactory.cs" />
     <Compile Include="Factories\Services\ServiceUtilityFactory.cs" />
-    <Compile Include="Factories\StatusSendersOrders\IStatusSenderOrderFactory.cs" />
-    <Compile Include="Factories\StatusSendersOrders\StatusSenderOrderFactory.cs" />
     <Compile Include="Factories\StatusSenders\IStatusSenderFactory.cs" />
     <Compile Include="Factories\StatusSenders\Solidifi\SolidifiClosingStatusSenderFactory.cs" />
     <Compile Include="Factories\StatusSenders\Solidifi\SolidifiDocPrepStatusSenderFactory.cs" />

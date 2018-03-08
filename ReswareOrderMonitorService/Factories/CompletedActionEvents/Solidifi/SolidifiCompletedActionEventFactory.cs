@@ -1,26 +1,25 @@
-﻿using ReswareOrderMonitorService.Common;
-using ReswareOrderMonitorService.Common.Solidifi;
+﻿using ReswareOrderMonitorService.Common.Solidifi;
+using ReswareOrderMonitorService.eClosingIntegrationService;
 using ReswareOrderMonitorService.Factories.StatusSenders;
 using ReswareOrderMonitorService.Factories.StatusSenders.Solidifi;
-using ReswareOrderMonitorService.Factories.StatusSendersOrders;
 
 namespace ReswareOrderMonitorService.Factories.CompletedActionEvents.Solidifi
 {
     internal class SolidifiCompletedActionEventFactory : ClientCompletedActionEventFactory
     {
         internal SolidifiCompletedActionEventFactory() { }
-        internal SolidifiCompletedActionEventFactory(IStatusSenderOrderFactory statusSenderOrderFactory) : base(statusSenderOrderFactory) { }
+        internal SolidifiCompletedActionEventFactory(IntegrationServiceClient integrationServiceClient) : base(integrationServiceClient) { }
 
         public override IStatusSenderFactory ResolveCompletedActionEventStatusSenderFactory(string actionEventCode, string customerId, string fileNumber)
         {
             switch (actionEventCode)
             {
                 case SolidifiActionEventConstants.RequestClosing:
-                    return new SolidifiClosingStatusSenderFactory(StatusSenderOrderFactory.ResolveOrderResult(ServiceUtilityTypeEnum.Closing, customerId, fileNumber));
+                    return new SolidifiClosingStatusSenderFactory(IntegrationServiceClient.GetOrder(customerId, fileNumber));
                 case SolidifiActionEventConstants.RequestTitleOpinion:
-                    return new SolidifiTitleOpinionStatusSenderFactory(StatusSenderOrderFactory.ResolveOrderResult(ServiceUtilityTypeEnum.TitleOpinion, customerId, fileNumber));
+                    return new SolidifiTitleOpinionStatusSenderFactory(IntegrationServiceClient.GetOrder(customerId, $"{fileNumber}-T"));
                 case SolidifiActionEventConstants.RequestDocPrep:
-                    return new SolidifiDocPrepStatusSenderFactory(StatusSenderOrderFactory.ResolveOrderResult(ServiceUtilityTypeEnum.DocPrep, customerId, fileNumber));
+                    return new SolidifiDocPrepStatusSenderFactory(IntegrationServiceClient.GetOrder(customerId, $"{fileNumber}-D"));
                 default:
                     return null;
             }
