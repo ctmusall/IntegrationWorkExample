@@ -9,7 +9,8 @@ namespace ReswareOrderMonitorService.StatusSenders.Solidifi
 
         protected internal override void UpdateReswareOrderStatus(OrderResult reswareOrder)
         {
-            throw new System.NotImplementedException();
+            reswareOrder.ClosingStatus = EClosingOrder.Order.Status;
+            OrderPlacementServiceClient.UpdateOrder(reswareOrder);
         }
 
         protected internal override bool SendDocumentToResware()
