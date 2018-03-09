@@ -1,7 +1,9 @@
-﻿namespace ReswareOrderMonitorService.StatusSenders
+﻿using ReswareOrderMonitorService.ReswareOrders;
+
+namespace ReswareOrderMonitorService.StatusSenders
 {
     internal interface IStatusSender
     {
-        bool SendStatusUpdate();
+        bool SendStatusUpdate(OrderResult order);
     }
 }

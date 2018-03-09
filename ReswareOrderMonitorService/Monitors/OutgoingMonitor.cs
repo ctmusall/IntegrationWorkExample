@@ -43,10 +43,9 @@ namespace ReswareOrderMonitorService.Monitors
 
                     actionEvents.ForEach(actionEvent =>
                     {
-                        var result = clientCompletedActionEventFactory 
-                            ?.ResolveCompletedActionEventStatusSenderFactory(actionEvent.ActionEventCode, order.CustomerId, order.FileNumber)
+                        clientCompletedActionEventFactory?.ResolveCompletedActionEventStatusSenderFactory(actionEvent.ActionEventCode, order.CustomerId, order.FileNumber)
                             ?.ResolveStatusSender(order)
-                            ?.SendStatusUpdate();
+                            ?.SendStatusUpdate(order);
                     });
                 });
             }
