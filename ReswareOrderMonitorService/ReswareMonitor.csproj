@@ -48,6 +48,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Aspose.Pdf">
+      <HintPath>Aspose\DLLs\Aspose.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.Words">
+      <HintPath>Aspose\DLLs\Aspose.Words.dll</HintPath>
+    </Reference>
     <Reference Include="CommonServiceLocator, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.5.6.1\lib\net45\CommonServiceLocator.dll</HintPath>
       <Private>True</Private>
@@ -105,6 +111,7 @@
     <Compile Include="ActionEvents\FundingAuth.cs" />
     <Compile Include="ActionEvents\RequestOrder.cs" />
     <Compile Include="ActionEvents\SchedulingReschedule.cs" />
+    <Compile Include="Aspose\AsposeLicense.cs" />
     <Compile Include="Common\EClosingOrderStatusConstants.cs" />
     <Compile Include="Common\ModelSerializer.cs" />
     <Compile Include="Common\ProductNameConstants.cs" />

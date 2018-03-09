@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using ReswareOrderMonitorService.Aspose;
 using ReswareOrderMonitorService.Factories;
 using ReswareOrderMonitorService.Monitors;
 
@@ -11,6 +12,8 @@ namespace ReswareOrderMonitorService
         {
             try
             {
+                AsposeLicense.SetPdfLicense();
+                AsposeLicense.SetWordsLicense();
 #if (!DEBUG)
                 var servicesToRun = new ServiceBase[]
                 {
