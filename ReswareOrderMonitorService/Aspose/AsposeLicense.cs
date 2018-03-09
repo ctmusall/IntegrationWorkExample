@@ -1,38 +1,19 @@
-﻿using System.IO;
-using System.Linq;
-using System.Reflection;
-using WordLicense = Aspose.Words.License;
+﻿using WordLicense = Aspose.Words.License;
 using PdfLicense = Aspose.Pdf.License;
 
 namespace ReswareOrderMonitorService.Aspose
 {
     internal static class AsposeLicense
     {
-        private static Stream GetLicenseStream()
-        {
-            var ea = Assembly.GetExecutingAssembly();
-            var resourceName = ea.GetManifestResourceNames().Single(x => x.Contains("Aspose.Total.lic"));
-            return ea.GetManifestResourceStream(resourceName);
-        }
+        private const string LicenseName = "Aspose.Total.lic";
 
-        internal static void SetWordsLicense()
+        internal static void SetLicenses()
         {
             var wordLicense = new WordLicense();
+            wordLicense.SetLicense(LicenseName);
 
-            using (var stream = GetLicenseStream())
-            {
-                wordLicense.SetLicense(stream);
-            }
-        }
-
-        internal static void SetPdfLicense()
-        {
             var pdfLicense = new PdfLicense();
-
-            using (var stream = GetLicenseStream())
-            {
-                pdfLicense.SetLicense(stream);
-            }
+            pdfLicense.SetLicense(LicenseName);
         }
     }
 }

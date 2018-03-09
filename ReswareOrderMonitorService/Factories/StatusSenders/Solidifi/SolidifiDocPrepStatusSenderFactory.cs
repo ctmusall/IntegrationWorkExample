@@ -15,7 +15,7 @@ namespace ReswareOrderMonitorService.Factories.StatusSenders.Solidifi
         {
             if (InvalidOrder()) return null;
 
-            return AssignedClosingAttorney(order.DocPrepStatus, Order.Order.Status) ? new SolidifiAssignedTitleOpinionAttorney() : null;
+            return AssignedClosingAttorney(order.DocPrepStatus, EClosingOrder.Order.Status) ? new SolidifiAssignedTitleOpinionAttorney(EClosingOrder) : null;
         }
     }
 }

@@ -218,6 +218,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <EmbeddedResource Include="Aspose\DLLs\Aspose.Total.lic" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -430,7 +431,12 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Aspose\DLLs\Aspose.Pdf.dll" />
+    <Content Include="Aspose\DLLs\Aspose.Pdf.XML" />
+    <Content Include="Aspose\DLLs\Aspose.Words.dll" />
+    <Content Include="Aspose\DLLs\Aspose.Words.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

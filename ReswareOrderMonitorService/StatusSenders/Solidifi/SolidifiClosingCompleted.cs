@@ -1,12 +1,16 @@
-﻿using ReswareOrderMonitorService.ReswareOrders;
+﻿using ReswareOrderMonitorService.eClosingIntegrationService;
+using ReswareOrderMonitorService.ReswareOrders;
 
 namespace ReswareOrderMonitorService.StatusSenders.Solidifi
 {
     internal class SolidifiClosingCompleted : SolidifiStatusSender
     {
-        public override bool SendStatusUpdate(OrderResult order)
+        internal SolidifiClosingCompleted(GetOrderResult eClosingOrder) : base(eClosingOrder) { }
+
+        public override void SendStatusUpdate(OrderResult order)
         {
             throw new System.NotImplementedException();
         }
+        
     }
 }

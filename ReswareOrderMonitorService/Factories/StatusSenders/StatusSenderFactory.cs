@@ -8,25 +8,25 @@ namespace ReswareOrderMonitorService.Factories.StatusSenders
 {
     internal abstract class StatusSenderFactory : IStatusSenderFactory
     {
-        protected internal GetOrderResult Order;
+        protected internal GetOrderResult EClosingOrder;
 
-        internal StatusSenderFactory(GetOrderResult order)
+        internal StatusSenderFactory(GetOrderResult eClosingOrder)
         {
-            Order = order;
+            EClosingOrder = eClosingOrder;
         }
 
         public abstract IStatusSender ResolveStatusSender(OrderResult order);
 
         protected internal bool InvalidOrder()
         {
-            return Order.Outcome == OutcomeEnum.Fail || Order.Order == null;
+            return EClosingOrder.Outcome == OutcomeEnum.Fail || EClosingOrder.Order == null;
         }
 
         protected internal bool AssignedClosingAttorney(string previousOrderStatus, string currentOrderStatus)
         {
             if (string.IsNullOrWhiteSpace(previousOrderStatus) || string.IsNullOrWhiteSpace(currentOrderStatus)) return false;
 
-            return string.Equals(previousOrderStatus, EClosingOrderStatusConstants.Pending, StringComparison.CurrentCultureIgnoreCase) && string.Equals(Order.Order.Status, EClosingOrderStatusConstants.Scheduled, StringComparison.CurrentCultureIgnoreCase);
+            return string.Equals(previousOrderStatus, EClosingOrderStatusConstants.Pending, StringComparison.CurrentCultureIgnoreCase) && string.Equals(EClosingOrder.Order.Status, EClosingOrderStatusConstants.Scheduled, StringComparison.CurrentCultureIgnoreCase);
         }
     }
 }

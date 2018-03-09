@@ -12,8 +12,7 @@ namespace ReswareOrderMonitorService
         {
             try
             {
-                AsposeLicense.SetPdfLicense();
-                AsposeLicense.SetWordsLicense();
+                AsposeLicense.SetLicenses();
 #if (!DEBUG)
                 var servicesToRun = new ServiceBase[]
                 {

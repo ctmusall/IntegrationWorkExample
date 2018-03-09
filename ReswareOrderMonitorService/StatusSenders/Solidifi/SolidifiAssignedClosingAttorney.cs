@@ -1,13 +1,14 @@
 ﻿using System;
+using ReswareOrderMonitorService.eClosingIntegrationService;
 using ReswareOrderMonitorService.ReswareOrders;
 
 namespace ReswareOrderMonitorService.StatusSenders.Solidifi
 {
     internal class SolidifiAssignedClosingAttorney : SolidifiStatusSender
     {
-        public override bool SendStatusUpdate(OrderResult order)
+        internal SolidifiAssignedClosingAttorney(GetOrderResult eClosingOrder) : base(eClosingOrder) { }
+        public override void SendStatusUpdate(OrderResult order)
         {
-            throw new NotImplementedException();
         }
     }
 }
