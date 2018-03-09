@@ -11,11 +11,11 @@ namespace ReswareOrderMonitorService.Factories.StatusSenders.Solidifi
     {
         internal SolidifiClosingStatusSenderFactory(GetOrderResult eClosingOrder) : base(eClosingOrder) { }
 
-        public override IStatusSender ResolveStatusSender(OrderResult order)
+        public override IStatusSender ResolveStatusSender(OrderResult reswareOrder)
         {
             if (InvalidOrder()) return null;
 
-            if (AssignedClosingAttorney(order.ClosingStatus, EClosingOrder.Order.Status)) return new SolidifiAssignedClosingAttorney(EClosingOrder);
+            if (AssignedClosingAttorney(reswareOrder.ClosingStatus, EClosingOrder.Order.Status)) return new SolidifiAssignedClosingAttorney(EClosingOrder);
 
             return ClosingCompleted(EClosingOrder.Order.Status) ? new SolidifiClosingCompleted(EClosingOrder) : null;
         }

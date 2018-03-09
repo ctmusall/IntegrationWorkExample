@@ -1,5 +1,4 @@
-﻿using System;
-using ReswareOrderMonitorService.eClosingIntegrationService;
+﻿using ReswareOrderMonitorService.eClosingIntegrationService;
 using ReswareOrderMonitorService.ReswareOrders;
 
 namespace ReswareOrderMonitorService.StatusSenders.Solidifi
@@ -8,9 +7,19 @@ namespace ReswareOrderMonitorService.StatusSenders.Solidifi
     {
         internal SolidifiAssignedTitleOpinionAttorney(GetOrderResult eClosingOrder) : base(eClosingOrder) { }
 
-        public override void SendStatusUpdate(OrderResult order)
+        protected internal override void UpdateReswareOrderStatus(OrderResult reswareOrder)
         {
-            throw new NotImplementedException();
+            throw new System.NotImplementedException();
+        }
+
+        protected internal override bool SendDocumentToResware()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        protected internal override void BuildStatusUpdateDocument()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

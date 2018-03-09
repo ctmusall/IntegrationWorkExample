@@ -5,25 +5,24 @@ namespace ReswareOrderMonitorService.StatusSenders.Solidifi
 {
     internal abstract class SolidifiStatusSender : IStatusSender
     {
-        internal GetOrderResult EClosingOrder;
-        private readonly OrderPlacementServiceClient _orderPlacementServiceClient;
+        protected internal readonly GetOrderResult EClosingOrder;
+        protected internal readonly  OrderPlacementServiceClient OrderPlacementServiceClient;
 
+        internal SolidifiStatusSender(GetOrderResult eClosingOrder) : this(new OrderPlacementServiceClient()) { EClosingOrder = eClosingOrder; }
 
-        internal SolidifiStatusSender(GetOrderResult eClosingOrder) : this(new OrderPlacementServiceClient())
+        internal SolidifiStatusSender(OrderPlacementServiceClient orderPlacementServiceClient) { OrderPlacementServiceClient = orderPlacementServiceClient; }
+
+        public void SendStatusUpdate(OrderResult reswareOrder)
         {
-            EClosingOrder = eClosingOrder;
+            BuildStatusUpdateDocument();
+            SendDocumentToResware();
+            UpdateReswareOrderStatus(reswareOrder);
         }
 
-        internal SolidifiStatusSender(OrderPlacementServiceClient orderPlacementServiceClient)
-        {
-            _orderPlacementServiceClient = orderPlacementServiceClient;
-        }
+        protected internal abstract void UpdateReswareOrderStatus(OrderResult reswareOrder);
 
-        public abstract void SendStatusUpdate(OrderResult order);
+        protected internal abstract bool SendDocumentToResware();
 
-        protected internal void UpdateOrder(OrderResult order)
-        {
-            _orderPlacementServiceClient.UpdateOrder(order);
-        }
+        protected internal abstract void BuildStatusUpdateDocument();
     }
 }

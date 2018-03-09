@@ -7,7 +7,18 @@ namespace ReswareOrderMonitorService.StatusSenders.Solidifi
     internal class SolidifiAssignedDocPrepAttorney : SolidifiStatusSender
     {
         internal SolidifiAssignedDocPrepAttorney(GetOrderResult eClosingOrder) : base(eClosingOrder) { }
-        public override void SendStatusUpdate(OrderResult order)
+
+        protected internal override void UpdateReswareOrderStatus(OrderResult reswareOrder)
+        {
+            throw new NotImplementedException();
+        }
+
+        protected internal override bool SendDocumentToResware()
+        {
+            throw new NotImplementedException();
+        }
+
+        protected internal override void BuildStatusUpdateDocument()
         {
             throw new NotImplementedException();
         }
