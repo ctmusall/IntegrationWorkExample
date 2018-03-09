@@ -17,6 +17,8 @@ namespace ReswareOrderMonitorService.Factories.StatusSenders.Solidifi
 
             if (string.IsNullOrWhiteSpace(reswareOrder.ClosingStatus)) return new SolidifiUpdateClosingStatus(EClosingOrder.Order.Status);
 
+            if (string.Equals(reswareOrder.TitleOpinionStatus, EClosingOrder.Order.Status, StringComparison.CurrentCultureIgnoreCase)) return null;
+
             if (AssignedClosingAttorney(reswareOrder.ClosingStatus, EClosingOrder.Order.Status)) return new SolidifiAssignedClosingAttorney(EClosingOrder);
 
             return ClosingCompleted(EClosingOrder.Order.Status) ? new SolidifiClosingCompleted(EClosingOrder) : null;

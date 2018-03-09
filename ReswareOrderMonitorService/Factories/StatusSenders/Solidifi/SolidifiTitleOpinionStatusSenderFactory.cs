@@ -1,4 +1,5 @@
-﻿using ReswareOrderMonitorService.eClosingIntegrationService;
+﻿using System;
+using ReswareOrderMonitorService.eClosingIntegrationService;
 using ReswareOrderMonitorService.ReswareOrders;
 using ReswareOrderMonitorService.StatusSenders;
 using ReswareOrderMonitorService.StatusSenders.Solidifi;
@@ -14,6 +15,8 @@ namespace ReswareOrderMonitorService.Factories.StatusSenders.Solidifi
             if (InvalidOrder()) return null;
 
             if (string.IsNullOrWhiteSpace(reswareOrder.TitleOpinionStatus)) return new SolidifiUpdateTitleOpinionStatus(EClosingOrder.Order.Status);
+
+            if (string.Equals(reswareOrder.TitleOpinionStatus, EClosingOrder.Order.Status, StringComparison.CurrentCultureIgnoreCase)) return null;
 
             return AssignedClosingAttorney(reswareOrder.TitleOpinionStatus, EClosingOrder.Order.Status) ? new SolidifiAssignedTitleOpinionAttorney(EClosingOrder) : null;
         }
