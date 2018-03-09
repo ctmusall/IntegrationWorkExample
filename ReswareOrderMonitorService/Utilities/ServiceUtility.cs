@@ -2,7 +2,7 @@
 
 namespace ReswareOrderMonitorService.Utilities
 {
-    internal abstract class ServiceUtility : IOrderServiceUtility
+    internal abstract class ServiceUtility : IServiceUtility
     {
         public abstract void AssignServices(RequestMessage requestClosingMessage);
     }

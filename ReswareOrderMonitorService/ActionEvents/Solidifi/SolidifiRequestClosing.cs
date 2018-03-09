@@ -11,7 +11,7 @@ namespace ReswareOrderMonitorService.ActionEvents.Solidifi
         private const string CustomerContact = "TEAM CLOSINGS";
         private const string DocsToAttorney = "eDoc";
 
-        internal SolidifiRequestClosing(IOrderServiceUtility orderServiceUtility) : base(orderServiceUtility) { }
+        internal SolidifiRequestClosing(IServiceUtility orderServiceUtility) : base(orderServiceUtility) { }
 
         internal override RequestMessage BuildRequestMessage(OrderResult order, SigningServiceResult signing)
         {

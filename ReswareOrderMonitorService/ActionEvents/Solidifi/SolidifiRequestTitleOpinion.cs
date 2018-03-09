@@ -14,12 +14,12 @@ namespace ReswareOrderMonitorService.ActionEvents.Solidifi
         private const string CustomerContact = "KRISTEN MILLER";
         private const string Product = "INT--Search/Opinion";
 
-        internal SolidifiRequestTitleOpinion(IOrderServiceUtility orderServiceUtility) : this(orderServiceUtility, ReswareOrderDependencyFactory.Resolve<IDateTimeUtility>())
+        internal SolidifiRequestTitleOpinion(IServiceUtility orderServiceUtility) : this(orderServiceUtility, ReswareOrderDependencyFactory.Resolve<IDateTimeUtility>())
         {
 
         }
 
-        internal SolidifiRequestTitleOpinion(IOrderServiceUtility orderServiceUtility, IDateTimeUtility dateTimeUtility) : base(orderServiceUtility)
+        internal SolidifiRequestTitleOpinion(IServiceUtility orderServiceUtility, IDateTimeUtility dateTimeUtility) : base(orderServiceUtility)
         {
             _dateTimeUtility = dateTimeUtility;
         }

@@ -6,7 +6,7 @@ namespace ReswareOrderMonitorService.Factories.Services
 {
     internal class SolidifiServiceUtilityFactory : ServiceUtilityFactory
     {
-        public override IOrderServiceUtility ResolveServiceUtility(ServiceUtilityTypeEnum serviceUtilityType)
+        public override IServiceUtility ResolveServiceUtility(ServiceUtilityTypeEnum serviceUtilityType)
         {
             switch (serviceUtilityType)
             {

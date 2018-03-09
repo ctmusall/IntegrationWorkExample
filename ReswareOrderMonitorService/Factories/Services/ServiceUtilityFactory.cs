@@ -6,6 +6,6 @@ namespace ReswareOrderMonitorService.Factories
 {
     internal abstract class ServiceUtilityFactory : IServiceUtilityFactory
     {
-        public abstract IOrderServiceUtility ResolveServiceUtility(ServiceUtilityTypeEnum serviceUtilityType);
+        public abstract IServiceUtility ResolveServiceUtility(ServiceUtilityTypeEnum serviceUtilityType);
     }
 }

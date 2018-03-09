@@ -6,7 +6,7 @@ namespace ReswareOrderMonitorService.ActionEvents.Solidifi
 {
     internal class SolidifiRescheduleClosing : SchedulingReschedule
     {
-        internal SolidifiRescheduleClosing(IOrderServiceUtility orderServiceUtility) : base(orderServiceUtility)
+        internal SolidifiRescheduleClosing(IServiceUtility orderServiceUtility) : base(orderServiceUtility)
         {
         }
 

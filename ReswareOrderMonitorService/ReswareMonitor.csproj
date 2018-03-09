@@ -212,7 +212,7 @@
     <Compile Include="Utilities\ServiceUtility.cs" />
     <Compile Include="Utilities\DateTimeUtility.cs" />
     <Compile Include="Utilities\IDateTimeUtility.cs" />
-    <Compile Include="Utilities\IOrderServiceUtility.cs" />
+    <Compile Include="Utilities\IServiceUtility.cs" />
     <Compile Include="Utilities\Solidifi\SolidifiClosingServiceUtility.cs" />
     <Compile Include="Utilities\Solidifi\SolidifiTitleOpinionServiceUtility.cs" />
   </ItemGroup>

@@ -6,9 +6,9 @@ namespace ReswareOrderMonitorService.ActionEvents
     internal abstract class SchedulingReschedule : ActionEvent
     {
         protected internal IntegrationServiceClient IntegrationServiceClient;
-        protected internal IOrderServiceUtility OrderServiceUtility;
+        protected internal IServiceUtility OrderServiceUtility;
 
-        internal SchedulingReschedule(IOrderServiceUtility orderServiceUtility)
+        internal SchedulingReschedule(IServiceUtility orderServiceUtility)
         {
             OrderServiceUtility = orderServiceUtility;
             IntegrationServiceClient = new IntegrationServiceClient();

@@ -2,7 +2,7 @@
 
 namespace ReswareOrderMonitorService.Utilities
 {
-    internal interface IOrderServiceUtility
+    internal interface IServiceUtility
     {
         void AssignServices(RequestMessage requestClosingMessage);
     }

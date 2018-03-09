@@ -14,11 +14,11 @@ namespace ReswareOrderMonitorService.ActionEvents.Solidifi
 
         private const string CustomerContact = "DOC DEED";
 
-        public SolidifiRequestDocPrep(IOrderServiceUtility orderServiceUtility) : this(orderServiceUtility, ReswareOrderDependencyFactory.Resolve<IDateTimeUtility>())
+        public SolidifiRequestDocPrep(IServiceUtility orderServiceUtility) : this(orderServiceUtility, ReswareOrderDependencyFactory.Resolve<IDateTimeUtility>())
         {
         }
 
-        internal SolidifiRequestDocPrep(IOrderServiceUtility orderServiceUtility, IDateTimeUtility dateTimeUtility) : base(orderServiceUtility)
+        internal SolidifiRequestDocPrep(IServiceUtility orderServiceUtility, IDateTimeUtility dateTimeUtility) : base(orderServiceUtility)
         {
             _dateTimeUtility = dateTimeUtility;
         }

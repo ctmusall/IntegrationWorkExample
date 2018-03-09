@@ -16,9 +16,9 @@ namespace ReswareOrderMonitorService.ActionEvents
     {
         internal readonly ReceiveSigningServiceClient SigningServiceClient;
         protected internal readonly IMirthServiceClient MirthServiceClient;
-        protected internal readonly IOrderServiceUtility OrderServiceUtility;
+        protected internal readonly IServiceUtility OrderServiceUtility;
 
-        internal RequestOrder(IOrderServiceUtility orderServiceUtility) : this(new ReceiveSigningServiceClient(), ReswareOrderDependencyFactory.Resolve<IMirthServiceClient>())
+        internal RequestOrder(IServiceUtility orderServiceUtility) : this(new ReceiveSigningServiceClient(), ReswareOrderDependencyFactory.Resolve<IMirthServiceClient>())
         {
             OrderServiceUtility = orderServiceUtility;
         }
