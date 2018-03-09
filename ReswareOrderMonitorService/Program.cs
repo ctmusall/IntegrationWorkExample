@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
+using System.ServiceProcess;
 using ReswareOrderMonitorService.Aspose;
-using ReswareOrderMonitorService.Factories;
-using ReswareOrderMonitorService.Monitors;
+
 
 namespace ReswareOrderMonitorService
 {
@@ -13,18 +13,17 @@ namespace ReswareOrderMonitorService
             try
             {
                 AsposeLicense.SetLicenses();
-#if (!DEBUG)
                 var servicesToRun = new ServiceBase[]
                 {
                     new ReswareMonitor() 
                 };
 
                 ServiceBase.Run(servicesToRun);
-#else
-                ReswareOrderDependencyFactory.Resolve<IOrderActionEventMonitor>().MonitorOrderActionEvents();
-                ReswareOrderDependencyFactory.Resolve<IDocumentMonitor>().MonitorDocuments();
-                ReswareOrderDependencyFactory.Resolve<IOutgoingMonitor>().MonitorOrders();
-#endif
+
+                //ReswareOrderDependencyFactory.Resolve<IOrderActionEventMonitor>().MonitorOrderActionEvents();
+                //ReswareOrderDependencyFactory.Resolve<IDocumentMonitor>().MonitorDocuments();
+                //ReswareOrderDependencyFactory.Resolve<IOutgoingMonitor>().MonitorOrders();
+
             }
             catch (Exception ex)
             {
