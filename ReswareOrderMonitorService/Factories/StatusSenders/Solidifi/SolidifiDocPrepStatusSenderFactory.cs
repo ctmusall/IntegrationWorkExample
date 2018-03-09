@@ -11,11 +11,13 @@ namespace ReswareOrderMonitorService.Factories.StatusSenders.Solidifi
         {
         }
 
-        public override IStatusSender ResolveStatusSender(OrderResult order)
+        public override IStatusSender ResolveStatusSender(OrderResult reswareOrder)
         {
             if (InvalidOrder()) return null;
 
-            return AssignedClosingAttorney(order.DocPrepStatus, EClosingOrder.Order.Status) ? new SolidifiAssignedTitleOpinionAttorney(EClosingOrder) : null;
+            if (string.IsNullOrWhiteSpace(reswareOrder.DocPrepStatus)) return new SolidifiUpdateDocPrepStatus(EClosingOrder.Order.Status);
+
+            return AssignedClosingAttorney(reswareOrder.DocPrepStatus, EClosingOrder.Order.Status) ? new SolidifiAssignedTitleOpinionAttorney(EClosingOrder) : null;
         }
     }
 }

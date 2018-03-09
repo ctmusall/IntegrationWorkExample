@@ -24,7 +24,7 @@ namespace ReswareOrderMonitorService.Factories.StatusSenders
 
         protected internal bool AssignedClosingAttorney(string previousOrderStatus, string currentOrderStatus)
         {
-            if (string.IsNullOrWhiteSpace(previousOrderStatus) || string.IsNullOrWhiteSpace(currentOrderStatus)) return false;
+            if (string.IsNullOrWhiteSpace(currentOrderStatus)) return false;
 
             return string.Equals(previousOrderStatus, EClosingOrderStatusConstants.Pending, StringComparison.CurrentCultureIgnoreCase) && string.Equals(EClosingOrder.Order.Status, EClosingOrderStatusConstants.Scheduled, StringComparison.CurrentCultureIgnoreCase);
         }

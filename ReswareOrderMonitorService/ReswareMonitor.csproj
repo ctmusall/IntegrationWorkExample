@@ -153,6 +153,8 @@
     <Compile Include="Monitors\DocumentMonitor.cs" />
     <Compile Include="Monitors\IOutgoingMonitor.cs" />
     <Compile Include="Monitors\OutgoingMonitor.cs" />
+    <Compile Include="StatusSenders\Solidifi\SolidifiUpdateDocPrepStatus.cs" />
+    <Compile Include="StatusSenders\Solidifi\SolidifiUpdateTitleOpinionStatus.cs" />
     <Compile Include="StatusSenders\Solidifi\SolidifiAssignedClosingAttorney.cs" />
     <Compile Include="StatusSenders\Solidifi\SolidifiAssignedDocPrepAttorney.cs" />
     <Compile Include="StatusSenders\Solidifi\SolidifiAssignedTitleOpinionAttorney.cs" />
@@ -208,6 +210,8 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="StatusSenders\Solidifi\SolidifiStatusSender.cs" />
+    <Compile Include="StatusSenders\Solidifi\SolidifiUpdateClosingStatus.cs" />
+    <Compile Include="StatusSenders\Solidifi\SolidifiUpdateOrderStatus.cs" />
     <Compile Include="Utilities\Solidifi\SolidifiDocPrepServiceUtility.cs" />
     <Compile Include="Utilities\ServiceUtility.cs" />
     <Compile Include="Utilities\DateTimeUtility.cs" />
