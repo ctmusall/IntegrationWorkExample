@@ -14,7 +14,7 @@ namespace ReswareOrderMonitorService.StatusSenders.Solidifi
 
         public void SendStatusUpdate(OrderResult reswareOrder)
         {
-            BuildStatusUpdateDocument();
+            BuildStatusUpdateDocument(reswareOrder);
             SendDocumentToResware();
             UpdateReswareOrderStatus(reswareOrder);
         }
@@ -23,6 +23,6 @@ namespace ReswareOrderMonitorService.StatusSenders.Solidifi
 
         protected internal abstract bool SendDocumentToResware();
 
-        protected internal abstract void BuildStatusUpdateDocument();
+        protected internal abstract void BuildStatusUpdateDocument(OrderResult reswareOrder);
     }
 }

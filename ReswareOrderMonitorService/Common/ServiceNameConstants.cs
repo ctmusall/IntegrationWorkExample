@@ -1,4 +1,6 @@
-﻿namespace ReswareOrderMonitorService.Common
+﻿using System.Collections.Generic;
+
+namespace ReswareOrderMonitorService.Common
 {
     internal static class ServiceNameConstants
     {
@@ -19,5 +21,9 @@
         internal const string MaMarketableTitleLetter = "MA Marketable Title Letter";
         internal const string DeedPreparationAndReview = "Deed Preparation & Review";
         internal const string DeedPreparation = "Deed Preparation";
+        internal const string NotaryFee = "Notary Fee";
+
+        internal static ICollection<string> AdditionalAttorneyServices = new List<string> { NotaryFee, Disbursement, DisbursementPurchase, RecordingSupervision };
     }
+
 }

@@ -19,7 +19,7 @@ namespace ReswareOrderMonitorService.StatusSenders.Solidifi
             throw new NotImplementedException();
         }
 
-        protected internal override void BuildStatusUpdateDocument()
+        protected internal override void BuildStatusUpdateDocument(OrderResult reswareOrder)
         {
             throw new NotImplementedException();
         }
