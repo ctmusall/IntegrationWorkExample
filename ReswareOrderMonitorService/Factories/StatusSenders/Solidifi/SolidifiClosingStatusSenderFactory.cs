@@ -1,6 +1,7 @@
 ﻿using System;
 using ReswareOrderMonitorService.Common;
 using ReswareOrderMonitorService.eClosingIntegrationService;
+using ReswareOrderMonitorService.Repositories;
 using ReswareOrderMonitorService.ReswareOrders;
 using ReswareOrderMonitorService.StatusSenders;
 using ReswareOrderMonitorService.StatusSenders.Solidifi;
@@ -20,9 +21,9 @@ namespace ReswareOrderMonitorService.Factories.StatusSenders.Solidifi
 
             if (string.Equals(reswareOrder.TitleOpinionStatus, EClosingOrder.Order.Status, StringComparison.CurrentCultureIgnoreCase)) return null;
 
-            if (AssignedClosingAttorney(reswareOrder.ClosingStatus, EClosingOrder.Order.Status)) return new SolidifiAssignedClosingAttorney(EClosingOrder, new AssignedAttorneyStatusDocumentUtility());
+            if (AssignedClosingAttorney(reswareOrder.ClosingStatus, EClosingOrder.Order.Status)) return new SolidifiAssignedClosingAttorney(EClosingOrder, new AssignedAttorneyStatusDocumentUtility(), new OrderPlacementRepository());
 
-            return ClosingCompleted(EClosingOrder.Order.Status) ? new SolidifiClosingCompleted(EClosingOrder, new ClosingCompletedStatusDocumentUtility()) : null;
+            return ClosingCompleted(EClosingOrder.Order.Status) ? new SolidifiClosingCompleted(EClosingOrder, new ClosingCompletedStatusDocumentUtility(), new OrderPlacementRepository()) : null;
         }
 
         private static bool ClosingCompleted(string currentOrderStatus)

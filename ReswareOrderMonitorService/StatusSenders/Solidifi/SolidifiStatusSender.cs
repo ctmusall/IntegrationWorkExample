@@ -9,28 +9,26 @@ namespace ReswareOrderMonitorService.StatusSenders.Solidifi
     {
         private readonly IStatusDocumentUtility _statusDocumentUtility;
         private readonly IOrderPlacementRepository _orderPlacementRepository;
+        private readonly GetOrderResult _eClosingOrder;
 
-        protected internal readonly GetOrderResult EClosingOrder;
-
-        internal SolidifiStatusSender(GetOrderResult eClosingOrder, IStatusDocumentUtility statusDocumentUtility) : this(new OrderPlacementRepository())
+        internal SolidifiStatusSender(GetOrderResult eClosingOrder, IStatusDocumentUtility statusDocumentUtility, IOrderPlacementRepository orderPlacementRepository)
         {
-            EClosingOrder = eClosingOrder;
             _statusDocumentUtility = statusDocumentUtility;
+            _orderPlacementRepository = orderPlacementRepository;
+            _eClosingOrder = eClosingOrder;
         }
-
-        internal SolidifiStatusSender(IOrderPlacementRepository orderPlacementRepository) { _orderPlacementRepository = orderPlacementRepository; }
 
         public void SendStatusUpdate(OrderResult reswareOrder)
         {
-            var document = _statusDocumentUtility.BuildDocument(reswareOrder, EClosingOrder);
+            var document = _statusDocumentUtility.BuildDocument(reswareOrder, _eClosingOrder);
             if (document == null) return;
             var sendResult = SendDocumentToResware();
             if (!sendResult) return;
-            UpdateReswareOrderStatus(reswareOrder);
+            UpdateReswareOrderStatus(reswareOrder, _eClosingOrder);
             _orderPlacementRepository.UpdateOrder(reswareOrder);
         }
 
-        protected internal abstract void UpdateReswareOrderStatus(OrderResult reswareOrder);
+        protected internal abstract void UpdateReswareOrderStatus(OrderResult reswareOrder, GetOrderResult eClosingOrder);
 
         protected internal abstract bool SendDocumentToResware();
     }

@@ -1,4 +1,5 @@
 ﻿using ReswareOrderMonitorService.eClosingIntegrationService;
+using ReswareOrderMonitorService.Repositories;
 using ReswareOrderMonitorService.ReswareOrders;
 using ReswareOrderMonitorService.Utilities;
 
@@ -6,11 +7,11 @@ namespace ReswareOrderMonitorService.StatusSenders.Solidifi
 {
     internal class SolidifiAssignedTitleOpinionAttorney : SolidifiStatusSender
     {
-        internal SolidifiAssignedTitleOpinionAttorney(GetOrderResult eClosingOrder, IStatusDocumentUtility statusDocumentUtility) : base(eClosingOrder, statusDocumentUtility) { }
+        internal SolidifiAssignedTitleOpinionAttorney(GetOrderResult eClosingOrder, IStatusDocumentUtility statusDocumentUtility, IOrderPlacementRepository orderPlacementRepository) : base(eClosingOrder, statusDocumentUtility, orderPlacementRepository) { }
 
-        protected internal override void UpdateReswareOrderStatus(OrderResult reswareOrder)
+        protected internal override void UpdateReswareOrderStatus(OrderResult reswareOrder, GetOrderResult eClosingOrder)
         {
-            reswareOrder.TitleOpinionStatus = EClosingOrder.Order.Status;
+            reswareOrder.TitleOpinionStatus = eClosingOrder.Order.Status;
         }
 
         protected internal override bool SendDocumentToResware()
