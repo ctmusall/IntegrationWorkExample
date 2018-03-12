@@ -103,7 +103,6 @@
   <ItemGroup>
     <Compile Include="ActionEvents\ActionEvent.cs" />
     <Compile Include="ActionEvents\ClosingCompleted.cs" />
-    <Compile Include="ActionEvents\Solidifi\SolidifiFundingAuth.cs" />
     <Compile Include="ActionEvents\Solidifi\SolidifiRequestClosing.cs" />
     <Compile Include="ActionEvents\Solidifi\SolidifiRequestDocPrep.cs" />
     <Compile Include="ActionEvents\Solidifi\SolidifiRequestTitleOpinion.cs" />
@@ -224,7 +223,9 @@
     <Compile Include="StatusSenders\Solidifi\SolidifiUpdateOrderStatus.cs" />
     <Compile Include="Utilities\ClosingCompletedStatusDocumentUtility.cs" />
     <Compile Include="Utilities\ClosingDocumentMailUtility.cs" />
+    <Compile Include="Utilities\FundingAuthMailUtility.cs" />
     <Compile Include="Utilities\IClosingDocumentMailUtility.cs" />
+    <Compile Include="Utilities\IFundingAuthMailUtility.cs" />
     <Compile Include="Utilities\IStatusDocumentUtility.cs" />
     <Compile Include="Utilities\AssignedAttorneyStatusDocumentUtility.cs" />
     <Compile Include="Utilities\Solidifi\SolidifiClosingDocumentMailUtility.cs" />
@@ -234,6 +235,7 @@
     <Compile Include="Utilities\IDateTimeUtility.cs" />
     <Compile Include="Utilities\IServiceUtility.cs" />
     <Compile Include="Utilities\Solidifi\SolidifiClosingServiceUtility.cs" />
+    <Compile Include="Utilities\Solidifi\SolidifiFundingAuthMailUtility.cs" />
     <Compile Include="Utilities\Solidifi\SolidifiTitleOpinionServiceUtility.cs" />
     <Compile Include="Utilities\StatusDocumentUtility.cs" />
   </ItemGroup>

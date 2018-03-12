@@ -6,6 +6,7 @@ using ReswareOrderMonitorService.Factories.Services;
 using ReswareOrderMonitorService.Mirth;
 using ReswareOrderMonitorService.Repositories;
 using ReswareOrderMonitorService.Utilities;
+using ReswareOrderMonitorService.Utilities.Solidifi;
 
 namespace ReswareOrderMonitorService.Factories.ActionEvents
 {
@@ -26,7 +27,7 @@ namespace ReswareOrderMonitorService.Factories.ActionEvents
                 case SolidifiActionEventConstants.RequestDocPrep:
                     return new SolidifiRequestDocPrep(ReswareOrderDependencyFactory.Resolve<IReceiveSigningServiceRepository>(), ReswareOrderDependencyFactory.Resolve<IMirthServiceClient>(),ServiceUtilityFactory.ResolveServiceUtility(ServiceUtilityTypeEnum.DocPrep), ReswareOrderDependencyFactory.Resolve<IDateTimeUtility>());
                 case SolidifiActionEventConstants.FundingAuth:
-                    return new SolidifiFundingAuth();
+                    return new FundingAuth(new SolidifiFundingAuthMailUtility());
                  default:
                     return null;   
             }

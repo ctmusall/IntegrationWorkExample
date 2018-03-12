@@ -1,22 +1,21 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Net.Mail;
 using System.Text;
 using ReswareOrderMonitorService.ReswareOrders;
 
-namespace ReswareOrderMonitorService.ActionEvents.Solidifi
+namespace ReswareOrderMonitorService.Utilities.Solidifi
 {
-    internal class SolidifiFundingAuth : FundingAuth
+    internal class SolidifiFundingAuthMailUtility : FundingAuthMailUtility
     {
-        internal override MailMessage BuildFundingAuthMailMessage(OrderResult order)
+        public override MailMessage BuildFundingAuthMailMessage(OrderResult reswareOrder)
         {
-            var propertyAddress = order.PropertyAddress.FirstOrDefault(o => o.OrderId == order.Id);
+            var propertyAddress = reswareOrder.PropertyAddress.FirstOrDefault(o => o.OrderId == reswareOrder.Id);
             if (propertyAddress == null) return null;
 
-            var borrower = order.BuyersAndSellers.FirstOrDefault(b => b.Type == BuyerSellerEnum.Buyer && !b.Spouse);
+            var borrower = reswareOrder.BuyersAndSellers.FirstOrDefault(b => b.Type == BuyerSellerEnum.Buyer && !b.Spouse);
             if (borrower == null) return null;
 
-            var coBorrower = order.BuyersAndSellers.FirstOrDefault(b => b.Type == BuyerSellerEnum.Buyer && b.Spouse);
+            var coBorrower = reswareOrder.BuyersAndSellers.FirstOrDefault(b => b.Type == BuyerSellerEnum.Buyer && b.Spouse);
 
             var mailMessage = new MailMessage
             {
@@ -29,28 +28,11 @@ namespace ReswareOrderMonitorService.ActionEvents.Solidifi
             body.AppendLine("You are authorized to fund this file. Please contact us immediately if anything is missing (funds/documents) that will be needed to disburse.");
             body.AppendLine($"Property: {propertyAddress.AddressStreetInfo}, {propertyAddress.City}, {propertyAddress.State} {propertyAddress.Zip}");
             body.AppendLine($"Borrowers: {borrower.FirstName} {borrower.MiddleName} {borrower.LastName} {coBorrower?.FirstName} {coBorrower?.MiddleName} {coBorrower?.LastName}");
-            body.AppendLine($"Loan Number: {order.FileNumber}");
+            body.AppendLine($"Loan Number: {reswareOrder.FileNumber}");
             body.AppendLine("Thank you");
             mailMessage.Body = body.ToString();
 
             return mailMessage;
-        }
-
-        internal override bool SendFundingAuthMailMessage(MailMessage mailMessage)
-        {
-            try
-            {
-                var smtpSender = new SmtpClient("outlook.pcnclosings.com", 25);
-                smtpSender.Send(mailMessage);
-                return true;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.GetType().FullName);
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
-                return false;
-            }
         }
     }
 }

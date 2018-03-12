@@ -1,19 +1,28 @@
 ﻿using System.Net.Mail;
 using ReswareOrderMonitorService.ReswareOrders;
+using ReswareOrderMonitorService.Utilities;
 
 namespace ReswareOrderMonitorService.ActionEvents
 {
-    internal abstract class FundingAuth : ActionEvent
+    internal class FundingAuth : ActionEvent
     {
-        internal override bool PerformAction(OrderResult order)
-        {
-            var mailMessage = BuildFundingAuthMailMessage(order);
+        private readonly IFundingAuthMailUtility _fundingAuthMailUtility;
 
-            return mailMessage != null && SendFundingAuthMailMessage(mailMessage);
+        internal FundingAuth(IFundingAuthMailUtility fundingAuthMailUtility)
+        {
+            _fundingAuthMailUtility = fundingAuthMailUtility;
         }
 
-        internal abstract MailMessage BuildFundingAuthMailMessage(OrderResult order);
+        internal override bool PerformAction(OrderResult order)
+        {
+            var mailMessage = _fundingAuthMailUtility.BuildFundingAuthMailMessage(order);
 
-        internal abstract bool SendFundingAuthMailMessage(MailMessage mailMessage);
+            if (mailMessage == null) return false;
+
+            var smtpSender = new SmtpClient("outlook.pcnclosings.com", 25);
+            smtpSender.Send(mailMessage);
+
+            return true;
+        }
     }
 }
