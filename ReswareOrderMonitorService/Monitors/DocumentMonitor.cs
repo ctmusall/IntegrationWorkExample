@@ -2,24 +2,23 @@
 using System.Linq;
 using ReswareOrderMonitorService.Factories;
 using ReswareOrderMonitorService.Factories.Documents;
-using ReswareOrderMonitorService.ReswareNoteDocs;
-using ReswareOrderMonitorService.ReswareOrders;
+using ReswareOrderMonitorService.Repositories;
 using Unity.Interception.Utilities;
 
 namespace ReswareOrderMonitorService.Monitors
 {
     internal class DocumentMonitor : IDocumentMonitor
     {
-        private readonly ReceiveNoteServiceClient _receiveNoteServiceClient;
-        private readonly OrderPlacementServiceClient _orderPlacementServiceClient;
+        private readonly IReceiveNoteRepository _receiveNoteRepository;
+        private readonly IOrderPlacementRepository _orderPlacementRepository;
         private readonly IClientDocumentFactory _clientClosingDocumentFactory;
 
-        public DocumentMonitor() : this(new ReceiveNoteServiceClient(), new OrderPlacementServiceClient(), ReswareOrderDependencyFactory.Resolve<IClientDocumentFactory>()) { }
+        public DocumentMonitor() : this(ReswareOrderDependencyFactory.Resolve<IReceiveNoteRepository>(), ReswareOrderDependencyFactory.Resolve<IOrderPlacementRepository>(), ReswareOrderDependencyFactory.Resolve<IClientDocumentFactory>()) { }
 
-        internal DocumentMonitor(ReceiveNoteServiceClient receiveNoteServiceClient, OrderPlacementServiceClient orderPlacementServiceClient, IClientDocumentFactory clientClosingDocumentFactory)
+        internal DocumentMonitor(IReceiveNoteRepository receiveNoteRepository, IOrderPlacementRepository orderPlacementRepository, IClientDocumentFactory clientClosingDocumentFactory)
         {
-            _receiveNoteServiceClient = receiveNoteServiceClient;
-            _orderPlacementServiceClient = orderPlacementServiceClient;
+            _receiveNoteRepository = receiveNoteRepository;
+            _orderPlacementRepository = orderPlacementRepository;
             _clientClosingDocumentFactory = clientClosingDocumentFactory;
         }
 
@@ -27,11 +26,11 @@ namespace ReswareOrderMonitorService.Monitors
         {
             try
             {
-                var notesAndDocs = _receiveNoteServiceClient.GetAllNotesAndDocs().Where(nd => !nd.Processed && nd.ProcessedDateTime == null).ToList();
+                var notesAndDocs = _receiveNoteRepository.GetAllNotesAndDocs().Where(nd => !nd.Processed && nd.ProcessedDateTime == null).ToList();
 
                 if (notesAndDocs.Count == 0) return;
                 
-                var orders = _orderPlacementServiceClient.GetAllOrders();
+                var orders = _orderPlacementRepository.GetAllOrders();
 
                 if (orders.Length == 0) return;
 
@@ -48,7 +47,7 @@ namespace ReswareOrderMonitorService.Monitors
                         if (result == null || !result.Value) return;
                         noteDoc.Processed = true;
                         noteDoc.ProcessedDateTime = DateTime.Now;
-                        _receiveNoteServiceClient.UpdateNoteDoc(noteDoc);
+                        _receiveNoteRepository.UpdateNoteDoc(noteDoc);
                     });
                 });
             }

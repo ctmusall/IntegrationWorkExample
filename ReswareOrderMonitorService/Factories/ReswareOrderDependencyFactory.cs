@@ -66,6 +66,7 @@ namespace ReswareOrderMonitorService.Factories
             container.RegisterType<IOrderPlacementRepository, OrderPlacementRepository>();
             container.RegisterType<IReceiveActionEventRepository, ReceiveActionEventRepository>();
             container.RegisterType<IIntegrationServiceRepository, IntegrationServiceRepository>();
+            container.RegisterType<IReceiveNoteRepository, ReceiveNoteRepository>();
         }
     }
 }

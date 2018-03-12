@@ -13,10 +13,5 @@ namespace ReswareOrderMonitorService.StatusSenders.Solidifi
         {
             reswareOrder.TitleOpinionStatus = eClosingOrder.Order.Status;
         }
-
-        protected internal override bool SendDocumentToResware()
-        {
-            throw new System.NotImplementedException();
-        }
     }
 }

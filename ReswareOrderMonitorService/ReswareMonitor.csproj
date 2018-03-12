@@ -157,8 +157,10 @@
     <Compile Include="Repositories\IntegrationServiceRepository.cs" />
     <Compile Include="Repositories\IReceiveActionEventRepository.cs" />
     <Compile Include="Repositories\IOrderPlacementRepository.cs" />
+    <Compile Include="Repositories\IReceiveNoteRepository.cs" />
     <Compile Include="Repositories\OrderPlacementRepository.cs" />
     <Compile Include="Repositories\ReceiveActionEventRepository.cs" />
+    <Compile Include="Repositories\ReceiveNoteRepository.cs" />
     <Compile Include="StatusSenders\Solidifi\SolidifiUpdateDocPrepStatus.cs" />
     <Compile Include="StatusSenders\Solidifi\SolidifiUpdateTitleOpinionStatus.cs" />
     <Compile Include="StatusSenders\Solidifi\SolidifiAssignedClosingAttorney.cs" />
@@ -219,8 +221,11 @@
     <Compile Include="StatusSenders\Solidifi\SolidifiUpdateClosingStatus.cs" />
     <Compile Include="StatusSenders\Solidifi\SolidifiUpdateOrderStatus.cs" />
     <Compile Include="Utilities\ClosingCompletedStatusDocumentUtility.cs" />
+    <Compile Include="Utilities\ClosingDocumentMailUtility.cs" />
+    <Compile Include="Utilities\IClosingDocumentMailUtility.cs" />
     <Compile Include="Utilities\IStatusDocumentUtility.cs" />
     <Compile Include="Utilities\AssignedAttorneyStatusDocumentUtility.cs" />
+    <Compile Include="Utilities\Solidifi\SolidifiClosingDocumentMailUtility.cs" />
     <Compile Include="Utilities\Solidifi\SolidifiDocPrepServiceUtility.cs" />
     <Compile Include="Utilities\ServiceUtility.cs" />
     <Compile Include="Utilities\DateTimeUtility.cs" />

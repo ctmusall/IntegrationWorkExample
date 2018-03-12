@@ -1,17 +1,26 @@
-﻿using ReswareOrderMonitorService.ReswareNoteDocs;
+﻿using System.Net.Mail;
+using ReswareOrderMonitorService.ReswareNoteDocs;
 using ReswareOrderMonitorService.ReswareOrders;
+using ReswareOrderMonitorService.Utilities;
 
 namespace ReswareOrderMonitorService.DocumentSenders
 {
     internal abstract class ClosingDocumentSender : DocumentSender
     {
-        internal override bool SendDocs(DocumentServiceResult document, OrderResult order)
+        private readonly IClosingDocumentMailUtility _closingDocumentMailUtility;
+
+        internal ClosingDocumentSender(IClosingDocumentMailUtility closingDocumentMailUtility)
         {
-            return SendDocumentsToDocumentTeam(document, order) && SendActionEventToResware();
+            _closingDocumentMailUtility = closingDocumentMailUtility;
         }
 
-        internal abstract bool SendDocumentsToDocumentTeam(DocumentServiceResult document, OrderResult order);
-
-        internal abstract bool SendActionEventToResware();
+        internal override bool SendDocs(DocumentServiceResult document, OrderResult order)
+        {
+            var mailMessage = _closingDocumentMailUtility.BuildClosingDocumentMailMessage(document, order);
+            var smtpSender = new SmtpClient("outlook.pcnclosings.com", 25);
+            smtpSender.Send(mailMessage);
+            return true;
+            // TODO - Send to resware utility -- send action event closing package received
+        }
     }
 }

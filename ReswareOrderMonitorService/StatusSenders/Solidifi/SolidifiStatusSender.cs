@@ -22,14 +22,11 @@ namespace ReswareOrderMonitorService.StatusSenders.Solidifi
         {
             var document = _statusDocumentUtility.BuildDocument(reswareOrder, _eClosingOrder);
             if (document == null) return;
-            var sendResult = SendDocumentToResware();
-            if (!sendResult) return;
+            // TODO - Send to resware utility -- send document received
             UpdateReswareOrderStatus(reswareOrder, _eClosingOrder);
             _orderPlacementRepository.UpdateOrder(reswareOrder);
         }
 
         protected internal abstract void UpdateReswareOrderStatus(OrderResult reswareOrder, GetOrderResult eClosingOrder);
-
-        protected internal abstract bool SendDocumentToResware();
     }
 }

@@ -13,11 +13,5 @@ namespace ReswareOrderMonitorService.StatusSenders.Solidifi
         {
             reswareOrder.DocPrepStatus = eClosingOrder.Order.Status;
         }
-
-        protected internal override bool SendDocumentToResware()
-        {
-            // TODO - Send document to resware
-            return true;
-        }
     }
 }
