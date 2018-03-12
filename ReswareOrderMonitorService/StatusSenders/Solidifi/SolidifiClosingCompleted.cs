@@ -1,11 +1,12 @@
 ﻿using ReswareOrderMonitorService.eClosingIntegrationService;
 using ReswareOrderMonitorService.ReswareOrders;
+using ReswareOrderMonitorService.Utilities;
 
 namespace ReswareOrderMonitorService.StatusSenders.Solidifi
 {
     internal class SolidifiClosingCompleted : SolidifiStatusSender
     {
-        internal SolidifiClosingCompleted(GetOrderResult eClosingOrder) : base(eClosingOrder) { }
+        internal SolidifiClosingCompleted(GetOrderResult eClosingOrder, IStatusDocumentUtility statusDocumentUtility) : base(eClosingOrder, statusDocumentUtility) { }
 
         protected internal override void UpdateReswareOrderStatus(OrderResult reswareOrder)
         {
@@ -15,12 +16,8 @@ namespace ReswareOrderMonitorService.StatusSenders.Solidifi
 
         protected internal override bool SendDocumentToResware()
         {
-            throw new System.NotImplementedException();
-        }
-
-        protected internal override void BuildStatusUpdateDocument(OrderResult reswareOrder)
-        {
-            throw new System.NotImplementedException();
+            // TODO - Send document to resware
+            return true;
         }
     }
 }

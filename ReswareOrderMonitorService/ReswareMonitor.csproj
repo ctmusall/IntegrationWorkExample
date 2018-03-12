@@ -212,6 +212,9 @@
     <Compile Include="StatusSenders\Solidifi\SolidifiStatusSender.cs" />
     <Compile Include="StatusSenders\Solidifi\SolidifiUpdateClosingStatus.cs" />
     <Compile Include="StatusSenders\Solidifi\SolidifiUpdateOrderStatus.cs" />
+    <Compile Include="Utilities\ClosingCompletedStatusDocumentUtility.cs" />
+    <Compile Include="Utilities\IStatusDocumentUtility.cs" />
+    <Compile Include="Utilities\AssignedAttorneyStatusDocumentUtility.cs" />
     <Compile Include="Utilities\Solidifi\SolidifiDocPrepServiceUtility.cs" />
     <Compile Include="Utilities\ServiceUtility.cs" />
     <Compile Include="Utilities\DateTimeUtility.cs" />
@@ -219,6 +222,7 @@
     <Compile Include="Utilities\IServiceUtility.cs" />
     <Compile Include="Utilities\Solidifi\SolidifiClosingServiceUtility.cs" />
     <Compile Include="Utilities\Solidifi\SolidifiTitleOpinionServiceUtility.cs" />
+    <Compile Include="Utilities\StatusDocumentUtility.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
