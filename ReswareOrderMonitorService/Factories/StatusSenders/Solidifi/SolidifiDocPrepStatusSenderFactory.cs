@@ -18,11 +18,11 @@ namespace ReswareOrderMonitorService.Factories.StatusSenders.Solidifi
         {
             if (InvalidOrder()) return null;
 
-            if (string.IsNullOrWhiteSpace(reswareOrder.DocPrepStatus)) return new SolidifiUpdateDocPrepStatus(EClosingOrder.Order.Status, new OrderPlacementRepository());
+            if (string.IsNullOrWhiteSpace(reswareOrder.DocPrepStatus)) return new SolidifiUpdateDocPrepStatus(EClosingOrder.Order.Status, ReswareOrderDependencyFactory.Resolve<IOrderPlacementRepository>());
 
             if (string.Equals(reswareOrder.TitleOpinionStatus, EClosingOrder.Order.Status, StringComparison.CurrentCultureIgnoreCase)) return null;
 
-            return AssignedClosingAttorney(reswareOrder.DocPrepStatus, EClosingOrder.Order.Status) ? new SolidifiAssignedTitleOpinionAttorney(EClosingOrder, new AssignedAttorneyStatusDocumentUtility(), new OrderPlacementRepository()) : null;
+            return AssignedClosingAttorney(reswareOrder.DocPrepStatus, EClosingOrder.Order.Status) ? new SolidifiStatusSender(EClosingOrder, new AssignedAttorneyStatusDocumentUtility(), new SolidifiUpdateClosingStatus(EClosingOrder.Order.Status, ReswareOrderDependencyFactory.Resolve<IOrderPlacementRepository>())) : null;
         }
     }
 }

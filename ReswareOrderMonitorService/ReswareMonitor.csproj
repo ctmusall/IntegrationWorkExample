@@ -164,10 +164,6 @@
     <Compile Include="Repositories\ReceiveSigningServiceRepository.cs" />
     <Compile Include="StatusSenders\Solidifi\SolidifiUpdateDocPrepStatus.cs" />
     <Compile Include="StatusSenders\Solidifi\SolidifiUpdateTitleOpinionStatus.cs" />
-    <Compile Include="StatusSenders\Solidifi\SolidifiAssignedClosingAttorney.cs" />
-    <Compile Include="StatusSenders\Solidifi\SolidifiAssignedDocPrepAttorney.cs" />
-    <Compile Include="StatusSenders\Solidifi\SolidifiAssignedTitleOpinionAttorney.cs" />
-    <Compile Include="StatusSenders\Solidifi\SolidifiClosingCompleted.cs" />
     <Compile Include="ProjectInstaller.cs">
       <SubType>Component</SubType>
     </Compile>

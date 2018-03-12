@@ -8,7 +8,7 @@ namespace ReswareOrderMonitorService.StatusSenders.Solidifi
         internal readonly IOrderPlacementRepository OrderPlacementRepository;
         internal readonly string NewStatus;
 
-        internal SolidifiUpdateOrderStatus(string newStatus, IOrderPlacementRepository orderPlacementRepository) : this(new OrderPlacementRepository()) { NewStatus = newStatus; }
+        internal SolidifiUpdateOrderStatus(string newStatus, IOrderPlacementRepository orderPlacementRepository) : this(new OrderPlacementRepository()) { NewStatus = newStatus; OrderPlacementRepository = orderPlacementRepository; }
 
         internal SolidifiUpdateOrderStatus(IOrderPlacementRepository orderPlacementRepository)
         {
