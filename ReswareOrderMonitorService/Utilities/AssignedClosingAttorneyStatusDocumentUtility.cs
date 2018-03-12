@@ -34,7 +34,7 @@ namespace ReswareOrderMonitorService.Utilities
             documentBuilder.Write("Attorney Address");
             documentBuilder.InsertCell();
             documentBuilder.Font.Bold = false;
-            documentBuilder.Write($"{eClosingOrder.Order.ClosingAttorney.Address.Address1} \n {eClosingOrder.Order.ClosingAttorney.Address.Address2} \n {eClosingOrder.Order.ClosingAttorney.Address.Address3} \n {eClosingOrder.Order.ClosingAttorney.Address.City}, {eClosingOrder.Order.ClosingAttorney.Address.State} {eClosingOrder.Order.ClosingAttorney.Address.ZipCode}");
+            documentBuilder.Write($"{eClosingOrder.Order.ClosingAttorney.Address.Address1} \n {eClosingOrder.Order.ClosingAttorney.Address.City}, {eClosingOrder.Order.ClosingAttorney.Address.State} {eClosingOrder.Order.ClosingAttorney.Address.ZipCode}");
             documentBuilder.EndRow();
 
             documentBuilder.InsertCell();
