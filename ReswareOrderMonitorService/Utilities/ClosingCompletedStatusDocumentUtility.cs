@@ -7,7 +7,7 @@ namespace ReswareOrderMonitorService.Utilities
 {
     internal class ClosingCompletedStatusDocumentUtility : StatusDocumentUtility
     {
-        public override Document BuildDocument(OrderResult reswareOrder, GetOrderResult eClosingOrder)
+        protected internal override void AddBody(DocumentBuilder documentBuilder, OrderResult reswareOrder, GetOrderResult eClosingOrder)
         {
             throw new NotImplementedException();
         }

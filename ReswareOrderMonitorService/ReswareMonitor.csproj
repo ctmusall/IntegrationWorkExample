@@ -217,6 +217,9 @@
     <Compile Include="StatusSenders\Solidifi\SolidifiStatusSender.cs" />
     <Compile Include="StatusSenders\Solidifi\SolidifiUpdateClosingStatus.cs" />
     <Compile Include="StatusSenders\Solidifi\SolidifiUpdateOrderStatus.cs" />
+    <Compile Include="Utilities\AssignedClosingAttorneyStatusDocumentUtility.cs" />
+    <Compile Include="Utilities\AssignedDocPrepAttorneyStatusDocumentUtility.cs" />
+    <Compile Include="Utilities\AssignedTitleOpinionAttorneyStatusDocumentUtility.cs" />
     <Compile Include="Utilities\ClosingCompletedStatusDocumentUtility.cs" />
     <Compile Include="Utilities\ClosingDocumentMailUtility.cs" />
     <Compile Include="Utilities\FundingAuthMailUtility.cs" />

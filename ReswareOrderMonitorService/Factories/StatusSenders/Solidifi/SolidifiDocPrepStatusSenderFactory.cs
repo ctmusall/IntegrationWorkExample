@@ -10,9 +10,7 @@ namespace ReswareOrderMonitorService.Factories.StatusSenders.Solidifi
 {
     internal class SolidifiDocPrepStatusSenderFactory : StatusSenderFactory
     {
-        internal SolidifiDocPrepStatusSenderFactory(GetOrderResult order) : base(order)
-        {
-        }
+        internal SolidifiDocPrepStatusSenderFactory(GetOrderResult order) : base(order) { }
 
         public override IStatusSender ResolveStatusSender(OrderResult reswareOrder)
         {
@@ -22,7 +20,7 @@ namespace ReswareOrderMonitorService.Factories.StatusSenders.Solidifi
 
             if (string.Equals(reswareOrder.TitleOpinionStatus, EClosingOrder.Order.Status, StringComparison.CurrentCultureIgnoreCase)) return null;
 
-            return AssignedClosingAttorney(reswareOrder.DocPrepStatus, EClosingOrder.Order.Status) ? new SolidifiStatusSender(EClosingOrder, new AssignedAttorneyStatusDocumentUtility(), new SolidifiUpdateClosingStatus(EClosingOrder.Order.Status, ReswareOrderDependencyFactory.Resolve<IOrderPlacementRepository>())) : null;
+            return AssignedClosingAttorney(reswareOrder.DocPrepStatus, EClosingOrder.Order.Status) ? new SolidifiStatusSender(EClosingOrder, new AssignedDocPrepAttorneyStatusDocumentUtility(), new SolidifiUpdateClosingStatus(EClosingOrder.Order.Status, ReswareOrderDependencyFactory.Resolve<IOrderPlacementRepository>())) : null;
         }
     }
 }
