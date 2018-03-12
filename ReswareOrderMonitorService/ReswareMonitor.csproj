@@ -158,9 +158,11 @@
     <Compile Include="Repositories\IReceiveActionEventRepository.cs" />
     <Compile Include="Repositories\IOrderPlacementRepository.cs" />
     <Compile Include="Repositories\IReceiveNoteRepository.cs" />
+    <Compile Include="Repositories\IReceiveSigningServiceRepository.cs" />
     <Compile Include="Repositories\OrderPlacementRepository.cs" />
     <Compile Include="Repositories\ReceiveActionEventRepository.cs" />
     <Compile Include="Repositories\ReceiveNoteRepository.cs" />
+    <Compile Include="Repositories\ReceiveSigningServiceRepository.cs" />
     <Compile Include="StatusSenders\Solidifi\SolidifiUpdateDocPrepStatus.cs" />
     <Compile Include="StatusSenders\Solidifi\SolidifiUpdateTitleOpinionStatus.cs" />
     <Compile Include="StatusSenders\Solidifi\SolidifiAssignedClosingAttorney.cs" />

@@ -1,6 +1,7 @@
 ﻿using System;
-using ReswareOrderMonitorService.Factories;
+using ReswareOrderMonitorService.Mirth;
 using ReswareOrderMonitorService.Models;
+using ReswareOrderMonitorService.Repositories;
 using ReswareOrderMonitorService.ReswareOrders;
 using ReswareOrderMonitorService.ReswareSigning;
 using ReswareOrderMonitorService.Utilities;
@@ -14,12 +15,7 @@ namespace ReswareOrderMonitorService.ActionEvents.Solidifi
         private const string CustomerContact = "KRISTEN MILLER";
         private const string Product = "INT--Search/Opinion";
 
-        internal SolidifiRequestTitleOpinion(IServiceUtility orderServiceUtility) : this(orderServiceUtility, ReswareOrderDependencyFactory.Resolve<IDateTimeUtility>())
-        {
-
-        }
-
-        internal SolidifiRequestTitleOpinion(IServiceUtility orderServiceUtility, IDateTimeUtility dateTimeUtility) : base(orderServiceUtility)
+        internal SolidifiRequestTitleOpinion(IReceiveSigningServiceRepository receiveSigningServiceRepository, IMirthServiceClient mirthServiceClient, IServiceUtility orderServiceUtility, IDateTimeUtility dateTimeUtility) : base(receiveSigningServiceRepository, mirthServiceClient, orderServiceUtility)
         {
             _dateTimeUtility = dateTimeUtility;
         }

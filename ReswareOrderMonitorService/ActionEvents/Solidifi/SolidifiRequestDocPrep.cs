@@ -1,7 +1,8 @@
 ﻿using System;
 using ReswareOrderMonitorService.Common;
-using ReswareOrderMonitorService.Factories;
+using ReswareOrderMonitorService.Mirth;
 using ReswareOrderMonitorService.Models;
+using ReswareOrderMonitorService.Repositories;
 using ReswareOrderMonitorService.ReswareOrders;
 using ReswareOrderMonitorService.ReswareSigning;
 using ReswareOrderMonitorService.Utilities;
@@ -14,11 +15,7 @@ namespace ReswareOrderMonitorService.ActionEvents.Solidifi
 
         private const string CustomerContact = "DOC DEED";
 
-        public SolidifiRequestDocPrep(IServiceUtility orderServiceUtility) : this(orderServiceUtility, ReswareOrderDependencyFactory.Resolve<IDateTimeUtility>())
-        {
-        }
-
-        internal SolidifiRequestDocPrep(IServiceUtility orderServiceUtility, IDateTimeUtility dateTimeUtility) : base(orderServiceUtility)
+        internal SolidifiRequestDocPrep(IReceiveSigningServiceRepository receiveSigningServiceRepository, IMirthServiceClient mirthServiceClient, IServiceUtility orderServiceUtility, IDateTimeUtility dateTimeUtility) : base(receiveSigningServiceRepository, mirthServiceClient, orderServiceUtility)
         {
             _dateTimeUtility = dateTimeUtility;
         }

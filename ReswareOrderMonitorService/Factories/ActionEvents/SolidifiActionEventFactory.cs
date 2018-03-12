@@ -3,6 +3,9 @@ using ReswareOrderMonitorService.ActionEvents.Solidifi;
 using ReswareOrderMonitorService.Common;
 using ReswareOrderMonitorService.Common.Solidifi;
 using ReswareOrderMonitorService.Factories.Services;
+using ReswareOrderMonitorService.Mirth;
+using ReswareOrderMonitorService.Repositories;
+using ReswareOrderMonitorService.Utilities;
 
 namespace ReswareOrderMonitorService.Factories.ActionEvents
 {
@@ -15,13 +18,13 @@ namespace ReswareOrderMonitorService.Factories.ActionEvents
             switch (actionEventCode)
             {
                 case SolidifiActionEventConstants.RescheduleClosing:
-                    return new SolidifiRescheduleClosing(ServiceUtilityFactory.ResolveServiceUtility(ServiceUtilityTypeEnum.Closing));
+                    return new SolidifiRescheduleClosing(ServiceUtilityFactory.ResolveServiceUtility(ServiceUtilityTypeEnum.Closing), ReswareOrderDependencyFactory.Resolve<IIntegrationServiceRepository>(), ReswareOrderDependencyFactory.Resolve<IReceiveSigningServiceRepository>(), ReswareOrderDependencyFactory.Resolve<IMirthServiceClient>());
                 case SolidifiActionEventConstants.RequestClosing:
-                    return new SolidifiRequestClosing(ServiceUtilityFactory.ResolveServiceUtility(ServiceUtilityTypeEnum.Closing));
+                    return new SolidifiRequestClosing(ReswareOrderDependencyFactory.Resolve<IReceiveSigningServiceRepository>(), ReswareOrderDependencyFactory.Resolve<IMirthServiceClient>(), ServiceUtilityFactory.ResolveServiceUtility(ServiceUtilityTypeEnum.Closing));
                 case SolidifiActionEventConstants.RequestTitleOpinion:
-                    return new SolidifiRequestTitleOpinion(ServiceUtilityFactory.ResolveServiceUtility(ServiceUtilityTypeEnum.TitleOpinion));
+                    return new SolidifiRequestTitleOpinion(ReswareOrderDependencyFactory.Resolve<IReceiveSigningServiceRepository>(), ReswareOrderDependencyFactory.Resolve<IMirthServiceClient>(), ServiceUtilityFactory.ResolveServiceUtility(ServiceUtilityTypeEnum.TitleOpinion), ReswareOrderDependencyFactory.Resolve<IDateTimeUtility>());
                 case SolidifiActionEventConstants.RequestDocPrep:
-                    return new SolidifiRequestDocPrep(ServiceUtilityFactory.ResolveServiceUtility(ServiceUtilityTypeEnum.DocPrep));
+                    return new SolidifiRequestDocPrep(ReswareOrderDependencyFactory.Resolve<IReceiveSigningServiceRepository>(), ReswareOrderDependencyFactory.Resolve<IMirthServiceClient>(),ServiceUtilityFactory.ResolveServiceUtility(ServiceUtilityTypeEnum.DocPrep), ReswareOrderDependencyFactory.Resolve<IDateTimeUtility>());
                 case SolidifiActionEventConstants.FundingAuth:
                     return new SolidifiFundingAuth();
                  default:

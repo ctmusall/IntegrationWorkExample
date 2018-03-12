@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using ReswareOrderMonitorService.Common;
-using ReswareOrderMonitorService.Factories;
 using ReswareOrderMonitorService.Mirth;
 using ReswareOrderMonitorService.Models;
 using ReswareOrderMonitorService.Properties;
+using ReswareOrderMonitorService.Repositories;
 using ReswareOrderMonitorService.ReswareOrders;
 using ReswareOrderMonitorService.ReswareSigning;
 using ReswareOrderMonitorService.Utilities;
@@ -14,31 +14,27 @@ namespace ReswareOrderMonitorService.ActionEvents
 {
     internal abstract class RequestOrder : ActionEvent
     {
-        internal readonly ReceiveSigningServiceClient SigningServiceClient;
-        protected internal readonly IMirthServiceClient MirthServiceClient;
-        protected internal readonly IServiceUtility OrderServiceUtility;
+        private readonly IReceiveSigningServiceRepository _receiveSigningServiceRepository;
+        private readonly IMirthServiceClient _mirthServiceClient;
+        private readonly IServiceUtility _orderServiceUtility;
 
-        internal RequestOrder(IServiceUtility orderServiceUtility) : this(new ReceiveSigningServiceClient(), ReswareOrderDependencyFactory.Resolve<IMirthServiceClient>())
+        internal RequestOrder(IReceiveSigningServiceRepository receiveSigningServiceRepository, IMirthServiceClient mirthServiceClient, IServiceUtility orderServiceUtility)
         {
-            OrderServiceUtility = orderServiceUtility;
-        }
-
-        protected internal RequestOrder(ReceiveSigningServiceClient signingServiceClient, IMirthServiceClient mirthServiceClient)
-        {
-            SigningServiceClient = signingServiceClient;
-            MirthServiceClient = mirthServiceClient;
+            _receiveSigningServiceRepository = receiveSigningServiceRepository;
+            _mirthServiceClient = mirthServiceClient;
+            _orderServiceUtility = orderServiceUtility;
         }
 
         internal abstract RequestMessage BuildRequestMessage(OrderResult order, SigningServiceResult signing);
 
         internal bool SendRequestMessage(RequestMessage requestMessage)
         {
-            return MirthServiceClient.SendMessageToMirth(ModelSerializer.SerializeXml(requestMessage), Settings.Default.MirthSolidifiRequestPort, Settings.Default.MirthIPAddress);
+            return _mirthServiceClient.SendMessageToMirth(ModelSerializer.SerializeXml(requestMessage), Settings.Default.MirthSolidifiRequestPort, Settings.Default.MirthIPAddress);
         }
 
         internal override bool PerformAction(OrderResult order)
         {
-            var signing = SigningServiceClient.GetAllSignings().OrderByDescending(s => s.CreatedDateTime).FirstOrDefault(s => string.Equals(s.FileNumber, order.FileNumber, StringComparison.CurrentCultureIgnoreCase));
+            var signing = _receiveSigningServiceRepository.GetAllSignings().OrderByDescending(s => s.CreatedDateTime).FirstOrDefault(s => string.Equals(s.FileNumber, order.FileNumber, StringComparison.CurrentCultureIgnoreCase));
 
             if (signing == null) return false;
 
@@ -46,7 +42,7 @@ namespace ReswareOrderMonitorService.ActionEvents
 
             AssignBorrowerInformation(requestMessage, order.BuyersAndSellers);
 
-            OrderServiceUtility.AssignServices(requestMessage);
+            _orderServiceUtility.AssignServices(requestMessage);
 
             return SendRequestMessage(requestMessage);
         }
