@@ -153,6 +153,12 @@
     <Compile Include="Monitors\DocumentMonitor.cs" />
     <Compile Include="Monitors\IOutgoingMonitor.cs" />
     <Compile Include="Monitors\OutgoingMonitor.cs" />
+    <Compile Include="Repositories\IIntegrationServiceRepository.cs" />
+    <Compile Include="Repositories\IntegrationServiceRepository.cs" />
+    <Compile Include="Repositories\IReceiveActionEventRepository.cs" />
+    <Compile Include="Repositories\IOrderPlacementRepository.cs" />
+    <Compile Include="Repositories\OrderPlacementRepository.cs" />
+    <Compile Include="Repositories\ReceiveActionEventRepository.cs" />
     <Compile Include="StatusSenders\Solidifi\SolidifiUpdateDocPrepStatus.cs" />
     <Compile Include="StatusSenders\Solidifi\SolidifiUpdateTitleOpinionStatus.cs" />
     <Compile Include="StatusSenders\Solidifi\SolidifiAssignedClosingAttorney.cs" />

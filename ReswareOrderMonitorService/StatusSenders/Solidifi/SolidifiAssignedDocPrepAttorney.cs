@@ -1,5 +1,4 @@
-﻿using System;
-using ReswareOrderMonitorService.eClosingIntegrationService;
+﻿using ReswareOrderMonitorService.eClosingIntegrationService;
 using ReswareOrderMonitorService.ReswareOrders;
 using ReswareOrderMonitorService.Utilities;
 
@@ -12,7 +11,6 @@ namespace ReswareOrderMonitorService.StatusSenders.Solidifi
         protected internal override void UpdateReswareOrderStatus(OrderResult reswareOrder)
         {
             reswareOrder.DocPrepStatus = EClosingOrder.Order.Status;
-            OrderPlacementServiceClient.UpdateOrder(reswareOrder);
         }
 
         protected internal override bool SendDocumentToResware()

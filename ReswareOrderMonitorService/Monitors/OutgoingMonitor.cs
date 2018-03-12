@@ -2,24 +2,23 @@
 using System.Linq;
 using ReswareOrderMonitorService.Factories;
 using ReswareOrderMonitorService.Factories.CompletedActionEvents;
-using ReswareOrderMonitorService.ReswareActionEvent;
-using ReswareOrderMonitorService.ReswareOrders;
+using ReswareOrderMonitorService.Repositories;
 using Unity.Interception.Utilities;
 
 namespace ReswareOrderMonitorService.Monitors
 {
     internal class OutgoingMonitor : IOutgoingMonitor
     {
-        private readonly OrderPlacementServiceClient _orderPlacementServiceClient;
-        private readonly ReceiveActionEventServiceClient _receiveActionEventServiceClient;
+        private readonly IOrderPlacementRepository _orderPlacementRepository;
+        private readonly IReceiveActionEventRepository _receiveActionEventRepository;
         private readonly IParentClientCompletedActionEventFactory _parentClientCompletedActionEventFactory;
 
-        public OutgoingMonitor() : this (new OrderPlacementServiceClient(), new ReceiveActionEventServiceClient(), ReswareOrderDependencyFactory.Resolve<IParentClientCompletedActionEventFactory>()) { }
-
-        internal OutgoingMonitor(OrderPlacementServiceClient orderPlacementServiceClient, ReceiveActionEventServiceClient receiveActionEventServiceClient, IParentClientCompletedActionEventFactory parentClientCompletedActionEventFactory)
+        public OutgoingMonitor() : this (ReswareOrderDependencyFactory.Resolve<IOrderPlacementRepository>(), ReswareOrderDependencyFactory.Resolve<IReceiveActionEventRepository>(), ReswareOrderDependencyFactory.Resolve<IParentClientCompletedActionEventFactory>()) { }
+         
+        internal OutgoingMonitor(IOrderPlacementRepository orderPlacementRepository, IReceiveActionEventRepository receiveActionEventServiceClient, IParentClientCompletedActionEventFactory parentClientCompletedActionEventFactory)
         {
-            _orderPlacementServiceClient = orderPlacementServiceClient;
-            _receiveActionEventServiceClient = receiveActionEventServiceClient;
+            _orderPlacementRepository = orderPlacementRepository;
+            _receiveActionEventRepository = receiveActionEventServiceClient;
             _parentClientCompletedActionEventFactory = parentClientCompletedActionEventFactory;
         }
 
@@ -27,13 +26,13 @@ namespace ReswareOrderMonitorService.Monitors
         {
             try
             {
-                var orders = _orderPlacementServiceClient.GetAllOrders();
+                var orders = _orderPlacementRepository.GetAllOrders();
 
                 if (orders.Length == 0) return;
 
                 orders.ForEach(order =>
                 {
-                    var actionEvents = _receiveActionEventServiceClient.GetAllActionEvents().Where(ae =>
+                    var actionEvents = _receiveActionEventRepository.GetAllActionEvents().Where(ae =>
                         string.Equals(ae.FileNumber, order.FileNumber, StringComparison.CurrentCultureIgnoreCase) &&
                         ae.ActionCompleted && ae.ActionCompletedDateTime != null).ToList();
 

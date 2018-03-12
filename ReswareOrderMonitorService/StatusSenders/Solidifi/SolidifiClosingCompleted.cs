@@ -11,7 +11,6 @@ namespace ReswareOrderMonitorService.StatusSenders.Solidifi
         protected internal override void UpdateReswareOrderStatus(OrderResult reswareOrder)
         {
             reswareOrder.ClosingStatus = EClosingOrder.Order.Status;
-            OrderPlacementServiceClient.UpdateOrder(reswareOrder);
         }
 
         protected internal override bool SendDocumentToResware()

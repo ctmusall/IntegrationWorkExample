@@ -1,17 +1,17 @@
-﻿using ReswareOrderMonitorService.eClosingIntegrationService;
-using ReswareOrderMonitorService.Factories.StatusSenders;
+﻿using ReswareOrderMonitorService.Factories.StatusSenders;
+using ReswareOrderMonitorService.Repositories;
 
 namespace ReswareOrderMonitorService.Factories.CompletedActionEvents
 {
     internal abstract class ClientCompletedActionEventFactory : IClientCompletedActionEventFactory
     {
-        protected internal IntegrationServiceClient IntegrationServiceClient;
+        protected internal IIntegrationServiceRepository IntegrationServiceRepository;
 
-        internal ClientCompletedActionEventFactory() : this(new IntegrationServiceClient()) { }
+        internal ClientCompletedActionEventFactory() : this(new IntegrationServiceRepository()) { }
 
-        internal ClientCompletedActionEventFactory(IntegrationServiceClient integrationServiceClient)
+        internal ClientCompletedActionEventFactory(IIntegrationServiceRepository integrationServiceRepository)
         {
-            IntegrationServiceClient = integrationServiceClient;
+            IntegrationServiceRepository = integrationServiceRepository;
         }
 
         public abstract IStatusSenderFactory ResolveCompletedActionEventStatusSenderFactory(string actionEventCode, string customerId, string fileNumber);

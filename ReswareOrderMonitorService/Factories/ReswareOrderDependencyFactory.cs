@@ -4,6 +4,7 @@ using ReswareOrderMonitorService.Factories.Documents;
 using ReswareOrderMonitorService.Mirth;
 using ReswareOrderMonitorService.Monitors;
 using ReswareOrderMonitorService.Readers;
+using ReswareOrderMonitorService.Repositories;
 using ReswareOrderMonitorService.Utilities;
 using Unity;
 
@@ -62,6 +63,9 @@ namespace ReswareOrderMonitorService.Factories
             container.RegisterType<IClientDocumentFactory, ClientDocumentFactory>();
             container.RegisterType<IOutgoingMonitor, OutgoingMonitor>();
             container.RegisterType<IParentClientCompletedActionEventFactory, ParentClientCompletedActionEventFactory>();
+            container.RegisterType<IOrderPlacementRepository, OrderPlacementRepository>();
+            container.RegisterType<IReceiveActionEventRepository, ReceiveActionEventRepository>();
+            container.RegisterType<IIntegrationServiceRepository, IntegrationServiceRepository>();
         }
     }
 }

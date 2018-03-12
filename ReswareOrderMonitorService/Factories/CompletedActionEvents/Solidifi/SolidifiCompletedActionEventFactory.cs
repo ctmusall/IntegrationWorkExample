@@ -11,11 +11,11 @@ namespace ReswareOrderMonitorService.Factories.CompletedActionEvents.Solidifi
             switch (actionEventCode)
             {
                 case SolidifiActionEventConstants.RequestClosing:
-                    return new SolidifiClosingStatusSenderFactory(IntegrationServiceClient.GetOrder(customerId, fileNumber));
+                    return new SolidifiClosingStatusSenderFactory(IntegrationServiceRepository.GetOrder(customerId, fileNumber));
                 case SolidifiActionEventConstants.RequestTitleOpinion:
-                    return new SolidifiTitleOpinionStatusSenderFactory(IntegrationServiceClient.GetOrder(customerId, $"{fileNumber}-T"));
+                    return new SolidifiTitleOpinionStatusSenderFactory(IntegrationServiceRepository.GetOrder(customerId, $"{fileNumber}-T"));
                 case SolidifiActionEventConstants.RequestDocPrep:
-                    return new SolidifiDocPrepStatusSenderFactory(IntegrationServiceClient.GetOrder(customerId, $"{fileNumber}-D"));
+                    return new SolidifiDocPrepStatusSenderFactory(IntegrationServiceRepository.GetOrder(customerId, $"{fileNumber}-D"));
                 default:
                     return null;
             }
