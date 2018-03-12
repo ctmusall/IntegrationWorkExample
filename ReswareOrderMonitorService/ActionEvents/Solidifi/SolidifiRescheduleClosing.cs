@@ -1,7 +1,5 @@
-﻿using ReswareOrderMonitorService.eClosingIntegrationService;
-using ReswareOrderMonitorService.Mirth;
+﻿using ReswareOrderMonitorService.Mirth;
 using ReswareOrderMonitorService.Repositories;
-using ReswareOrderMonitorService.ReswareOrders;
 using ReswareOrderMonitorService.Utilities;
 
 namespace ReswareOrderMonitorService.ActionEvents.Solidifi
@@ -10,15 +8,9 @@ namespace ReswareOrderMonitorService.ActionEvents.Solidifi
     {
         internal SolidifiRescheduleClosing(IServiceUtility orderServiceUtility, IIntegrationServiceRepository integrationServiceRepository, IReceiveSigningServiceRepository receiveSigningServiceRepository, IMirthServiceClient mirthServiceClient) : base(orderServiceUtility, integrationServiceRepository, receiveSigningServiceRepository, mirthServiceClient) { }
 
-        internal override bool PerformAction(OrderResult order)
+        protected internal override RequestOrder ReturnNewClosing(IReceiveSigningServiceRepository receiveSigningServiceRepository, IMirthServiceClient mirthServiceClient, IServiceUtility serviceUtility)
         {
-            var existingOrder = IntegrationServiceRepository.GetOrder(order.CustomerId, order.FileNumber);
-            if (existingOrder.Outcome == OutcomeEnum.Fail || existingOrder.Order == null)
-            {
-                order.Notes += $"Received Reschedule Action Event from Resware for file number {order.FileNumber}.";
-            }
-
-            return new SolidifiRequestClosing(ReceiveSigningServiceRepository, MirthServiceClient, OrderServiceUtility).PerformAction(order);
+            return new SolidifiRequestClosing(receiveSigningServiceRepository, mirthServiceClient, serviceUtility);
         }
     }
 }
