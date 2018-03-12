@@ -47,7 +47,7 @@ namespace ReswareOrderMonitorService.ActionEvents
             return SendRequestMessage(requestMessage);
         }
 
-        internal void AssignBorrowerInformation(RequestMessage requestClosingMessage, ICollection<BuyerSellerResult> buyerSellerResults)
+        private static void AssignBorrowerInformation(RequestMessage requestClosingMessage, ICollection<BuyerSellerResult> buyerSellerResults)
         {
             var borrower = buyerSellerResults.FirstOrDefault(b => b.Type == BuyerSellerEnum.Buyer && !b.Spouse);
 
