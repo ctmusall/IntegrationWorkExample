@@ -5,7 +5,6 @@ using ReswareOrderMonitorService.Aspose;
 using ReswareOrderMonitorService.Factories;
 using ReswareOrderMonitorService.Monitors;
 
-
 namespace ReswareOrderMonitorService
 {
     internal static class Program

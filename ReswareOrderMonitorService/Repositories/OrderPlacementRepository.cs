@@ -7,7 +7,7 @@ namespace ReswareOrderMonitorService.Repositories
     {
         private readonly OrderPlacementServiceClient _orderPlacementServiceClient;
 
-        internal OrderPlacementRepository() : this(new OrderPlacementServiceClient()) { }
+        public OrderPlacementRepository() : this(new OrderPlacementServiceClient()) { }
 
         internal OrderPlacementRepository(OrderPlacementServiceClient orderPlacementServiceClient) { _orderPlacementServiceClient = orderPlacementServiceClient; }
 

@@ -7,7 +7,7 @@ namespace ReswareOrderMonitorService.Repositories
     {
         private readonly ReceiveNoteServiceClient _receiveNoteServiceClient;
 
-        internal ReceiveNoteRepository() : this(new ReceiveNoteServiceClient()) { }
+        public ReceiveNoteRepository() : this(new ReceiveNoteServiceClient()) { }
 
         internal ReceiveNoteRepository(ReceiveNoteServiceClient receiveNoteServiceClient)
         {

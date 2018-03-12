@@ -7,7 +7,7 @@ namespace ReswareOrderMonitorService.Repositories
     {
         private readonly ReceiveActionEventServiceClient _receiveActionEventServiceClient;
 
-        internal ReceiveActionEventRepository() : this(new ReceiveActionEventServiceClient()) { }
+        public ReceiveActionEventRepository() : this(new ReceiveActionEventServiceClient()) { }
 
         internal ReceiveActionEventRepository(ReceiveActionEventServiceClient receiveActionEventServiceClient)
         {

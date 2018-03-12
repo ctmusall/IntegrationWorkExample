@@ -7,7 +7,7 @@ namespace ReswareOrderMonitorService.Repositories
     {
         private readonly IntegrationServiceClient _integrationServiceClient;
 
-        internal IntegrationServiceRepository(): this(new IntegrationServiceClient()) { }
+        public IntegrationServiceRepository(): this(new IntegrationServiceClient()) { }
 
         internal IntegrationServiceRepository(IntegrationServiceClient integrationServiceClient)
         {

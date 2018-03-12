@@ -7,7 +7,7 @@ namespace ReswareOrderMonitorService.Repositories
     {
         private readonly ReceiveSigningServiceClient _receiveSigningServiceClient;
 
-        internal ReceiveSigningServiceRepository() : this(new ReceiveSigningServiceClient()) { }
+        public ReceiveSigningServiceRepository() : this(new ReceiveSigningServiceClient()) { }
 
         internal ReceiveSigningServiceRepository(ReceiveSigningServiceClient receiveSigningServiceClient)
         {
