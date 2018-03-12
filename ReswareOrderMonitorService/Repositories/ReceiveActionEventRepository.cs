@@ -28,5 +28,20 @@ namespace ReswareOrderMonitorService.Repositories
                 return null;
             }
         }
+
+        public int UpdateActionEvent(ActionEventServiceResult actionEvent)
+        {
+            try
+            {
+                return _receiveActionEventServiceClient.UpdateActionEvent(actionEvent);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.GetType().FullName);
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+                return -1;
+            }
+        }
     }
 }

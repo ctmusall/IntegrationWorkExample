@@ -1,7 +1,7 @@
 ﻿using System;
 using ReswareOrderMonitorService.Factories;
 using ReswareOrderMonitorService.Readers;
-using ReswareOrderMonitorService.ReswareOrders;
+using ReswareOrderMonitorService.Repositories;
 using Unity.Interception.Utilities;
 
 
@@ -9,14 +9,14 @@ namespace ReswareOrderMonitorService.Monitors
 {
     internal class OrderActionEventMonitor : IOrderActionEventMonitor
     {
-        private readonly OrderPlacementServiceClient _orderPlacementServiceClient;
+        private readonly IOrderPlacementRepository _orderPlacementRepository;
         private readonly IActionEventReader _actionEventReader;
 
-        public OrderActionEventMonitor(): this(new OrderPlacementServiceClient(), ReswareOrderDependencyFactory.Resolve<IActionEventReader>()) { }
+        public OrderActionEventMonitor(): this(ReswareOrderDependencyFactory.Resolve<IOrderPlacementRepository>(), ReswareOrderDependencyFactory.Resolve<IActionEventReader>()) { }
 
-        internal OrderActionEventMonitor(OrderPlacementServiceClient orderPlacementServiceClient, IActionEventReader actionEventReader)
+        internal OrderActionEventMonitor(IOrderPlacementRepository orderPlacementRepository, IActionEventReader actionEventReader)
         {
-            _orderPlacementServiceClient = orderPlacementServiceClient;
+            _orderPlacementRepository = orderPlacementRepository;
             _actionEventReader = actionEventReader;
         }
 
@@ -24,7 +24,7 @@ namespace ReswareOrderMonitorService.Monitors
         {
             try
             {
-                var orders = _orderPlacementServiceClient.GetAllOrders();
+                var orders = _orderPlacementRepository.GetAllOrders();
 
                 if (orders.Length == 0) return;
                 

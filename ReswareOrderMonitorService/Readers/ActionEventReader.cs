@@ -2,7 +2,7 @@
 using System.Linq;
 using ReswareOrderMonitorService.Factories;
 using ReswareOrderMonitorService.Factories.ActionEvents;
-using ReswareOrderMonitorService.ReswareActionEvent;
+using ReswareOrderMonitorService.Repositories;
 using ReswareOrderMonitorService.ReswareOrders;
 
 namespace ReswareOrderMonitorService.Readers
@@ -10,13 +10,13 @@ namespace ReswareOrderMonitorService.Readers
     internal class ActionEventReader : IActionEventReader
     {
         private readonly IParentActionEventFactory _parentActionEventFactory;
-        private readonly ReceiveActionEventServiceClient _receiveActionEventServiceClient;
+        private readonly IReceiveActionEventRepository _receiveActionEventRepository;
 
-        public ActionEventReader() : this(new ReceiveActionEventServiceClient(), ReswareOrderDependencyFactory.Resolve<IParentActionEventFactory>()) { }
+        public ActionEventReader() : this(ReswareOrderDependencyFactory.Resolve<IReceiveActionEventRepository>(), ReswareOrderDependencyFactory.Resolve<IParentActionEventFactory>()) { }
 
-        internal ActionEventReader(ReceiveActionEventServiceClient receiveActionEventServiceClient, IParentActionEventFactory parentActionEventParser)
+        internal ActionEventReader(IReceiveActionEventRepository receiveActionEventRepository, IParentActionEventFactory parentActionEventParser)
         {
-            _receiveActionEventServiceClient = receiveActionEventServiceClient;
+            _receiveActionEventRepository = receiveActionEventRepository;
             _parentActionEventFactory = parentActionEventParser;
         }
 
@@ -24,7 +24,7 @@ namespace ReswareOrderMonitorService.Readers
         {
             try
             {
-                var actionEvents = _receiveActionEventServiceClient.GetAllActionEvents()
+                var actionEvents = _receiveActionEventRepository.GetAllActionEvents()
                     .Where(ae => !ae.ActionCompleted && ae.ActionCompletedDateTime == null 
                     && string.Equals(ae.FileNumber,order.FileNumber, StringComparison.CurrentCultureIgnoreCase)).ToList();
 
@@ -36,7 +36,7 @@ namespace ReswareOrderMonitorService.Readers
                     if (!result) return;
                     actionEvent.ActionCompleted = true;
                     actionEvent.ActionCompletedDateTime = DateTime.Now;
-                    _receiveActionEventServiceClient.UpdateActionEvent(actionEvent);
+                    _receiveActionEventRepository.UpdateActionEvent(actionEvent);
                 });
             }
             catch (Exception ex)
