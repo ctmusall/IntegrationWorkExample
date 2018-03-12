@@ -1,4 +1,5 @@
 ﻿using ReswareOrderMonitorService.Factories.CompletedActionEvents.Solidifi;
+using ReswareOrderMonitorService.Repositories;
 
 namespace ReswareOrderMonitorService.Factories.CompletedActionEvents
 {
@@ -10,7 +11,7 @@ namespace ReswareOrderMonitorService.Factories.CompletedActionEvents
             {
                 // TODO - Switch on client ID
                 default:
-                    return new SolidifiCompletedActionEventFactory();
+                    return new SolidifiCompletedActionEventFactory(new IntegrationServiceRepository());
             }
         }
     }

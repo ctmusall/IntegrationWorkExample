@@ -1,11 +1,14 @@
 ﻿using ReswareOrderMonitorService.Common.Solidifi;
 using ReswareOrderMonitorService.Factories.StatusSenders;
 using ReswareOrderMonitorService.Factories.StatusSenders.Solidifi;
+using ReswareOrderMonitorService.Repositories;
 
 namespace ReswareOrderMonitorService.Factories.CompletedActionEvents.Solidifi
 {
     internal class SolidifiCompletedActionEventFactory : ClientCompletedActionEventFactory
     {
+        internal SolidifiCompletedActionEventFactory(IIntegrationServiceRepository integrationServiceRepository) : base(integrationServiceRepository) { }
+
         public override IStatusSenderFactory ResolveCompletedActionEventStatusSenderFactory(string actionEventCode, string customerId, string fileNumber)
         {
             switch (actionEventCode)
