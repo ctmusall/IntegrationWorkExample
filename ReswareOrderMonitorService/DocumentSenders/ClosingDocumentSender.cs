@@ -5,7 +5,7 @@ using ReswareOrderMonitorService.Utilities;
 
 namespace ReswareOrderMonitorService.DocumentSenders
 {
-    internal abstract class ClosingDocumentSender : DocumentSender
+    internal class ClosingDocumentSender : DocumentSender
     {
         private readonly IClosingDocumentMailUtility _closingDocumentMailUtility;
 

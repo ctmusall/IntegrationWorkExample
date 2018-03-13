@@ -1,13 +1,11 @@
-﻿using System.Linq;
-using Aspose.Words;
-using ReswareOrderMonitorService.Common;
+﻿using Aspose.Words;
 using ReswareOrderMonitorService.eClosingIntegrationService;
 using ReswareOrderMonitorService.ReswareOrders;
 using Unity.Interception.Utilities;
 
-namespace ReswareOrderMonitorService.Utilities
+namespace ReswareOrderMonitorService.StatusDocumentBuilders
 {
-    internal abstract class AssignedAttorneyStatusDocumentUtility : StatusDocumentUtility
+    internal class ClosingCompletedStatusDocumentBuilder : StatusDocumentBuilder
     {
         protected internal override void AddBody(DocumentBuilder documentBuilder, OrderResult reswareOrder, GetOrderResult eClosingOrder)
         {
@@ -16,27 +14,27 @@ namespace ReswareOrderMonitorService.Utilities
             documentBuilder.Font.Bold = true;
             documentBuilder.Font.Underline = Underline.Single;
             documentBuilder.ParagraphFormat.Alignment = ParagraphAlignment.Center;
-            documentBuilder.Writeln("PCN Network Services Confirmation");
+
+            documentBuilder.Writeln("POST CLOSING CLIENT NOTIFICATION");
 
             documentBuilder.Writeln();
 
             documentBuilder.ParagraphFormat.ClearFormatting();
             documentBuilder.Font.ClearFormatting();
 
-            documentBuilder.Font.Name = "Verdana";
-            documentBuilder.Font.Size = 10;
+            documentBuilder.Font.Name = "Times New Roman";
+            documentBuilder.Font.Size = 12;
             documentBuilder.Font.Bold = true;
-            documentBuilder.ParagraphFormat.Alignment = ParagraphAlignment.Left;
-            documentBuilder.Writeln($"PC Law Associated Ltd will handle the services requested for the {eClosingOrder.Order.Borrower.FirstName} {eClosingOrder.Order.Borrower.LastName} file:");
+            documentBuilder.ParagraphFormat.Alignment = ParagraphAlignment.Center;
+
+            documentBuilder.Writeln("This file has closed as scheduled.");
 
             documentBuilder.Writeln();
-
-            documentBuilder.ParagraphFormat.ClearFormatting();
-            documentBuilder.ParagraphFormat.Alignment = ParagraphAlignment.Center;
 
             documentBuilder.StartTable();
 
             documentBuilder.InsertCell();
+            documentBuilder.Font.Bold = true;
             documentBuilder.Write("Order/Loan Number");
             documentBuilder.InsertCell();
             documentBuilder.Font.Bold = false;
@@ -58,36 +56,24 @@ namespace ReswareOrderMonitorService.Utilities
             documentBuilder.Font.Bold = false;
             documentBuilder.Write($"{eClosingOrder.Order.CoBorrower.FirstName} {eClosingOrder.Order.CoBorrower.LastName}");
             documentBuilder.EndRow();
-            
-            AddClosingDueDateTime(documentBuilder, eClosingOrder);
 
             documentBuilder.InsertCell();
             documentBuilder.Font.Bold = true;
-            documentBuilder.Write("Closing Location");
+            documentBuilder.Write("Closing Date & Time");
             documentBuilder.InsertCell();
             documentBuilder.Font.Bold = false;
-            documentBuilder.Write($"{eClosingOrder.Order.ClosingLocation}");
+            documentBuilder.Write($"{eClosingOrder.Order.ClosingDate} {eClosingOrder.Order.ClosingTime}");
             documentBuilder.EndRow();
 
             documentBuilder.InsertCell();
             documentBuilder.Font.Bold = true;
-            documentBuilder.Write("Documents to Attorney");
-            documentBuilder.InsertCell();
-            documentBuilder.Font.Bold = false;
-            documentBuilder.Write($"{eClosingOrder.Order.DeliveryMethod}");
-            documentBuilder.EndRow();
-
-            AddAttorneyInfo(documentBuilder, eClosingOrder);
-            
-            documentBuilder.InsertCell();
-            documentBuilder.Font.Bold = true;
-            documentBuilder.Write("Services Performed");
+            documentBuilder.Write("Tracking Number");
             documentBuilder.InsertCell();
             documentBuilder.Font.Bold = false;
 
-            eClosingOrder.Order.ClosingAttorney.Services.Where(service => !ServiceNameConstants.AdditionalAttorneyServices.Contains(service.Name)).ForEach(service =>
+            eClosingOrder.Order.Couriers.ForEach(courier =>
             {
-                documentBuilder.Writeln(service.Name);
+                documentBuilder.Writeln($"{courier.Name} - {courier.TrackingNumber}");
             });
 
             documentBuilder.EndRow();
@@ -98,19 +84,9 @@ namespace ReswareOrderMonitorService.Utilities
 
             documentBuilder.Writeln();
 
-            documentBuilder.ParagraphFormat.Alignment = ParagraphAlignment.Center;
-
-            AddAdditionalAttorneyInfo(documentBuilder, eClosingOrder);
-            
             AddFeeSchedule(documentBuilder, eClosingOrder);
+
+            documentBuilder.Writeln();
         }
-
-        protected internal abstract void AddClosingDueDateTime(DocumentBuilder documentBuilder, GetOrderResult eClosingOrder);
-
-        protected internal abstract void AddAttorneyInfo(DocumentBuilder documentBuilder, GetOrderResult eClosingOrder);
-
-        protected internal abstract void AddAdditionalAttorneyInfo(DocumentBuilder documentBuilder, GetOrderResult eClosingOrder);
-
-        protected internal abstract void AddFeeSchedule(DocumentBuilder documentBuilder, GetOrderResult eClosingOrder);
     }
 }

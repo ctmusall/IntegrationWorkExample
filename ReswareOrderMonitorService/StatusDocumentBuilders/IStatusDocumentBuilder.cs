@@ -2,9 +2,9 @@
 using ReswareOrderMonitorService.eClosingIntegrationService;
 using ReswareOrderMonitorService.ReswareOrders;
 
-namespace ReswareOrderMonitorService.Utilities
+namespace ReswareOrderMonitorService.StatusDocumentBuilders
 {
-    internal interface IStatusDocumentUtility
+    internal interface IStatusDocumentBuilder
     {
         Document BuildDocument(OrderResult reswareOrder, GetOrderResult eClosingOrder);
     }

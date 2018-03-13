@@ -1,17 +1,18 @@
 ﻿using System;
+using System.Linq;
 using Aspose.Words;
 using ReswareOrderMonitorService.eClosingIntegrationService;
 using ReswareOrderMonitorService.ReswareOrders;
 
-namespace ReswareOrderMonitorService.Utilities
+namespace ReswareOrderMonitorService.StatusDocumentBuilders
 {
-    internal abstract class StatusDocumentUtility : IStatusDocumentUtility
+    internal abstract class StatusDocumentBuilder : IStatusDocumentBuilder
     {
         private readonly DocumentBuilder _documentBuilder;
 
-        internal StatusDocumentUtility(): this(new Document()) { }
+        internal StatusDocumentBuilder(): this(new Document()) { }
 
-        internal StatusDocumentUtility(Document document)
+        internal StatusDocumentBuilder(Document document)
         {
             _documentBuilder = new DocumentBuilder(document);
         }
@@ -85,6 +86,48 @@ namespace ReswareOrderMonitorService.Utilities
 
             return _documentBuilder.Document;
         }
+
+        protected internal void AddFeeSchedule(DocumentBuilder documentBuilder, GetOrderResult eClosingOrder)
+        {
+            documentBuilder.ParagraphFormat.ClearFormatting();
+            documentBuilder.Font.ClearFormatting();
+
+            documentBuilder.ParagraphFormat.Alignment = ParagraphAlignment.Center;
+            documentBuilder.Font.Bold = true;
+            documentBuilder.Font.Name = "Verdana";
+            documentBuilder.Font.Size = 11;
+
+            documentBuilder.Writeln("FEE SCHEDULE");
+
+            documentBuilder.Font.Size = 10;
+
+            documentBuilder.StartTable();
+
+            var services = eClosingOrder.Order.Attorneys.SelectMany(attorney => attorney.Services).ToList();
+            services.AddRange(eClosingOrder.Order.ClosingAttorney.Services);
+
+            services.ForEach(service =>
+            {
+                documentBuilder.InsertCell();
+                documentBuilder.Font.Bold = true;
+                documentBuilder.Write($"{service.Name}");
+                documentBuilder.Font.Bold = false;
+                documentBuilder.InsertCell();
+                documentBuilder.Write($"{service.BillRate:C}");
+                documentBuilder.EndRow();
+            });
+
+            documentBuilder.InsertCell();
+            documentBuilder.Font.Bold = true;
+            documentBuilder.Write("Total Fee");
+            documentBuilder.InsertCell();
+            documentBuilder.Font.Bold = false;
+            documentBuilder.Write($"{eClosingOrder.Order.TotalBillRate:C}");
+            documentBuilder.EndRow();
+
+            documentBuilder.EndTable();
+        }
+
 
         protected internal abstract void AddBody(DocumentBuilder documentBuilder, OrderResult reswareOrder, GetOrderResult eClosingOrder);
     }

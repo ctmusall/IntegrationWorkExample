@@ -22,8 +22,9 @@ namespace ReswareOrderMonitorService.Common
         internal const string DeedPreparationAndReview = "Deed Preparation & Review";
         internal const string DeedPreparation = "Deed Preparation";
         internal const string NotaryFee = "Notary Fee";
+        internal const string DisbursementSupervision = "Disbursement Supervision";
 
-        internal static ICollection<string> AdditionalAttorneyServices = new List<string> { NotaryFee, Disbursement, DisbursementPurchase, RecordingSupervision };
+        internal static ICollection<string> AdditionalAttorneyServices = new List<string> { NotaryFee, Disbursement, DisbursementPurchase, RecordingSupervision, DisbursementSupervision };
+        internal static ICollection<string> TitleOpinionAndDocPrepServices = new List<string> { TitleOpinionLetter, TitleOpinionPreparationAndReview, MaMarketableTitleLetter, DeedPreparation, DeedPreparationAndReview };
     }
-
 }

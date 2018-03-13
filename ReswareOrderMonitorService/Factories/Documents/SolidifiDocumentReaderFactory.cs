@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using ReswareOrderMonitorService.DocumentSenders;
-using ReswareOrderMonitorService.DocumentSenders.Solidifi;
 using ReswareOrderMonitorService.Utilities.Solidifi;
 
 namespace ReswareOrderMonitorService.Factories.Documents
@@ -11,7 +10,7 @@ namespace ReswareOrderMonitorService.Factories.Documents
 
         public override DocumentSender ResolveDocumentSender(int documentTypeId)
         {
-            return _closingDocumentTypeIds.Contains(documentTypeId) ? new SolidifiClosingDocumentSender(new SolidifiClosingDocumentMailUtility()) : null;
+            return _closingDocumentTypeIds.Contains(documentTypeId) ? new ClosingDocumentSender(new SolidifiClosingDocumentMailUtility()) : null;
         }
     }
 }

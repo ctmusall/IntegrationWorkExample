@@ -102,7 +102,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActionEvents\ActionEvent.cs" />
-    <Compile Include="ActionEvents\ClosingCompleted.cs" />
     <Compile Include="ActionEvents\Solidifi\SolidifiRequestClosing.cs" />
     <Compile Include="ActionEvents\Solidifi\SolidifiRequestDocPrep.cs" />
     <Compile Include="ActionEvents\Solidifi\SolidifiRequestTitleOpinion.cs" />
@@ -119,7 +118,6 @@
     <Compile Include="Common\Solidifi\SolidifiActionEventConstants.cs" />
     <Compile Include="Common\StateConstants.cs" />
     <Compile Include="DocumentSenders\DocumentSender.cs" />
-    <Compile Include="DocumentSenders\Solidifi\SolidifiClosingDocumentSender.cs" />
     <Compile Include="DocumentSenders\ClosingDocumentSender.cs" />
     <Compile Include="Factories\ActionEvents\ActionEventFactory.cs" />
     <Compile Include="Factories\CompletedActionEvents\ClientCompletedActionEventFactory.cs" />
@@ -217,16 +215,14 @@
     <Compile Include="StatusSenders\Solidifi\SolidifiStatusSender.cs" />
     <Compile Include="StatusSenders\Solidifi\SolidifiUpdateClosingStatus.cs" />
     <Compile Include="StatusSenders\Solidifi\SolidifiUpdateOrderStatus.cs" />
-    <Compile Include="Utilities\AssignedClosingAttorneyStatusDocumentUtility.cs" />
-    <Compile Include="Utilities\AssignedDocPrepAttorneyStatusDocumentUtility.cs" />
-    <Compile Include="Utilities\AssignedTitleOpinionAttorneyStatusDocumentUtility.cs" />
-    <Compile Include="Utilities\ClosingCompletedStatusDocumentUtility.cs" />
+    <Compile Include="StatusDocumentBuilders\AssignedClosingAttorneyStatusDocumentBuilder.cs" />
+    <Compile Include="StatusDocumentBuilders\ClosingCompletedStatusDocumentBuilder.cs" />
     <Compile Include="Utilities\ClosingDocumentMailUtility.cs" />
     <Compile Include="Utilities\FundingAuthMailUtility.cs" />
     <Compile Include="Utilities\IClosingDocumentMailUtility.cs" />
     <Compile Include="Utilities\IFundingAuthMailUtility.cs" />
-    <Compile Include="Utilities\IStatusDocumentUtility.cs" />
-    <Compile Include="Utilities\AssignedAttorneyStatusDocumentUtility.cs" />
+    <Compile Include="StatusDocumentBuilders\IStatusDocumentBuilder.cs" />
+    <Compile Include="StatusDocumentBuilders\AssignedAttorneyStatusDocumentBuilder.cs" />
     <Compile Include="Utilities\Solidifi\SolidifiClosingDocumentMailUtility.cs" />
     <Compile Include="Utilities\Solidifi\SolidifiDocPrepServiceUtility.cs" />
     <Compile Include="Utilities\ServiceUtility.cs" />
@@ -236,7 +232,7 @@
     <Compile Include="Utilities\Solidifi\SolidifiClosingServiceUtility.cs" />
     <Compile Include="Utilities\Solidifi\SolidifiFundingAuthMailUtility.cs" />
     <Compile Include="Utilities\Solidifi\SolidifiTitleOpinionServiceUtility.cs" />
-    <Compile Include="Utilities\StatusDocumentUtility.cs" />
+    <Compile Include="StatusDocumentBuilders\StatusDocumentBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

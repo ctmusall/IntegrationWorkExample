@@ -1,10 +1,10 @@
 ﻿using System;
+using ReswareOrderMonitorService.StatusDocumentBuilders;
 using ReswareOrderMonitorService.eClosingIntegrationService;
 using ReswareOrderMonitorService.Repositories;
 using ReswareOrderMonitorService.ReswareOrders;
 using ReswareOrderMonitorService.StatusSenders;
 using ReswareOrderMonitorService.StatusSenders.Solidifi;
-using ReswareOrderMonitorService.Utilities;
 
 namespace ReswareOrderMonitorService.Factories.StatusSenders.Solidifi
 {
@@ -20,7 +20,7 @@ namespace ReswareOrderMonitorService.Factories.StatusSenders.Solidifi
 
             if (string.Equals(reswareOrder.TitleOpinionStatus, EClosingOrder.Order.Status, StringComparison.CurrentCultureIgnoreCase)) return null;
 
-            return AssignedClosingAttorney(reswareOrder.DocPrepStatus, EClosingOrder.Order.Status) ? new SolidifiStatusSender(EClosingOrder, new AssignedDocPrepAttorneyStatusDocumentUtility(), new SolidifiUpdateClosingStatus(EClosingOrder.Order.Status, ReswareOrderDependencyFactory.Resolve<IOrderPlacementRepository>())) : null;
+            return AssignedClosingAttorney(reswareOrder.DocPrepStatus, EClosingOrder.Order.Status) ? new SolidifiStatusSender(EClosingOrder, new AssignedAttorneyStatusDocumentBuilder(), new SolidifiUpdateClosingStatus(EClosingOrder.Order.Status, ReswareOrderDependencyFactory.Resolve<IOrderPlacementRepository>())) : null;
         }
     }
 }
