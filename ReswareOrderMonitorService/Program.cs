@@ -16,7 +16,7 @@ namespace ReswareOrderMonitorService
                 AsposeLicense.SetLicenses();
                 //var servicesToRun = new ServiceBase[]
                 //{
-                //    new ReswareMonitor() 
+                //    new ReswareMonitor()
                 //};
 
                 //ServiceBase.Run(servicesToRun);

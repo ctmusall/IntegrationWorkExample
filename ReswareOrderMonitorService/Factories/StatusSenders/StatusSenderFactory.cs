@@ -22,7 +22,7 @@ namespace ReswareOrderMonitorService.Factories.StatusSenders
             return EClosingOrder.Outcome == OutcomeEnum.Fail || EClosingOrder.Order == null;
         }
 
-        protected internal bool AssignedClosingAttorney(string previousOrderStatus, string currentOrderStatus)
+        protected internal bool AssignedAttorney(string previousOrderStatus, string currentOrderStatus)
         {
             if (string.IsNullOrWhiteSpace(currentOrderStatus)) return false;
 
