@@ -26,7 +26,7 @@ namespace ReswareOrderMonitorService.StatusDocumentBuilders
             documentBuilder.Font.Size = 10;
             documentBuilder.Font.Bold = true;
             documentBuilder.ParagraphFormat.Alignment = ParagraphAlignment.Left;
-            documentBuilder.Writeln($"PC Law Associated Ltd will handle the services requested for the {eClosingOrder.Order.Borrower.FirstName} {eClosingOrder.Order.Borrower.LastName} file:");
+            documentBuilder.Writeln($"Associates LLC will handle the services requested for the {eClosingOrder.Order.Borrower.FirstName} {eClosingOrder.Order.Borrower.LastName} file:");
 
             documentBuilder.Writeln();
 
