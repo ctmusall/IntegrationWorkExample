@@ -254,3 +254,5 @@ paket-files/
 !externalDependencies\*.dll
 PCN.Portal/PCN.Portal.Client.Data/PCN.Portal.Client.Data.jfm
 PCN.Portal/PCN.Portal.eClosings.Data/PCN.Portal.eClosings.Data.jfm
+
+PCN-Integration\.Data/PCN-Integration\.Data\.jfm
