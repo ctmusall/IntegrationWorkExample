@@ -15,8 +15,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PCN-Integration.WindowsServ
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "PCN-Integration.Setup", "PCN-Integration.Setup\PCN-Integration.Setup.wixproj", "{7D76E588-15DF-4B8A-8550-8EE9783108FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PCN-Integration.ReswareOrders", "OrderPlacement\PCN-Integration.ReswareOrders.csproj", "{D2569E71-E249-4E9E-B07F-077E1315BECE}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -113,22 +111,6 @@ Global
 		{7D76E588-15DF-4B8A-8550-8EE9783108FF}.Release|x64.ActiveCfg = Release|x86
 		{7D76E588-15DF-4B8A-8550-8EE9783108FF}.Release|x86.ActiveCfg = Release|x86
 		{7D76E588-15DF-4B8A-8550-8EE9783108FF}.Release|x86.Build.0 = Release|x86
-		{D2569E71-E249-4E9E-B07F-077E1315BECE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D2569E71-E249-4E9E-B07F-077E1315BECE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D2569E71-E249-4E9E-B07F-077E1315BECE}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{D2569E71-E249-4E9E-B07F-077E1315BECE}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{D2569E71-E249-4E9E-B07F-077E1315BECE}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{D2569E71-E249-4E9E-B07F-077E1315BECE}.Debug|x64.Build.0 = Debug|Any CPU
-		{D2569E71-E249-4E9E-B07F-077E1315BECE}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{D2569E71-E249-4E9E-B07F-077E1315BECE}.Debug|x86.Build.0 = Debug|Any CPU
-		{D2569E71-E249-4E9E-B07F-077E1315BECE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D2569E71-E249-4E9E-B07F-077E1315BECE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D2569E71-E249-4E9E-B07F-077E1315BECE}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{D2569E71-E249-4E9E-B07F-077E1315BECE}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{D2569E71-E249-4E9E-B07F-077E1315BECE}.Release|x64.ActiveCfg = Release|Any CPU
-		{D2569E71-E249-4E9E-B07F-077E1315BECE}.Release|x64.Build.0 = Release|Any CPU
-		{D2569E71-E249-4E9E-B07F-077E1315BECE}.Release|x86.ActiveCfg = Release|Any CPU
-		{D2569E71-E249-4E9E-B07F-077E1315BECE}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
