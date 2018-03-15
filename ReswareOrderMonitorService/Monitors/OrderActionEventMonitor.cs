@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using ReswareOrderMonitorService.Factories;
 using ReswareOrderMonitorService.Readers;
 using ReswareOrderMonitorService.Repositories;
@@ -35,9 +36,7 @@ namespace ReswareOrderMonitorService.Monitors
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.GetType().FullName);
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
+                EventLog.WriteEntry(ex.Source, ex.Message, EventLogEntryType.Error);
             }
         }
     }

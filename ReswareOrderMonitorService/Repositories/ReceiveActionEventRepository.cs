@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using ReswareOrderMonitorService.ReswareActionEvent;
 
 namespace ReswareOrderMonitorService.Repositories
@@ -22,9 +23,7 @@ namespace ReswareOrderMonitorService.Repositories
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.GetType().FullName);
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
+                EventLog.WriteEntry(ex.Source, ex.Message, EventLogEntryType.Error);
                 return null;
             }
         }
@@ -37,9 +36,7 @@ namespace ReswareOrderMonitorService.Repositories
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.GetType().FullName);
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
+                EventLog.WriteEntry(ex.Source, ex.Message, EventLogEntryType.Error);
                 return -1;
             }
         }

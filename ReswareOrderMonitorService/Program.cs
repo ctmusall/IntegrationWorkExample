@@ -28,10 +28,7 @@ namespace ReswareOrderMonitorService
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.GetType().FullName);
-                Console.WriteLine(ex.Message);
-                Console.WriteLine(ex.StackTrace);
-                EventLog.WriteEntry(ex.Source, ex.Message);
+                EventLog.WriteEntry(ex.Source, ex.Message, EventLogEntryType.Error);
             }
         }
     }
