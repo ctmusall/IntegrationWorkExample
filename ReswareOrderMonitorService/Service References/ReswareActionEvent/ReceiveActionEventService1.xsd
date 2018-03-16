@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/ActionEventService.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ActionEventService.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://pcnd6.pcnclosings.com:447/ReceiveActionEventService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArrayOfActionEventServiceResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ActionEventServiceResult" nillable="true" type="tns:ActionEventServiceResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfActionEventServiceResult" nillable="true" type="tns:ArrayOfActionEventServiceResult" />
+  <xs:complexType name="ActionEventServiceResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActionCompleted" type="xs:boolean" />
+      <xs:element minOccurs="0" name="ActionCompletedDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ActionEventCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FileNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="ser:guid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ActionEventServiceResult" nillable="true" type="tns:ActionEventServiceResult" />
+</xs:schema>

@@ -28,7 +28,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
+using System.ServiceModel;
+using OrderPlacement.Models;
 
 [assembly: System.Runtime.Serialization.ContractNamespaceAttribute("", ClrNamespace="GeneratedNamespace1")]
 
@@ -1029,6 +1033,18 @@ public interface IOrderPlacementService
                 OrderPlacementServicePriorPolicy PriorOwnerPolicy, 
                 OrderPlacementServiceBuyerPayoff[] BuyerPayoffs, 
                 OrderPlacementServiceSellerPayoff[] SellerPayoffs);
+
+    [OperationContract]
+    ICollection<OrderResult> GetAllOrders();
+
+    [OperationContract]
+    OrderResult GetOrderById(Guid id);
+
+    [OperationContract]
+    int DeleteOrderById(Guid id);
+
+    [OperationContract]
+    int UpdateOrder(OrderResult orderResult);
 }
 namespace GeneratedNamespace1
 {

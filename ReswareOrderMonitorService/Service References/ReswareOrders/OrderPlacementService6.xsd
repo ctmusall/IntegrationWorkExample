@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/OrderPlacement.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/OrderPlacement.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="https://pcnd6.pcnclosings.com/OrderPlacementService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="https://pcnd6.pcnclosings.com/OrderPlacementService.svc?xsd=xsd6" namespace="http://schemas.datacontract.org/2004/07/OrderPlacement.Common" />
+  <xs:complexType name="ArrayOfOrderResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrderResult" nillable="true" type="tns:OrderResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOrderResult" nillable="true" type="tns:ArrayOfOrderResult" />
+  <xs:complexType name="OrderResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BuyersAndSellers" nillable="true" type="tns:ArrayOfBuyerSellerResult" />
+      <xs:element minOccurs="0" name="ClientId" type="xs:int" />
+      <xs:element minOccurs="0" name="ClosingDateTime" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ClosingStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreatedDateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CustomerId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CustomerProduct" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DocPrepStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FileNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="LenderName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Notes" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Product" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PropertyAddress" nillable="true" type="tns:ArrayOfPropertyAddressResult" />
+      <xs:element minOccurs="0" name="TitleOpinionStatus" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OrderResult" nillable="true" type="tns:OrderResult" />
+  <xs:complexType name="ArrayOfBuyerSellerResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BuyerSellerResult" nillable="true" type="tns:BuyerSellerResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBuyerSellerResult" nillable="true" type="tns:ArrayOfBuyerSellerResult" />
+  <xs:complexType name="BuyerSellerResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="tns:ArrayOfBuyerSellerAddressResult" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EntityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaritalStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrderId" type="ser:guid" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Prefix" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Spouse" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Suffix" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/OrderPlacement.Common" minOccurs="0" name="Type" type="q1:BuyerSellerEnum" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BuyerSellerResult" nillable="true" type="tns:BuyerSellerResult" />
+  <xs:complexType name="ArrayOfBuyerSellerAddressResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BuyerSellerAddressResult" nillable="true" type="tns:BuyerSellerAddressResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBuyerSellerAddressResult" nillable="true" type="tns:ArrayOfBuyerSellerAddressResult" />
+  <xs:complexType name="BuyerSellerAddressResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AddressResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="BuyerSellerId" type="ser:guid" />
+          <xs:element minOccurs="0" name="County" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="BuyerSellerAddressResult" nillable="true" type="tns:BuyerSellerAddressResult" />
+  <xs:complexType name="AddressResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddressStreetInfo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="ser:guid" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StreetDirection" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StreetName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StreetNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StreetSuffix" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Unit" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Zip" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AddressResult" nillable="true" type="tns:AddressResult" />
+  <xs:complexType name="ArrayOfPropertyAddressResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PropertyAddressResult" nillable="true" type="tns:PropertyAddressResult" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPropertyAddressResult" nillable="true" type="tns:ArrayOfPropertyAddressResult" />
+  <xs:complexType name="PropertyAddressResult">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:AddressResult">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="County" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="OrderId" type="ser:guid" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PropertyAddressResult" nillable="true" type="tns:PropertyAddressResult" />
+</xs:schema>

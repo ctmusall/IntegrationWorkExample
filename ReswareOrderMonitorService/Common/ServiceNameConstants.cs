@@ -1,0 +1,30 @@
+﻿using System.Collections.Generic;
+
+namespace ReswareOrderMonitorService.Common
+{
+    internal static class ServiceNameConstants
+    {
+        internal const string AttorneyAssistedClosing = "Attorney Assisted Closing";
+        internal const string AttorneyAssistedPurchaseClosing = "AttorneyAssistedPurchaseClosing";
+        internal const string AttorneyAssistedPurchaseReoBuyerSide = "Attorney Assisted Purchase/REO - Buyer Side";
+        internal const string AttorneyAssistedDeedInLieu = "Attorney Assisted Deed In Lieu";
+        internal const string ConferenceCallClosing = "Conference Call Closing";
+        internal const string AttorneyAssistedEsignClosingF2F = "Attorney Assisted eSign Closing (F2F)";
+        internal const string Edocs = "eDocs";
+        internal const string Disbursement = "Disbursement";
+        internal const string AttorneyProvidedFaxedDocs = "Attorney Provided Faxed Docs";
+        internal const string DisbursementPurchase = "Disbursement - Purchase";
+        internal const string EdocsReducedPackage = "eDocs - Reduced Package";
+        internal const string RecordingSupervision = "Recording Supervision";
+        internal const string TitleOpinionLetter = "Title Opinion Letter";
+        internal const string TitleOpinionPreparationAndReview = "Title Opinion Preparation and Review";
+        internal const string MaMarketableTitleLetter = "MA Marketable Title Letter";
+        internal const string DeedPreparationAndReview = "Deed Preparation & Review";
+        internal const string DeedPreparation = "Deed Preparation";
+        internal const string NotaryFee = "Notary Fee";
+        internal const string DisbursementSupervision = "Disbursement Supervision";
+
+        internal static ICollection<string> AdditionalAttorneyServices = new List<string> { NotaryFee, Disbursement, DisbursementPurchase, RecordingSupervision, DisbursementSupervision };
+        internal static ICollection<string> TitleOpinionAndDocPrepServices = new List<string> { TitleOpinionLetter, TitleOpinionPreparationAndReview, MaMarketableTitleLetter, DeedPreparation, DeedPreparationAndReview };
+    }
+}

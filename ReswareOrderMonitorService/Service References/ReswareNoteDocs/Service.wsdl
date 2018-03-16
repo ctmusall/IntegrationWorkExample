@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="CustomBinding_IReceiveNoteService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="https://pcnd6.pcnclosings.com:446/ReceiveNoteService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="https://pcnd6.pcnclosings.com:446/ReceiveNoteService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="https://pcnd6.pcnclosings.com:446/ReceiveNoteService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Adeptive.ResWare.Services" />
+      <xsd:import schemaLocation="https://pcnd6.pcnclosings.com:446/ReceiveNoteService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/ReceiveNote.Models" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IReceiveNoteService_ReceiveNote_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveNote" />
+  </wsdl:message>
+  <wsdl:message name="IReceiveNoteService_ReceiveNote_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReceiveNoteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReceiveNoteService_GetAllNotesAndDocs_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllNotesAndDocs" />
+  </wsdl:message>
+  <wsdl:message name="IReceiveNoteService_GetAllNotesAndDocs_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllNotesAndDocsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReceiveNoteService_GetNoteDocById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNoteDocById" />
+  </wsdl:message>
+  <wsdl:message name="IReceiveNoteService_GetNoteDocById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNoteDocByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReceiveNoteService_DeleteNoteDocById_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteNoteDocById" />
+  </wsdl:message>
+  <wsdl:message name="IReceiveNoteService_DeleteNoteDocById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteNoteDocByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IReceiveNoteService_UpdateNoteDoc_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateNoteDoc" />
+  </wsdl:message>
+  <wsdl:message name="IReceiveNoteService_UpdateNoteDoc_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateNoteDocResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IReceiveNoteService">
+    <wsdl:operation name="ReceiveNote">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReceiveNoteService/ReceiveNote" message="tns:IReceiveNoteService_ReceiveNote_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReceiveNoteService/ReceiveNoteResponse" message="tns:IReceiveNoteService_ReceiveNote_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllNotesAndDocs">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReceiveNoteService/GetAllNotesAndDocs" message="tns:IReceiveNoteService_GetAllNotesAndDocs_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReceiveNoteService/GetAllNotesAndDocsResponse" message="tns:IReceiveNoteService_GetAllNotesAndDocs_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNoteDocById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReceiveNoteService/GetNoteDocById" message="tns:IReceiveNoteService_GetNoteDocById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReceiveNoteService/GetNoteDocByIdResponse" message="tns:IReceiveNoteService_GetNoteDocById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteNoteDocById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReceiveNoteService/DeleteNoteDocById" message="tns:IReceiveNoteService_DeleteNoteDocById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReceiveNoteService/DeleteNoteDocByIdResponse" message="tns:IReceiveNoteService_DeleteNoteDocById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNoteDoc">
+      <wsdl:input wsaw:Action="http://tempuri.org/IReceiveNoteService/UpdateNoteDoc" message="tns:IReceiveNoteService_UpdateNoteDoc_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IReceiveNoteService/UpdateNoteDocResponse" message="tns:IReceiveNoteService_UpdateNoteDoc_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CustomBinding_IReceiveNoteService" type="tns:IReceiveNoteService">
+    <wsp:PolicyReference URI="#CustomBinding_IReceiveNoteService_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ReceiveNote">
+      <soap12:operation soapAction="http://tempuri.org/IReceiveNoteService/ReceiveNote" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllNotesAndDocs">
+      <soap12:operation soapAction="http://tempuri.org/IReceiveNoteService/GetAllNotesAndDocs" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNoteDocById">
+      <soap12:operation soapAction="http://tempuri.org/IReceiveNoteService/GetNoteDocById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteNoteDocById">
+      <soap12:operation soapAction="http://tempuri.org/IReceiveNoteService/DeleteNoteDocById" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateNoteDoc">
+      <soap12:operation soapAction="http://tempuri.org/IReceiveNoteService/UpdateNoteDoc" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service">
+    <wsdl:port name="CustomBinding_IReceiveNoteService" binding="tns:CustomBinding_IReceiveNoteService">
+      <soap12:address location="https://pcnd6.pcnclosings.com:446/ReceiveNoteService.svc" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>https://pcnd6.pcnclosings.com:446/ReceiveNoteService.svc</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
