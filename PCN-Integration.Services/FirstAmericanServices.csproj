@@ -137,9 +137,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PCN-Integration.DataModels\PCN-Integration.DataModels.csproj">
+    <ProjectReference Include="..\PCN-Integration.DataModels\FirstAmericanDataModels.csproj">
       <Project>{6f01731a-bd46-42ac-942d-767897db28d0}</Project>
-      <Name>PCN-Integration.DataModels</Name>
+      <Name>FirstAmericanDataModels</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

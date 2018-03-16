@@ -62,13 +62,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PCN-Integration.DataModels\PCN-Integration.DataModels.csproj">
+    <ProjectReference Include="..\PCN-Integration.DataModels\FirstAmericanDataModels.csproj">
       <Project>{6f01731a-bd46-42ac-942d-767897db28d0}</Project>
-      <Name>PCN-Integration.DataModels</Name>
+      <Name>FirstAmericanDataModels</Name>
     </ProjectReference>
-    <ProjectReference Include="..\PCN-Integration.Services\PCN-Integration.Services.csproj">
+    <ProjectReference Include="..\PCN-Integration.Services\FirstAmericanServices.csproj">
       <Project>{eb762de1-fb1e-4457-abcc-3984354b1005}</Project>
-      <Name>PCN-Integration.Services</Name>
+      <Name>FirstAmericanServices</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
