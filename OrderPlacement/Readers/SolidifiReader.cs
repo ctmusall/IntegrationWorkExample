@@ -4,7 +4,7 @@ using OrderPlacement.Models;
 
 namespace OrderPlacement.Readers
 {
-    internal class LinearReswareReader : ReswareReader
+    internal class SolidifiReader : ReswareReader
     {
         private const string CustomerId = "L17100";
 
