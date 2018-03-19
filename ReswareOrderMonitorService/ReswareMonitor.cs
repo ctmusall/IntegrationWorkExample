@@ -1,6 +1,5 @@
 ﻿using System.ServiceProcess;
 using System.Timers;
-using ReswareOrderMonitorService.Factories;
 using ReswareOrderMonitorService.Monitors;
 
 namespace ReswareOrderMonitorService
@@ -8,10 +7,16 @@ namespace ReswareOrderMonitorService
     internal partial class ReswareMonitor : ServiceBase
     {
         private readonly Timer _timer;
+        private readonly IOrderActionEventMonitor _orderActionEventMonitor;
+        private readonly IDocumentMonitor _documentMonitor;
+        private readonly IOutgoingMonitor _outgoingMonitor;
 
-        public ReswareMonitor()
+        internal ReswareMonitor(IOrderActionEventMonitor orderActionEventMonitor, IDocumentMonitor documentMonitor, IOutgoingMonitor outgoingMonitor)
         {
             InitializeComponent();
+            _orderActionEventMonitor = orderActionEventMonitor;
+            _documentMonitor = documentMonitor;
+            _outgoingMonitor = outgoingMonitor;
             _timer = new Timer();
         }
 
@@ -24,11 +29,11 @@ namespace ReswareOrderMonitorService
             _timer.Elapsed += TimerElapsed;
         }
 
-        private static void TimerElapsed(object sender, ElapsedEventArgs elapsedEventArgs)
+        private void TimerElapsed(object sender, ElapsedEventArgs elapsedEventArgs)
         {
-            ReswareOrderDependencyFactory.Resolve<IOrderActionEventMonitor>().MonitorOrderActionEvents();
-            ReswareOrderDependencyFactory.Resolve<IDocumentMonitor>().MonitorDocuments();
-            ReswareOrderDependencyFactory.Resolve<IOutgoingMonitor>().MonitorOrders();
+            _orderActionEventMonitor.MonitorOrderActionEvents();
+            _documentMonitor.MonitorDocuments();
+            _outgoingMonitor.MonitorOrders();
         }
 
         protected override void OnStop()

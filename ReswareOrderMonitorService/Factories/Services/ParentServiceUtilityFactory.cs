@@ -1,6 +1,4 @@
-﻿using ReswareOrderMonitorService.Factories.Services;
-
-namespace ReswareOrderMonitorService.Factories
+﻿namespace ReswareOrderMonitorService.Factories
 {
     internal class ParentServiceUtilityFactory : IParentServiceUtilityFactory
     {
@@ -8,6 +6,7 @@ namespace ReswareOrderMonitorService.Factories
         {
             switch (clientId)
             {
+                // TODO - Switch on client Id
                 default:
                     return new SolidifiServiceUtilityFactory();
             }

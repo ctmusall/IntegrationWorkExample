@@ -1,6 +1,4 @@
-﻿using ReswareOrderMonitorService.Factories.Services;
-
-namespace ReswareOrderMonitorService.Factories
+﻿namespace ReswareOrderMonitorService.Factories
 {
     internal interface IParentServiceUtilityFactory
     {

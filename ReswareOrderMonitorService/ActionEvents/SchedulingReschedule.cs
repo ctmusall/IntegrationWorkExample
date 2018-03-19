@@ -1,4 +1,5 @@
-﻿using ReswareOrderMonitorService.eClosingIntegrationService;
+﻿using ReswareOrderMonitorService.ActionEvents.Solidifi;
+using ReswareOrderMonitorService.eClosingIntegrationService;
 using ReswareOrderMonitorService.Mirth;
 using ReswareOrderMonitorService.Repositories;
 using ReswareOrderMonitorService.ReswareOrders;
@@ -6,7 +7,7 @@ using ReswareOrderMonitorService.Utilities;
 
 namespace ReswareOrderMonitorService.ActionEvents
 {
-    internal abstract class SchedulingReschedule : ActionEvent
+    internal class SchedulingReschedule : ActionEvent
     {
         private readonly IIntegrationServiceRepository _integrationServiceRepository;
         private readonly IServiceUtility _orderServiceUtility;
@@ -30,6 +31,10 @@ namespace ReswareOrderMonitorService.ActionEvents
             }
             return ReturnNewClosing(_receiveSigningServiceRepository, _mirthServiceClient, _orderServiceUtility).PerformAction(order);
         }
-        protected internal abstract RequestOrder ReturnNewClosing(IReceiveSigningServiceRepository receiveSigningServiceRepository, IMirthServiceClient mirthServiceClient, IServiceUtility serviceUtility);
+
+        protected internal RequestOrder ReturnNewClosing(IReceiveSigningServiceRepository receiveSigningServiceRepository, IMirthServiceClient mirthServiceClient,IServiceUtility serviceUtility)
+        {
+            return new SolidifiRequestClosing(receiveSigningServiceRepository, mirthServiceClient, serviceUtility);
+        }
     }
 }

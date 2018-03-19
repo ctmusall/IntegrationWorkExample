@@ -105,7 +105,6 @@
     <Compile Include="ActionEvents\Solidifi\SolidifiRequestClosing.cs" />
     <Compile Include="ActionEvents\Solidifi\SolidifiRequestDocPrep.cs" />
     <Compile Include="ActionEvents\Solidifi\SolidifiRequestTitleOpinion.cs" />
-    <Compile Include="ActionEvents\Solidifi\SolidifiRescheduleClosing.cs" />
     <Compile Include="ActionEvents\FundingAuth.cs" />
     <Compile Include="ActionEvents\RequestOrder.cs" />
     <Compile Include="ActionEvents\SchedulingReschedule.cs" />
