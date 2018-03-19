@@ -2,7 +2,6 @@
 using ReswareOrderMonitorService.ActionEvents.Solidifi;
 using ReswareOrderMonitorService.Common;
 using ReswareOrderMonitorService.Common.Solidifi;
-using ReswareOrderMonitorService.Factories.Services;
 using ReswareOrderMonitorService.Mirth;
 using ReswareOrderMonitorService.Repositories;
 using ReswareOrderMonitorService.Utilities;
@@ -19,7 +18,7 @@ namespace ReswareOrderMonitorService.Factories.ActionEvents
             switch (actionEventCode)
             {
                 case SolidifiActionEventConstants.RescheduleClosing:
-                    return new SolidifiRescheduleClosing(ServiceUtilityFactory.ResolveServiceUtility(ServiceUtilityTypeEnum.Closing), ReswareOrderDependencyFactory.Resolve<IIntegrationServiceRepository>(), ReswareOrderDependencyFactory.Resolve<IReceiveSigningServiceRepository>(), ReswareOrderDependencyFactory.Resolve<IMirthServiceClient>());
+                    return new SchedulingReschedule(ServiceUtilityFactory.ResolveServiceUtility(ServiceUtilityTypeEnum.Closing), ReswareOrderDependencyFactory.Resolve<IIntegrationServiceRepository>(), ReswareOrderDependencyFactory.Resolve<IReceiveSigningServiceRepository>(), ReswareOrderDependencyFactory.Resolve<IMirthServiceClient>());
                 case SolidifiActionEventConstants.RequestClosing:
                     return new SolidifiRequestClosing(ReswareOrderDependencyFactory.Resolve<IReceiveSigningServiceRepository>(), ReswareOrderDependencyFactory.Resolve<IMirthServiceClient>(), ServiceUtilityFactory.ResolveServiceUtility(ServiceUtilityTypeEnum.Closing));
                 case SolidifiActionEventConstants.RequestTitleOpinion:

@@ -2,7 +2,7 @@
 using ReswareOrderMonitorService.Utilities;
 using ReswareOrderMonitorService.Utilities.Solidifi;
 
-namespace ReswareOrderMonitorService.Factories.Services
+namespace ReswareOrderMonitorService.Factories
 {
     internal class SolidifiServiceUtilityFactory : ServiceUtilityFactory
     {

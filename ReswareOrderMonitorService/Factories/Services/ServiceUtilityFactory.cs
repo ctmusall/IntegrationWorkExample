@@ -1,5 +1,4 @@
 ﻿using ReswareOrderMonitorService.Common;
-using ReswareOrderMonitorService.Factories.Services;
 using ReswareOrderMonitorService.Utilities;
 
 namespace ReswareOrderMonitorService.Factories

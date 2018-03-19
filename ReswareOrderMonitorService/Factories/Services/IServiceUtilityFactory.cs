@@ -1,7 +1,7 @@
 ﻿using ReswareOrderMonitorService.Common;
 using ReswareOrderMonitorService.Utilities;
 
-namespace ReswareOrderMonitorService.Factories.Services
+namespace ReswareOrderMonitorService.Factories
 {
     internal interface IServiceUtilityFactory
     {
