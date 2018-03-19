@@ -240,7 +240,7 @@
     <Compile Include="Parsers\OrderResultParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Readers\IReswareReader.cs" />
-    <Compile Include="Readers\LinearReswareReader.cs" />
+    <Compile Include="Readers\SolidifiReader.cs" />
     <Compile Include="Readers\ReswareReader.cs" />
     <Compile Include="Repositories\IReswareOrderRepository.cs" />
     <Compile Include="Repositories\ReswareOrderRepository.cs" />

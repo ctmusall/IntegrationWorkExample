@@ -9,7 +9,7 @@ namespace OrderPlacement.Factories
             switch (clientId)
             {
                 default:
-                    return new LinearReswareReader();
+                    return new SolidifiReader();
             }
         }
     }
