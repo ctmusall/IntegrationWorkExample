@@ -4,8 +4,8 @@ using ReswareOrderMonitorService.ReswareOrders;
 
 namespace ReswareOrderMonitorService.Utilities
 {
-    internal interface IClosingDocumentMailUtility
+    internal interface IDocumentMailUtility
     {
-        MailMessage BuildClosingDocumentMailMessage(DocumentServiceResult document, OrderResult reswareOrder);
+        MailMessage BuildDocumentMailMessage(DocumentServiceResult document, OrderResult reswareOrder);
     }
 }

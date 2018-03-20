@@ -116,7 +116,6 @@
     <Compile Include="Common\OrderTypeEnum.cs" />
     <Compile Include="Common\Solidifi\SolidifiActionEventConstants.cs" />
     <Compile Include="DocumentSenders\DocumentSender.cs" />
-    <Compile Include="DocumentSenders\ClosingDocumentSender.cs" />
     <Compile Include="Factories\ActionEvents\ActionEventFactory.cs" />
     <Compile Include="Factories\CompletedActionEvents\ClientCompletedActionEventFactory.cs" />
     <Compile Include="Factories\CompletedActionEvents\IClientCompletedActionEventFactory.cs" />
@@ -215,9 +214,9 @@
     <Compile Include="StatusSenders\Solidifi\SolidifiUpdateOrderStatus.cs" />
     <Compile Include="StatusDocumentBuilders\AssignedClosingAttorneyStatusDocumentBuilder.cs" />
     <Compile Include="StatusDocumentBuilders\ClosingCompletedStatusDocumentBuilder.cs" />
-    <Compile Include="Utilities\ClosingDocumentMailUtility.cs" />
+    <Compile Include="Utilities\DocumentMailUtility.cs" />
     <Compile Include="Utilities\FundingAuthMailUtility.cs" />
-    <Compile Include="Utilities\IClosingDocumentMailUtility.cs" />
+    <Compile Include="Utilities\IDocumentMailUtility.cs" />
     <Compile Include="Utilities\IFundingAuthMailUtility.cs" />
     <Compile Include="StatusDocumentBuilders\IStatusDocumentBuilder.cs" />
     <Compile Include="StatusDocumentBuilders\AssignedAttorneyStatusDocumentBuilder.cs" />
