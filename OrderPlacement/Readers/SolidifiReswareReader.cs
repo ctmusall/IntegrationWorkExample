@@ -46,7 +46,7 @@ namespace OrderPlacement.Readers
                 order.CustomerProduct = ProductNameConstants.SolidifiProductNames.BuyerSidePurchase;
             }
 
-            // TODO - Refinance, Purchase, Conference Call
+            // TODO - Refinance, Purchase
         }
     }
 }
