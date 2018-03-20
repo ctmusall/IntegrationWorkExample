@@ -8,6 +8,7 @@ namespace OrderPlacement.Factories
         {
             switch (clientId)
             {
+                // TODO - switch on client id
                 default:
                     return new SolidifiReswareReader();
             }
