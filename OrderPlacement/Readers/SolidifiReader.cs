@@ -8,10 +8,9 @@ namespace OrderPlacement.Readers
     {
         private const string CustomerId = "L17100";
 
-        internal override Order MapReswareOrder(string fileNumber, OrderPlacementServicePartner lender, DateTime? estimatedSettlementDate, int productId, string notes, int clientId)
+        internal override Order MapReswareOrder(string fileNumber, OrderPlacementServicePartner lender, DateTime? estimatedSettlementDate, int productId, string notes, int clientId, int transactionTypeId)
         {
-            // TODO - Product(Need Refinance, Purchase, and Investment Property ID) map based on what Keith and the boyz supplies
-            return new Order
+            var order = new Order
             {
                 FileNumber = fileNumber,
                 CustomerId = CustomerId,
@@ -25,6 +24,15 @@ namespace OrderPlacement.Readers
                 PropertyAddress = new List<PropertyAddress>(),
                 BuyerAndSellers = new List<BuyerSeller>()
             };
+
+            MapProductAndCustomerProduct(order, productId, transactionTypeId);
+            return order;
+            // TODO - Product(Need Refinance, Purchase, and Investment Property ID) map based on what Keith and the boyz supplies
+        }
+
+        private void MapProductAndCustomerProduct(Order order, int productId, int transactionTypeId)
+        {
+            
         }
     }
 }
