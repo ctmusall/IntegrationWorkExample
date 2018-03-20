@@ -45,8 +45,16 @@ namespace OrderPlacement.Readers
                 order.Product = ProductNameConstants.EClosingsProductNames.Purchase;
                 order.CustomerProduct = ProductNameConstants.SolidifiProductNames.BuyerSidePurchase;
             }
-
-            // TODO - Refinance, Purchase
+            else if (transactionTypeId == 1)
+            {
+                order.Product = ProductNameConstants.EClosingsProductNames.Purchase;
+                order.CustomerProduct = ProductNameConstants.EClosingsProductNames.Purchase;
+            }
+            else if (transactionTypeId == 2)
+            {
+                order.Product = ProductNameConstants.EClosingsProductNames.Refinance;
+                order.CustomerProduct = ProductNameConstants.EClosingsProductNames.Refinance;
+            }
         }
     }
 }
