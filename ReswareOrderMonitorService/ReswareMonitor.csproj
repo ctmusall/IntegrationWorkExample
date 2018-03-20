@@ -221,6 +221,7 @@
     <Compile Include="StatusDocumentBuilders\IStatusDocumentBuilder.cs" />
     <Compile Include="StatusDocumentBuilders\AssignedAttorneyStatusDocumentBuilder.cs" />
     <Compile Include="Utilities\Solidifi\SolidifiClosingDocumentMailUtility.cs" />
+    <Compile Include="Utilities\Solidifi\SolidifiDisbursementDocumentMailUtility.cs" />
     <Compile Include="Utilities\Solidifi\SolidifiDocPrepServiceUtility.cs" />
     <Compile Include="Utilities\ServiceUtility.cs" />
     <Compile Include="Utilities\DateTimeUtility.cs" />
