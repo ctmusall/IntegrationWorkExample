@@ -1,4 +1,5 @@
 ﻿using System;
+using ReswareCommon;
 using ReswareOrderMonitorService.Common;
 using ReswareOrderMonitorService.Mirth;
 using ReswareOrderMonitorService.Models;

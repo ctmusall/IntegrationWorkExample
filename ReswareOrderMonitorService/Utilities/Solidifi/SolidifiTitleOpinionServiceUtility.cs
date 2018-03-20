@@ -1,4 +1,5 @@
-﻿using ReswareOrderMonitorService.Common;
+﻿using ReswareCommon;
+using ReswareOrderMonitorService.Common;
 using ReswareOrderMonitorService.Models;
 
 namespace ReswareOrderMonitorService.Utilities.Solidifi
