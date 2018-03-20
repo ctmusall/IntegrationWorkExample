@@ -5,6 +5,6 @@ namespace ReswareOrderMonitorService.Factories
 {
     internal interface IServiceUtilityFactory
     {
-        IServiceUtility ResolveServiceUtility(ServiceUtilityTypeEnum serviceUtilityType);
+        IServiceUtility ResolveServiceUtility(OrderTypeEnum orderType);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Aspose.Words;
+using ReswareCommon;
 using ReswareOrderMonitorService.Common;
 using ReswareOrderMonitorService.eClosingIntegrationService;
 using ReswareOrderMonitorService.ReswareOrders;

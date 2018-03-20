@@ -6,15 +6,15 @@ namespace ReswareOrderMonitorService.Factories
 {
     internal class SolidifiServiceUtilityFactory : ServiceUtilityFactory
     {
-        public override IServiceUtility ResolveServiceUtility(ServiceUtilityTypeEnum serviceUtilityType)
+        public override IServiceUtility ResolveServiceUtility(OrderTypeEnum serviceUtilityType)
         {
             switch (serviceUtilityType)
             {
-                case ServiceUtilityTypeEnum.Closing:
+                case OrderTypeEnum.Closing:
                     return new SolidifiClosingServiceUtility();
-                case ServiceUtilityTypeEnum.TitleOpinion:
+                case OrderTypeEnum.TitleOpinion:
                     return new SolidifiTitleOpinionServiceUtility();
-                case ServiceUtilityTypeEnum.DocPrep:
+                case OrderTypeEnum.DocPrep:
                     return new SolidifiDocPrepServiceUtility();
                 default:
                     return null;

@@ -58,6 +58,9 @@
       <HintPath>..\packages\Unity.5.6.1\lib\net45\CommonServiceLocator.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="ReswareCommon">
+      <HintPath>..\ReswareCommon\bin\Debug\ReswareCommon.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
@@ -109,15 +112,10 @@
     <Compile Include="ActionEvents\RequestOrder.cs" />
     <Compile Include="ActionEvents\SchedulingReschedule.cs" />
     <Compile Include="Aspose\AsposeLicense.cs" />
-    <Compile Include="Common\EClosingOrderStatusConstants.cs" />
     <Compile Include="Common\ModelSerializer.cs" />
-    <Compile Include="Common\ProductNameConstants.cs" />
-    <Compile Include="Common\ServiceNameConstants.cs" />
-    <Compile Include="Common\ServiceUtilityTypeEnum.cs" />
+    <Compile Include="Common\OrderTypeEnum.cs" />
     <Compile Include="Common\Solidifi\SolidifiActionEventConstants.cs" />
-    <Compile Include="Common\StateConstants.cs" />
     <Compile Include="DocumentSenders\DocumentSender.cs" />
-    <Compile Include="DocumentSenders\ClosingDocumentSender.cs" />
     <Compile Include="Factories\ActionEvents\ActionEventFactory.cs" />
     <Compile Include="Factories\CompletedActionEvents\ClientCompletedActionEventFactory.cs" />
     <Compile Include="Factories\CompletedActionEvents\IClientCompletedActionEventFactory.cs" />
@@ -131,10 +129,10 @@
     <Compile Include="Factories\Services\IServiceUtilityFactory.cs" />
     <Compile Include="Factories\ActionEvents\SolidifiActionEventFactory.cs" />
     <Compile Include="Factories\Documents\SolidifiDocumentReaderFactory.cs" />
-    <Compile Include="Factories\Services\SolidifiServiceUtilityFactory.cs" />
     <Compile Include="Factories\Services\ParentServiceUtilityFactory.cs" />
     <Compile Include="Factories\ReswareOrderDependencyFactory.cs" />
     <Compile Include="Factories\Services\ServiceUtilityFactory.cs" />
+    <Compile Include="Factories\Services\SolidifiServiceUtilityFactory.cs" />
     <Compile Include="Factories\StatusSenders\IStatusSenderFactory.cs" />
     <Compile Include="Factories\StatusSenders\Solidifi\SolidifiClosingStatusSenderFactory.cs" />
     <Compile Include="Factories\StatusSenders\Solidifi\SolidifiDocPrepStatusSenderFactory.cs" />
@@ -216,13 +214,14 @@
     <Compile Include="StatusSenders\Solidifi\SolidifiUpdateOrderStatus.cs" />
     <Compile Include="StatusDocumentBuilders\AssignedClosingAttorneyStatusDocumentBuilder.cs" />
     <Compile Include="StatusDocumentBuilders\ClosingCompletedStatusDocumentBuilder.cs" />
-    <Compile Include="Utilities\ClosingDocumentMailUtility.cs" />
+    <Compile Include="Utilities\DocumentMailUtility.cs" />
     <Compile Include="Utilities\FundingAuthMailUtility.cs" />
-    <Compile Include="Utilities\IClosingDocumentMailUtility.cs" />
+    <Compile Include="Utilities\IDocumentMailUtility.cs" />
     <Compile Include="Utilities\IFundingAuthMailUtility.cs" />
     <Compile Include="StatusDocumentBuilders\IStatusDocumentBuilder.cs" />
     <Compile Include="StatusDocumentBuilders\AssignedAttorneyStatusDocumentBuilder.cs" />
     <Compile Include="Utilities\Solidifi\SolidifiClosingDocumentMailUtility.cs" />
+    <Compile Include="Utilities\Solidifi\SolidifiDisbursementDocumentMailUtility.cs" />
     <Compile Include="Utilities\Solidifi\SolidifiDocPrepServiceUtility.cs" />
     <Compile Include="Utilities\ServiceUtility.cs" />
     <Compile Include="Utilities\DateTimeUtility.cs" />
