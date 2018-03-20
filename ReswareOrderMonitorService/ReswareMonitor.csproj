@@ -113,7 +113,7 @@
     <Compile Include="Common\ModelSerializer.cs" />
     <Compile Include="Common\ProductNameConstants.cs" />
     <Compile Include="Common\ServiceNameConstants.cs" />
-    <Compile Include="Common\ServiceUtilityTypeEnum.cs" />
+    <Compile Include="Common\OrderTypeEnum.cs" />
     <Compile Include="Common\Solidifi\SolidifiActionEventConstants.cs" />
     <Compile Include="Common\StateConstants.cs" />
     <Compile Include="DocumentSenders\DocumentSender.cs" />
@@ -131,10 +131,10 @@
     <Compile Include="Factories\Services\IServiceUtilityFactory.cs" />
     <Compile Include="Factories\ActionEvents\SolidifiActionEventFactory.cs" />
     <Compile Include="Factories\Documents\SolidifiDocumentReaderFactory.cs" />
-    <Compile Include="Factories\Services\SolidifiServiceUtilityFactory.cs" />
     <Compile Include="Factories\Services\ParentServiceUtilityFactory.cs" />
     <Compile Include="Factories\ReswareOrderDependencyFactory.cs" />
     <Compile Include="Factories\Services\ServiceUtilityFactory.cs" />
+    <Compile Include="Factories\Services\SolidifiServiceUtilityFactory.cs" />
     <Compile Include="Factories\StatusSenders\IStatusSenderFactory.cs" />
     <Compile Include="Factories\StatusSenders\Solidifi\SolidifiClosingStatusSenderFactory.cs" />
     <Compile Include="Factories\StatusSenders\Solidifi\SolidifiDocPrepStatusSenderFactory.cs" />

@@ -1,6 +1,6 @@
 ﻿namespace ReswareOrderMonitorService.Common
 {
-    internal enum ServiceUtilityTypeEnum
+    internal enum OrderTypeEnum
     {
         Closing = 1,
         TitleOpinion = 2,

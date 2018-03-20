@@ -10,7 +10,7 @@ namespace ReswareOrderMonitorService.Utilities.Solidifi
         {
             if (!string.Equals(requestClosingMessage.ClosingState, requestClosingMessage.BorrowerState, StringComparison.CurrentCultureIgnoreCase))
             {
-                requestClosingMessage.Notes += $" Did not apply any services because the Closing state '{requestClosingMessage.ClosingState}' is not equal to the borrower state '{requestClosingMessage.BorrowerState}'.";
+                requestClosingMessage.Notes += $"Did not apply any services because the Closing state '{requestClosingMessage.ClosingState}' is not equal to the borrower state '{requestClosingMessage.BorrowerState}'.";
                 return;
             }
 
