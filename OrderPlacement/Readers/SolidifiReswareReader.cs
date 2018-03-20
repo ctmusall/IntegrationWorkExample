@@ -40,15 +40,10 @@ namespace OrderPlacement.Readers
                 order.Product = ProductNameConstants.EClosingsProductNames.ModAssumptionDil;
                 order.CustomerProduct = ProductNameConstants.SolidifiProductNames.DeedInLieu;
             }
-            else if (transactionTypeId == 1 && productId == 2)
+            else if (transactionTypeId == 1 && (productId == 2 || productId == 299))
             {
                 order.Product = ProductNameConstants.EClosingsProductNames.Purchase;
                 order.CustomerProduct = ProductNameConstants.SolidifiProductNames.BuyerSidePurchase;
-            }
-            else if (transactionTypeId == 1 && productId == 299)
-            {
-                order.Product = ProductNameConstants.EClosingsProductNames.Purchase;
-                order.CustomerProduct = ProductNameConstants.SolidifiProductNames.BuyerSideReo;
             }
 
             // TODO - Refinance, Purchase, Conference Call

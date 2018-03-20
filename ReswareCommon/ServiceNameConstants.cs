@@ -5,7 +5,7 @@ namespace ReswareCommon
     public static class ServiceNameConstants
     {
         public const string AttorneyAssistedClosing = "Attorney Assisted Closing";
-        public const string AttorneyAssistedPurchaseClosing = "AttorneyAssistedPurchaseClosing";
+        public const string AttorneyAssistedPurchaseClosing = "Attorney Assisted Purchase Closing";
         public const string AttorneyAssistedPurchaseReoBuyerSide = "Attorney Assisted Purchase/REO - Buyer Side";
         public const string AttorneyAssistedDeedInLieu = "Attorney Assisted Deed In Lieu";
         public const string ConferenceCallClosing = "Conference Call Closing";
