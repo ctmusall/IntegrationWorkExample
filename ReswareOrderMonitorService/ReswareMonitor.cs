@@ -25,7 +25,7 @@ namespace ReswareOrderMonitorService
             EventLog.WriteEntry("Resware monitor started");
 
             _timer.Enabled = true;
-            _timer.Interval = 60000;
+            _timer.Interval = 120000;
             _timer.Elapsed += TimerElapsed;
         }
 
