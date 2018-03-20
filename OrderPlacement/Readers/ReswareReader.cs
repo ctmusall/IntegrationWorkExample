@@ -12,10 +12,7 @@ namespace OrderPlacement.Readers
     {
         private readonly BuyerSellerReaderResultUtility _buyerSellerReaderResultUtility;
 
-        internal ReswareReader() : this(OrderDependencyFactory.Resolve<BuyerSellerReaderResultUtility>())
-        {
-            
-        }
+        internal ReswareReader() : this(OrderDependencyFactory.Resolve<BuyerSellerReaderResultUtility>()) { }
 
         internal ReswareReader(BuyerSellerReaderResultUtility buyerSellerReaderResultUtility)
         {
@@ -34,6 +31,8 @@ namespace OrderPlacement.Readers
         }
 
         internal abstract Order MapReswareOrder(string fileNumber, OrderPlacementServicePartner lender, DateTime? estimatedSettlementDate, int productId, string notes, int clientId, int transactionTypeId);
+
+        internal abstract void MapProductAndCustomerProduct(Order order, int productId, int transactionTypeId);
 
         internal virtual PropertyAddress MapPropertyAddress(Order order, OrderPlacementServicePropertyAddress propertyAddress)
         {

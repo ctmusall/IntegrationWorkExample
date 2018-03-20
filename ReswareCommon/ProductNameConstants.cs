@@ -7,9 +7,7 @@
             public const string InvestmentProperty = "Investment Property";
             public const string DeedInLieu = "Deed in Lieu";
             public const string BuyerSidePurchase = "Buyer Side Purchase";
-            public const string SellerSidePurchase = "Seller Side Purchase";
             public const string BuyerSideReo = "Buyer Side REO";
-            public const string SellerSideReo = "Seller Side REO";
             public const string ConferenceCall = "Conference Call";
             public const string Refinance = "Refinance";
             public const string ESignRefinance = "E-Sign Refinance";
