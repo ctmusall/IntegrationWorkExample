@@ -7,8 +7,9 @@ namespace OrderPlacement.Data
     {
         public ReswareOrderContext() : base("name=ReswareOrderContext")
         {
+            Database.SetInitializer(new CreateDatabaseIfNotExists<ReswareOrderContext>());
         }
-        
+
         public virtual DbSet<Order> Orders { get; set; } 
         public virtual DbSet<PropertyAddress> PropertyAddresses { get; set; }
         public virtual DbSet<BuyerSellerAddress> BuyerSellerAddresses { get; set; }

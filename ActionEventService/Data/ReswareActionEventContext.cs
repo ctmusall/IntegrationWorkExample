@@ -5,7 +5,10 @@ namespace ActionEventService.Data
 {
     public class ReswareActionEventContext : DbContext
     {
-        public ReswareActionEventContext() : base("name=ReswareActionEventContext") { }
+        public ReswareActionEventContext() : base("name=ReswareActionEventContext")
+        {
+            Database.SetInitializer(new CreateDatabaseIfNotExists<ReswareActionEventContext>());
+        }
 
         public virtual DbSet<ActionEvent> ActionEvents { get; set; }
 

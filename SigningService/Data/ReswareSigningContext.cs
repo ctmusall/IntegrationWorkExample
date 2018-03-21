@@ -7,6 +7,7 @@ namespace SigningService.Data
     {
         public ReswareSigningContext() : base("name=ReswareSigningContext")
         {
+            Database.SetInitializer(new CreateDatabaseIfNotExists<ReswareSigningContext>());
         }
 
         public virtual DbSet<Signing> Signings { get; set; }

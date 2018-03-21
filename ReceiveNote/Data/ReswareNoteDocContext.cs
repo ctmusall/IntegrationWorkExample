@@ -7,6 +7,7 @@ namespace ReceiveNote.Data
     {
         public ReswareNoteDocContext() : base("name=ReswareNoteDocContext")
         {
+            Database.SetInitializer(new CreateDatabaseIfNotExists<ReswareNoteDocContext>());
         }
 
         public virtual DbSet<Note> Notes { get; set; }

@@ -165,67 +165,15 @@
     <Compile Include="Managers\IOrderResultManager.cs" />
     <Compile Include="Managers\OrderPlacementManager.cs" />
     <Compile Include="Managers\OrderResultManager.cs" />
-    <Compile Include="Migrations\201802262042248_RemoveProcessed.cs" />
-    <Compile Include="Migrations\201802262042248_RemoveProcessed.Designer.cs">
-      <DependentUpon>201802262042248_RemoveProcessed.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802262051465_AddNotesFieldToOrder.cs" />
-    <Compile Include="Migrations\201802262051465_AddNotesFieldToOrder.Designer.cs">
-      <DependentUpon>201802262051465_AddNotesFieldToOrder.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802281430548_AddClientId.cs" />
-    <Compile Include="Migrations\201802281430548_AddClientId.Designer.cs">
-      <DependentUpon>201802281430548_AddClientId.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802281926553_AddCustomerProduct.cs" />
-    <Compile Include="Migrations\201802281926553_AddCustomerProduct.Designer.cs">
-      <DependentUpon>201802281926553_AddCustomerProduct.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803012040320_RemoveCustomerContactandDeliveryMethod.cs" />
-    <Compile Include="Migrations\201803012040320_RemoveCustomerContactandDeliveryMethod.Designer.cs">
-      <DependentUpon>201803012040320_RemoveCustomerContactandDeliveryMethod.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803021357285_AddCountyToBuyerSellerAddress.cs" />
-    <Compile Include="Migrations\201803021357285_AddCountyToBuyerSellerAddress.Designer.cs">
-      <DependentUpon>201803021357285_AddCountyToBuyerSellerAddress.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803081706470_AddStatusField.cs" />
-    <Compile Include="Migrations\201803081706470_AddStatusField.Designer.cs">
-      <DependentUpon>201803081706470_AddStatusField.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201803082055387_ChangeStatusToThreeFields.cs" />
-    <Compile Include="Migrations\201803082055387_ChangeStatusToThreeFields.Designer.cs">
-      <DependentUpon>201803082055387_ChangeStatusToThreeFields.cs</DependentUpon>
+    <Compile Include="Migrations\201803211733152_test.cs" />
+    <Compile Include="Migrations\201803211733152_test.Designer.cs">
+      <DependentUpon>201803211733152_test.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\AddressResult.cs" />
     <Compile Include="Models\BuyerSellerAddressResult.cs" />
     <Compile Include="Models\BuyerSellerResult.cs" />
     <Compile Include="Models\OrderResult.cs" />
     <Compile Include="Models\PlaceOrderResult.cs" />
-    <Compile Include="Migrations\201802152042408_Init.cs" />
-    <Compile Include="Migrations\201802152042408_Init.Designer.cs">
-      <DependentUpon>201802152042408_Init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802152045466_InitBuyerSellerAddresses.cs" />
-    <Compile Include="Migrations\201802152045466_InitBuyerSellerAddresses.Designer.cs">
-      <DependentUpon>201802152045466_InitBuyerSellerAddresses.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802152051093_RemoveNullableClosingDateTime.cs" />
-    <Compile Include="Migrations\201802152051093_RemoveNullableClosingDateTime.Designer.cs">
-      <DependentUpon>201802152051093_RemoveNullableClosingDateTime.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802161938190_MakeDateTimeOpt.cs" />
-    <Compile Include="Migrations\201802161938190_MakeDateTimeOpt.Designer.cs">
-      <DependentUpon>201802161938190_MakeDateTimeOpt.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802191406069_RemoveCounty.cs" />
-    <Compile Include="Migrations\201802191406069_RemoveCounty.Designer.cs">
-      <DependentUpon>201802191406069_RemoveCounty.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802191514563_RemoveCustomerNameFromOrder.cs" />
-    <Compile Include="Migrations\201802191514563_RemoveCustomerNameFromOrder.Designer.cs">
-      <DependentUpon>201802191514563_RemoveCustomerNameFromOrder.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BuyerSeller.cs" />
     <Compile Include="Models\BuyerSellerAddress.cs" />
@@ -271,47 +219,8 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201802152042408_Init.resx">
-      <DependentUpon>201802152042408_Init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802152045466_InitBuyerSellerAddresses.resx">
-      <DependentUpon>201802152045466_InitBuyerSellerAddresses.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802152051093_RemoveNullableClosingDateTime.resx">
-      <DependentUpon>201802152051093_RemoveNullableClosingDateTime.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802161938190_MakeDateTimeOpt.resx">
-      <DependentUpon>201802161938190_MakeDateTimeOpt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802191406069_RemoveCounty.resx">
-      <DependentUpon>201802191406069_RemoveCounty.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802191514563_RemoveCustomerNameFromOrder.resx">
-      <DependentUpon>201802191514563_RemoveCustomerNameFromOrder.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802262042248_RemoveProcessed.resx">
-      <DependentUpon>201802262042248_RemoveProcessed.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802262051465_AddNotesFieldToOrder.resx">
-      <DependentUpon>201802262051465_AddNotesFieldToOrder.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802281430548_AddClientId.resx">
-      <DependentUpon>201802281430548_AddClientId.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802281926553_AddCustomerProduct.resx">
-      <DependentUpon>201802281926553_AddCustomerProduct.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803012040320_RemoveCustomerContactandDeliveryMethod.resx">
-      <DependentUpon>201803012040320_RemoveCustomerContactandDeliveryMethod.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803021357285_AddCountyToBuyerSellerAddress.resx">
-      <DependentUpon>201803021357285_AddCountyToBuyerSellerAddress.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803081706470_AddStatusField.resx">
-      <DependentUpon>201803081706470_AddStatusField.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201803082055387_ChangeStatusToThreeFields.resx">
-      <DependentUpon>201803082055387_ChangeStatusToThreeFields.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201803211733152_test.resx">
+      <DependentUpon>201803211733152_test.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
