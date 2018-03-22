@@ -4,6 +4,7 @@ using SigningService.Factories;
 using SigningService.Models;
 using SigningService.Readers;
 using SigningService.Repositories;
+using SigningService.Utilities;
 
 namespace SigningService.Managers
 {
@@ -11,22 +12,27 @@ namespace SigningService.Managers
     {
         private readonly SigningReader _signingReader;
         private readonly IReswareSigningRepository _reswareSigningRepository;
+        private readonly ValidIncomingSigningUtility _validIncomingSigningUtility;
 
-        public SigningManager() : this(SigningDependencyFactory.Resolve<SigningReader>(), SigningDependencyFactory.Resolve<IReswareSigningRepository>())
+        public SigningManager() : this(SigningDependencyFactory.Resolve<SigningReader>(), SigningDependencyFactory.Resolve<IReswareSigningRepository>(), SigningDependencyFactory.Resolve<ValidIncomingSigningUtility>())
         {
             
         }
 
-        public SigningManager(SigningReader signingReader, IReswareSigningRepository reswareSigningRepository)
+        public SigningManager(SigningReader signingReader, IReswareSigningRepository reswareSigningRepository, ValidIncomingSigningUtility validIncomingSigningUtility)
         {
             _signingReader = signingReader;
             _reswareSigningRepository = reswareSigningRepository;
+            _validIncomingSigningUtility = validIncomingSigningUtility;
         }
 
         public SigningManagerResult PlaceSigning(ReceiveSigningData receiveSigningData)
         {
             try
             {
+                var validIncomingSigningUtility = _validIncomingSigningUtility.IsIncomingSigningDataValid(receiveSigningData);
+                if (!validIncomingSigningUtility.Valid) return new SigningManagerResult {Result = 0, Message = validIncomingSigningUtility.Message};
+
                 var signingReaderResult = _signingReader.ParseInput(receiveSigningData);
                 return new SigningManagerResult
                 {

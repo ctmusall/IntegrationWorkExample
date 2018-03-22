@@ -1,4 +1,5 @@
 ﻿using OrderPlacement.Models;
+using ReswareCommon;
 
 namespace OrderPlacement.Utilities
 {
@@ -6,12 +7,12 @@ namespace OrderPlacement.Utilities
     {
         internal ValidIncomingOrderResult IsIncomingOrderDataValid(string fileNumber, OrderPlacementServicePropertyAddress propertyAddress, OrderPlacementServicePartner lender)
         {
-            if (string.IsNullOrWhiteSpace(fileNumber)) return new ValidIncomingOrderResult { Valid = false, Message = "File number is null or empty. PCN requires a file number." };
+            if (string.IsNullOrWhiteSpace(fileNumber)) return new ValidIncomingOrderResult { Valid = false, Message = ValidationMessages.FileNumberIsNull };
 
-            if (propertyAddress == null) return new ValidIncomingOrderResult { Valid = false, Message = "Property address is null or empty. PCN requires a property address." };
+            if (propertyAddress == null) return new ValidIncomingOrderResult { Valid = false, Message = ValidationMessages.PropertyAddressIsNull };
 
             return lender == null ? 
-                new ValidIncomingOrderResult { Valid = false, Message = "Lender is null or empty. PCN requires a lender." } : 
+                new ValidIncomingOrderResult { Valid = false, Message = ValidationMessages.LenderIsNull } : 
                 new ValidIncomingOrderResult { Valid = true };
         }
     }

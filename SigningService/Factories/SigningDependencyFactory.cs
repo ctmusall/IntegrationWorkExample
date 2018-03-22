@@ -3,6 +3,7 @@ using SigningService.Managers;
 using SigningService.Parsers;
 using SigningService.Readers;
 using SigningService.Repositories;
+using SigningService.Utilities;
 using Unity;
 
 namespace SigningService.Factories
@@ -57,6 +58,7 @@ namespace SigningService.Factories
             container.RegisterType<ISigningServiceResultManager, SigningServiceResultManager>();
             container.RegisterType<SigningResultParser>();
             container.RegisterType<SigningParser>();
+            container.RegisterType<ValidIncomingSigningUtility>();
         }
     }
 }

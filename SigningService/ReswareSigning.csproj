@@ -53,6 +53,9 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="ReswareCommon">
+      <HintPath>..\ReswareCommon\bin\Debug\ReswareCommon.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.IdentityModel" />
     <Reference Include="System.Web.DynamicData" />
@@ -138,6 +141,7 @@
     <Compile Include="Models\SigningReaderResult.cs" />
     <Compile Include="Models\SigningManagerResult.cs" />
     <Compile Include="Models\SigningServiceResult.cs" />
+    <Compile Include="Models\ValidIncomingSigningResult.cs" />
     <Compile Include="Parsers\SigningParser.cs" />
     <Compile Include="Parsers\SigningResultParser.cs" />
     <Compile Include="Readers\SigningReader.cs" />
@@ -148,6 +152,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserNameValidator.cs" />
+    <Compile Include="Utilities\ValidIncomingSigningUtility.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
