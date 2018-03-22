@@ -183,6 +183,7 @@
     <Compile Include="Models\BuyerSellerReaderResult.cs" />
     <Compile Include="Models\PropertyAddressResult.cs" />
     <Compile Include="Models\ReaderResult.cs" />
+    <Compile Include="Models\ValidIncomingOrderResult.cs" />
     <Compile Include="OrderPlacementService.svc.cs">
       <DependentUpon>OrderPlacementService.svc</DependentUpon>
     </Compile>
@@ -198,6 +199,7 @@
     <Compile Include="Repositories\ReswareOrderRepository.cs" />
     <Compile Include="UserNameValidator.cs" />
     <Compile Include="Utilities\BuyerSellerReaderResultUtility.cs" />
+    <Compile Include="Utilities\ValidIncomingOrderUtility.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

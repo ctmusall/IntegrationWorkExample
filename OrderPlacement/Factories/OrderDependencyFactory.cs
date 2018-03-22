@@ -53,6 +53,7 @@ namespace OrderPlacement.Factories
         {
             container.RegisterType<ReswareReaderFactory>();
             container.RegisterType<ReswareOrderContext>();
+            container.RegisterType<ValidIncomingOrderUtility>();
             container.RegisterType<BuyerSellerReaderResultUtility>();
             container.RegisterType<IOrderPlacementManager, OrderPlacementManager>();
             container.RegisterType<IReswareOrderRepository, ReswareOrderRepository>();
