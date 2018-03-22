@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="IhQss91DkYjn4PqHZcH8CFZcoJY=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="A8MvdKFkQCDBdxW2+iUr9LSD5UQ=">
   <bindingConfigurations>
-    <bindingConfiguration bindingType="customBinding" name="CustomBinding_IReceiveNoteService">
+    <bindingConfiguration bindingType="customBinding" name="CustomBinding_IReceiveSigningService">
       <properties>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>CustomBinding_IReceiveNoteService</serializedValue>
+          <serializedValue>CustomBinding_IReceiveSigningService</serializedValue>
         </property>
         <property path="/closeTimeout" isComplexType="false" isExplicitlyDefined="true" clrType="System.TimeSpan, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
@@ -157,7 +157,7 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="CustomBinding_IReceiveNoteService" contract="ReswareSigning.IReceiveSigningService" bindingType="customBinding" address="https://pcnd6.pcnclosings.com:444/SigningService.svc" bindingConfiguration="CustomBinding_IReceiveNoteService">
+    <endpoint name="CustomBinding_IReceiveSigningService" contract="ReswareSigning.IReceiveSigningService" bindingType="customBinding" address="https://pcnd6.pcnclosings.com:444/SigningService.svc" bindingConfiguration="CustomBinding_IReceiveSigningService">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>https://pcnd6.pcnclosings.com:444/SigningService.svc</serializedValue>
@@ -169,7 +169,7 @@
           <serializedValue>customBinding</serializedValue>
         </property>
         <property path="/bindingConfiguration" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>CustomBinding_IReceiveNoteService</serializedValue>
+          <serializedValue>CustomBinding_IReceiveSigningService</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>ReswareSigning.IReceiveSigningService</serializedValue>
@@ -232,7 +232,7 @@
           <serializedValue>False</serializedValue>
         </property>
         <property path="/name" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>CustomBinding_IReceiveNoteService</serializedValue>
+          <serializedValue>CustomBinding_IReceiveSigningService</serializedValue>
         </property>
         <property path="/kind" isComplexType="false" isExplicitlyDefined="false" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue />
