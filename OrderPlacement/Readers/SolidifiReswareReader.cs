@@ -18,7 +18,7 @@ namespace OrderPlacement.Readers
                 LenderName = lender?.Name,
                 Notes = notes,
                 ClientId = clientId,
-                ClosingDateTime = estimatedSettlementDate ?? DateTime.Now,
+                ClosingDateTime = estimatedSettlementDate,
                 CreatedDateTime = DateTime.Now,
                 PropertyAddress = new List<PropertyAddress>(),
                 BuyerAndSellers = new List<BuyerSeller>()
