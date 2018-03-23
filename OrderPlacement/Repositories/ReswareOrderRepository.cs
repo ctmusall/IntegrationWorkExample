@@ -26,6 +26,10 @@ namespace OrderPlacement.Repositories
         {
             if (readerResult?.Order == null || readerResult.PropertyAddress == null || readerResult.BuyerSellersReaderResult?.BuyerSellers == null || readerResult.BuyerSellersReaderResult.BuyerSellerAddresses == null) return -1;
 
+            var orderExists = GetOrderByClientIdAndFileNumber(readerResult.Order.ClientId, readerResult.Order.FileNumber);
+
+            if (orderExists != null) DeleteOrder(orderExists);
+
             _reswareOrderContext.Orders.Add(readerResult.Order);
 
             _reswareOrderContext.PropertyAddresses.Add(readerResult.PropertyAddress);
@@ -74,6 +78,20 @@ namespace OrderPlacement.Repositories
             _reswareOrderContext.Entry(order).CurrentValues.SetValues(updatedOrder);
 
             return _reswareOrderContext.SaveChanges();
+        }
+
+        private Order GetOrderByClientIdAndFileNumber(int clientId, string fileNumber)
+        {
+            return _reswareOrderContext.Orders
+                .Include(o => o.PropertyAddress)
+                .Include(o => o.BuyerAndSellers)
+                .Include(o => o.BuyerAndSellers.Select(a => a.Address))
+                .FirstOrDefault(o => string.Equals(fileNumber, o.FileNumber) && clientId == o.ClientId);
+        }
+
+        private void DeleteOrder(Order orderToDelete)
+        {
+            _reswareOrderContext.Orders.Remove(orderToDelete);
         }
     }
 }
