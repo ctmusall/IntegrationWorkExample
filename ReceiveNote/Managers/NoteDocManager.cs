@@ -4,6 +4,7 @@ using ReceiveNote.Factories;
 using ReceiveNote.Models;
 using ReceiveNote.Readers;
 using ReceiveNote.Repositories;
+using ReswareCommon;
 
 namespace ReceiveNote.Managers
 {
@@ -24,6 +25,7 @@ namespace ReceiveNote.Managers
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(receiveNoteData.FileNumber)) return new NoteDocResult {Result = 0, Message = ValidationMessages.FileNumberIsNull};
                 var noteDocReaderResult = _noteDocReader.ParseInput(receiveNoteData);
                 return new NoteDocResult
                 {

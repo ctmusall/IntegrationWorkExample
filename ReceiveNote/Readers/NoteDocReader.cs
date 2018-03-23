@@ -29,7 +29,7 @@ namespace ReceiveNote.Readers
 
         private static ICollection<Document> MapDocuments(ReceiveNoteData receiveNoteData, Note note)
         {
-            return receiveNoteData.Documents.Select(document => new Document
+            return receiveNoteData.Documents?.Select(document => new Document
             {
                 Note = note,
                 Description = document.Description,
