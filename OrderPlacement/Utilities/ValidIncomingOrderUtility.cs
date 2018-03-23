@@ -9,10 +9,8 @@ namespace OrderPlacement.Utilities
         {
             if (string.IsNullOrWhiteSpace(fileNumber)) return new ValidIncomingOrderResult { Valid = false, Message = ValidationMessages.FileNumberIsNull };
 
-            if (propertyAddress == null) return new ValidIncomingOrderResult { Valid = false, Message = ValidationMessages.PropertyAddressIsNull };
-
-            return lender == null ? 
-                new ValidIncomingOrderResult { Valid = false, Message = ValidationMessages.LenderIsNull } : 
+            return propertyAddress == null ? 
+                new ValidIncomingOrderResult { Valid = false, Message = ValidationMessages.PropertyAddressIsNull } : 
                 new ValidIncomingOrderResult { Valid = true };
         }
     }
