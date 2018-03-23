@@ -137,7 +137,6 @@
     <Compile Include="Models\NoteDocResult.cs" />
     <Compile Include="Factories\NoteDocDependencyFactory.cs" />
     <Compile Include="Models\NoteDocServiceResult.cs" />
-    <Compile Include="Models\ValidIncomingNoteDocResult.cs" />
     <Compile Include="Parsers\NoteDocParser.cs" />
     <Compile Include="Parsers\NoteDocResultParser.cs" />
     <Compile Include="Readers\NoteDocReader.cs" />
