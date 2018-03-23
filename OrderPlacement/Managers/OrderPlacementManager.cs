@@ -32,7 +32,7 @@ namespace OrderPlacement.Managers
 
                 if (!validateOrderDataResult.Valid) return new PlaceOrderResult { Result = 0, Message = validateOrderDataResult.Message};
 
-                var readerResult = _reswareReaderFactory.ResolveReader(clientId).ParseInput(fileNumber, propertyAddress, productId, estimatedSettlementDate, lender, buyers, sellers, notes, clientId, transactionTypeId);
+                var readerResult = _reswareReaderFactory?.ResolveReader(clientId)?.ParseInput(fileNumber, propertyAddress, productId, estimatedSettlementDate, lender, buyers, sellers, notes, clientId, transactionTypeId);
 
                 return new PlaceOrderResult
                 {

@@ -21,9 +21,9 @@ namespace ReceiveNote.Readers
             return new Note
             {
                 CreatedDateTime = DateTime.Now,
-                FileNumber = receiveNoteData.FileNumber,
-                NoteBody = receiveNoteData.NoteBody,
-                NoteSubject = receiveNoteData.NoteSubject
+                FileNumber = receiveNoteData?.FileNumber,
+                NoteBody = receiveNoteData?.NoteBody,
+                NoteSubject = receiveNoteData?.NoteSubject
             };
         }
 

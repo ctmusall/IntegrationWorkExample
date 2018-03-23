@@ -19,8 +19,8 @@ namespace ActionEventService
             return new ActionEvent
             {
                 CreatedDateTime = DateTime.Now,
-                ActionEventCode = receiveActionEventData.ActionEventCode,
-                FileNumber = receiveActionEventData.FileNumber
+                ActionEventCode = receiveActionEventData?.ActionEventCode,
+                FileNumber = receiveActionEventData?.FileNumber
             };
         }
     }

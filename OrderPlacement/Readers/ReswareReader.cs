@@ -39,17 +39,17 @@ namespace OrderPlacement.Readers
             return new PropertyAddress
             {
                 Order = order,
-                AddressStreetInfo = propertyAddress.AddressStreetInfo,
-                City = propertyAddress.City,
-                County = propertyAddress.County,
-                Description = propertyAddress.Description,
-                State = propertyAddress.State,
-                StreetDirection = propertyAddress.StreetDirection,
-                StreetName = propertyAddress.StreetName,
-                StreetNumber = propertyAddress.StreetNumber,
-                StreetSuffix = propertyAddress.StreetSuffix,
-                Unit = propertyAddress.Unit,
-                Zip = propertyAddress.Zip
+                AddressStreetInfo = propertyAddress?.AddressStreetInfo,
+                City = propertyAddress?.City,
+                County = propertyAddress?.County,
+                Description = propertyAddress?.Description,
+                State = propertyAddress?.State,
+                StreetDirection = propertyAddress?.StreetDirection,
+                StreetName = propertyAddress?.StreetName,
+                StreetNumber = propertyAddress?.StreetNumber,
+                StreetSuffix = propertyAddress?.StreetSuffix,
+                Unit = propertyAddress?.Unit,
+                Zip = propertyAddress?.Zip
             };
         }
 
@@ -61,9 +61,9 @@ namespace OrderPlacement.Readers
                 BuyerSellerAddresses = new List<BuyerSellerAddress>()
             };
 
-            buyers.ForEach(buyer => _buyerSellerReaderResultUtility.CreateBuyerSellerAndBuyerSellerAddressAssociation(buyer, order, BuyerSellerEnum.Buyer, result));
+            buyers?.ForEach(buyer => _buyerSellerReaderResultUtility.CreateBuyerSellerAndBuyerSellerAddressAssociation(buyer, order, BuyerSellerEnum.Buyer, result));
 
-            sellers.ForEach(seller => _buyerSellerReaderResultUtility.CreateBuyerSellerAndBuyerSellerAddressAssociation(seller, order, BuyerSellerEnum.Seller, result));
+            sellers?.ForEach(seller => _buyerSellerReaderResultUtility.CreateBuyerSellerAndBuyerSellerAddressAssociation(seller, order, BuyerSellerEnum.Seller, result));
 
             return result;
         }

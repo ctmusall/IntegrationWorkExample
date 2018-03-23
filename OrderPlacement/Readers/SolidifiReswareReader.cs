@@ -15,7 +15,7 @@ namespace OrderPlacement.Readers
             {
                 FileNumber = fileNumber,
                 CustomerId = CustomerId,
-                LenderName = lender.Name,
+                LenderName = lender?.Name,
                 Notes = notes,
                 ClientId = clientId,
                 ClosingDateTime = estimatedSettlementDate,
