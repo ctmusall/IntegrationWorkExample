@@ -18,7 +18,7 @@ namespace OrderPlacement.Readers
                 LenderName = lender?.Name,
                 Notes = notes,
                 ClientId = clientId,
-                ClosingDateTime = estimatedSettlementDate,
+                ClosingDateTime = estimatedSettlementDate ?? DateTime.Now,
                 CreatedDateTime = DateTime.Now,
                 PropertyAddress = new List<PropertyAddress>(),
                 BuyerAndSellers = new List<BuyerSeller>()
@@ -50,7 +50,7 @@ namespace OrderPlacement.Readers
                 order.Product = ProductNameConstants.EClosingsProductNames.Purchase;
                 order.CustomerProduct = ProductNameConstants.EClosingsProductNames.Purchase;
             }
-            else if (transactionTypeId == 2)
+            else
             {
                 order.Product = ProductNameConstants.EClosingsProductNames.Refinance;
                 order.CustomerProduct = ProductNameConstants.EClosingsProductNames.Refinance;
