@@ -2,24 +2,27 @@
 using ActionEventService.Factories;
 using ActionEventService.Models;
 using ActionEventService.Repositories;
+using ActionEventService.Utilities;
 using Adeptive.ResWare.Services;
 
 namespace ActionEventService.Managers
 {
-    public class ActionEventManager : IActionEventManager
+    internal class ActionEventManager : IActionEventManager
     {
         private readonly ActionEventReader _actionEventReader;
         private readonly IReswareActionEventRepository _reswareActionEventRepository;
+        private readonly ValidIncomingActionEventUtility _validIncomingActionEventUtility;
 
-        public ActionEventManager() : this(ActionEventDependencyFactory.Resolve<ActionEventReader>(),ActionEventDependencyFactory.Resolve<IReswareActionEventRepository>())
+        public ActionEventManager() : this(ActionEventDependencyFactory.Resolve<ActionEventReader>(),ActionEventDependencyFactory.Resolve<IReswareActionEventRepository>(), ActionEventDependencyFactory.Resolve<ValidIncomingActionEventUtility>())
         {
             
         }
 
-        public ActionEventManager(ActionEventReader actionEventReader, IReswareActionEventRepository reswareActionEventRepository)
+        public ActionEventManager(ActionEventReader actionEventReader, IReswareActionEventRepository reswareActionEventRepository, ValidIncomingActionEventUtility validIncomingActionEventUtility)
         {
             _actionEventReader = actionEventReader;
             _reswareActionEventRepository = reswareActionEventRepository;
+            _validIncomingActionEventUtility = validIncomingActionEventUtility;
         }
 
 
@@ -27,6 +30,10 @@ namespace ActionEventService.Managers
         {
             try
             {
+                var validIncomingActionEvent = _validIncomingActionEventUtility.IsIncomingActionEventDataValid(receiveActionEventData);
+
+                if (!validIncomingActionEvent.Valid) return new ActionEventResult {Result = 0, Message = validIncomingActionEvent.Message};
+
                 var actionEventReaderResult = _actionEventReader.ParseInput(receiveActionEventData);
                 return new ActionEventResult
                 {

@@ -53,6 +53,9 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="ReswareCommon">
+      <HintPath>..\ReswareCommon\bin\Debug\ReswareCommon.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.IdentityModel" />
     <Reference Include="System.Web.DynamicData" />
@@ -133,6 +136,7 @@
     <Compile Include="Models\ActionEventReaderResult.cs" />
     <Compile Include="Models\ActionEventResult.cs" />
     <Compile Include="Models\ActionEventServiceResult.cs" />
+    <Compile Include="Models\ValidIncomingActionEventResult.cs" />
     <Compile Include="Parsers\ActionEventParser.cs" />
     <Compile Include="Parsers\ActionEventResultParser.cs" />
     <Compile Include="ReceiveActionEventService.svc.cs">
@@ -142,6 +146,7 @@
     <Compile Include="Repositories\IReswareActionEventRepository.cs" />
     <Compile Include="Repositories\ReswareActionEventRepository.cs" />
     <Compile Include="UserNameValidator.cs" />
+    <Compile Include="Utilities\ValidIncomingActionEventUtility.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

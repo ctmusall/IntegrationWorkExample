@@ -11,5 +11,6 @@
         public const string LocationZipIsNull = "Location zip is null or empty. PCN requires a location zip.";
         public const string LocationStateIsNull = "Location state is null or empty. PCN requires a location state.";
         public const string LocationCountyIsNull = "Location county is null or empty. PCN requires a location county.";
+        public const string ActionEventCodeIsNull = "Action event code is null or empty. PCN requires an action event code.";
     }
 }
