@@ -27,11 +27,6 @@ namespace ReswareOrderMonitorService.ActionEvents
 
         internal abstract RequestMessage BuildRequestMessage(OrderResult order, SigningServiceResult signing);
 
-        internal bool SendRequestMessage(RequestMessage requestMessage)
-        {
-            return _mirthServiceClient.SendMessageToMirth(ModelSerializer.SerializeXml(requestMessage), Settings.Default.MirthSolidifiRequestPort, Settings.Default.MirthIPAddress);
-        }
-
         internal override bool PerformAction(OrderResult order)
         {
             var signing = _receiveSigningServiceRepository.GetAllSignings().OrderByDescending(s => s.CreatedDateTime).FirstOrDefault(s => string.Equals(s.FileNumber, order.FileNumber, StringComparison.CurrentCultureIgnoreCase));
@@ -44,7 +39,7 @@ namespace ReswareOrderMonitorService.ActionEvents
 
             _orderServiceUtility.AssignServices(requestMessage);
 
-            return SendRequestMessage(requestMessage);
+            return _mirthServiceClient.SendMessageToMirth(ModelSerializer.SerializeXml(requestMessage), Settings.Default.MirthSolidifiRequestPort, Settings.Default.MirthIPAddress);
         }
 
         private static void AssignBorrowerInformation(RequestMessage requestClosingMessage, ICollection<BuyerSellerResult> buyerSellerResults)
