@@ -19,14 +19,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="https://pcnd6.pcnclosings.com:446/ReceiveNoteService.svc?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="https://10.250.161.135:447/ReceiveNoteService.svc?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ReceiveNoteService.xsd" MetadataType="Schema" ID="c8ea1d04-a427-4c61-9e87-d8c7fb7f6be2" SourceId="1" SourceUrl="https://pcnd6.pcnclosings.com:446/ReceiveNoteService.svc?xsd=xsd1" />
-    <MetadataFile FileName="ReceiveNoteService1.xsd" MetadataType="Schema" ID="113e9c42-aa4f-400c-be40-d15a6c9fd374" SourceId="1" SourceUrl="https://pcnd6.pcnclosings.com:446/ReceiveNoteService.svc?xsd=xsd3" />
-    <MetadataFile FileName="ReceiveNoteService2.xsd" MetadataType="Schema" ID="39846e80-8370-4e46-939e-5bfa28d0ebaf" SourceId="1" SourceUrl="https://pcnd6.pcnclosings.com:446/ReceiveNoteService.svc?xsd=xsd2" />
-    <MetadataFile FileName="Service.wsdl" MetadataType="Wsdl" ID="ff1c4b5d-473d-4220-9f32-3e18b5e2a595" SourceId="1" SourceUrl="https://pcnd6.pcnclosings.com:446/ReceiveNoteService.svc?wsdl" />
-    <MetadataFile FileName="ReceiveNoteService3.xsd" MetadataType="Schema" ID="35885258-59bd-4012-9d50-ee54294f4a81" SourceId="1" SourceUrl="https://pcnd6.pcnclosings.com:446/ReceiveNoteService.svc?xsd=xsd0" />
+    <MetadataFile FileName="Service.wsdl" MetadataType="Wsdl" ID="64890379-9379-4257-b2bd-c6e44071e7bd" SourceId="1" SourceUrl="https://10.250.161.135:447/ReceiveNoteService.svc?wsdl" />
+    <MetadataFile FileName="ReceiveNoteService4.xsd" MetadataType="Schema" ID="8aa4b938-e33d-4161-9212-2467cbd6b874" SourceId="1" SourceUrl="https://mirthtest.pcnclosings.com:447/ReceiveNoteService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ReceiveNoteService41.xsd" MetadataType="Schema" ID="f28bffd5-a150-4341-9fb2-38634e50d919" SourceId="1" SourceUrl="https://mirthtest.pcnclosings.com:447/ReceiveNoteService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ReceiveNoteService42.xsd" MetadataType="Schema" ID="fe36fc04-dab0-49b1-832e-74eb8a86d3d5" SourceId="1" SourceUrl="https://mirthtest.pcnclosings.com:447/ReceiveNoteService.svc?xsd=xsd3" />
+    <MetadataFile FileName="ReceiveNoteService43.xsd" MetadataType="Schema" ID="37b82c97-4305-4800-95e7-d7eec33cdbb4" SourceId="1" SourceUrl="https://mirthtest.pcnclosings.com:447/ReceiveNoteService.svc?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

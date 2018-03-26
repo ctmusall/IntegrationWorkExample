@@ -309,16 +309,16 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\ReswareActionEvent\Service.wsdl" />
-    <None Include="Service References\ReswareNoteDocs\ReceiveNoteService.xsd">
+    <None Include="Service References\ReswareNoteDocs\ReceiveNoteService4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ReswareNoteDocs\ReceiveNoteService1.xsd">
+    <None Include="Service References\ReswareNoteDocs\ReceiveNoteService41.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ReswareNoteDocs\ReceiveNoteService2.xsd">
+    <None Include="Service References\ReswareNoteDocs\ReceiveNoteService42.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\ReswareNoteDocs\ReceiveNoteService3.xsd">
+    <None Include="Service References\ReswareNoteDocs\ReceiveNoteService43.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\ReswareNoteDocs\ReswareOrderMonitorService.ReswareNoteDocs.NoteDocServiceResult.datasource">

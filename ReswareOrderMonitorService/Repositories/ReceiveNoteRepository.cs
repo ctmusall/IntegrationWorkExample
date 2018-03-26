@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.ServiceModel.Description;
 using ReswareOrderMonitorService.ReswareNoteDocs;
 
 namespace ReswareOrderMonitorService.Repositories
@@ -13,6 +14,11 @@ namespace ReswareOrderMonitorService.Repositories
         internal ReceiveNoteRepository(ReceiveNoteServiceClient receiveNoteServiceClient)
         {
             _receiveNoteServiceClient = receiveNoteServiceClient;
+            if (_receiveNoteServiceClient.ClientCredentials != null)
+            {
+                _receiveNoteServiceClient.ClientCredentials.UserName.UserName = "abc";
+                _receiveNoteServiceClient.ClientCredentials.UserName.Password = "abc";
+            }
             _receiveNoteServiceClient.GetAllNotesAndDocs();
         }
 
