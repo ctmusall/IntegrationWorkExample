@@ -35,14 +35,16 @@ namespace SigningService
                     return new ReceiveSigningResponse
                     {
                         ResponseCode = 0,
-                        Message = $"Filenumber {SigningData.FileNumber}: Signing Received"
+                        Message = $"File number {SigningData.FileNumber}: Signing Received",
+                        ReceiverSigningNumber = SigningData.SenderSigningNumber
                     };
                 }
 
                 return new ReceiveSigningResponse
                 {
                     ResponseCode = 0,
-                    Message = $"ERROR saving! Did not receive filenumber {SigningData.FileNumber}. {signingResult.Message}"
+                    Message = $"ERROR saving! Did not receive filenumber {SigningData.FileNumber}. {signingResult.Message}",
+                    ReceiverSigningNumber = SigningData.SenderSigningNumber
                 };
             }
             catch (Exception ex)

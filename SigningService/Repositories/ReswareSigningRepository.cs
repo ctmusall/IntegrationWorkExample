@@ -22,15 +22,24 @@ namespace SigningService.Repositories
             _reswareSigningContext = reswareSigningContext;
         }
 
-        public int SaveReaderResult(SigningReaderResult signingReaderResult)
+        public SigningRepositoryResult SaveReaderResult(SigningReaderResult signingReaderResult)
         {
-            if (signingReaderResult.Signing == null || signingReaderResult.SigningParties == null) return -1;
+            try
+            {
+                if (signingReaderResult.Signing == null) return new SigningRepositoryResult {Result = -1, Message = "Signing is null."};
 
-            _reswareSigningContext.Signings.Add(signingReaderResult.Signing);
-
-            _reswareSigningContext.SigningParties.AddRange(signingReaderResult.SigningParties);
-
-            return _reswareSigningContext.SaveChanges();
+                _reswareSigningContext.Signings.Add(signingReaderResult.Signing);
+                if (signingReaderResult.SigningParties != null) _reswareSigningContext.SigningParties.AddRange(signingReaderResult.SigningParties);
+                return new SigningRepositoryResult {Result = _reswareSigningContext.SaveChanges()};
+            }
+            catch (Exception ex)
+            {
+                return new SigningRepositoryResult
+                {
+                    Result = -1,
+                    Message = $"ERROR! Message: {ex.Message} \n\n Inner Exception: {ex.InnerException} \n\n Stack Trace: {ex.StackTrace}"
+                };
+            }
         }
 
         public List<Signing> GetAllSignings()

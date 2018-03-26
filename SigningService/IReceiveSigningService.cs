@@ -642,7 +642,7 @@ namespace Adeptive.ResWare.Services
 
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-[System.ServiceModel.ServiceContractAttribute(ConfigurationName="IReceiveSigningService")]
+[System.ServiceModel.ServiceContractAttribute(ConfigurationName="Services.ReceiveSigningService.IReceiveSigningService")]
 public interface IReceiveSigningService
 {
     

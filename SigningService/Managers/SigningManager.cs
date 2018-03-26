@@ -34,9 +34,11 @@ namespace SigningService.Managers
                 if (!validIncomingSigningUtility.Valid) return new SigningManagerResult {Result = 0, Message = validIncomingSigningUtility.Message};
 
                 var signingReaderResult = _signingReader.ParseInput(receiveSigningData);
+                var saveReaderResult = _reswareSigningRepository.SaveReaderResult(signingReaderResult); 
                 return new SigningManagerResult
                 {
-                    Result = _reswareSigningRepository.SaveReaderResult(signingReaderResult) 
+                    Result = saveReaderResult.Result,
+                    Message = saveReaderResult.Message
                 };
             }
             catch (Exception ex)

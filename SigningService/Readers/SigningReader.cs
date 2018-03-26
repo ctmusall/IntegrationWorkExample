@@ -22,7 +22,7 @@ namespace SigningService.Readers
             {
                 FileNumber = receiveSigningData?.FileNumber,
                 CreatedDateTime = DateTime.Now,
-                ClosingDateTime = receiveSigningData?.SigningDateTime,
+                ClosingDateTime = receiveSigningData?.SigningDateTime ?? DateTime.Now,
                 MobilePhone = receiveSigningData?.TransacteeMobilePhone,
                 HomePhone = receiveSigningData?.TransacteePhone,
                 WorkPhone = receiveSigningData?.TransacteeWorkPhone,

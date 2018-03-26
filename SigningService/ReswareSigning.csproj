@@ -140,6 +140,7 @@
     <Compile Include="Models\SigningPartyServiceResult.cs" />
     <Compile Include="Models\SigningReaderResult.cs" />
     <Compile Include="Models\SigningManagerResult.cs" />
+    <Compile Include="Models\SigningRepositoryResult.cs" />
     <Compile Include="Models\SigningServiceResult.cs" />
     <Compile Include="Models\ValidIncomingSigningResult.cs" />
     <Compile Include="Parsers\SigningParser.cs" />
