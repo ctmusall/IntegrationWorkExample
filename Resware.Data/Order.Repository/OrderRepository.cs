@@ -56,7 +56,7 @@ namespace Resware.Data.Order.Repository
                 .Include(o => o.PropertyAddress)
                 .Include(o => o.BuyerAndSellers)
                 .Include(o => o.BuyerAndSellers.Select(a => a.Address))
-                .FirstOrDefault(o => string.Equals(fileNumber, o.FileNumber, StringComparison.CurrentCultureIgnoreCase) 
+                .FirstOrDefault(o => string.Equals(o.FileNumber, fileNumber)
                 && clientId == o.ClientId);
         }
     }

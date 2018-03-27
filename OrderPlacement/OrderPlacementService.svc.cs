@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using OrderPlacement.Factory;
 using OrderPlacement.Managers;
-using OrderPlacement.Models;
 
 namespace OrderPlacement
 {    

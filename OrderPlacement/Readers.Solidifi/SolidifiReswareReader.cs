@@ -5,7 +5,7 @@ using Resware.Entities.Orders.Addresses;
 using Resware.Entities.Orders.BuyerSellers;
 using ReswareCommon;
 
-namespace OrderPlacement.Readers
+namespace OrderPlacement.Readers.Solidifi
 {
     internal class SolidifiReswareReader : ReswareReader
     {

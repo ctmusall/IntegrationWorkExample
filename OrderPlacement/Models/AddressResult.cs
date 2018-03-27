@@ -29,7 +29,5 @@ namespace OrderPlacement.Models
         public string AddressStreetInfo { get; set; }
         [DataMember]
         public string Description { get; set; }
-
-
     }
 }

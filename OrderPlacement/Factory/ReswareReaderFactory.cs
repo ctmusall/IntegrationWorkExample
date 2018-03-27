@@ -1,4 +1,5 @@
 ﻿using OrderPlacement.Readers;
+using OrderPlacement.Readers.Solidifi;
 
 namespace OrderPlacement.Factory
 {
