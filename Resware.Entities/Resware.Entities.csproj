@@ -51,6 +51,8 @@
     <Compile Include="Orders.BuyerSellers\BuyerSeller.cs" />
     <Compile Include="Orders\Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Signings.SigningParties\SigningParty.cs" />
+    <Compile Include="Signings\Signing.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

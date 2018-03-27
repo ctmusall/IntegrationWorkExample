@@ -53,6 +53,12 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Resware.Data">
+      <HintPath>..\Resware.Data\bin\Debug\Resware.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Resware.Entities">
+      <HintPath>..\Resware.Entities\bin\Debug\Resware.Entities.dll</HintPath>
+    </Reference>
     <Reference Include="ReswareCommon">
       <HintPath>..\ReswareCommon\bin\Debug\ReswareCommon.dll</HintPath>
     </Reference>
@@ -111,43 +117,16 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\ReswareSigningContext.cs" />
-    <Compile Include="Factories\SigningDependencyFactory.cs" />
+    <Compile Include="Factories\DependencyFactory.cs" />
     <Compile Include="IReceiveSigningService.cs" />
     <Compile Include="Managers\ISigningManager.cs" />
-    <Compile Include="Managers\ISigningServiceResultManager.cs" />
     <Compile Include="Managers\SigningManager.cs" />
-    <Compile Include="Managers\SigningServiceResultManager.cs" />
-    <Compile Include="Migrations\201802201332044_FirstMigration.cs" />
-    <Compile Include="Migrations\201802201332044_FirstMigration.Designer.cs">
-      <DependentUpon>201802201332044_FirstMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802201400025_RemoveDeliveryMethodFromSigning.cs" />
-    <Compile Include="Migrations\201802201400025_RemoveDeliveryMethodFromSigning.Designer.cs">
-      <DependentUpon>201802201400025_RemoveDeliveryMethodFromSigning.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802201430093_MakeSigningDateTimeNullable.cs" />
-    <Compile Include="Migrations\201802201430093_MakeSigningDateTimeNullable.Designer.cs">
-      <DependentUpon>201802201430093_MakeSigningDateTimeNullable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201802201434203_UpdateClosingAddressNames.cs" />
-    <Compile Include="Migrations\201802201434203_UpdateClosingAddressNames.Designer.cs">
-      <DependentUpon>201802201434203_UpdateClosingAddressNames.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\Signing.cs" />
-    <Compile Include="Models\SigningParty.cs" />
     <Compile Include="Models\SigningPartyServiceResult.cs" />
     <Compile Include="Models\SigningReaderResult.cs" />
     <Compile Include="Models\SigningManagerResult.cs" />
-    <Compile Include="Models\SigningRepositoryResult.cs" />
     <Compile Include="Models\SigningServiceResult.cs" />
     <Compile Include="Models\ValidIncomingSigningResult.cs" />
-    <Compile Include="Parsers\SigningParser.cs" />
-    <Compile Include="Parsers\SigningResultParser.cs" />
     <Compile Include="Readers\SigningReader.cs" />
-    <Compile Include="Repositories\IReswareSigningRepository.cs" />
-    <Compile Include="Repositories\ReswareSigningRepository.cs" />
     <Compile Include="SigningService.svc.cs">
       <DependentUpon>SigningService.svc</DependentUpon>
     </Compile>
@@ -155,9 +134,7 @@
     <Compile Include="UserNameValidator.cs" />
     <Compile Include="Utilities\ValidIncomingSigningUtility.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\File.pubxml" />
@@ -171,20 +148,6 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201802201332044_FirstMigration.resx">
-      <DependentUpon>201802201332044_FirstMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802201400025_RemoveDeliveryMethodFromSigning.resx">
-      <DependentUpon>201802201400025_RemoveDeliveryMethodFromSigning.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802201430093_MakeSigningDateTimeNullable.resx">
-      <DependentUpon>201802201430093_MakeSigningDateTimeNullable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201802201434203_UpdateClosingAddressNames.resx">
-      <DependentUpon>201802201434203_UpdateClosingAddressNames.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

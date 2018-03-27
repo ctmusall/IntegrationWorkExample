@@ -91,6 +91,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Order.Repository\OrderRepository.cs" />
     <Compile Include="Repository\RepositoryBase.cs" />
+    <Compile Include="Signing.Repository\SigningRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

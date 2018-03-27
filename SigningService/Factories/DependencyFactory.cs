@@ -1,21 +1,22 @@
-﻿using OrderPlacement.Managers;
-using OrderPlacement.Utilities;
-using Resware.Data.Order.Repository;
+﻿using Resware.Data.Signing.Repository;
+using SigningService.Managers;
+using SigningService.Readers;
+using SigningService.Utilities;
 using Unity;
 
-namespace OrderPlacement.Factory
+namespace SigningService.Factories
 {
     /// <summary>
     /// Simple wrapper for unity resolution.
     /// </summary>
-    internal class DependencyFactory
+    public class DependencyFactory
     {
         /// <summary>
         /// Public reference to the unity container which will 
         /// allow the ability to register instrances or take 
         /// other actions on the container.
         /// </summary>
-        internal static IUnityContainer Container { get; }
+        public static IUnityContainer Container { get; }
 
         /// <summary>
         /// Static constructor for DependencyFactory which will 
@@ -34,7 +35,7 @@ namespace OrderPlacement.Factory
         /// Resolves the type parameter T to an instance of the appropriate type.
         /// </summary>
         /// <typeparam name="T">Type of object to return</typeparam>
-        internal static T Resolve<T>()
+        public static T Resolve<T>()
         {
             var ret = default(T);
 
@@ -48,10 +49,10 @@ namespace OrderPlacement.Factory
 
         private static void RegisterTypes(IUnityContainer container)
         {
-            container.RegisterSingleton<OrderRepository>();
-            container.RegisterSingleton<BuyerSellerReaderResultUtility>();
-            container.RegisterSingleton<ReswareReaderFactory>();
-            container.RegisterType<IOrderPlacementManager, OrderPlacementManager>();
+            container.RegisterSingleton<SigningReader>();
+            container.RegisterSingleton<SigningRepository>();
+            container.RegisterSingleton<ValidIncomingSigningUtility>();
+            container.RegisterType<ISigningManager, SigningManager>();
         }
     }
 }
