@@ -23,7 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReswareActionEvent", "Actio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReswareMonitor", "ReswareOrderMonitorService\ReswareMonitor.csproj", "{43DBA399-2E78-44DD-A2F8-8529C7E9A5AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReswareCommon", "ReswareCommon\ReswareCommon.csproj", "{786C9E6C-93FF-4D16-9407-EEEB61A705E3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resware.Common", "ReswareCommon\Resware.Common.csproj", "{786C9E6C-93FF-4D16-9407-EEEB61A705E3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
