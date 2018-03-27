@@ -1,30 +1,28 @@
-﻿using OrderPlacement.Data;
-using OrderPlacement.Managers;
-using OrderPlacement.Parser;
+﻿using OrderPlacement.Managers;
 using OrderPlacement.Parsers;
-using OrderPlacement.Repositories;
 using OrderPlacement.Utilities;
+using Resware.Data.Order.Repository;
 using Unity;
 
-namespace OrderPlacement.Factories
+namespace OrderPlacement.Factory
 {
     /// <summary>
     /// Simple wrapper for unity resolution.
     /// </summary>
-    public class OrderDependencyFactory
+    internal class DependencyFactory
     {
         /// <summary>
         /// Public reference to the unity container which will 
         /// allow the ability to register instrances or take 
         /// other actions on the container.
         /// </summary>
-        public static IUnityContainer Container { get; }
+        internal static IUnityContainer Container { get; }
 
         /// <summary>
         /// Static constructor for DependencyFactory which will 
         /// initialize the unity container.
         /// </summary>
-        static OrderDependencyFactory()
+        static DependencyFactory()
         {
             var container = new UnityContainer();
 
@@ -37,9 +35,9 @@ namespace OrderPlacement.Factories
         /// Resolves the type parameter T to an instance of the appropriate type.
         /// </summary>
         /// <typeparam name="T">Type of object to return</typeparam>
-        public static T Resolve<T>()
+        internal static T Resolve<T>()
         {
-            T ret = default(T);
+            var ret = default(T);
 
             if (Container.IsRegistered(typeof(T)))
             {
@@ -51,13 +49,10 @@ namespace OrderPlacement.Factories
 
         private static void RegisterTypes(IUnityContainer container)
         {
-            container.RegisterType<ReswareReaderFactory>();
-            container.RegisterType<ReswareOrderContext>();
-            container.RegisterType<ValidIncomingOrderUtility>();
-            container.RegisterType<BuyerSellerReaderResultUtility>();
+            container.RegisterSingleton<OrderRepository>();
+            container.RegisterSingleton<BuyerSellerReaderResultUtility>();
+            container.RegisterSingleton<ReswareReaderFactory>();
             container.RegisterType<IOrderPlacementManager, OrderPlacementManager>();
-            container.RegisterType<IReswareOrderRepository, ReswareOrderRepository>();
-            container.RegisterType<IOrderResultManager, OrderResultManager>();
             container.RegisterType<IOrderResultParser, OrderResultParser>();
             container.RegisterType<IOrderParser, OrderParser>();
         }

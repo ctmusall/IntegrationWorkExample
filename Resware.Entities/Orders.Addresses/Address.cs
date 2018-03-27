@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace OrderPlacement.Models
+namespace Resware.Entities.Orders.Addresses
 {
     public abstract class Address
     {
@@ -19,5 +19,6 @@ namespace OrderPlacement.Models
         public string State { get; set; }
         public string AddressStreetInfo { get; set; }
         public string Description { get; set; }
+        public string County { get; set; }
     }
 }

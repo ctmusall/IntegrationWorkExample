@@ -1,23 +1,24 @@
 ﻿using System.Data.Entity;
-using OrderPlacement.Models;
+using Resware.Entities.Orders.Addresses;
+using Resware.Entities.Orders.BuyerSellers;
 
-namespace OrderPlacement.Data
+namespace Resware.Data.Context
 {
-    public class ReswareOrderContext : DbContext
+    public class ReswareDbContext : DbContext
     {
-        public ReswareOrderContext() : base("name=ReswareOrderContext")
+        public ReswareDbContext() : base("name=ReswareDbContext")
         {
-            Database.SetInitializer(new CreateDatabaseIfNotExists<ReswareOrderContext>());
+            Database.SetInitializer(new CreateDatabaseIfNotExists<ReswareDbContext>());
         }
 
-        public virtual DbSet<Order> Orders { get; set; } 
+        public virtual DbSet<Entities.Orders.Order> Orders { get; set; } 
         public virtual DbSet<PropertyAddress> PropertyAddresses { get; set; }
         public virtual DbSet<BuyerSellerAddress> BuyerSellerAddresses { get; set; }
         public virtual DbSet<BuyerSeller> BuyerSellers { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Order>().ToTable("Order");
+            modelBuilder.Entity<Entities.Orders.Order>().ToTable("Order");
 
             modelBuilder.Entity<PropertyAddress>().ToTable("PropertyAddress")
                 .HasKey(a => a.Id)

@@ -1,4 +1,5 @@
 ﻿using OrderPlacement.Models;
+using Resware.Entities.Orders;
 
 namespace OrderPlacement.Parsers
 {

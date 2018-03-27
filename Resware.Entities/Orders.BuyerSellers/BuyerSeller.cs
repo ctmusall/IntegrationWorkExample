@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using OrderPlacement.Common;
+using Resware.Entities.Orders.Addresses;
 
-namespace OrderPlacement.Models
+namespace Resware.Entities.Orders.BuyerSellers
 {
     public class BuyerSeller
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid Id { get; set; }
-
         [ForeignKey("Order")]
         public Guid OrderId { get; set; }
 

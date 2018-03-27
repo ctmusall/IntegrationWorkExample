@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using OrderPlacement.Common;
-using OrderPlacement.Factories;
+using OrderPlacement.Factory;
 using OrderPlacement.Models;
 using OrderPlacement.Utilities;
+using Resware.Entities.Orders;
+using Resware.Entities.Orders.Addresses;
+using Resware.Entities.Orders.BuyerSellers;
 using Unity.Interception.Utilities;
 
 namespace OrderPlacement.Readers
@@ -12,7 +15,7 @@ namespace OrderPlacement.Readers
     {
         private readonly BuyerSellerReaderResultUtility _buyerSellerReaderResultUtility;
 
-        internal ReswareReader() : this(OrderDependencyFactory.Resolve<BuyerSellerReaderResultUtility>()) { }
+        internal ReswareReader() : this(DependencyFactory.Resolve<BuyerSellerReaderResultUtility>()) { }
 
         internal ReswareReader(BuyerSellerReaderResultUtility buyerSellerReaderResultUtility)
         {

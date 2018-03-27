@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using OrderPlacement.Models;
-using OrderPlacement.Parser;
+using Resware.Entities.Orders;
+using Resware.Entities.Orders.Addresses;
+using Resware.Entities.Orders.BuyerSellers;
 
 namespace OrderPlacement.Parsers
 {

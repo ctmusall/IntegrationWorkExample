@@ -1,22 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
-using OrderPlacement.Factories;
+using OrderPlacement.Factory;
 using OrderPlacement.Models;
-using OrderPlacement.Parser;
 using OrderPlacement.Parsers;
-using OrderPlacement.Repositories;
+using Resware.Data.Order.Repository;
 
 namespace OrderPlacement.Managers
 {
     public class OrderResultManager : IOrderResultManager
     {
-        private readonly IReswareOrderRepository _reswareOrderRepository;
+        private readonly OrderRepository _reswareOrderRepository;
         private readonly IOrderResultParser _orderResultParser;
         private readonly IOrderParser _orderParser;
 
-        public OrderResultManager() : this(OrderDependencyFactory.Resolve<IReswareOrderRepository>(), OrderDependencyFactory.Resolve<IOrderResultParser>(), OrderDependencyFactory.Resolve<IOrderParser>()) { }
+        public OrderResultManager() : this(DependencyFactory.Resolve<OrderRepository>(), DependencyFactory.Resolve<IOrderResultParser>(), DependencyFactory.Resolve<IOrderParser>()) { }
 
-        public OrderResultManager(IReswareOrderRepository reswareOrderRepository, IOrderResultParser orderResultParser, IOrderParser orderParser)
+        public OrderResultManager(OrderRepository reswareOrderRepository, IOrderResultParser orderResultParser, IOrderParser orderParser)
         {
             _reswareOrderRepository = reswareOrderRepository;
             _orderResultParser = orderResultParser;
@@ -33,31 +32,6 @@ namespace OrderPlacement.Managers
             catch (Exception)
             {
                 return null;
-            }
-        }
-
-        public OrderResult GetOrderById(Guid id)
-        {
-            try
-            {
-                var order = _reswareOrderRepository.GetOrderById(id);
-                return _orderResultParser.ParseOrderResult(order);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
-        public int DeleteOrderById(Guid id)
-        {
-            try
-            {
-                return _reswareOrderRepository.DeleteOrderById(id);
-            }
-            catch (Exception)
-            {
-                return -1;
             }
         }
 

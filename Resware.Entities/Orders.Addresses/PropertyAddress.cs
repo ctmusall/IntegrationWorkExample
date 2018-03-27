@@ -1,14 +1,12 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace OrderPlacement.Models
+namespace Resware.Entities.Orders.Addresses
 {
     public class PropertyAddress : Address
     {
         [ForeignKey("Order")]
         public Guid OrderId { get; set; }
-
         public virtual Order Order { get; set; }
-        public string County { get; set; }
     }
 }

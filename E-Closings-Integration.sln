@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resware.Signing.WCF", "Sign
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resware.ActionEvent.WCF", "ActionEventService\Resware.ActionEvent.WCF.csproj", "{06839BDB-F490-4E96-B347-8148B43D0CAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resware.Monitor.WindowsService", "ReswareOrderMonitorService\Resware.Monitor.WindowsService.csproj", "{43DBA399-2E78-44DD-A2F8-8529C7E9A5AB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resware.MonitorService", "ReswareOrderMonitorService\Resware.MonitorService.csproj", "{43DBA399-2E78-44DD-A2F8-8529C7E9A5AB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resware.Common", "ReswareCommon\Resware.Common.csproj", "{786C9E6C-93FF-4D16-9407-EEEB61A705E3}"
 EndProject

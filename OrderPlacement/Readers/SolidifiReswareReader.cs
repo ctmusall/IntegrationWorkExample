@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using OrderPlacement.Models;
+using Resware.Entities.Orders;
+using Resware.Entities.Orders.Addresses;
+using Resware.Entities.Orders.BuyerSellers;
 using ReswareCommon;
 
 namespace OrderPlacement.Readers

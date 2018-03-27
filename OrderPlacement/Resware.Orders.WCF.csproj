@@ -65,6 +65,13 @@
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Resware.Data">
+      <HintPath>..\Resware.Data\bin\Debug\Resware.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Resware.Entities, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Resware.Entities\bin\Debug\Resware.Entities.dll</HintPath>
+    </Reference>
     <Reference Include="ReswareCommon, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ReswareCommon\bin\Debug\ReswareCommon.dll</HintPath>
@@ -156,30 +163,18 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\BuyerSellerEnum.cs" />
-    <Compile Include="Data\ReswareOrderContext.cs" />
-    <Compile Include="Factories\OrderDependencyFactory.cs" />
-    <Compile Include="Factories\ReswareReaderFactory.cs" />
+    <Compile Include="Factory\DependencyFactory.cs" />
+    <Compile Include="Factory\ReswareReaderFactory.cs" />
     <Compile Include="IOrderPlacementService.cs" />
     <Compile Include="Managers\IOrderPlacementManager.cs" />
     <Compile Include="Managers\IOrderResultManager.cs" />
     <Compile Include="Managers\OrderPlacementManager.cs" />
     <Compile Include="Managers\OrderResultManager.cs" />
-    <Compile Include="Migrations\201803211733152_test.cs" />
-    <Compile Include="Migrations\201803211733152_test.Designer.cs">
-      <DependentUpon>201803211733152_test.cs</DependentUpon>
-    </Compile>
     <Compile Include="Models\AddressResult.cs" />
     <Compile Include="Models\BuyerSellerAddressResult.cs" />
     <Compile Include="Models\BuyerSellerResult.cs" />
     <Compile Include="Models\OrderResult.cs" />
     <Compile Include="Models\PlaceOrderResult.cs" />
-    <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\BuyerSeller.cs" />
-    <Compile Include="Models\BuyerSellerAddress.cs" />
-    <Compile Include="Models\Order.cs" />
-    <Compile Include="Models\Address.cs" />
-    <Compile Include="Models\PropertyAddress.cs" />
     <Compile Include="Models\BuyerSellerReaderResult.cs" />
     <Compile Include="Models\PropertyAddressResult.cs" />
     <Compile Include="Models\ReaderResult.cs" />
@@ -195,15 +190,11 @@
     <Compile Include="Readers\IReswareReader.cs" />
     <Compile Include="Readers\SolidifiReswareReader.cs" />
     <Compile Include="Readers\ReswareReader.cs" />
-    <Compile Include="Repositories\IReswareOrderRepository.cs" />
-    <Compile Include="Repositories\ReswareOrderRepository.cs" />
     <Compile Include="UserNameValidator.cs" />
     <Compile Include="Utilities\BuyerSellerReaderResultUtility.cs" />
     <Compile Include="Utilities\ValidIncomingOrderUtility.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\Mirthtest.pubxml" />
@@ -216,14 +207,6 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201803211733152_test.resx">
-      <DependentUpon>201803211733152_test.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

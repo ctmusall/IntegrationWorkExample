@@ -1,6 +1,6 @@
 ﻿using OrderPlacement.Readers;
 
-namespace OrderPlacement.Factories
+namespace OrderPlacement.Factory
 {
     public class ReswareReaderFactory
     {

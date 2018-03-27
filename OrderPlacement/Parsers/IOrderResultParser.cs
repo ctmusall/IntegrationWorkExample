@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using OrderPlacement.Models;
+using Resware.Entities.Orders;
 
-namespace OrderPlacement.Parser
+namespace OrderPlacement.Parsers
 {
     public interface IOrderResultParser
     {

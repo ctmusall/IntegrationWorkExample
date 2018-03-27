@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BuyerSellerEnum.cs" />
     <Compile Include="EClosingOrderStatusConstants.cs" />
     <Compile Include="ProductNameConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
