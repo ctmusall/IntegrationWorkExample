@@ -1,6 +1,7 @@
 ﻿using System;
 using Resware.Entities.Orders;
 using ReswareCommon;
+using ReswareCommon.Constants;
 using ReswareOrderMonitorService.eClosingIntegrationService;
 using ReswareOrderMonitorService.StatusSenders;
 
@@ -26,7 +27,7 @@ namespace ReswareOrderMonitorService.Factories.StatusSenders
         {
             if (string.IsNullOrWhiteSpace(currentOrderStatus)) return false;
 
-            return string.Equals(previousOrderStatus, EClosingOrderStatusConstants.Pending, StringComparison.CurrentCultureIgnoreCase) && string.Equals(EClosingOrder.Order.Status, EClosingOrderStatusConstants.Scheduled, StringComparison.CurrentCultureIgnoreCase);
+            return string.Equals(previousOrderStatus, OrderStatusConstants.Pending, StringComparison.CurrentCultureIgnoreCase) && string.Equals(EClosingOrder.Order.Status, OrderStatusConstants.Scheduled, StringComparison.CurrentCultureIgnoreCase);
         }
     }
 }

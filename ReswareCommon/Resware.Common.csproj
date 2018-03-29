@@ -41,14 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BuyerSellerEnum.cs" />
-    <Compile Include="EClosingOrderStatusConstants.cs" />
-    <Compile Include="ProductNameConstants.cs" />
+    <Compile Include="Enums\BuyerSellerEnum.cs" />
+    <Compile Include="Constants\OrderStatusConstants.cs" />
+    <Compile Include="Constants\ProductNameConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServiceNameConstants.cs" />
-    <Compile Include="StateConstants.cs" />
-    <Compile Include="ValidationMessages.cs" />
+    <Compile Include="Constants\ServiceNameConstants.cs" />
+    <Compile Include="Constants\StateConstants.cs" />
+    <Compile Include="Messages\ValidationMessages.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

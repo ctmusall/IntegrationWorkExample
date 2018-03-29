@@ -5,6 +5,7 @@ using ReceiveNote.Models;
 using ReceiveNote.Readers;
 using Resware.Data.NoteDoc.Repository;
 using ReswareCommon;
+using ReswareCommon.Messages;
 
 namespace ReceiveNote.Managers
 {

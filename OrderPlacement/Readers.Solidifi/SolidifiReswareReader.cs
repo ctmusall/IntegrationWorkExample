@@ -4,6 +4,7 @@ using Resware.Entities.Orders;
 using Resware.Entities.Orders.Addresses;
 using Resware.Entities.Orders.BuyerSellers;
 using ReswareCommon;
+using ReswareCommon.Constants;
 
 namespace OrderPlacement.Readers.Solidifi
 {

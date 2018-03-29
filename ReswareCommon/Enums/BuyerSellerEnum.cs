@@ -1,4 +1,4 @@
-﻿namespace OrderPlacement.Common
+﻿namespace ReswareCommon.Enums
 {
     public enum BuyerSellerEnum
     {

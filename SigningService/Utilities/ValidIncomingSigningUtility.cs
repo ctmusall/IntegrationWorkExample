@@ -1,5 +1,6 @@
 ﻿using Adeptive.ResWare.Services;
 using ReswareCommon;
+using ReswareCommon.Messages;
 using SigningService.Models;
 
 namespace SigningService.Utilities

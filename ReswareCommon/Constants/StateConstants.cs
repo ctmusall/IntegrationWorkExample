@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace ReswareCommon
+namespace ReswareCommon.Constants
 {
     public static class StateConstants
     {

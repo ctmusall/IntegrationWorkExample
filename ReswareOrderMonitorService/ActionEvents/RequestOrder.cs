@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using OrderPlacement.Common;
 using Resware.Data.Signing.Repository;
 using Resware.Entities.Orders;
 using Resware.Entities.Orders.BuyerSellers;
 using Resware.Entities.Signings;
+using ReswareCommon;
+using ReswareCommon.Enums;
 using ReswareOrderMonitorService.Common;
 using ReswareOrderMonitorService.Mirth;
 using ReswareOrderMonitorService.Models;
