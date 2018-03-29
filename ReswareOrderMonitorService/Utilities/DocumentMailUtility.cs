@@ -2,14 +2,14 @@
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
-using ReswareOrderMonitorService.ReswareNoteDocs;
-using ReswareOrderMonitorService.ReswareOrders;
+using Resware.Entities.Notes.Documents;
+using Resware.Entities.Orders;
 
 namespace ReswareOrderMonitorService.Utilities
 {
     internal abstract class DocumentMailUtility : IDocumentMailUtility
     {
-        public MailMessage BuildDocumentMailMessage(DocumentServiceResult document, OrderResult reswareOrder)
+        public MailMessage BuildDocumentMailMessage(Document document, Order reswareOrder)
         {
             var propertyAddress = reswareOrder.PropertyAddress.FirstOrDefault(o => o.OrderId == reswareOrder.Id);
             if (propertyAddress == null) return null;

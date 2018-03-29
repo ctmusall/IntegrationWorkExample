@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Adeptive.ResWare.Services;
+using Resware.Entities.Signings;
+using Resware.Entities.Signings.SigningParties;
 using SigningService.Models;
 
 namespace SigningService.Readers

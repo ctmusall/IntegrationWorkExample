@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using Resware.Entities.Notes;
+using Resware.Entities.Notes.Documents;
 
 namespace ReceiveNote.Models
 {

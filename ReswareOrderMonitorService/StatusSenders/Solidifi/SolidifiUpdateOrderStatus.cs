@@ -1,20 +1,21 @@
-﻿using ReswareOrderMonitorService.Repositories;
-using ReswareOrderMonitorService.ReswareOrders;
+﻿using Resware.Data.Order.Repository;
+using Resware.Entities.Orders;
+using ReswareOrderMonitorService.Factories;
 
 namespace ReswareOrderMonitorService.StatusSenders.Solidifi
 {
     internal abstract class SolidifiUpdateOrderStatus : IStatusSender
     {
-        internal readonly IOrderPlacementRepository OrderPlacementRepository;
+        internal readonly OrderRepository OrderPlacementRepository;
         internal readonly string NewStatus;
 
-        internal SolidifiUpdateOrderStatus(string newStatus, IOrderPlacementRepository orderPlacementRepository) : this(new OrderPlacementRepository()) { NewStatus = newStatus; OrderPlacementRepository = orderPlacementRepository; }
+        internal SolidifiUpdateOrderStatus(string newStatus, OrderRepository orderPlacementRepository) : this(DependencyFactory.Resolve<OrderRepository>()) { NewStatus = newStatus; OrderPlacementRepository = orderPlacementRepository; }
 
-        internal SolidifiUpdateOrderStatus(IOrderPlacementRepository orderPlacementRepository)
+        internal SolidifiUpdateOrderStatus(OrderRepository orderPlacementRepository)
         {
             OrderPlacementRepository = orderPlacementRepository;
         }
 
-        public abstract void SendStatusUpdate(OrderResult order);
+        public abstract void SendStatusUpdate(Order order);
     }
 }

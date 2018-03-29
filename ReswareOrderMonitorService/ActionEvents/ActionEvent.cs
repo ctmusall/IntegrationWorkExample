@@ -1,9 +1,9 @@
-﻿using ReswareOrderMonitorService.ReswareOrders;
+﻿using Resware.Entities.Orders;
 
 namespace ReswareOrderMonitorService.ActionEvents
 {
     internal abstract class ActionEvent
     {
-        internal abstract bool PerformAction(OrderResult order);
+        internal abstract bool PerformAction(Order order);
     }
 }

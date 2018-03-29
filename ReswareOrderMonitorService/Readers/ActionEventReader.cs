@@ -1,27 +1,27 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
+using Resware.Data.ActionEvent.Repository;
+using Resware.Entities.Orders;
 using ReswareOrderMonitorService.Factories;
 using ReswareOrderMonitorService.Factories.ActionEvents;
-using ReswareOrderMonitorService.Repositories;
-using ReswareOrderMonitorService.ReswareOrders;
 
 namespace ReswareOrderMonitorService.Readers
 {
     internal class ActionEventReader : IActionEventReader
     {
         private readonly IParentActionEventFactory _parentActionEventFactory;
-        private readonly IReceiveActionEventRepository _receiveActionEventRepository;
+        private readonly ActionEventRepository _receiveActionEventRepository;
 
-        public ActionEventReader() : this(ReswareOrderDependencyFactory.Resolve<IReceiveActionEventRepository>(), ReswareOrderDependencyFactory.Resolve<IParentActionEventFactory>()) { }
+        public ActionEventReader() : this(DependencyFactory.Resolve<ActionEventRepository>(), DependencyFactory.Resolve<IParentActionEventFactory>()) { }
 
-        internal ActionEventReader(IReceiveActionEventRepository receiveActionEventRepository, IParentActionEventFactory parentActionEventParser)
+        internal ActionEventReader(ActionEventRepository receiveActionEventRepository, IParentActionEventFactory parentActionEventParser)
         {
             _receiveActionEventRepository = receiveActionEventRepository;
             _parentActionEventFactory = parentActionEventParser;
         }
 
-        public void CompleteActions(OrderResult order)
+        public void CompleteActions(Order order)
         {
             try
             {

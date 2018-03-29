@@ -1,9 +1,9 @@
-﻿using ReswareOrderMonitorService.ReswareOrders;
+﻿using Resware.Entities.Orders;
 
 namespace ReswareOrderMonitorService.Readers
 {
     internal interface IActionEventReader
     {
-        void CompleteActions(OrderResult order);
+        void CompleteActions(Order order);
     }
 }

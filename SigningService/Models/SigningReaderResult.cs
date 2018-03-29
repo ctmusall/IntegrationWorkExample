@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using Resware.Entities.Signings;
+using Resware.Entities.Signings.SigningParties;
 
 namespace SigningService.Models
 {

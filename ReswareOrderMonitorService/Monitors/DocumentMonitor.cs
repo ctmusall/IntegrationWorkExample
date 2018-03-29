@@ -1,22 +1,23 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
+using Resware.Data.NoteDoc.Repository;
+using Resware.Data.Order.Repository;
 using ReswareOrderMonitorService.Factories;
 using ReswareOrderMonitorService.Factories.Documents;
-using ReswareOrderMonitorService.Repositories;
 using Unity.Interception.Utilities;
 
 namespace ReswareOrderMonitorService.Monitors
 {
     internal class DocumentMonitor : IDocumentMonitor
     {
-        private readonly IReceiveNoteRepository _receiveNoteRepository;
-        private readonly IOrderPlacementRepository _orderPlacementRepository;
+        private readonly NoteDocRepository _receiveNoteRepository;
+        private readonly OrderRepository _orderPlacementRepository;
         private readonly IClientDocumentFactory _clientClosingDocumentFactory;
 
-        public DocumentMonitor() : this(ReswareOrderDependencyFactory.Resolve<IReceiveNoteRepository>(), ReswareOrderDependencyFactory.Resolve<IOrderPlacementRepository>(), ReswareOrderDependencyFactory.Resolve<IClientDocumentFactory>()) { }
+        public DocumentMonitor() : this(DependencyFactory.Resolve<NoteDocRepository>(), DependencyFactory.Resolve<OrderRepository>(), DependencyFactory.Resolve<IClientDocumentFactory>()) { }
 
-        internal DocumentMonitor(IReceiveNoteRepository receiveNoteRepository, IOrderPlacementRepository orderPlacementRepository, IClientDocumentFactory clientClosingDocumentFactory)
+        internal DocumentMonitor(NoteDocRepository receiveNoteRepository, OrderRepository orderPlacementRepository, IClientDocumentFactory clientClosingDocumentFactory)
         {
             _receiveNoteRepository = receiveNoteRepository;
             _orderPlacementRepository = orderPlacementRepository;
@@ -27,17 +28,17 @@ namespace ReswareOrderMonitorService.Monitors
         {
             try
             {
-                var notesAndDocs = _receiveNoteRepository.GetAllNotesAndDocs().Where(nd => !nd.Processed && nd.ProcessedDateTime == null).ToList();
+                var notesAndDocs = _receiveNoteRepository.GetAllNoteDocs().Where(nd => !nd.Processed && nd.ProcessedDateTime == null).ToList();
 
                 if (notesAndDocs.Count == 0) return;
                 
                 var orders = _orderPlacementRepository.GetAllOrders();
 
-                if (orders.Length == 0) return;
+                if (orders.Count == 0) return;
 
                 notesAndDocs.ForEach(noteDoc => 
                 {
-                    if (noteDoc.Documents.Length == 0) return;
+                    if (noteDoc.Documents.Count == 0) return;
 
                     var noteDocOrder = orders.FirstOrDefault(order => string.Equals(order.FileNumber, noteDoc.FileNumber, StringComparison.CurrentCultureIgnoreCase));
                     if (noteDocOrder == null) return;

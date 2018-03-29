@@ -1,9 +1,9 @@
 ﻿using System;
+using Resware.Data.Signing.Repository;
+using Resware.Entities.Orders;
+using Resware.Entities.Signings;
 using ReswareOrderMonitorService.Mirth;
 using ReswareOrderMonitorService.Models;
-using ReswareOrderMonitorService.Repositories;
-using ReswareOrderMonitorService.ReswareOrders;
-using ReswareOrderMonitorService.ReswareSigning;
 using ReswareOrderMonitorService.Utilities;
 
 namespace ReswareOrderMonitorService.ActionEvents.Solidifi
@@ -13,9 +13,9 @@ namespace ReswareOrderMonitorService.ActionEvents.Solidifi
         private const string CustomerContact = "TEAM CLOSINGS";
         private const string DocsToAttorney = "eDoc";
 
-        internal SolidifiRequestClosing(IReceiveSigningServiceRepository receiveSigningServiceRepository, IMirthServiceClient mirthServiceClient, IServiceUtility orderServiceUtility) : base(receiveSigningServiceRepository, mirthServiceClient,orderServiceUtility) { }
+        internal SolidifiRequestClosing(SigningRepository receiveSigningServiceRepository, IMirthServiceClient mirthServiceClient, IServiceUtility orderServiceUtility) : base(receiveSigningServiceRepository, mirthServiceClient,orderServiceUtility) { }
 
-        internal override RequestMessage BuildRequestMessage(OrderResult order, SigningServiceResult signing)
+        internal override RequestMessage BuildRequestMessage(Order order, Signing signing)
         {
             return new RequestMessage
             {

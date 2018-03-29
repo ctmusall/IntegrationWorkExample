@@ -1,4 +1,7 @@
-﻿namespace OrderPlacement.Models
+﻿using Resware.Entities.Orders;
+using Resware.Entities.Orders.Addresses;
+
+namespace OrderPlacement.Models
 {
     public class ReaderResult
     {

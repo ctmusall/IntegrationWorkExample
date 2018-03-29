@@ -1,9 +1,9 @@
 ﻿using System;
 using Adeptive.ResWare.Services;
+using Resware.Data.Signing.Repository;
 using SigningService.Factories;
 using SigningService.Models;
 using SigningService.Readers;
-using SigningService.Repositories;
 using SigningService.Utilities;
 
 namespace SigningService.Managers
@@ -11,15 +11,12 @@ namespace SigningService.Managers
     internal class SigningManager : ISigningManager
     {
         private readonly SigningReader _signingReader;
-        private readonly IReswareSigningRepository _reswareSigningRepository;
+        private readonly SigningRepository _reswareSigningRepository;
         private readonly ValidIncomingSigningUtility _validIncomingSigningUtility;
 
-        public SigningManager() : this(SigningDependencyFactory.Resolve<SigningReader>(), SigningDependencyFactory.Resolve<IReswareSigningRepository>(), SigningDependencyFactory.Resolve<ValidIncomingSigningUtility>())
-        {
-            
-        }
+        public SigningManager() : this(DependencyFactory.Resolve<SigningReader>(), DependencyFactory.Resolve<SigningRepository>(), DependencyFactory.Resolve<ValidIncomingSigningUtility>()) { }
 
-        public SigningManager(SigningReader signingReader, IReswareSigningRepository reswareSigningRepository, ValidIncomingSigningUtility validIncomingSigningUtility)
+        public SigningManager(SigningReader signingReader, SigningRepository reswareSigningRepository, ValidIncomingSigningUtility validIncomingSigningUtility)
         {
             _signingReader = signingReader;
             _reswareSigningRepository = reswareSigningRepository;
@@ -34,11 +31,9 @@ namespace SigningService.Managers
                 if (!validIncomingSigningUtility.Valid) return new SigningManagerResult {Result = 0, Message = validIncomingSigningUtility.Message};
 
                 var signingReaderResult = _signingReader.ParseInput(receiveSigningData);
-                var saveReaderResult = _reswareSigningRepository.SaveReaderResult(signingReaderResult); 
                 return new SigningManagerResult
                 {
-                    Result = saveReaderResult.Result,
-                    Message = saveReaderResult.Message
+                    Result = _reswareSigningRepository.SaveNewSigning(signingReaderResult.Signing, signingReaderResult.SigningParties)
                 };
             }
             catch (Exception ex)

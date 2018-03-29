@@ -1,9 +1,9 @@
-﻿using ReswareOrderMonitorService.ReswareOrders;
+﻿using Resware.Entities.Orders;
 
 namespace ReswareOrderMonitorService.StatusSenders
 {
     internal interface IStatusSender
     {
-        void SendStatusUpdate(OrderResult order);
+        void SendStatusUpdate(Order order);
     }
 }

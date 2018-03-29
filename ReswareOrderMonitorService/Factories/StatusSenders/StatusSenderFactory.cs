@@ -1,8 +1,7 @@
 ﻿using System;
+using Resware.Entities.Orders;
 using ReswareCommon;
-using ReswareOrderMonitorService.Common;
 using ReswareOrderMonitorService.eClosingIntegrationService;
-using ReswareOrderMonitorService.ReswareOrders;
 using ReswareOrderMonitorService.StatusSenders;
 
 namespace ReswareOrderMonitorService.Factories.StatusSenders
@@ -16,7 +15,7 @@ namespace ReswareOrderMonitorService.Factories.StatusSenders
             EClosingOrder = eClosingOrder;
         }
 
-        public abstract IStatusSender ResolveStatusSender(OrderResult order);
+        public abstract IStatusSender ResolveStatusSender(Order order);
 
         protected internal bool InvalidOrder()
         {
