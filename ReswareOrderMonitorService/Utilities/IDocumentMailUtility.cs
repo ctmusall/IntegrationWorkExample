@@ -1,11 +1,11 @@
 ﻿using System.Net.Mail;
-using ReswareOrderMonitorService.ReswareNoteDocs;
-using ReswareOrderMonitorService.ReswareOrders;
+using Resware.Entities.Notes.Documents;
+using Resware.Entities.Orders;
 
 namespace ReswareOrderMonitorService.Utilities
 {
     internal interface IDocumentMailUtility
     {
-        MailMessage BuildDocumentMailMessage(DocumentServiceResult document, OrderResult reswareOrder);
+        MailMessage BuildDocumentMailMessage(Document document, Order reswareOrder);
     }
 }

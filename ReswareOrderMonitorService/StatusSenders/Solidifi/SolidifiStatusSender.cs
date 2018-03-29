@@ -1,5 +1,5 @@
-﻿using ReswareOrderMonitorService.eClosingIntegrationService;
-using ReswareOrderMonitorService.ReswareOrders;
+﻿using Resware.Entities.Orders;
+using ReswareOrderMonitorService.eClosingIntegrationService;
 using ReswareOrderMonitorService.StatusDocumentBuilders;
 
 namespace ReswareOrderMonitorService.StatusSenders.Solidifi
@@ -17,7 +17,7 @@ namespace ReswareOrderMonitorService.StatusSenders.Solidifi
             _solidifiUpdateOrderStatus = solidifiUpdateOrderStatus;
         }
 
-        public void SendStatusUpdate(OrderResult reswareOrder)
+        public void SendStatusUpdate(Order reswareOrder)
         {
             var document = _statusDocumentBuilder.BuildDocument(reswareOrder, _eClosingOrder);
             if (document == null) return;

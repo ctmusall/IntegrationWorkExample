@@ -1,22 +1,21 @@
 ﻿using System;
 using ActionEventService.Factories;
 using ActionEventService.Models;
-using ActionEventService.Repositories;
+using ActionEventService.Readers;
 using Adeptive.ResWare.Services;
+using Resware.Data.ActionEvent.Repository;
+using ReswareCommon;
 
 namespace ActionEventService.Managers
 {
-    public class ActionEventManager : IActionEventManager
+    internal class ActionEventManager : IActionEventManager
     {
         private readonly ActionEventReader _actionEventReader;
-        private readonly IReswareActionEventRepository _reswareActionEventRepository;
+        private readonly ActionEventRepository _reswareActionEventRepository;
 
-        public ActionEventManager() : this(ActionEventDependencyFactory.Resolve<ActionEventReader>(),ActionEventDependencyFactory.Resolve<IReswareActionEventRepository>())
-        {
-            
-        }
+        public ActionEventManager() : this(DependencyFactory.Resolve<ActionEventReader>(),DependencyFactory.Resolve<ActionEventRepository>()) { }
 
-        public ActionEventManager(ActionEventReader actionEventReader, IReswareActionEventRepository reswareActionEventRepository)
+        public ActionEventManager(ActionEventReader actionEventReader, ActionEventRepository reswareActionEventRepository)
         {
             _actionEventReader = actionEventReader;
             _reswareActionEventRepository = reswareActionEventRepository;
@@ -27,10 +26,14 @@ namespace ActionEventService.Managers
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(receiveActionEventData.ActionEventCode)) return new ActionEventResult { Result = 0, Message = ValidationMessages.ActionEventCodeIsNull };
+
+                if (string.IsNullOrWhiteSpace(receiveActionEventData.FileNumber)) return new ActionEventResult { Result = 0, Message = ValidationMessages.FileNumberIsNull };
+
                 var actionEventReaderResult = _actionEventReader.ParseInput(receiveActionEventData);
                 return new ActionEventResult
                 {
-                    Result = _reswareActionEventRepository.SaveReaderResult(actionEventReaderResult)
+                    Result = _reswareActionEventRepository.SaveNewActionEvent(actionEventReaderResult)
                 };
             }
             catch (Exception ex)

@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Adeptive.ResWare.Services;
+using Resware.Entities.Signings;
+using Resware.Entities.Signings.SigningParties;
 using SigningService.Models;
 
 namespace SigningService.Readers
@@ -20,29 +22,29 @@ namespace SigningService.Readers
         {
             return new Signing
             {
-                FileNumber = receiveSigningData.FileNumber,
+                FileNumber = receiveSigningData?.FileNumber,
                 CreatedDateTime = DateTime.Now,
-                ClosingDateTime = receiveSigningData.SigningDateTime,
-                MobilePhone = receiveSigningData.TransacteeMobilePhone,
-                HomePhone = receiveSigningData.TransacteePhone,
-                WorkPhone = receiveSigningData.TransacteeWorkPhone,
-                EmailAddress = receiveSigningData.TransacteeEmailAddress,
-                ClosingLocation = receiveSigningData.Location,
-                ClosingAddress = $"{receiveSigningData.LocationStreet1} {receiveSigningData.LocationStreet2}",
-                ClosingCity = receiveSigningData.LocationCity,
-                ClosingState = receiveSigningData.LocationState,
-                ClosingZip = receiveSigningData.LocationZIP,
-                ClosingCounty = receiveSigningData.LocationCounty
+                ClosingDateTime = receiveSigningData?.SigningDateTime ?? DateTime.Now,
+                MobilePhone = receiveSigningData?.TransacteeMobilePhone,
+                HomePhone = receiveSigningData?.TransacteePhone,
+                WorkPhone = receiveSigningData?.TransacteeWorkPhone,
+                EmailAddress = receiveSigningData?.TransacteeEmailAddress,
+                ClosingLocation = receiveSigningData?.Location,
+                ClosingAddress = $"{receiveSigningData?.LocationStreet1} {receiveSigningData?.LocationStreet2}",
+                ClosingCity = receiveSigningData?.LocationCity,
+                ClosingState = receiveSigningData?.LocationState,
+                ClosingZip = receiveSigningData?.LocationZIP,
+                ClosingCounty = receiveSigningData?.LocationCounty
             };
         }
 
         private static ICollection<SigningParty> MapSigningParties(Signing signing, ReceiveSigningData receiveSigningData)
         {
-            return receiveSigningData.SigningParties.Select(signingParty => new SigningParty
+            return receiveSigningData?.SigningParties?.Select(signingParty => new SigningParty
             {
                 Signing = signing,
-                Name = signingParty.Name,
-                Phone = signingParty.Phone
+                Name = signingParty?.Name,
+                Phone = signingParty?.Phone
             }).ToList();
         }
     }

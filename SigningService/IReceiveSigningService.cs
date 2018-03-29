@@ -642,22 +642,10 @@ namespace Adeptive.ResWare.Services
 
 
 [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-[System.ServiceModel.ServiceContractAttribute(ConfigurationName="IReceiveSigningService")]
+[System.ServiceModel.ServiceContractAttribute(ConfigurationName="Services.ReceiveSigningService.IReceiveSigningService")]
 public interface IReceiveSigningService
 {
     
     [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IReceiveSigningService/ReceiveSigning", ReplyAction="http://tempuri.org/IReceiveSigningService/ReceiveSigningResponse")]
     Adeptive.ResWare.Services.ReceiveSigningResponse ReceiveSigning(Adeptive.ResWare.Services.ReceiveSigningData SigningData);
-
-    [OperationContract]
-    ICollection<SigningServiceResult> GetAllSignings();
-
-    [OperationContract]
-    SigningServiceResult GetSigningById(Guid id);
-
-    [OperationContract]
-    int DeleteSigningById(Guid id);
-
-    [OperationContract]
-    int UpdateSigning(SigningServiceResult signingPartyResult);
 }

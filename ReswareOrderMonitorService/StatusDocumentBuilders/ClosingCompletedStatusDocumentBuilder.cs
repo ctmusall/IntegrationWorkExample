@@ -1,13 +1,13 @@
 ﻿using Aspose.Words;
+using Resware.Entities.Orders;
 using ReswareOrderMonitorService.eClosingIntegrationService;
-using ReswareOrderMonitorService.ReswareOrders;
 using Unity.Interception.Utilities;
 
 namespace ReswareOrderMonitorService.StatusDocumentBuilders
 {
     internal class ClosingCompletedStatusDocumentBuilder : StatusDocumentBuilder
     {
-        protected internal override void AddBody(DocumentBuilder documentBuilder, OrderResult reswareOrder, GetOrderResult eClosingOrder)
+        protected internal override void AddBody(DocumentBuilder documentBuilder, Order reswareOrder, GetOrderResult eClosingOrder)
         {
             documentBuilder.Font.Name = "Times New Roman";
             documentBuilder.Font.Size = 16;

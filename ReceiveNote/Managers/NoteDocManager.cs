@@ -3,18 +3,19 @@ using Adeptive.ResWare.Services;
 using ReceiveNote.Factories;
 using ReceiveNote.Models;
 using ReceiveNote.Readers;
-using ReceiveNote.Repositories;
+using Resware.Data.NoteDoc.Repository;
+using ReswareCommon;
 
 namespace ReceiveNote.Managers
 {
     public class NoteDocManager : INoteDocManager
     {
         private readonly NoteDocReader _noteDocReader;
-        private readonly IReswareNoteDocRepository _reswareNoteDocRepository;
+        private readonly NoteDocRepository _reswareNoteDocRepository;
 
-        public NoteDocManager() : this(NoteDocDependencyFactory.Resolve<NoteDocReader>(), NoteDocDependencyFactory.Resolve<IReswareNoteDocRepository>()) { }
+        public NoteDocManager() : this(DependencyFactory.Resolve<NoteDocReader>(), DependencyFactory.Resolve<NoteDocRepository>()) { }
 
-        public NoteDocManager(NoteDocReader noteDocReader, IReswareNoteDocRepository reswareNoteDocRepository)
+        public NoteDocManager(NoteDocReader noteDocReader, NoteDocRepository reswareNoteDocRepository)
         {
             _noteDocReader = noteDocReader;
             _reswareNoteDocRepository = reswareNoteDocRepository;
@@ -24,10 +25,11 @@ namespace ReceiveNote.Managers
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(receiveNoteData.FileNumber)) return new NoteDocResult {Result = 0, Message = ValidationMessages.FileNumberIsNull};
                 var noteDocReaderResult = _noteDocReader.ParseInput(receiveNoteData);
                 return new NoteDocResult
                 {
-                    Result = _reswareNoteDocRepository.SaveReaderResult(noteDocReaderResult)
+                    Result = _reswareNoteDocRepository.SaveNewNoteDoc(noteDocReaderResult.Note, noteDocReaderResult.Documents)
                 };
             }
             catch (Exception ex)

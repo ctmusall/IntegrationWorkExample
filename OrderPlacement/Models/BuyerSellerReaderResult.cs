@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using Resware.Entities.Orders.Addresses;
+using Resware.Entities.Orders.BuyerSellers;
 
 namespace OrderPlacement.Models
 {

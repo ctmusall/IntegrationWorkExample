@@ -1,0 +1,356 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{43DBA399-2E78-44DD-A2F8-8529C7E9A5AB}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ReswareOrderMonitorService</RootNamespace>
+    <AssemblyName>ReswareOrderMonitorService</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>\\mirthtest\C%24\Source\ReswareIntegration\ReswareMonitor\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Unc</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
+    <WebPage>publish.htm</WebPage>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>708142148CFD253EBDF2DADC05B942050A20037B</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>ReswareMonitor_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aspose.Pdf">
+      <HintPath>Aspose\DLLs\Aspose.Pdf.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.Words">
+      <HintPath>Aspose\DLLs\Aspose.Words.dll</HintPath>
+    </Reference>
+    <Reference Include="CommonServiceLocator, Version=2.0.3.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.8.1\lib\net45\CommonServiceLocator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Resware.Data">
+      <HintPath>..\Resware.Data\bin\Debug\Resware.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Resware.Entities">
+      <HintPath>..\Resware.Entities\bin\Debug\Resware.Entities.dll</HintPath>
+    </Reference>
+    <Reference Include="ReswareCommon">
+      <HintPath>..\ReswareCommon\bin\Debug\ReswareCommon.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Unity.Abstractions, Version=3.3.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Abstractions.3.3.0\lib\net45\Unity.Abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Unity.Configuration, Version=5.2.1.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.8.1\lib\net45\Unity.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.8.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Container.5.8.1\lib\net45\Unity.Container.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Unity.Interception, Version=5.5.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.8.1\lib\net45\Unity.Interception.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Unity.Interception.Configuration, Version=5.1.4.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.8.1\lib\net45\Unity.Interception.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Unity.RegistrationByConvention, Version=2.1.5.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.8.1\lib\net45\Unity.RegistrationByConvention.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Unity.ServiceLocation, Version=2.1.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.5.8.1\lib\net45\Unity.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ActionEvents\ActionEvent.cs" />
+    <Compile Include="ActionEvents\Solidifi\SolidifiRequestClosing.cs" />
+    <Compile Include="ActionEvents\Solidifi\SolidifiRequestDocPrep.cs" />
+    <Compile Include="ActionEvents\Solidifi\SolidifiRequestTitleOpinion.cs" />
+    <Compile Include="ActionEvents\FundingAuth.cs" />
+    <Compile Include="ActionEvents\RequestOrder.cs" />
+    <Compile Include="ActionEvents\SchedulingReschedule.cs" />
+    <Compile Include="Aspose\AsposeLicense.cs" />
+    <Compile Include="Common\ModelSerializer.cs" />
+    <Compile Include="Common\OrderTypeEnum.cs" />
+    <Compile Include="Common\Solidifi\SolidifiActionEventConstants.cs" />
+    <Compile Include="DocumentSenders\DocumentSender.cs" />
+    <Compile Include="Factories\ActionEvents\ActionEventFactory.cs" />
+    <Compile Include="Factories\CompletedActionEvents\ClientCompletedActionEventFactory.cs" />
+    <Compile Include="Factories\CompletedActionEvents\IClientCompletedActionEventFactory.cs" />
+    <Compile Include="Factories\CompletedActionEvents\IParentClientCompletedActionEventFactory.cs" />
+    <Compile Include="Factories\CompletedActionEvents\ParentClientCompletedActionEventFactory.cs" />
+    <Compile Include="Factories\CompletedActionEvents\Solidifi\SolidifiCompletedActionEventFactory.cs" />
+    <Compile Include="Factories\Documents\ClientDocumentFactory.cs" />
+    <Compile Include="Factories\Documents\DocumentReaderFactory.cs" />
+    <Compile Include="Factories\Documents\IClientDocumentFactory.cs" />
+    <Compile Include="Factories\Services\IParentServiceUtilityFactory.cs" />
+    <Compile Include="Factories\Services\IServiceUtilityFactory.cs" />
+    <Compile Include="Factories\ActionEvents\SolidifiActionEventFactory.cs" />
+    <Compile Include="Factories\Documents\SolidifiDocumentReaderFactory.cs" />
+    <Compile Include="Factories\Services\ParentServiceUtilityFactory.cs" />
+    <Compile Include="Factories\DependencyFactory.cs" />
+    <Compile Include="Factories\Services\ServiceUtilityFactory.cs" />
+    <Compile Include="Factories\Services\SolidifiServiceUtilityFactory.cs" />
+    <Compile Include="Factories\StatusSenders\IStatusSenderFactory.cs" />
+    <Compile Include="Factories\StatusSenders\Solidifi\SolidifiClosingStatusSenderFactory.cs" />
+    <Compile Include="Factories\StatusSenders\Solidifi\SolidifiDocPrepStatusSenderFactory.cs" />
+    <Compile Include="Factories\StatusSenders\Solidifi\SolidifiTitleOpinionStatusSenderFactory.cs" />
+    <Compile Include="Factories\StatusSenders\StatusSenderFactory.cs" />
+    <Compile Include="Mirth\IMirthServiceClient.cs" />
+    <Compile Include="Mirth\MirthServiceClient.cs" />
+    <Compile Include="Models\RequestMessage.cs" />
+    <Compile Include="Factories\ActionEvents\ParentActionEventFactory.cs" />
+    <Compile Include="Factories\ActionEvents\IParentActionEventFactory.cs" />
+    <Compile Include="Monitors\IDocumentMonitor.cs" />
+    <Compile Include="Monitors\DocumentMonitor.cs" />
+    <Compile Include="Monitors\IOutgoingMonitor.cs" />
+    <Compile Include="Monitors\OutgoingMonitor.cs" />
+    <Compile Include="Repositories\IIntegrationServiceRepository.cs" />
+    <Compile Include="Repositories\IntegrationServiceRepository.cs" />
+    <Compile Include="StatusSenders\Solidifi\SolidifiUpdateDocPrepStatus.cs" />
+    <Compile Include="StatusSenders\Solidifi\SolidifiUpdateTitleOpinionStatus.cs" />
+    <Compile Include="ProjectInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ProjectInstaller.Designer.cs">
+      <DependentUpon>ProjectInstaller.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Readers\ActionEventReader.cs" />
+    <Compile Include="Factories\Documents\IDocumentReaderFactory.cs" />
+    <Compile Include="Readers\IActionEventReader.cs" />
+    <Compile Include="Monitors\IOrderActionEventMonitor.cs" />
+    <Compile Include="Monitors\OrderActionEventMonitor.cs" />
+    <Compile Include="StatusSenders\IStatusSender.cs" />
+    <Compile Include="ReswareMonitor.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ReswareMonitor.Designer.cs">
+      <DependentUpon>ReswareMonitor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\eClosingIntegrationService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="StatusSenders\Solidifi\SolidifiStatusSender.cs" />
+    <Compile Include="StatusSenders\Solidifi\SolidifiUpdateClosingStatus.cs" />
+    <Compile Include="StatusSenders\Solidifi\SolidifiUpdateOrderStatus.cs" />
+    <Compile Include="StatusDocumentBuilders\AssignedClosingAttorneyStatusDocumentBuilder.cs" />
+    <Compile Include="StatusDocumentBuilders\ClosingCompletedStatusDocumentBuilder.cs" />
+    <Compile Include="Utilities\DocumentMailUtility.cs" />
+    <Compile Include="Utilities\FundingAuthMailUtility.cs" />
+    <Compile Include="Utilities\IDocumentMailUtility.cs" />
+    <Compile Include="Utilities\IFundingAuthMailUtility.cs" />
+    <Compile Include="StatusDocumentBuilders\IStatusDocumentBuilder.cs" />
+    <Compile Include="StatusDocumentBuilders\AssignedAttorneyStatusDocumentBuilder.cs" />
+    <Compile Include="Utilities\Solidifi\SolidifiClosingDocumentMailUtility.cs" />
+    <Compile Include="Utilities\Solidifi\SolidifiDisbursementDocumentMailUtility.cs" />
+    <Compile Include="Utilities\Solidifi\SolidifiDocPrepServiceUtility.cs" />
+    <Compile Include="Utilities\ServiceUtility.cs" />
+    <Compile Include="Utilities\DateTimeUtility.cs" />
+    <Compile Include="Utilities\IDateTimeUtility.cs" />
+    <Compile Include="Utilities\IServiceUtility.cs" />
+    <Compile Include="Utilities\Solidifi\SolidifiClosingServiceUtility.cs" />
+    <Compile Include="Utilities\Solidifi\SolidifiFundingAuthMailUtility.cs" />
+    <Compile Include="Utilities\Solidifi\SolidifiTitleOpinionServiceUtility.cs" />
+    <Compile Include="StatusDocumentBuilders\StatusDocumentBuilder.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <EmbeddedResource Include="Aspose\DLLs\Aspose.Total.lic" />
+    <None Include="App.Debug.config">
+      <DependentUpon>App.config</DependentUpon>
+    </None>
+    <None Include="App.Release.config">
+      <DependentUpon>App.config</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ReswareMonitor_TemporaryKey.pfx" />
+    <None Include="Service References\eClosingIntegrationService\IntegrationService.wsdl" />
+    <None Include="Service References\eClosingIntegrationService\IntegrationService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\eClosingIntegrationService\IntegrationService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\eClosingIntegrationService\IntegrationService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\eClosingIntegrationService\IntegrationService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\eClosingIntegrationService\IntegrationService4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\eClosingIntegrationService\IntegrationService5.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\eClosingIntegrationService\ReswareOrderMonitorService.eClosingIntegrationService.GetOrderResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eClosingIntegrationService\ReswareOrderMonitorService.eClosingIntegrationService.IntegrationServiceInfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eClosingIntegrationService\ReswareOrderMonitorService.eClosingIntegrationService.ServiceResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eClosingIntegrationService\ReswareOrderMonitorService.eClosingIntegrationService.SubmitOrderResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\eClosingIntegrationService\ReswareOrderMonitorService.eClosingIntegrationService.TSISubmitOrderResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\eClosingIntegrationService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="ProjectInstaller.resx">
+      <DependentUpon>ProjectInstaller.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\eClosingIntegrationService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\eClosingIntegrationService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\eClosingIntegrationService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Aspose\DLLs\Aspose.Pdf.dll" />
+    <Content Include="Aspose\DLLs\Aspose.Pdf.XML" />
+    <Content Include="Aspose\DLLs\Aspose.Words.dll" />
+    <Content Include="Aspose\DLLs\Aspose.Words.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <UsingTask TaskName="TransformXml" AssemblyFile="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Web\Microsoft.Web.Publishing.Tasks.dll" />
+  <Target Name="App_config_AfterCompile" AfterTargets="AfterCompile" Condition="Exists('App.$(Configuration).config')">
+    <!--Generate transformed app config in the intermediate directory-->
+    <TransformXml Source="App.config" Destination="$(IntermediateOutputPath)$(TargetFileName).config" Transform="App.$(Configuration).config" />
+    <!--Force build process to use the transformed configuration file from now on.-->
+    <ItemGroup>
+      <AppConfigWithTargetPath Remove="App.config" />
+      <AppConfigWithTargetPath Include="$(IntermediateOutputPath)$(TargetFileName).config">
+        <TargetPath>$(TargetFileName).config</TargetPath>
+      </AppConfigWithTargetPath>
+    </ItemGroup>
+  </Target>
+  <!--Override After Publish to support ClickOnce AfterPublish. Target replaces the untransformed config file copied to the deployment directory with the transformed one.-->
+  <Target Name="App_config_AfterPublish" AfterTargets="AfterPublish" Condition="Exists('App.$(Configuration).config')">
+    <PropertyGroup>
+      <DeployedConfig>$(_DeploymentApplicationDir)$(TargetName)$(TargetExt).config$(_DeploymentFileMappingExtension)</DeployedConfig>
+    </PropertyGroup>
+    <!--Publish copies the untransformed App.config to deployment directory so overwrite it-->
+    <Copy Condition="Exists('$(DeployedConfig)')" SourceFiles="$(IntermediateOutputPath)$(TargetFileName).config" DestinationFiles="$(DeployedConfig)" />
+  </Target>
+</Project>

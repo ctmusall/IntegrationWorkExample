@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace ReceiveNote.Models
+﻿namespace ReceiveNote.Models
 {
     public class NoteDocResult
     {

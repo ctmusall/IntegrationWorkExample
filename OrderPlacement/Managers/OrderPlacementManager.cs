@@ -1,20 +1,18 @@
 ﻿using System;
-using OrderPlacement.Factories;
+using OrderPlacement.Factory;
 using OrderPlacement.Models;
-using OrderPlacement.Repositories;
+using Resware.Data.Order.Repository;
+using ReswareCommon;
 
 namespace OrderPlacement.Managers
 {
-    public class OrderPlacementManager : IOrderPlacementManager
+    internal class OrderPlacementManager : IOrderPlacementManager
     {
         private readonly ReswareReaderFactory _reswareReaderFactory;
-        private readonly IReswareOrderRepository _reswareOrderRepository;
-        public OrderPlacementManager():this(OrderDependencyFactory.Resolve<ReswareReaderFactory>(), OrderDependencyFactory.Resolve<IReswareOrderRepository>())
-        {
-            
-        }
+        private readonly OrderRepository _reswareOrderRepository;
+        public OrderPlacementManager():this(DependencyFactory.Resolve<ReswareReaderFactory>(), DependencyFactory.Resolve<OrderRepository>()) { }
 
-        public OrderPlacementManager(ReswareReaderFactory reswareReaderFactory, IReswareOrderRepository reswareOrderRepository)
+        public OrderPlacementManager(ReswareReaderFactory reswareReaderFactory, OrderRepository reswareOrderRepository)
         {
             _reswareReaderFactory = reswareReaderFactory;
             _reswareOrderRepository = reswareOrderRepository;
@@ -25,11 +23,17 @@ namespace OrderPlacement.Managers
         {
             try
             {
-                var readerResult = _reswareReaderFactory.ResolveReader(clientId).ParseInput(fileNumber, propertyAddress, productId, estimatedSettlementDate, lender, buyers, sellers, notes, clientId, transactionTypeId);
+                if (string.IsNullOrWhiteSpace(fileNumber)) return new PlaceOrderResult { Result = 0, Message = ValidationMessages.FileNumberIsNull };
+
+                if (propertyAddress == null) return new PlaceOrderResult {Result = 0, Message = ValidationMessages.PropertyAddressIsNull};
+
+                var readerResult = _reswareReaderFactory?.ResolveReader(clientId)?.ParseInput(fileNumber, propertyAddress, productId, estimatedSettlementDate, lender, buyers, sellers, notes, clientId, transactionTypeId);
+
+                if (readerResult == null) return new PlaceOrderResult { Result = -1, Message = "Result is null"};
 
                 return new PlaceOrderResult
                 {
-                    Result = _reswareOrderRepository.SaveReaderResult(readerResult)
+                    Result = _reswareOrderRepository.SaveNewOrder(readerResult.Order, readerResult.PropertyAddress, readerResult.BuyerSellersReaderResult.BuyerSellers, readerResult.BuyerSellersReaderResult.BuyerSellerAddresses)
                 };
             }
             catch (Exception ex)

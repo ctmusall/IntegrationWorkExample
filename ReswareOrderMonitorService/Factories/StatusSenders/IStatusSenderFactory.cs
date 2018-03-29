@@ -1,10 +1,10 @@
-﻿using ReswareOrderMonitorService.ReswareOrders;
+﻿using Resware.Entities.Orders;
 using ReswareOrderMonitorService.StatusSenders;
 
 namespace ReswareOrderMonitorService.Factories.StatusSenders
 {
     internal interface IStatusSenderFactory
     {
-        IStatusSender ResolveStatusSender(OrderResult order);
+        IStatusSender ResolveStatusSender(Order order);
     }
 }

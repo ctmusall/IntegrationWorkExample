@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
 using Aspose.Words;
+using Resware.Entities.Orders;
 using ReswareOrderMonitorService.eClosingIntegrationService;
-using ReswareOrderMonitorService.ReswareOrders;
 
 namespace ReswareOrderMonitorService.StatusDocumentBuilders
 {
@@ -76,7 +76,7 @@ namespace ReswareOrderMonitorService.StatusDocumentBuilders
             documentBuilder.Writeln("South Carolina Office: 226 State Street, West Columbia, SC, Phone: 803-873-9198");
         }
 
-        public Document BuildDocument(OrderResult reswareOrder, GetOrderResult eClosingOrder)
+        public Document BuildDocument(Order reswareOrder, GetOrderResult eClosingOrder)
         {
             AddHeader(_documentBuilder);
 
@@ -129,6 +129,6 @@ namespace ReswareOrderMonitorService.StatusDocumentBuilders
         }
 
 
-        protected internal abstract void AddBody(DocumentBuilder documentBuilder, OrderResult reswareOrder, GetOrderResult eClosingOrder);
+        protected internal abstract void AddBody(DocumentBuilder documentBuilder, Order reswareOrder, GetOrderResult eClosingOrder);
     }
 }

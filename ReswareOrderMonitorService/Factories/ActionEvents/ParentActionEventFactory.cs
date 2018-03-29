@@ -4,7 +4,7 @@
     {
         private readonly IParentServiceUtilityFactory _parentServiceUtilityFactory;
 
-        public ParentActionEventFactory() : this(ReswareOrderDependencyFactory.Resolve<IParentServiceUtilityFactory>()) { }
+        public ParentActionEventFactory() : this(DependencyFactory.Resolve<IParentServiceUtilityFactory>()) { }
 
         internal ParentActionEventFactory(IParentServiceUtilityFactory parentServiceUtilityFactory)
         {

@@ -1,10 +1,10 @@
 ﻿using System.Net.Mail;
-using ReswareOrderMonitorService.ReswareOrders;
+using Resware.Entities.Orders;
 
 namespace ReswareOrderMonitorService.Utilities
 {
     internal abstract class FundingAuthMailUtility : IFundingAuthMailUtility
     {
-        public abstract MailMessage BuildFundingAuthMailMessage(OrderResult reswareOrder);
+        public abstract MailMessage BuildFundingAuthMailMessage(Order reswareOrder);
     }
 }

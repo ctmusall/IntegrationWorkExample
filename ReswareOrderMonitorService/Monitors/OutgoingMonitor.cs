@@ -1,22 +1,22 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Linq;
+using Resware.Data.ActionEvent.Repository;
+using Resware.Data.Order.Repository;
 using ReswareOrderMonitorService.Factories;
 using ReswareOrderMonitorService.Factories.CompletedActionEvents;
-using ReswareOrderMonitorService.Repositories;
-using Unity.Interception.Utilities;
 
 namespace ReswareOrderMonitorService.Monitors
 {
     internal class OutgoingMonitor : IOutgoingMonitor
     {
-        private readonly IOrderPlacementRepository _orderPlacementRepository;
-        private readonly IReceiveActionEventRepository _receiveActionEventRepository;
+        private readonly OrderRepository _orderPlacementRepository;
+        private readonly ActionEventRepository _receiveActionEventRepository;
         private readonly IParentClientCompletedActionEventFactory _parentClientCompletedActionEventFactory;
 
-        public OutgoingMonitor() : this (ReswareOrderDependencyFactory.Resolve<IOrderPlacementRepository>(), ReswareOrderDependencyFactory.Resolve<IReceiveActionEventRepository>(), ReswareOrderDependencyFactory.Resolve<IParentClientCompletedActionEventFactory>()) { }
+        public OutgoingMonitor() : this (DependencyFactory.Resolve<OrderRepository>(), DependencyFactory.Resolve<ActionEventRepository>(), DependencyFactory.Resolve<IParentClientCompletedActionEventFactory>()) { }
          
-        internal OutgoingMonitor(IOrderPlacementRepository orderPlacementRepository, IReceiveActionEventRepository receiveActionEventServiceClient, IParentClientCompletedActionEventFactory parentClientCompletedActionEventFactory)
+        internal OutgoingMonitor(OrderRepository orderPlacementRepository, ActionEventRepository receiveActionEventServiceClient, IParentClientCompletedActionEventFactory parentClientCompletedActionEventFactory)
         {
             _orderPlacementRepository = orderPlacementRepository;
             _receiveActionEventRepository = receiveActionEventServiceClient;
@@ -29,7 +29,7 @@ namespace ReswareOrderMonitorService.Monitors
             {
                 var orders = _orderPlacementRepository.GetAllOrders();
 
-                if (orders.Length == 0) return;
+                if (orders.Count == 0) return;
 
                 orders.ForEach(order =>
                 {

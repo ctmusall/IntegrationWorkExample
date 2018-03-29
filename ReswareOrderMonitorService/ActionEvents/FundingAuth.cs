@@ -1,5 +1,5 @@
 ﻿using System.Net.Mail;
-using ReswareOrderMonitorService.ReswareOrders;
+using Resware.Entities.Orders;
 using ReswareOrderMonitorService.Utilities;
 
 namespace ReswareOrderMonitorService.ActionEvents
@@ -13,7 +13,7 @@ namespace ReswareOrderMonitorService.ActionEvents
             _fundingAuthMailUtility = fundingAuthMailUtility;
         }
 
-        internal override bool PerformAction(OrderResult order)
+        internal override bool PerformAction(Order order)
         {
             var mailMessage = _fundingAuthMailUtility.BuildFundingAuthMailMessage(order);
 

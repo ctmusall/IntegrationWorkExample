@@ -1,25 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using OrderPlacement.Factories;
+using OrderPlacement.Factory;
 using OrderPlacement.Managers;
-using OrderPlacement.Models;
 
 namespace OrderPlacement
 {    
-    public class Service : IOrderPlacementService
+    public class OrderPlacementService : IOrderPlacementService
     {
         private readonly IOrderPlacementManager _orderPlacementManager;
-        private readonly IOrderResultManager _orderResultManager;
 
-        public Service() : this(OrderDependencyFactory.Resolve<IOrderPlacementManager>(), OrderDependencyFactory.Resolve<IOrderResultManager>())
+        public OrderPlacementService() : this(DependencyFactory.Resolve<IOrderPlacementManager>())
         {
             
         }
 
-        public Service(IOrderPlacementManager orderPlacementManager, IOrderResultManager orderResultManager)
+        public OrderPlacementService(IOrderPlacementManager orderPlacementManager)
         {
             _orderPlacementManager = orderPlacementManager;
-            _orderResultManager = orderResultManager;
         }
 
         public PlaceOrderResponse PlaceOrder(int ClientID, int OfficeID, string FileNumber, OrderPlacementServicePropertyAddress PropertyAddress, int ClientsClientID, int TransactionTypeID, int ProductID, int UnderwriterID, int PrimaryContactID, DateTime? EstimatedSettlementDate, decimal SalesPrice, decimal LoanAmount, string LoanNumber, decimal CashOut, string[] PayoffMortgagees, int[] OptionalActionGroupIDs, OrderPlacementServicePartner Lender, bool IsLender, OrderPlacementServiceBuyerSeller[] Buyers, OrderPlacementServiceBuyerSeller[] Sellers, OrderPlacementServicePartner[] AdditionalPartners, OrderPlacementServicePartner ClientsClient, string Notes, bool RequestAQUADecision, decimal? OriginalDebtAmount, bool IsWholesaleOrder, string CPLCompany, string CPLDivision, string CPLStreet1, string CPLStreet2, string CPLCity, string CPLState, string CPLZip, string AssetNumber, OrderPlacementServicePriorPolicy PriorLenderPolicy, OrderPlacementServicePriorPolicy PriorOwnerPolicy, OrderPlacementServiceBuyerPayoff[] BuyerPayoffs, OrderPlacementServiceSellerPayoff[] SellerPayoffs)
@@ -60,54 +56,5 @@ namespace OrderPlacement
                 };
             }
         }
-
-        public ICollection<OrderResult> GetAllOrders()
-        {
-            try
-            {
-                return _orderResultManager.GetAllOrders();
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
-        public OrderResult GetOrderById(Guid id)
-        {
-            try
-            {
-                return _orderResultManager.GetOrderById(id);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
-
-        public int DeleteOrderById(Guid id)
-        {
-            try
-            {
-                return _orderResultManager.DeleteOrderById(id);
-            }
-            catch (Exception)
-            {
-                return -1;
-            }
-        }
-
-        public int UpdateOrder(OrderResult orderResult)
-        {
-            try
-            {
-                return _orderResultManager.UpdateOrder(orderResult);
-            }
-            catch (Exception)
-            {
-                return -1;
-            }
-        }
-
     }
 }

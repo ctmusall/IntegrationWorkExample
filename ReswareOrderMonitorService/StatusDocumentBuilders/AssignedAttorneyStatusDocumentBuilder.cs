@@ -1,15 +1,14 @@
 ﻿using System.Linq;
 using Aspose.Words;
+using Resware.Entities.Orders;
 using ReswareCommon;
-using ReswareOrderMonitorService.Common;
 using ReswareOrderMonitorService.eClosingIntegrationService;
-using ReswareOrderMonitorService.ReswareOrders;
 
 namespace ReswareOrderMonitorService.StatusDocumentBuilders
 {
     internal class AssignedAttorneyStatusDocumentBuilder : StatusDocumentBuilder
     {
-        protected internal override void AddBody(DocumentBuilder documentBuilder, OrderResult reswareOrder, GetOrderResult eClosingOrder)
+        protected internal override void AddBody(DocumentBuilder documentBuilder, Order reswareOrder, GetOrderResult eClosingOrder)
         {
             documentBuilder.Font.Name = "Times New Roman";
             documentBuilder.Font.Size = 16;

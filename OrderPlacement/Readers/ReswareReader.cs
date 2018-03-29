@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using OrderPlacement.Common;
-using OrderPlacement.Factories;
+using OrderPlacement.Factory;
 using OrderPlacement.Models;
 using OrderPlacement.Utilities;
+using Resware.Entities.Orders;
+using Resware.Entities.Orders.Addresses;
+using Resware.Entities.Orders.BuyerSellers;
 using Unity.Interception.Utilities;
 
 namespace OrderPlacement.Readers
@@ -12,7 +15,7 @@ namespace OrderPlacement.Readers
     {
         private readonly BuyerSellerReaderResultUtility _buyerSellerReaderResultUtility;
 
-        internal ReswareReader() : this(OrderDependencyFactory.Resolve<BuyerSellerReaderResultUtility>()) { }
+        internal ReswareReader() : this(DependencyFactory.Resolve<BuyerSellerReaderResultUtility>()) { }
 
         internal ReswareReader(BuyerSellerReaderResultUtility buyerSellerReaderResultUtility)
         {
@@ -39,17 +42,17 @@ namespace OrderPlacement.Readers
             return new PropertyAddress
             {
                 Order = order,
-                AddressStreetInfo = propertyAddress.AddressStreetInfo,
-                City = propertyAddress.City,
-                County = propertyAddress.County,
-                Description = propertyAddress.Description,
-                State = propertyAddress.State,
-                StreetDirection = propertyAddress.StreetDirection,
-                StreetName = propertyAddress.StreetName,
-                StreetNumber = propertyAddress.StreetNumber,
-                StreetSuffix = propertyAddress.StreetSuffix,
-                Unit = propertyAddress.Unit,
-                Zip = propertyAddress.Zip
+                AddressStreetInfo = propertyAddress?.AddressStreetInfo,
+                City = propertyAddress?.City,
+                County = propertyAddress?.County,
+                Description = propertyAddress?.Description,
+                State = propertyAddress?.State,
+                StreetDirection = propertyAddress?.StreetDirection,
+                StreetName = propertyAddress?.StreetName,
+                StreetNumber = propertyAddress?.StreetNumber,
+                StreetSuffix = propertyAddress?.StreetSuffix,
+                Unit = propertyAddress?.Unit,
+                Zip = propertyAddress?.Zip
             };
         }
 
@@ -61,9 +64,9 @@ namespace OrderPlacement.Readers
                 BuyerSellerAddresses = new List<BuyerSellerAddress>()
             };
 
-            buyers.ForEach(buyer => _buyerSellerReaderResultUtility.CreateBuyerSellerAndBuyerSellerAddressAssociation(buyer, order, BuyerSellerEnum.Buyer, result));
+            buyers?.ForEach(buyer => _buyerSellerReaderResultUtility.CreateBuyerSellerAndBuyerSellerAddressAssociation(buyer, order, BuyerSellerEnum.Buyer, result));
 
-            sellers.ForEach(seller => _buyerSellerReaderResultUtility.CreateBuyerSellerAndBuyerSellerAddressAssociation(seller, order, BuyerSellerEnum.Seller, result));
+            sellers?.ForEach(seller => _buyerSellerReaderResultUtility.CreateBuyerSellerAndBuyerSellerAddressAssociation(seller, order, BuyerSellerEnum.Seller, result));
 
             return result;
         }

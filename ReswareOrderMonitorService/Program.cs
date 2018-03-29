@@ -14,16 +14,21 @@ namespace ReswareOrderMonitorService
             try
             {
                 AsposeLicense.SetLicenses();
+
+#if (!DEBUG)
                 var servicesToRun = new ServiceBase[]
                 {
-                    new ReswareMonitor(ReswareOrderDependencyFactory.Resolve<IOrderActionEventMonitor>(), ReswareOrderDependencyFactory.Resolve<IDocumentMonitor>(), ReswareOrderDependencyFactory.Resolve<IOutgoingMonitor>())
+                    new ReswareMonitor(DependencyFactory.Resolve<IOrderActionEventMonitor>(), 
+                    DependencyFactory.Resolve<IDocumentMonitor>(), 
+                    DependencyFactory.Resolve<IOutgoingMonitor>())
                 };
 
                 ServiceBase.Run(servicesToRun);
+#endif
 
-                //ReswareOrderDependencyFactory.Resolve<IOrderActionEventMonitor>().MonitorOrderActionEvents();
-                //ReswareOrderDependencyFactory.Resolve<IDocumentMonitor>().MonitorDocuments();
-                //ReswareOrderDependencyFactory.Resolve<IOutgoingMonitor>().MonitorOrders();
+                DependencyFactory.Resolve<IOrderActionEventMonitor>().MonitorOrderActionEvents();
+                DependencyFactory.Resolve<IDocumentMonitor>().MonitorDocuments();
+                DependencyFactory.Resolve<IOutgoingMonitor>().MonitorOrders();
 
             }
             catch (Exception ex)
