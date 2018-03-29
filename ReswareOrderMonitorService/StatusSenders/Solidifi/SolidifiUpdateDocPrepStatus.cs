@@ -1,12 +1,13 @@
-﻿using ReswareOrderMonitorService.Repositories;
-using ReswareOrderMonitorService.ReswareOrders;
+﻿using Resware.Data.Order.Repository;
+using Resware.Entities.Orders;
+
 namespace ReswareOrderMonitorService.StatusSenders.Solidifi
 {
     internal class SolidifiUpdateDocPrepStatus : SolidifiUpdateOrderStatus
     {
-        internal SolidifiUpdateDocPrepStatus(string newStatus, IOrderPlacementRepository orderPlacementRepository) : base(newStatus, orderPlacementRepository) { }
+        internal SolidifiUpdateDocPrepStatus(string newStatus, OrderRepository orderPlacementRepository) : base(newStatus, orderPlacementRepository) { }
 
-        public override void SendStatusUpdate(OrderResult order)
+        public override void SendStatusUpdate(Order order)
         {
             order.DocPrepStatus = NewStatus;
             OrderPlacementRepository.UpdateOrder(order);

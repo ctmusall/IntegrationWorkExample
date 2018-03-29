@@ -1,6 +1,6 @@
 ﻿using System.Net.Mail;
-using ReswareOrderMonitorService.ReswareNoteDocs;
-using ReswareOrderMonitorService.ReswareOrders;
+using Resware.Entities.Notes.Documents;
+using Resware.Entities.Orders;
 using ReswareOrderMonitorService.Utilities;
 
 namespace ReswareOrderMonitorService.DocumentSenders
@@ -14,7 +14,7 @@ namespace ReswareOrderMonitorService.DocumentSenders
             _documentMailUtility = documentMailUtility;
         }
 
-        internal bool SendDocs(DocumentServiceResult document, OrderResult order)
+        internal bool SendDocs(Document document, Order order)
         {
             var mailMessage = _documentMailUtility.BuildDocumentMailMessage(document, order);
             if (mailMessage == null) return false;

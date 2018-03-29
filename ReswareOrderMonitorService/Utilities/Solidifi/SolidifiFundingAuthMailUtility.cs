@@ -1,21 +1,22 @@
 ﻿using System.Linq;
 using System.Net.Mail;
 using System.Text;
-using ReswareOrderMonitorService.ReswareOrders;
+using OrderPlacement.Common;
+using Resware.Entities.Orders;
 
 namespace ReswareOrderMonitorService.Utilities.Solidifi
 {
     internal class SolidifiFundingAuthMailUtility : FundingAuthMailUtility
     {
-        public override MailMessage BuildFundingAuthMailMessage(OrderResult reswareOrder)
+        public override MailMessage BuildFundingAuthMailMessage(Order reswareOrder)
         {
             var propertyAddress = reswareOrder.PropertyAddress.FirstOrDefault(o => o.OrderId == reswareOrder.Id);
             if (propertyAddress == null) return null;
 
-            var borrower = reswareOrder.BuyersAndSellers.FirstOrDefault(b => b.Type == BuyerSellerEnum.Buyer && !b.Spouse);
+            var borrower = reswareOrder.BuyerAndSellers.FirstOrDefault(b => b.Type == BuyerSellerEnum.Buyer && !b.Spouse);
             if (borrower == null) return null;
 
-            var coBorrower = reswareOrder.BuyersAndSellers.FirstOrDefault(b => b.Type == BuyerSellerEnum.Buyer && b.Spouse);
+            var coBorrower = reswareOrder.BuyerAndSellers.FirstOrDefault(b => b.Type == BuyerSellerEnum.Buyer && b.Spouse);
 
             var mailMessage = new MailMessage
             {

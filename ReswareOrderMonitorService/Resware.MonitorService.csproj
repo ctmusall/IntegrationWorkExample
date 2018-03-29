@@ -73,6 +73,12 @@
       <HintPath>..\packages\Unity.5.6.1\lib\net45\CommonServiceLocator.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Resware.Data">
+      <HintPath>..\Resware.Data\bin\Debug\Resware.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Resware.Entities">
+      <HintPath>..\Resware.Entities\bin\Debug\Resware.Entities.dll</HintPath>
+    </Reference>
     <Reference Include="ReswareCommon">
       <HintPath>..\ReswareCommon\bin\Debug\ReswareCommon.dll</HintPath>
     </Reference>
@@ -145,7 +151,7 @@
     <Compile Include="Factories\ActionEvents\SolidifiActionEventFactory.cs" />
     <Compile Include="Factories\Documents\SolidifiDocumentReaderFactory.cs" />
     <Compile Include="Factories\Services\ParentServiceUtilityFactory.cs" />
-    <Compile Include="Factories\ReswareOrderDependencyFactory.cs" />
+    <Compile Include="Factories\DependencyFactory.cs" />
     <Compile Include="Factories\Services\ServiceUtilityFactory.cs" />
     <Compile Include="Factories\Services\SolidifiServiceUtilityFactory.cs" />
     <Compile Include="Factories\StatusSenders\IStatusSenderFactory.cs" />
@@ -164,14 +170,6 @@
     <Compile Include="Monitors\OutgoingMonitor.cs" />
     <Compile Include="Repositories\IIntegrationServiceRepository.cs" />
     <Compile Include="Repositories\IntegrationServiceRepository.cs" />
-    <Compile Include="Repositories\IReceiveActionEventRepository.cs" />
-    <Compile Include="Repositories\IOrderPlacementRepository.cs" />
-    <Compile Include="Repositories\IReceiveNoteRepository.cs" />
-    <Compile Include="Repositories\IReceiveSigningServiceRepository.cs" />
-    <Compile Include="Repositories\OrderPlacementRepository.cs" />
-    <Compile Include="Repositories\ReceiveActionEventRepository.cs" />
-    <Compile Include="Repositories\ReceiveNoteRepository.cs" />
-    <Compile Include="Repositories\ReceiveSigningServiceRepository.cs" />
     <Compile Include="StatusSenders\Solidifi\SolidifiUpdateDocPrepStatus.cs" />
     <Compile Include="StatusSenders\Solidifi\SolidifiUpdateTitleOpinionStatus.cs" />
     <Compile Include="ProjectInstaller.cs">
@@ -200,26 +198,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\eClosingIntegrationService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\ReswareActionEvent\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\ReswareNoteDocs\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\ReswareOrders\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\ReswareSigning\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -290,149 +268,12 @@
     <None Include="Service References\eClosingIntegrationService\ReswareOrderMonitorService.eClosingIntegrationService.TSISubmitOrderResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ReswareActionEvent\ReceiveActionEventService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ReswareActionEvent\ReceiveActionEventService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ReswareActionEvent\ReceiveActionEventService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ReswareActionEvent\ReceiveActionEventService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ReswareActionEvent\ReswareOrderMonitorService.ReswareActionEvent.ActionEventServiceResult.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\ReswareActionEvent\ReswareOrderMonitorService.ReswareActionEvent.ReceiveActionEventResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\ReswareActionEvent\Service.wsdl" />
-    <None Include="Service References\ReswareNoteDocs\ReceiveNoteService4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ReswareNoteDocs\ReceiveNoteService41.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ReswareNoteDocs\ReceiveNoteService42.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ReswareNoteDocs\ReceiveNoteService43.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ReswareNoteDocs\ReswareOrderMonitorService.ReswareNoteDocs.NoteDocServiceResult.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\ReswareNoteDocs\ReswareOrderMonitorService.ReswareNoteDocs.ReceiveNoteResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\ReswareNoteDocs\Service.wsdl" />
-    <None Include="Service References\ReswareOrders\OrderPlacementService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ReswareOrders\OrderPlacementService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ReswareOrders\OrderPlacementService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ReswareOrders\OrderPlacementService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ReswareOrders\OrderPlacementService4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ReswareOrders\OrderPlacementService5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ReswareOrders\OrderPlacementService6.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ReswareOrders\ReswareOrderMonitorService.ReswareOrders.OrderResult.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\ReswareOrders\ReswareOrderMonitorService.ReswareOrders.PlaceOrderResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\ReswareOrders\Service.wsdl" />
-    <None Include="Service References\ReswareSigning\ReswareOrderMonitorService.ReswareSigning.ReceiveSigningResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\ReswareSigning\ReswareOrderMonitorService.ReswareSigning.SigningServiceResult.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\ReswareSigning\Service.wsdl" />
-    <None Include="Service References\ReswareSigning\SigningService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ReswareSigning\SigningService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ReswareSigning\SigningService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ReswareSigning\SigningService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\eClosingIntegrationService\" />
-    <WCFMetadataStorage Include="Service References\ReswareActionEvent\" />
-    <WCFMetadataStorage Include="Service References\ReswareNoteDocs\" />
-    <WCFMetadataStorage Include="Service References\ReswareOrders\" />
-    <WCFMetadataStorage Include="Service References\ReswareSigning\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ReswareOrders\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ReswareOrders\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ReswareOrders\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ReswareSigning\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ReswareSigning\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ReswareSigning\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ReswareNoteDocs\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ReswareNoteDocs\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ReswareNoteDocs\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ReswareActionEvent\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ReswareActionEvent\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ReswareActionEvent\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ProjectInstaller.resx">

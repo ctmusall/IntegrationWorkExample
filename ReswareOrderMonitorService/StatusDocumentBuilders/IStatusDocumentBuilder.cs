@@ -1,11 +1,11 @@
 ﻿using Aspose.Words;
+using Resware.Entities.Orders;
 using ReswareOrderMonitorService.eClosingIntegrationService;
-using ReswareOrderMonitorService.ReswareOrders;
 
 namespace ReswareOrderMonitorService.StatusDocumentBuilders
 {
     internal interface IStatusDocumentBuilder
     {
-        Document BuildDocument(OrderResult reswareOrder, GetOrderResult eClosingOrder);
+        Document BuildDocument(Order reswareOrder, GetOrderResult eClosingOrder);
     }
 }

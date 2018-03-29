@@ -1,33 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using OrderPlacement.Common;
+using Resware.Data.Signing.Repository;
+using Resware.Entities.Orders;
+using Resware.Entities.Orders.BuyerSellers;
+using Resware.Entities.Signings;
 using ReswareOrderMonitorService.Common;
 using ReswareOrderMonitorService.Mirth;
 using ReswareOrderMonitorService.Models;
 using ReswareOrderMonitorService.Properties;
-using ReswareOrderMonitorService.Repositories;
-using ReswareOrderMonitorService.ReswareOrders;
-using ReswareOrderMonitorService.ReswareSigning;
 using ReswareOrderMonitorService.Utilities;
 
 namespace ReswareOrderMonitorService.ActionEvents
 {
     internal abstract class RequestOrder : ActionEvent
     {
-        private readonly IReceiveSigningServiceRepository _receiveSigningServiceRepository;
+        private readonly SigningRepository _receiveSigningServiceRepository;
         private readonly IMirthServiceClient _mirthServiceClient;
         private readonly IServiceUtility _orderServiceUtility;
 
-        internal RequestOrder(IReceiveSigningServiceRepository receiveSigningServiceRepository, IMirthServiceClient mirthServiceClient, IServiceUtility orderServiceUtility)
+        internal RequestOrder(SigningRepository receiveSigningServiceRepository, IMirthServiceClient mirthServiceClient, IServiceUtility orderServiceUtility)
         {
             _receiveSigningServiceRepository = receiveSigningServiceRepository;
             _mirthServiceClient = mirthServiceClient;
             _orderServiceUtility = orderServiceUtility;
         }
 
-        internal abstract RequestMessage BuildRequestMessage(OrderResult order, SigningServiceResult signing);
+        internal abstract RequestMessage BuildRequestMessage(Order order, Signing signing);
 
-        internal override bool PerformAction(OrderResult order)
+        internal override bool PerformAction(Order order)
         {
             var signing = _receiveSigningServiceRepository.GetAllSignings().OrderByDescending(s => s.CreatedDateTime).FirstOrDefault(s => string.Equals(s.FileNumber, order.FileNumber, StringComparison.CurrentCultureIgnoreCase));
 
@@ -35,14 +37,14 @@ namespace ReswareOrderMonitorService.ActionEvents
 
             var requestMessage = BuildRequestMessage(order, signing);
 
-            AssignBorrowerInformation(requestMessage, order.BuyersAndSellers);
+            AssignBorrowerInformation(requestMessage, order.BuyerAndSellers);
 
             _orderServiceUtility.AssignServices(requestMessage);
 
             return _mirthServiceClient.SendMessageToMirth(ModelSerializer.SerializeXml(requestMessage), Settings.Default.MirthSolidifiRequestPort, Settings.Default.MirthIPAddress);
         }
 
-        private static void AssignBorrowerInformation(RequestMessage requestClosingMessage, ICollection<BuyerSellerResult> buyerSellerResults)
+        private static void AssignBorrowerInformation(RequestMessage requestClosingMessage, ICollection<BuyerSeller> buyerSellerResults)
         {
             var borrower = buyerSellerResults.FirstOrDefault(b => b.Type == BuyerSellerEnum.Buyer && !b.Spouse);
 

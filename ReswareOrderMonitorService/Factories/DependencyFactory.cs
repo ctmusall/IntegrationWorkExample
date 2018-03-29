@@ -1,4 +1,8 @@
-﻿using ReswareOrderMonitorService.Factories.ActionEvents;
+﻿using Resware.Data.ActionEvent.Repository;
+using Resware.Data.NoteDoc.Repository;
+using Resware.Data.Order.Repository;
+using Resware.Data.Signing.Repository;
+using ReswareOrderMonitorService.Factories.ActionEvents;
 using ReswareOrderMonitorService.Factories.CompletedActionEvents;
 using ReswareOrderMonitorService.Factories.Documents;
 using ReswareOrderMonitorService.Mirth;
@@ -13,7 +17,7 @@ namespace ReswareOrderMonitorService.Factories
     /// <summary>
     /// Simple wrapper for unity resolution.
     /// </summary>
-    internal static class ReswareOrderDependencyFactory
+    internal class DependencyFactory
     {
         /// <summary>
         /// Public reference to the unity container which will 
@@ -26,7 +30,7 @@ namespace ReswareOrderMonitorService.Factories
         /// Static constructor for DependencyFactory which will 
         /// initialize the unity container.
         /// </summary>
-        static ReswareOrderDependencyFactory()
+        static DependencyFactory()
         {
             var container = new UnityContainer();
 
@@ -41,7 +45,7 @@ namespace ReswareOrderMonitorService.Factories
         /// <typeparam name="T">Type of object to return</typeparam>
         internal static T Resolve<T>()
         {
-            T ret = default(T);
+            var ret = default(T);
 
             if (Container.IsRegistered(typeof(T)))
             {
@@ -53,21 +57,21 @@ namespace ReswareOrderMonitorService.Factories
 
         private static void RegisterTypes(IUnityContainer container)
         {
-            container.RegisterType<IOrderActionEventMonitor, OrderActionEventMonitor>();
-            container.RegisterType<IActionEventReader, ActionEventReader>();
-            container.RegisterType<IMirthServiceClient, MirthServiceClient>();
+            container.RegisterSingleton<OrderRepository>();
+            container.RegisterSingleton<ActionEventRepository>();
+            container.RegisterSingleton<SigningRepository>();
+            container.RegisterSingleton<NoteDocRepository>();
             container.RegisterType<IParentActionEventFactory, ParentActionEventFactory>();
-            container.RegisterType<IParentServiceUtilityFactory, ParentServiceUtilityFactory>();
-            container.RegisterType<IDateTimeUtility, DateTimeUtility>();
-            container.RegisterType<IDocumentMonitor, DocumentMonitor>();
-            container.RegisterType<IClientDocumentFactory, ClientDocumentFactory>();
-            container.RegisterType<IOutgoingMonitor, OutgoingMonitor>();
+            container.RegisterType<IActionEventReader, ActionEventReader>();
             container.RegisterType<IParentClientCompletedActionEventFactory, ParentClientCompletedActionEventFactory>();
-            container.RegisterType<IOrderPlacementRepository, OrderPlacementRepository>();
-            container.RegisterType<IReceiveActionEventRepository, ReceiveActionEventRepository>();
+            container.RegisterType<IClientDocumentFactory, ClientDocumentFactory>();
             container.RegisterType<IIntegrationServiceRepository, IntegrationServiceRepository>();
-            container.RegisterType<IReceiveNoteRepository, ReceiveNoteRepository>();
-            container.RegisterType<IReceiveSigningServiceRepository, IReceiveSigningServiceRepository>();
+            container.RegisterType<IMirthServiceClient, MirthServiceClient>();
+            container.RegisterType<IDateTimeUtility, DateTimeUtility>();
+            container.RegisterType<IParentServiceUtilityFactory, ParentServiceUtilityFactory>();
+            container.RegisterType<IOrderActionEventMonitor, OrderActionEventMonitor>();
+            container.RegisterType<IDocumentMonitor, DocumentMonitor>();
+            container.RegisterType<IOutgoingMonitor, OutgoingMonitor>();
         }
     }
 }

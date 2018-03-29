@@ -1,9 +1,9 @@
 ﻿using System;
+using Resware.Data.Signing.Repository;
+using Resware.Entities.Orders;
+using Resware.Entities.Signings;
 using ReswareOrderMonitorService.Mirth;
 using ReswareOrderMonitorService.Models;
-using ReswareOrderMonitorService.Repositories;
-using ReswareOrderMonitorService.ReswareOrders;
-using ReswareOrderMonitorService.ReswareSigning;
 using ReswareOrderMonitorService.Utilities;
 
 namespace ReswareOrderMonitorService.ActionEvents.Solidifi
@@ -15,12 +15,12 @@ namespace ReswareOrderMonitorService.ActionEvents.Solidifi
         private const string CustomerContact = "KRISTEN MILLER";
         private const string Product = "INT--Search/Opinion";
 
-        internal SolidifiRequestTitleOpinion(IReceiveSigningServiceRepository receiveSigningServiceRepository, IMirthServiceClient mirthServiceClient, IServiceUtility orderServiceUtility, IDateTimeUtility dateTimeUtility) : base(receiveSigningServiceRepository, mirthServiceClient, orderServiceUtility)
+        internal SolidifiRequestTitleOpinion(SigningRepository receiveSigningServiceRepository, IMirthServiceClient mirthServiceClient, IServiceUtility orderServiceUtility, IDateTimeUtility dateTimeUtility) : base(receiveSigningServiceRepository, mirthServiceClient, orderServiceUtility)
         {
             _dateTimeUtility = dateTimeUtility;
         }
 
-        internal override RequestMessage BuildRequestMessage(OrderResult order, SigningServiceResult signing)
+        internal override RequestMessage BuildRequestMessage(Order order, Signing signing)
         {
             var requestMessage = new RequestMessage
             {

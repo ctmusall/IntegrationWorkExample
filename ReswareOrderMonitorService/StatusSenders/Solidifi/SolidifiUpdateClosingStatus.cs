@@ -1,12 +1,12 @@
-﻿using ReswareOrderMonitorService.Repositories;
-using ReswareOrderMonitorService.ReswareOrders;
+﻿using Resware.Data.Order.Repository;
+using Resware.Entities.Orders;
 
 namespace ReswareOrderMonitorService.StatusSenders.Solidifi
 {
     internal class SolidifiUpdateClosingStatus : SolidifiUpdateOrderStatus
     {
-        internal SolidifiUpdateClosingStatus(string newStatus, IOrderPlacementRepository orderPlacementRepository) : base(newStatus, orderPlacementRepository) { }
-        public override void SendStatusUpdate(OrderResult order)
+        internal SolidifiUpdateClosingStatus(string newStatus, OrderRepository orderPlacementRepository) : base(newStatus, orderPlacementRepository) { }
+        public override void SendStatusUpdate(Order order)
         {
             order.ClosingStatus = NewStatus;
             OrderPlacementRepository.UpdateOrder(order);
