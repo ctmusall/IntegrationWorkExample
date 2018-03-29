@@ -1,17 +1,15 @@
 ﻿using System.Data.Entity;
+using Resware.Entities.Notes;
+using Resware.Entities.Notes.Documents;
 using Resware.Entities.Orders.Addresses;
 using Resware.Entities.Orders.BuyerSellers;
-using Resware.Entities.Signings;
 using Resware.Entities.Signings.SigningParties;
 
 namespace Resware.Data.Context
 {
     public class ReswareDbContext : DbContext
     {
-        public ReswareDbContext() : base("name=ReswareDbContext")
-        {
-            Database.SetInitializer(new CreateDatabaseIfNotExists<ReswareDbContext>());
-        }
+        public ReswareDbContext() : base("name=ReswareDbContext") { }
 
         public virtual DbSet<Entities.Orders.Order> Orders { get; set; } 
         public virtual DbSet<PropertyAddress> PropertyAddresses { get; set; }
@@ -19,6 +17,8 @@ namespace Resware.Data.Context
         public virtual DbSet<BuyerSeller> BuyerSellers { get; set; }
         public virtual DbSet<Entities.Signings.Signing> Signings { get; set; }
         public virtual DbSet<SigningParty> SigningParties { get; set; }
+        public virtual DbSet<Note> Notes { get; set; }
+        public virtual DbSet<Document> Documents { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -45,6 +45,13 @@ namespace Resware.Data.Context
                 .HasKey(sp => sp.Id)
                 .HasRequired(sp => sp.Signing)
                 .WithMany(s => s.SigningParties);
+
+            modelBuilder.Entity<Note>().ToTable("Note");
+
+            modelBuilder.Entity<Document>().ToTable("Document")
+                .HasKey(d => d.Id)
+                .HasRequired(d => d.Note)
+                .WithMany(n => n.Documents);
         }
     }
 }

@@ -45,6 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Notes.Documents\Document.cs" />
+    <Compile Include="Notes\Note.cs" />
     <Compile Include="Orders.Addresses\Address.cs" />
     <Compile Include="Orders.Addresses\BuyerSellerAddress.cs" />
     <Compile Include="Orders.Addresses\PropertyAddress.cs" />

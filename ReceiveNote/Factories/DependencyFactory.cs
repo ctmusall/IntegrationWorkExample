@@ -1,8 +1,6 @@
-﻿using ReceiveNote.Data;
-using ReceiveNote.Managers;
-using ReceiveNote.Parsers;
+﻿using ReceiveNote.Managers;
 using ReceiveNote.Readers;
-using ReceiveNote.Repositories;
+using Resware.Data.NoteDoc.Repository;
 using Unity;
 
 namespace ReceiveNote.Factories
@@ -10,20 +8,20 @@ namespace ReceiveNote.Factories
     /// <summary>
     /// Simple wrapper for unity resolution.
     /// </summary>
-    public class NoteDocDependencyFactory
+    internal class DependencyFactory
     {
         /// <summary>
         /// Public reference to the unity container which will 
         /// allow the ability to register instrances or take 
         /// other actions on the container.
         /// </summary>
-        public static IUnityContainer Container { get; }
+        internal static IUnityContainer Container { get; }
 
         /// <summary>
         /// Static constructor for DependencyFactory which will 
         /// initialize the unity container.
         /// </summary>
-        static NoteDocDependencyFactory()
+        static DependencyFactory()
         {
             var container = new UnityContainer();
 
@@ -36,9 +34,9 @@ namespace ReceiveNote.Factories
         /// Resolves the type parameter T to an instance of the appropriate type.
         /// </summary>
         /// <typeparam name="T">Type of object to return</typeparam>
-        public static T Resolve<T>()
+        internal static T Resolve<T>()
         {
-            T ret = default(T);
+            var ret = default(T);
 
             if (Container.IsRegistered(typeof(T)))
             {
@@ -50,13 +48,9 @@ namespace ReceiveNote.Factories
 
         private static void RegisterTypes(IUnityContainer container)
         {
+            container.RegisterSingleton<NoteDocReader>();
+            container.RegisterSingleton<NoteDocRepository>();
             container.RegisterType<INoteDocManager, NoteDocManager>();
-            container.RegisterType<NoteDocReader>();
-            container.RegisterType<IReswareNoteDocRepository, ReswareNoteDocRepository>();
-            container.RegisterType<ReswareNoteDocContext>();
-            container.RegisterType<NoteDocParser>();
-            container.RegisterType<NoteDocResultParser>();
-            container.RegisterType<INoteDocServiceResultManager, NoteDocServiceResultManager>();
         }
     }
 }

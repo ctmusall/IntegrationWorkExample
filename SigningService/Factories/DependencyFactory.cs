@@ -53,6 +53,7 @@ namespace SigningService.Factories
             container.RegisterSingleton<SigningRepository>();
             container.RegisterSingleton<ValidIncomingSigningUtility>();
             container.RegisterType<ISigningManager, SigningManager>();
+
         }
     }
 }

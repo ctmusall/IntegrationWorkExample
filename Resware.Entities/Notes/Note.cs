@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Resware.Entities.Notes.Documents;
 
-namespace ReceiveNote.Models
+namespace Resware.Entities.Notes
 {
     public class Note
     {

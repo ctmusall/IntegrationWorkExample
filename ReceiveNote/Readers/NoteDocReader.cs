@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Adeptive.ResWare.Services;
 using ReceiveNote.Models;
+using Resware.Entities.Notes;
+using Resware.Entities.Notes.Documents;
 
 namespace ReceiveNote.Readers
 {

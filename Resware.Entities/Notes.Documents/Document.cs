@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ReceiveNote.Models
+namespace Resware.Entities.Notes.Documents
 {
     public class Document
     {
