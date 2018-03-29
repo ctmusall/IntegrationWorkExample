@@ -15,7 +15,7 @@ namespace Resware.Data.NoteDoc.Repository
 
             ReswareDbContext.Notes.Add(note);
 
-            ReswareDbContext.Documents.AddRange(documents);
+            if (documents.Count > 0) ReswareDbContext.Documents.AddRange(documents);
 
             return ReswareDbContext.SaveChanges();
         }

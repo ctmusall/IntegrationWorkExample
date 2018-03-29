@@ -38,7 +38,7 @@ namespace ReceiveNote.Readers
                 DocumentBody = document.DocumentBody,
                 FileName = document.FileName,
                 DocumentTypeId = document.DocumentTypeID
-            }).ToList();
+            }).ToList() ?? new List<Document>();
         }
     }
 }
