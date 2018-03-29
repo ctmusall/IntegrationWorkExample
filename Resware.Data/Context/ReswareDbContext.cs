@@ -19,6 +19,8 @@ namespace Resware.Data.Context
         public virtual DbSet<SigningParty> SigningParties { get; set; }
         public virtual DbSet<Note> Notes { get; set; }
         public virtual DbSet<Document> Documents { get; set; }
+        public virtual DbSet<Entities.ActionEvents.ActionEvent> ActionEvents { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -52,6 +54,8 @@ namespace Resware.Data.Context
                 .HasKey(d => d.Id)
                 .HasRequired(d => d.Note)
                 .WithMany(n => n.Documents);
+
+            modelBuilder.Entity<Entities.ActionEvents.ActionEvent>().ToTable("ActionEvent");
         }
     }
 }

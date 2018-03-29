@@ -1,7 +1,6 @@
 ﻿using ActionEventService.Managers;
-using ActionEventService.Parsers;
-using ActionEventService.Repositories;
-using ActionEventService.Utilities;
+using ActionEventService.Readers;
+using Resware.Data.ActionEvent.Repository;
 using Unity;
 
 namespace ActionEventService.Factories
@@ -9,20 +8,20 @@ namespace ActionEventService.Factories
     /// <summary>
     /// Simple wrapper for unity resolution.
     /// </summary>
-    public class ActionEventDependencyFactory
+    internal class DependencyFactory
     {
         /// <summary>
         /// Public reference to the unity container which will 
         /// allow the ability to register instrances or take 
         /// other actions on the container.
         /// </summary>
-        public static IUnityContainer Container { get; }
+        internal static IUnityContainer Container { get; }
 
         /// <summary>
         /// Static constructor for DependencyFactory which will 
         /// initialize the unity container.
         /// </summary>
-        static ActionEventDependencyFactory()
+        static DependencyFactory()
         {
             var container = new UnityContainer();
 
@@ -35,9 +34,9 @@ namespace ActionEventService.Factories
         /// Resolves the type parameter T to an instance of the appropriate type.
         /// </summary>
         /// <typeparam name="T">Type of object to return</typeparam>
-        public static T Resolve<T>()
+        internal static T Resolve<T>()
         {
-            T ret = default(T);
+            var ret = default(T);
 
             if (Container.IsRegistered(typeof(T)))
             {
@@ -49,13 +48,9 @@ namespace ActionEventService.Factories
 
         private static void RegisterTypes(IUnityContainer container)
         {
+            container.RegisterSingleton<ActionEventReader>();
+            container.RegisterSingleton<ActionEventRepository>();
             container.RegisterType<IActionEventManager, ActionEventManager>();
-            container.RegisterType<IReswareActionEventRepository, ReswareActionEventRepository>();
-            container.RegisterType<ActionEventReader>();
-            container.RegisterType<ActionEventParser>();
-            container.RegisterType<ActionEventResultParser>();
-            container.RegisterType<IActionEventServiceResultManager, ActionEventServiceResultManager>();
-            container.RegisterType<ValidIncomingActionEventUtility>();
         }
     }
 }

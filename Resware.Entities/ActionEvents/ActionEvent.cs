@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace ActionEventService.Models
+namespace Resware.Entities.ActionEvents
 {
     public class ActionEvent
     {

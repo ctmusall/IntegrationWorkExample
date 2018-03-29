@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionEvents\ActionEvent.cs" />
     <Compile Include="Notes.Documents\Document.cs" />
     <Compile Include="Notes\Note.cs" />
     <Compile Include="Orders.Addresses\Address.cs" />

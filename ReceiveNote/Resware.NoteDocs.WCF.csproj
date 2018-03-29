@@ -120,11 +120,9 @@
     <Compile Include="IReceiveNoteService.cs" />
     <Compile Include="Managers\INoteDocManager.cs" />
     <Compile Include="Managers\NoteDocManager.cs" />
-    <Compile Include="Models\DocumentServiceResult.cs" />
     <Compile Include="Models\NoteDocReaderResult.cs" />
     <Compile Include="Models\NoteDocResult.cs" />
     <Compile Include="Factories\DependencyFactory.cs" />
-    <Compile Include="Models\NoteDocServiceResult.cs" />
     <Compile Include="Readers\NoteDocReader.cs" />
     <Compile Include="ReceiveNoteService.svc.cs">
       <DependentUpon>ReceiveNoteService.svc</DependentUpon>
