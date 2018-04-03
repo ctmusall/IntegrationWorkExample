@@ -4,7 +4,6 @@ using ActionEventService.Models;
 using ActionEventService.Readers;
 using Adeptive.ResWare.Services;
 using Resware.Data.ActionEvent.Repository;
-using ReswareCommon;
 using ReswareCommon.Messages;
 
 namespace ActionEventService.Managers
