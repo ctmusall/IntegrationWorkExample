@@ -1,11 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Resware.Data.Context;
 using Resware.Data.Repository;
 
 namespace Resware.Data.ActionEvent.Repository
 {
     public class ActionEventRepository : RepositoryBase
     {
+        internal ActionEventRepository(ReswareDbContext reswareDbContext) : base(reswareDbContext) { }
+
         public int SaveNewActionEvent(Entities.ActionEvents.ActionEvent actionEvent)
         {
             if (actionEvent == null) return -1;
@@ -24,7 +27,7 @@ namespace Resware.Data.ActionEvent.Repository
         {
             var actionEvent = ReswareDbContext.ActionEvents.FirstOrDefault(a => a.Id == updatedActionEvent.Id);
 
-            if (actionEvent == null) return 0;
+            if (actionEvent == null) return -1;
 
             ReswareDbContext.Entry(actionEvent).CurrentValues.SetValues(updatedActionEvent);
 

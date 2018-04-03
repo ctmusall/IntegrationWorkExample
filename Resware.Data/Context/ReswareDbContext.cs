@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System.Data.Common;
+using System.Data.Entity;
 using Resware.Entities.Notes;
 using Resware.Entities.Notes.Documents;
 using Resware.Entities.Orders.Addresses;
@@ -10,6 +11,8 @@ namespace Resware.Data.Context
     public class ReswareDbContext : DbContext
     {
         public ReswareDbContext() : base("name=ReswareDbContext") { }
+
+        public ReswareDbContext(DbConnection dbConnection) : base(dbConnection, true) { }
 
         public virtual DbSet<Entities.Orders.Order> Orders { get; set; } 
         public virtual DbSet<PropertyAddress> PropertyAddresses { get; set; }
