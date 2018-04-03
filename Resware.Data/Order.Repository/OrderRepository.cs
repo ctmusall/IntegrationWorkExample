@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Data.Entity;
+using Resware.Data.Context;
 using Resware.Data.Repository;
 using Resware.Entities.Orders.Addresses;
 using Resware.Entities.Orders.BuyerSellers;
@@ -9,6 +10,8 @@ namespace Resware.Data.Order.Repository
 {
     public class OrderRepository : RepositoryBase
     {
+        internal OrderRepository(ReswareDbContext reswareDbContext) : base(reswareDbContext) { }
+
         public int SaveNewOrder(Entities.Orders.Order order, PropertyAddress propertyAddress, ICollection<BuyerSeller> buyerSellers, ICollection<BuyerSellerAddress> buyerSellerAddresses)
         {
             if (order == null || propertyAddress == null || buyerSellers == null || buyerSellerAddresses == null) return -1;

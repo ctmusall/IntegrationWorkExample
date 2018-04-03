@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using Resware.Data.Context;
 using Resware.Data.Repository;
 using Resware.Entities.Signings.SigningParties;
 
@@ -8,6 +9,8 @@ namespace Resware.Data.Signing.Repository
 {
     public class SigningRepository : RepositoryBase
     {
+        internal SigningRepository(ReswareDbContext reswareDbContext) : base(reswareDbContext) { }
+
         public int SaveNewSigning(Entities.Signings.Signing signing, ICollection<SigningParty> signingParties)
         {
             if (signing == null) return -1;
