@@ -14,18 +14,18 @@ namespace Resware.ActionEvent.WCF.Test.Managers.Test
     {
         private IActionEventManager _actionEventManager;
         private ActionEventRepository _actionEventRepository;
-        private ActionEventReader _actionEventReaderMock;
+        private ActionEventReader _actionEventReader;
 
         [TestInitialize]
         public void Setup()
         {
-            _actionEventReaderMock = new ActionEventReader();
+            _actionEventReader = new ActionEventReader();
 
             EffortProviderConfiguration.RegisterProvider();
             var connection = Effort.DbConnectionFactory.CreateTransient();
             var reswareDbContext = new ReswareDbContext(connection);
             _actionEventRepository = new ActionEventRepository(reswareDbContext);
-            _actionEventManager = new ActionEventManager(_actionEventReaderMock, _actionEventRepository);
+            _actionEventManager = new ActionEventManager(_actionEventReader, _actionEventRepository);
         }
 
         [TestMethod]
