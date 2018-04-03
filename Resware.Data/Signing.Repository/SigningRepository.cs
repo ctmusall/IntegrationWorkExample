@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using System.Linq;
 using Resware.Data.Context;
+using Resware.Data.Factory;
 using Resware.Data.Repository;
 using Resware.Entities.Signings.SigningParties;
 
@@ -9,6 +10,7 @@ namespace Resware.Data.Signing.Repository
 {
     public class SigningRepository : RepositoryBase
     {
+        public SigningRepository() : base(DependencyFactory.Resolve<ReswareDbContext>()) { }
         internal SigningRepository(ReswareDbContext reswareDbContext) : base(reswareDbContext) { }
 
         public int SaveNewSigning(Entities.Signings.Signing signing, ICollection<SigningParty> signingParties)

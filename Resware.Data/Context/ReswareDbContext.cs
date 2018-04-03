@@ -12,7 +12,7 @@ namespace Resware.Data.Context
     {
         public ReswareDbContext() : base("name=ReswareDbContext") { }
 
-        public ReswareDbContext(DbConnection dbConnection) : base(dbConnection, true) { }
+        internal ReswareDbContext(DbConnection dbConnection) : base(dbConnection, true) { }
 
         public virtual DbSet<Entities.Orders.Order> Orders { get; set; } 
         public virtual DbSet<PropertyAddress> PropertyAddresses { get; set; }

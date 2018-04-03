@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Resware.Data.Context;
+using Resware.Data.Factory;
 using Resware.Data.Repository;
 
 namespace Resware.Data.ActionEvent.Repository
 {
     public class ActionEventRepository : RepositoryBase
     {
+        public ActionEventRepository() : base(DependencyFactory.Resolve<ReswareDbContext>()) { } 
         internal ActionEventRepository(ReswareDbContext reswareDbContext) : base(reswareDbContext) { }
 
         public int SaveNewActionEvent(Entities.ActionEvents.ActionEvent actionEvent)
