@@ -3,7 +3,6 @@ using System.Diagnostics;
 using Resware.Data.Order.Repository;
 using ReswareOrderMonitorService.Factories;
 using ReswareOrderMonitorService.Readers;
-using Unity.Interception.Utilities;
 
 
 namespace ReswareOrderMonitorService.Monitors

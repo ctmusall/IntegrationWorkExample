@@ -51,5 +51,27 @@ namespace Resware.Orders.WCF.Test.Managers.Test
             Assert.IsFalse(string.IsNullOrWhiteSpace(result.Message));
             Assert.AreEqual(ValidationMessages.PropertyAddressIsNull, result.Message);
         }
+
+        [TestMethod]
+        public void PlaceOrder_passed_valid_data_and_parsed_into_new_order_property_address_without_any_buyer_or_sellers_should_return_two_with_no_message()
+        {
+            // Act
+            var result = _orderPlacementManager.PlaceOrder(1, "123456", new OrderPlacementServicePropertyAddress(), 11, DateTime.Now, new OrderPlacementServicePartner(), null, null, "Note!", 2);
+
+            // Assert
+            Assert.AreEqual(2, result.Result);
+            Assert.IsTrue(string.IsNullOrWhiteSpace(result.Message));
+        }
+
+        [TestMethod]
+        public void PlaceOrder_passed_valid_data_and_parsed_into_new_order_property_address_buyer_and_sellers_should_return_six_with_no_message()
+        {
+            // Act
+            var result = _orderPlacementManager.PlaceOrder(1, "123456", new OrderPlacementServicePropertyAddress(), 11, DateTime.Now, new OrderPlacementServicePartner(), new[] { new OrderPlacementServiceBuyerSeller()}, new[] {new OrderPlacementServiceBuyerSeller()}, "Note!", 2);
+            
+            // Assert
+            Assert.AreEqual(6, result.Result);
+            Assert.IsTrue(string.IsNullOrWhiteSpace(result.Message));
+        }
     }
 }

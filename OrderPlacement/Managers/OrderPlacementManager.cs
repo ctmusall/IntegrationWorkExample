@@ -29,11 +29,9 @@ namespace OrderPlacement.Managers
 
                 var readerResult = _reswareReaderFactory?.ResolveReader(clientId)?.ParseInput(fileNumber, propertyAddress, productId, estimatedSettlementDate, lender, buyers, sellers, notes, clientId, transactionTypeId);
 
-                if (readerResult == null) return new PlaceOrderResult { Result = -1, Message = "Result is null"};
-
                 return new PlaceOrderResult
                 {
-                    Result = _reswareOrderRepository.SaveNewOrder(readerResult.Order, readerResult.PropertyAddress, readerResult.BuyerSellersReaderResult.BuyerSellers, readerResult.BuyerSellersReaderResult.BuyerSellerAddresses)
+                    Result = _reswareOrderRepository.SaveNewOrder(readerResult?.Order, readerResult?.PropertyAddress, readerResult?.BuyerSellersReaderResult.BuyerSellers, readerResult?.BuyerSellersReaderResult.BuyerSellerAddresses)
                 };
             }
             catch (Exception ex)

@@ -6,7 +6,6 @@ using OrderPlacement.Utilities;
 using Resware.Entities.Orders;
 using Resware.Entities.Orders.Addresses;
 using Resware.Entities.Orders.BuyerSellers;
-using ReswareCommon;
 using ReswareCommon.Enums;
 using Unity.Interception.Utilities;
 
