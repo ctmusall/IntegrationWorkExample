@@ -16,6 +16,7 @@ using System.Runtime.InteropServices;
 [assembly: InternalsVisibleTo("Resware.Data.Test")]
 [assembly: InternalsVisibleTo("Resware.ActionEvent.WCF.Test")]
 [assembly: InternalsVisibleTo("Resware.NoteDocs.WCF.Test")]
+[assembly: InternalsVisibleTo("Resware.Signing.WCF.Test")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 
 // to COM components.  If you need to access a type in this assembly from 
