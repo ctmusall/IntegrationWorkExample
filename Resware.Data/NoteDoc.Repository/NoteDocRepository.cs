@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using Resware.Data.Context;
+using Resware.Data.Factory;
 using Resware.Data.Repository;
 using Resware.Entities.Notes;
 using Resware.Entities.Notes.Documents;
@@ -9,6 +11,9 @@ namespace Resware.Data.NoteDoc.Repository
 {
     public class NoteDocRepository : RepositoryBase
     {
+        public NoteDocRepository() : base(DependencyFactory.Resolve<ReswareDbContext>()) { }
+        internal NoteDocRepository(ReswareDbContext reswareDbContext) : base(reswareDbContext) { }
+
         public int SaveNewNoteDoc(Note note, ICollection<Document> documents)
         {
             if (note == null || documents == null) return -1;

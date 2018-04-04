@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using OrderPlacement.Common;
 using OrderPlacement.Factory;
 using OrderPlacement.Models;
 using OrderPlacement.Utilities;
 using Resware.Entities.Orders;
 using Resware.Entities.Orders.Addresses;
 using Resware.Entities.Orders.BuyerSellers;
+using ReswareCommon.Enums;
 using Unity.Interception.Utilities;
 
 namespace OrderPlacement.Readers

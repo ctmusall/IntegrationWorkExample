@@ -1,4 +1,4 @@
-﻿namespace ReswareCommon
+﻿namespace ReswareCommon.Constants
 {
     public static class ProductNameConstants
     {

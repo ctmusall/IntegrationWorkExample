@@ -2,6 +2,7 @@
 using Aspose.Words;
 using Resware.Entities.Orders;
 using ReswareCommon;
+using ReswareCommon.Constants;
 using ReswareOrderMonitorService.eClosingIntegrationService;
 
 namespace ReswareOrderMonitorService.StatusDocumentBuilders

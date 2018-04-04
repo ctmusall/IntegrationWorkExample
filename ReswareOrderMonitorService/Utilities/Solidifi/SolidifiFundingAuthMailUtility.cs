@@ -1,8 +1,9 @@
 ﻿using System.Linq;
 using System.Net.Mail;
 using System.Text;
-using OrderPlacement.Common;
 using Resware.Entities.Orders;
+using ReswareCommon;
+using ReswareCommon.Enums;
 
 namespace ReswareOrderMonitorService.Utilities.Solidifi
 {

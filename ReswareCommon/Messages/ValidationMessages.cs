@@ -1,4 +1,4 @@
-﻿namespace ReswareCommon
+﻿namespace ReswareCommon.Messages
 {
     public static class ValidationMessages
     {

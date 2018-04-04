@@ -1,8 +1,8 @@
-﻿using OrderPlacement.Common;
-using OrderPlacement.Models;
+﻿using OrderPlacement.Models;
 using Resware.Entities.Orders;
 using Resware.Entities.Orders.Addresses;
 using Resware.Entities.Orders.BuyerSellers;
+using ReswareCommon.Enums;
 
 namespace OrderPlacement.Utilities
 {

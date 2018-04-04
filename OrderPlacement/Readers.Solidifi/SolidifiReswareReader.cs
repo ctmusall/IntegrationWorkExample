@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using OrderPlacement.Utilities;
 using Resware.Entities.Orders;
 using Resware.Entities.Orders.Addresses;
 using Resware.Entities.Orders.BuyerSellers;
-using ReswareCommon;
+using ReswareCommon.Constants;
 
 namespace OrderPlacement.Readers.Solidifi
 {
     internal class SolidifiReswareReader : ReswareReader
     {
+        internal SolidifiReswareReader() { }
+        internal SolidifiReswareReader(BuyerSellerReaderResultUtility buyerSellerReaderResultUtility) : base(buyerSellerReaderResultUtility) { }
+
         private const string CustomerId = "L17100";
 
         internal override Order MapReswareOrder(string fileNumber, OrderPlacementServicePartner lender, DateTime? estimatedSettlementDate, int productId, string notes, int clientId, int transactionTypeId)

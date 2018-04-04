@@ -1,6 +1,6 @@
-﻿namespace ReswareCommon
+﻿namespace ReswareCommon.Constants
 {
-    public static class EClosingOrderStatusConstants
+    public static class OrderStatusConstants
     {
         public const string Pending = "Pending";
         public const string Scheduled = "Scheduled";

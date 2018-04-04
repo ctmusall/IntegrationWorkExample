@@ -2,6 +2,7 @@
 using Resware.Data.Order.Repository;
 using Resware.Entities.Orders;
 using ReswareCommon;
+using ReswareCommon.Constants;
 using ReswareOrderMonitorService.eClosingIntegrationService;
 using ReswareOrderMonitorService.StatusSenders;
 using ReswareOrderMonitorService.StatusSenders.Solidifi;
@@ -28,7 +29,7 @@ namespace ReswareOrderMonitorService.Factories.StatusSenders.Solidifi
 
         private static bool ClosingCompleted(string currentOrderStatus)
         {
-            return !string.IsNullOrWhiteSpace(currentOrderStatus) && string.Equals(currentOrderStatus, EClosingOrderStatusConstants.Closed, StringComparison.CurrentCultureIgnoreCase);
+            return !string.IsNullOrWhiteSpace(currentOrderStatus) && string.Equals(currentOrderStatus, OrderStatusConstants.Closed, StringComparison.CurrentCultureIgnoreCase);
         }
     }
 }

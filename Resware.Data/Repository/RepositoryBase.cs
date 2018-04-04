@@ -5,9 +5,11 @@ namespace Resware.Data.Repository
 {
     public abstract class RepositoryBase
     {
-        protected readonly ReswareDbContext ReswareDbContext;
-        protected RepositoryBase() : this(DependencyFactory.Resolve<ReswareDbContext>()) { }
-        protected RepositoryBase(ReswareDbContext reswareDbContext)
+        internal ReswareDbContext ReswareDbContext;
+
+        internal RepositoryBase() : this(DependencyFactory.Resolve<ReswareDbContext>()) { }
+
+        internal RepositoryBase(ReswareDbContext reswareDbContext)
         {
             ReswareDbContext = reswareDbContext;
         }
