@@ -4,7 +4,6 @@ using Resware.Data.Order.Repository;
 using ReswareOrderMonitorService.Factories;
 using ReswareOrderMonitorService.Readers;
 
-
 namespace ReswareOrderMonitorService.Monitors
 {
     internal class OrderActionEventMonitor : IOrderActionEventMonitor
