@@ -6,6 +6,8 @@ namespace ReswareOrderMonitorService.Factories.ActionEvents
     {
         internal readonly IServiceUtilityFactory ServiceUtilityFactory;
 
+        internal ActionEventFactory() { }
+
         internal ActionEventFactory(IServiceUtilityFactory serviceUtilityFactory)
         {
             ServiceUtilityFactory = serviceUtilityFactory;

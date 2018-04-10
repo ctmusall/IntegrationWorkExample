@@ -14,6 +14,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 [assembly: InternalsVisibleTo("Resware.MonitorService.Test")]
+[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
 
 
 // Setting ComVisible to false makes the types in this assembly not visible 

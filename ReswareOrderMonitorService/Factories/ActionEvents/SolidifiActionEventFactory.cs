@@ -12,6 +12,8 @@ namespace ReswareOrderMonitorService.Factories.ActionEvents
 {
     internal class SolidifiActionEventFactory : ActionEventFactory
     {
+        internal SolidifiActionEventFactory() { }
+
         internal SolidifiActionEventFactory(IServiceUtilityFactory serviceUtilityFactory) : base(serviceUtilityFactory) { }
 
         internal override ActionEvent ResolveActionEvent(string actionEventCode)

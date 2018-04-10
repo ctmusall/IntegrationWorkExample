@@ -25,6 +25,8 @@ namespace ReswareOrderMonitorService.Readers
         {
             try
             {
+                if (order == null) return;
+
                 var actionEvents = _receiveActionEventRepository.GetAllActionEvents()
                     .Where(ae => !ae.ActionCompleted && ae.ActionCompletedDateTime == null 
                     && string.Equals(ae.FileNumber,order.FileNumber, StringComparison.CurrentCultureIgnoreCase)).ToList();
