@@ -96,7 +96,7 @@ namespace Resware.MonitorService.Test.Readers.Test
             // Arrange
             var order = new Order {FileNumber = "123456", ClientId = 1};
 
-            _reswareDbContext.ActionEvents.Add(new ActionEvent {ActionEventCode = "123", FileNumber = "123456"});
+            _reswareDbContext.ActionEvents.Add(new ActionEvent {ActionEventCode = "123", FileNumber = "123456", ActionCompleted = false});
             _reswareDbContext.SaveChanges();
 
             // Act
