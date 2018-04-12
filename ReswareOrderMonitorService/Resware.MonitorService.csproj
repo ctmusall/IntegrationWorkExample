@@ -140,7 +140,7 @@
     <Compile Include="ActionEvents\Solidifi\SolidifiRequestTitleOpinion.cs" />
     <Compile Include="ActionEvents\FundingAuth.cs" />
     <Compile Include="ActionEvents\RequestOrder.cs" />
-    <Compile Include="ActionEvents\SchedulingReschedule.cs" />
+    <Compile Include="ActionEvents\Solidifi\SolidifiSchedulingReschedule.cs" />
     <Compile Include="Aspose\AsposeLicense.cs" />
     <Compile Include="Common\ModelSerializer.cs" />
     <Compile Include="Common\OrderTypeEnum.cs" />

@@ -23,7 +23,7 @@ namespace Resware.MonitorService.Test.Readers.Test
         private Mock<IParentActionEventFactory> _parentActionEventFactoryMock;
 
 
-        private Mock<SolidifiActionEventFactory> _actionEventFactoryMock;
+        private Mock<ActionEventFactory> _actionEventFactoryMock;
         private Mock<ReswareOrderMonitorService.ActionEvents.ActionEvent> _actionEventMock;
 
 
@@ -40,7 +40,7 @@ namespace Resware.MonitorService.Test.Readers.Test
             _actionEventMock = new Mock<ReswareOrderMonitorService.ActionEvents.ActionEvent>();
             _actionEventMock.Setup(ae => ae.PerformAction(It.IsAny<Order>())).Returns(true);
 
-            _actionEventFactoryMock = new Mock<SolidifiActionEventFactory>();
+            _actionEventFactoryMock = new Mock<ActionEventFactory>();
             _actionEventFactoryMock.Setup(ae => ae.ResolveActionEvent(It.IsAny<string>())).Returns(_actionEventMock.Object);
 
             _parentActionEventFactoryMock = new Mock<IParentActionEventFactory>();

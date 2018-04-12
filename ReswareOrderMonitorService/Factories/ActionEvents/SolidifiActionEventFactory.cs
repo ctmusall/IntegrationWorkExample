@@ -21,7 +21,7 @@ namespace ReswareOrderMonitorService.Factories.ActionEvents
             switch (actionEventCode)
             {
                 case SolidifiActionEventConstants.RescheduleClosing:
-                    return new SchedulingReschedule(ServiceUtilityFactory.ResolveServiceUtility(OrderTypeEnum.Closing), DependencyFactory.Resolve<IIntegrationServiceRepository>(), DependencyFactory.Resolve<SigningRepository>(), DependencyFactory.Resolve<IMirthServiceClient>());
+                    return new SolidifiSchedulingReschedule(ServiceUtilityFactory.ResolveServiceUtility(OrderTypeEnum.Closing), DependencyFactory.Resolve<IIntegrationServiceRepository>(), DependencyFactory.Resolve<SigningRepository>(), DependencyFactory.Resolve<IMirthServiceClient>());
                 case SolidifiActionEventConstants.RequestClosing:
                     return new SolidifiRequestClosing(DependencyFactory.Resolve<SigningRepository>(), DependencyFactory.Resolve<IMirthServiceClient>(), ServiceUtilityFactory.ResolveServiceUtility(OrderTypeEnum.Closing));
                 case SolidifiActionEventConstants.RequestTitleOpinion:

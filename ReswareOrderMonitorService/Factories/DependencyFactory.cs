@@ -2,6 +2,7 @@
 using Resware.Data.NoteDoc.Repository;
 using Resware.Data.Order.Repository;
 using Resware.Data.Signing.Repository;
+using ReswareOrderMonitorService.eClosingIntegrationService;
 using ReswareOrderMonitorService.Factories.ActionEvents;
 using ReswareOrderMonitorService.Factories.CompletedActionEvents;
 using ReswareOrderMonitorService.Factories.Documents;

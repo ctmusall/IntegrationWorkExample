@@ -15,9 +15,10 @@
         {
             switch (clientId)
             {
-                // TODO - switch on client id
+                case 1:
+                    return new SolidifiActionEventFactory(_parentServiceUtilityFactory.ResolveServiceUtilityFactory(clientId));
                 default:
-                   return new SolidifiActionEventFactory(_parentServiceUtilityFactory.ResolveServiceUtilityFactory(clientId));
+                    return null;
             }
         }
     }

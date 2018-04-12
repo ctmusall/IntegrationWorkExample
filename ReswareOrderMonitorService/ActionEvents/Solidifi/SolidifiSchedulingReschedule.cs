@@ -1,21 +1,20 @@
 ﻿using Resware.Data.Signing.Repository;
 using Resware.Entities.Orders;
-using ReswareOrderMonitorService.ActionEvents.Solidifi;
 using ReswareOrderMonitorService.eClosingIntegrationService;
 using ReswareOrderMonitorService.Mirth;
 using ReswareOrderMonitorService.Repositories;
 using ReswareOrderMonitorService.Utilities;
 
-namespace ReswareOrderMonitorService.ActionEvents
+namespace ReswareOrderMonitorService.ActionEvents.Solidifi
 {
-    internal class SchedulingReschedule : ActionEvent
+    internal class SolidifiSchedulingReschedule : ActionEvent
     {
         private readonly IIntegrationServiceRepository _integrationServiceRepository;
         private readonly IServiceUtility _orderServiceUtility;
         private readonly SigningRepository _receiveSigningServiceRepository;
         private readonly IMirthServiceClient _mirthServiceClient;
 
-        internal SchedulingReschedule(IServiceUtility orderServiceUtility, IIntegrationServiceRepository integrationServiceRepository, SigningRepository receiveSigningServiceRepository, IMirthServiceClient mirthServiceClient)
+        internal SolidifiSchedulingReschedule(IServiceUtility orderServiceUtility, IIntegrationServiceRepository integrationServiceRepository, SigningRepository receiveSigningServiceRepository, IMirthServiceClient mirthServiceClient)
         {
             _orderServiceUtility = orderServiceUtility;
             _integrationServiceRepository = integrationServiceRepository;
