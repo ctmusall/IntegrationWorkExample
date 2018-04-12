@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using Effort;
-using Effort.Provider;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Resware.Data.ActionEvent.Repository;
