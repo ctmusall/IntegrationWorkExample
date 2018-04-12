@@ -1,6 +1,5 @@
 ﻿using System.Linq;
 using Effort;
-using Effort.Provider;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Resware.Data.ActionEvent.Repository;
 using Resware.Data.Context;

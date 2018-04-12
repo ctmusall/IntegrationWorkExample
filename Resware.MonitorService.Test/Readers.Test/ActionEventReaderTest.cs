@@ -31,11 +31,10 @@ namespace Resware.MonitorService.Test.Readers.Test
         [TestInitialize]
         public void Setup()
         {
-            EffortProviderConfiguration.RegisterProvider();
+            //EffortProviderConfiguration.RegisterProvider();
             var connection = DbConnectionFactory.CreateTransient();
             _reswareDbContext = new ReswareDbContext(connection);
             _actionEventRepository = new ActionEventRepository(_reswareDbContext);
-
 
             _actionEventMock = new Mock<ReswareOrderMonitorService.ActionEvents.ActionEvent>();
             _actionEventMock.Setup(ae => ae.PerformAction(It.IsAny<Order>())).Returns(true);
@@ -86,7 +85,7 @@ namespace Resware.MonitorService.Test.Readers.Test
             _actionEventReader.CompleteActions(order);
             
             // Assert
-            Assert.AreEqual(_reswareDbContext.ActionEvents.Count(), 1);
+            Assert.AreEqual(1, _reswareDbContext.ActionEvents.Count());
             Assert.IsTrue(_reswareDbContext.ActionEvents.First().ActionCompleted);
         }
 
