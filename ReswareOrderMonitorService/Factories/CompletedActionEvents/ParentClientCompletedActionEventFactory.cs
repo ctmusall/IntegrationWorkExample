@@ -5,13 +5,23 @@ namespace ReswareOrderMonitorService.Factories.CompletedActionEvents
 {
     internal class ParentClientCompletedActionEventFactory : IParentClientCompletedActionEventFactory
     {
+        private readonly IIntegrationServiceRepository _integrationServiceRepository;
+
+        internal ParentClientCompletedActionEventFactory() : this(DependencyFactory.Resolve<IIntegrationServiceRepository>()) { }
+
+        internal ParentClientCompletedActionEventFactory(IIntegrationServiceRepository integrationServiceRepository)
+        {
+            _integrationServiceRepository = integrationServiceRepository;
+        }
+
         public IClientCompletedActionEventFactory ResolveClientCompletedActionEventFactory(int clientId)
         {
             switch (clientId)
             {
-                // TODO - Switch on client ID
+                case 1:
+                    return new SolidifiCompletedActionEventFactory(_integrationServiceRepository);
                 default:
-                    return new SolidifiCompletedActionEventFactory(new IntegrationServiceRepository());
+                    return null;
             }
         }
     }
