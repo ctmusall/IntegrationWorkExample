@@ -6,9 +6,10 @@
         {
             switch (clientId)
             {
-                // TODO - Switch on client Id
-                default:
+                case 1:
                     return new SolidifiServiceUtilityFactory();
+                default:
+                    return null;
             }
         }
     }

@@ -6,9 +6,10 @@
         {
             switch (clientId)
             {
-                // TODO - Switch on Solidifi client id
+                case 1:
+                    return new SolidifiDocumentReaderFactory();
                 default:
-                    return new SolidifiDocumentReaderFactory(); 
+                    return null;
             }
         }
     }

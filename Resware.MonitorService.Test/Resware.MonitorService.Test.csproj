@@ -91,6 +91,9 @@
     <Compile Include="Factories.Test\ActionEvents.Test\SolidifiActionEventFactoryTest.cs" />
     <Compile Include="Factories.Test\CompletedActionEvents.Test\ParentClientCompletedActionEventFactoryTest.cs" />
     <Compile Include="Factories.Test\CompletedActionEvents.Test\Solidifi.Test\SolidifiCompletedActionEventFactoryTest.cs" />
+    <Compile Include="Factories.Test\Documents.Test\ClientDocumentFactoryTest.cs" />
+    <Compile Include="Factories.Test\Documents.Test\SolidifiDocumentReaderFactoryTest.cs" />
+    <Compile Include="Factories.Test\Services.Test\ParentServiceUtilityFactoryTest.cs" />
     <Compile Include="Monitors.Test\OrderActionEventMonitorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Readers.Test\ActionEventReaderTest.cs" />
