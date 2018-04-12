@@ -87,6 +87,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ActionEvents.Test\Solidifi.Test\SolidifiRequestClosingTest.cs" />
     <Compile Include="Factories.Test\ActionEvents.Test\ParentActionEventFactoryTest.cs" />
     <Compile Include="Factories.Test\ActionEvents.Test\SolidifiActionEventFactoryTest.cs" />
     <Compile Include="Factories.Test\CompletedActionEvents.Test\ParentClientCompletedActionEventFactoryTest.cs" />
