@@ -1,6 +1,5 @@
 ﻿using System;
 using Resware.Entities.Orders;
-using ReswareCommon;
 using ReswareCommon.Constants;
 using ReswareOrderMonitorService.eClosingIntegrationService;
 using ReswareOrderMonitorService.StatusSenders;

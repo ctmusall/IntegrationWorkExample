@@ -1,4 +1,5 @@
-﻿using Resware.Data.Order.Repository;
+﻿using System;
+using Resware.Data.Order.Repository;
 using Resware.Entities.Orders;
 using ReswareOrderMonitorService.StatusDocumentBuilders;
 using ReswareOrderMonitorService.eClosingIntegrationService;
@@ -17,7 +18,11 @@ namespace ReswareOrderMonitorService.Factories.StatusSenders.Solidifi
 
             if (string.IsNullOrWhiteSpace(reswareOrder.DocPrepStatus)) return new SolidifiUpdateDocPrepStatus(EClosingOrder.Order.Status, DependencyFactory.Resolve<OrderRepository>());
 
-            return OrderHasAssignedAttorney(reswareOrder.DocPrepStatus, EClosingOrder.Order.Status) ? new SolidifiStatusSender(EClosingOrder, new AssignedAttorneyStatusDocumentBuilder(), new SolidifiUpdateClosingStatus(EClosingOrder.Order.Status, DependencyFactory.Resolve<OrderRepository>())) : null;
+            if (string.Equals(reswareOrder.DocPrepStatus, EClosingOrder.Order.Status, StringComparison.CurrentCultureIgnoreCase)) return null;
+
+            if (OrderHasAssignedAttorney(reswareOrder.DocPrepStatus, EClosingOrder.Order.Status)) return new SolidifiStatusSender(EClosingOrder, new AssignedAttorneyStatusDocumentBuilder(), new SolidifiUpdateDocPrepStatus(EClosingOrder.Order.Status, DependencyFactory.Resolve<OrderRepository>()));
+
+            return new SolidifiUpdateDocPrepStatus(EClosingOrder.Order.Status, DependencyFactory.Resolve<OrderRepository>());
         }
     }
 }

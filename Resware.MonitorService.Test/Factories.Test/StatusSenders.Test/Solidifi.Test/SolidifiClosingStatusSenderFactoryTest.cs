@@ -101,7 +101,7 @@ namespace Resware.MonitorService.Test.Factories.Test.StatusSenders.Test.Solidifi
         [TestMethod]
         public void ResolveStatusSender_eclosing_closing_order_status_is_not_updated_should_return_null()
         {
-            // Arrange
+            // Arrange 
             _reswareOrder.ClosingStatus = OrderStatusConstants.Scheduled;
             _solidifiClosingStatusSenderFactory.EClosingOrder.Order.Status = OrderStatusConstants.Scheduled;
 

@@ -20,7 +20,9 @@ namespace ReswareOrderMonitorService.Factories.StatusSenders.Solidifi
 
             if (string.Equals(reswareOrder.TitleOpinionStatus, EClosingOrder.Order.Status, StringComparison.CurrentCultureIgnoreCase)) return null;
 
-            return OrderHasAssignedAttorney(reswareOrder.TitleOpinionStatus, EClosingOrder.Order.Status) ? new SolidifiStatusSender(EClosingOrder, new AssignedAttorneyStatusDocumentBuilder(), new SolidifiUpdateTitleOpinionStatus(EClosingOrder.Order.Status, DependencyFactory.Resolve<OrderRepository>())) : null;
+            if (OrderHasAssignedAttorney(reswareOrder.TitleOpinionStatus, EClosingOrder.Order.Status)) return new SolidifiStatusSender(EClosingOrder, new AssignedAttorneyStatusDocumentBuilder(), new SolidifiUpdateTitleOpinionStatus(EClosingOrder.Order.Status, DependencyFactory.Resolve<OrderRepository>()));
+
+            return new SolidifiUpdateTitleOpinionStatus(EClosingOrder.Order.Status, DependencyFactory.Resolve<OrderRepository>());
         }
     }
 }
