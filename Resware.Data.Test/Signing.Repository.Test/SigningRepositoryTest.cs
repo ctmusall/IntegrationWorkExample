@@ -18,7 +18,7 @@ namespace Resware.Data.Test.Signing.Repository.Test
         [TestInitialize]
         public void Setup()
         {
-            EffortProviderConfiguration.RegisterProvider();
+            //EffortProviderConfiguration.RegisterProvider();
             var connection = DbConnectionFactory.CreateTransient();
             _reswareDbContext = new ReswareDbContext(connection);
             _signingRepository = new SigningRepository(_reswareDbContext);

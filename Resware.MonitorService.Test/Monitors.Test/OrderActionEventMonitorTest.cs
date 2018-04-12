@@ -22,13 +22,13 @@ namespace Resware.MonitorService.Test.Monitors.Test
         private IParentActionEventFactory _parentActionEventFactory;
         private IActionEventReader _actionEventReader;
         private IParentServiceUtilityFactory _parentServiceUtilityFactory;
-        private IOrderActionEventMonitor _orderActionEventMonitor;
-        private ReswareDbContext _reswareDbContext;
+        private static IOrderActionEventMonitor _orderActionEventMonitor;
+        private static ReswareDbContext _reswareDbContext;
 
         [TestInitialize]
         public void Setup()
         {
-            EffortProviderConfiguration.RegisterProvider();
+            //EffortProviderConfiguration.RegisterProvider();
             var connection = DbConnectionFactory.CreateTransient();
             _reswareDbContext = new ReswareDbContext(connection);
             _orderRepository = new OrderRepository(_reswareDbContext);

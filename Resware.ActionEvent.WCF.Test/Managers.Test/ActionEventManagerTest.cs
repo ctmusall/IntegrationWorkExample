@@ -21,7 +21,7 @@ namespace Resware.ActionEvent.WCF.Test.Managers.Test
         {
             _actionEventReader = new ActionEventReader();
 
-            EffortProviderConfiguration.RegisterProvider();
+            //EffortProviderConfiguration.RegisterProvider();
             var connection = Effort.DbConnectionFactory.CreateTransient();
             var reswareDbContext = new ReswareDbContext(connection);
             _actionEventRepository = new ActionEventRepository(reswareDbContext);

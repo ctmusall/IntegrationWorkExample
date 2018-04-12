@@ -21,7 +21,7 @@ namespace Resware.MonitorService.Test.Factories.Test.ActionEvents.Test
             var result = _parentActionEventFactory.ResolveActionEventFactory(1);
 
             // Assert
-            Assert.AreEqual(typeof(SolidifiActionEventFactoryTest), result.GetType());
+            Assert.AreEqual(typeof(SolidifiActionEventFactory), result.GetType());
         }
 
         [TestMethod]

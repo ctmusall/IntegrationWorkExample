@@ -24,7 +24,7 @@ namespace Resware.Signing.WCF.Test.Managers.Test
         public void Setup()
         {
             _signingReader = new SigningReader();
-            EffortProviderConfiguration.RegisterProvider();
+            //EffortProviderConfiguration.RegisterProvider();
             var connection = DbConnectionFactory.CreateTransient();
             var reswareDbContext = new ReswareDbContext(connection);
             _signingRepository = new SigningRepository(reswareDbContext);

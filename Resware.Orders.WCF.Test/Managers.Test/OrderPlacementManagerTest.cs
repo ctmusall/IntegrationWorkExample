@@ -21,7 +21,7 @@ namespace Resware.Orders.WCF.Test.Managers.Test
         public void Setup()
         {
             _reswareReaderFactory = new ReswareReaderFactory();
-            EffortProviderConfiguration.RegisterProvider();
+            //EffortProviderConfiguration.RegisterProvider();
             var connection = DbConnectionFactory.CreateTransient();
             var reswareDbContext = new ReswareDbContext(connection);
             _orderRepository = new OrderRepository(reswareDbContext);

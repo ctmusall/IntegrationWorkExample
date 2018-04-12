@@ -20,7 +20,7 @@ namespace Resware.Data.Test.NoteDoc.Repository.Test
         [TestInitialize]
         public void Setup()
         {
-            EffortProviderConfiguration.RegisterProvider();
+            //EffortProviderConfiguration.RegisterProvider();
             var connection = DbConnectionFactory.CreateTransient();
             _reswareDbContext = new ReswareDbContext(connection);
             _noteDocRepository = new NoteDocRepository(_reswareDbContext);
