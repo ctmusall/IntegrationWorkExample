@@ -14,16 +14,16 @@ using ReswareOrderMonitorService.Utilities.Solidifi;
 namespace Resware.MonitorService.Test.ActionEvents.Test.Solidifi.Test
 {
     [TestClass]
-    public class SolidifiRequestDocPrepTest
+    public class SolidifiRequestTitleOpinionTest
     {
-        private SolidifiRequestDocPrep _solidifiRequestDocPrep;
+        private Order _order;
+        private Signing _signing;
+        private SolidifiRequestTitleOpinion _solidifiRequestTitleOpinion;
+        private Mock<IDateTimeUtility> _dateTimeUtilityMock;
         private SigningRepository _signingRepository;
         private ReswareDbContext _reswareDbContext;
         private Mock<IMirthServiceClient> _mirthServiceClientMock;
-        private Mock<SolidifiDocPrepServiceUtility> _solidifiDocPrepServiceUtilityMock;
-        private Mock<IDateTimeUtility> _dateTimeUtilityMock;
-        private Order _order;
-        private Signing _signing;
+        private Mock<SolidifiTitleOpinionServiceUtility> _solidifiTitleOpinionServiceUtilityMock;
 
         [TestInitialize]
         public void Setup()
@@ -34,23 +34,24 @@ namespace Resware.MonitorService.Test.ActionEvents.Test.Solidifi.Test
             _reswareDbContext = new ReswareDbContext(connection);
             _signingRepository = new SigningRepository(_reswareDbContext);
             _mirthServiceClientMock = new Mock<IMirthServiceClient>();
-            _solidifiDocPrepServiceUtilityMock = new Mock<SolidifiDocPrepServiceUtility>();
+            _solidifiTitleOpinionServiceUtilityMock = new Mock<SolidifiTitleOpinionServiceUtility>();
             _dateTimeUtilityMock = new Mock<IDateTimeUtility>();
-            _solidifiRequestDocPrep = new SolidifiRequestDocPrep(_signingRepository, _mirthServiceClientMock.Object, _solidifiDocPrepServiceUtilityMock.Object, _dateTimeUtilityMock.Object);
+            _solidifiRequestTitleOpinion = new SolidifiRequestTitleOpinion(_signingRepository, _mirthServiceClientMock.Object, _solidifiTitleOpinionServiceUtilityMock.Object, _dateTimeUtilityMock.Object);    
         }
 
         [TestMethod]
-        public void BuildRequestMessage_should_return_new_request_message_with_order_and_signing_fields_mapped()
+        public void BuildRequestMessage_should_return_request_message_with_order_and_signing_fields_mapped()
         {
             // Act
-            var result = _solidifiRequestDocPrep.BuildRequestMessage(_order, _signing);
+            var result = _solidifiRequestTitleOpinion.BuildRequestMessage(_order, _signing);
 
             // Assert
-            Assert.AreEqual($"{_order.FileNumber}-D", result.OrderId);
+            Assert.IsNotNull(result);
+            Assert.AreEqual($"{_order.FileNumber}-T", result.OrderId);
             Assert.AreEqual(_order.CustomerId, result.CustomerId);
-            Assert.AreEqual(CustomerContactConstants.DocDeed, result.CustomerContact);
+            Assert.AreEqual(CustomerContactConstants.KristenMiller, result.CustomerContact);
             Assert.AreEqual(_order.LenderName, result.LenderName);
-            Assert.AreEqual(_order.CustomerProduct, result.CustomerProduct);
+            Assert.AreEqual(ProductNameConstants.EClosingsProductNames.IntSearchOpinion, result.Product);
             Assert.AreEqual(_order.FileNumber, result.FileNumber);
             Assert.IsFalse(string.IsNullOrWhiteSpace(result.OrderRequestedDate));
             Assert.IsFalse(string.IsNullOrWhiteSpace(result.OrderRequestedTime));
@@ -59,7 +60,6 @@ namespace Resware.MonitorService.Test.ActionEvents.Test.Solidifi.Test
             Assert.AreEqual(_signing.ClosingState, result.ClosingState);
             Assert.AreEqual(_signing.ClosingZip, result.ClosingZipCode);
             Assert.AreEqual(_signing.ClosingCounty, result.ClosingCounty);
-            Assert.AreEqual(ProductNameConstants.EClosingsProductNames.DeedPrepExternal, result.Product);
             Assert.IsFalse(string.IsNullOrWhiteSpace(result.ClosingDate));
             Assert.IsFalse(string.IsNullOrWhiteSpace(result.ClosingTime));
         }

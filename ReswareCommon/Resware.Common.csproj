@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Constants\CustomerContactConstants.cs" />
     <Compile Include="Enums\BuyerSellerEnum.cs" />
     <Compile Include="Constants\OrderStatusConstants.cs" />
     <Compile Include="Constants\ProductNameConstants.cs" />

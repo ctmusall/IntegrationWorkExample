@@ -13,8 +13,6 @@ namespace ReswareOrderMonitorService.ActionEvents.Solidifi
     {
         private readonly IDateTimeUtility _dateTimeUtility;
 
-        private const string CustomerContact = "DOC DEED";
-
         internal SolidifiRequestDocPrep(SigningRepository receiveSigningServiceRepository, IMirthServiceClient mirthServiceClient, IServiceUtility orderServiceUtility, IDateTimeUtility dateTimeUtility) : base(receiveSigningServiceRepository, mirthServiceClient, orderServiceUtility)
         {
             _dateTimeUtility = dateTimeUtility;
@@ -26,7 +24,7 @@ namespace ReswareOrderMonitorService.ActionEvents.Solidifi
             {
                 OrderId = $"{order.FileNumber}-D",
                 CustomerId = order.CustomerId,
-                CustomerContact = CustomerContact,
+                CustomerContact = CustomerContactConstants.DocDeed,
                 LenderName = order.LenderName,
                 CustomerProduct = order.CustomerProduct,
                 FileNumber = order.FileNumber,

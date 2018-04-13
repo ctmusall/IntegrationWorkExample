@@ -2,6 +2,7 @@
 using Resware.Data.Signing.Repository;
 using Resware.Entities.Orders;
 using Resware.Entities.Signings;
+using ReswareCommon.Constants;
 using ReswareOrderMonitorService.Mirth;
 using ReswareOrderMonitorService.Models;
 using ReswareOrderMonitorService.Utilities;
@@ -11,9 +12,6 @@ namespace ReswareOrderMonitorService.ActionEvents.Solidifi
     internal class SolidifiRequestTitleOpinion : RequestOrder
     {
         private readonly IDateTimeUtility _dateTimeUtility;
-
-        private const string CustomerContact = "KRISTEN MILLER";
-        private const string Product = "INT--Search/Opinion";
 
         internal SolidifiRequestTitleOpinion(SigningRepository receiveSigningServiceRepository, IMirthServiceClient mirthServiceClient, IServiceUtility orderServiceUtility, IDateTimeUtility dateTimeUtility) : base(receiveSigningServiceRepository, mirthServiceClient, orderServiceUtility)
         {
@@ -26,9 +24,9 @@ namespace ReswareOrderMonitorService.ActionEvents.Solidifi
             {
                 OrderId = $"{order.FileNumber}-T",
                 CustomerId = order.CustomerId,
-                CustomerContact = CustomerContact,
+                CustomerContact = CustomerContactConstants.KristenMiller,
                 LenderName = order.LenderName,
-                Product = Product,
+                Product = ProductNameConstants.EClosingsProductNames.IntSearchOpinion,
                 FileNumber = order.FileNumber,
                 OrderRequestedDate = DateTime.Now.ToShortDateString(),
                 OrderRequestedTime = DateTime.Now.ToShortTimeString(),
