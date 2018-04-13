@@ -2,7 +2,6 @@
 using System.Net.Mail;
 using System.Text;
 using Resware.Entities.Orders;
-using ReswareCommon;
 using ReswareCommon.Enums;
 
 namespace ReswareOrderMonitorService.Utilities.Solidifi
@@ -35,6 +34,14 @@ namespace ReswareOrderMonitorService.Utilities.Solidifi
             mailMessage.Body = body.ToString();
 
             return mailMessage;
+        }
+
+        public override bool SendFundingAuthMailMessage(MailMessage mailMessage)
+        {
+            var smtpSender = new SmtpClient("outlook.pcnclosings.com", 25);
+            smtpSender.Send(mailMessage);
+
+            return true;
         }
     }
 }

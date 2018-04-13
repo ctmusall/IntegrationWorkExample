@@ -6,5 +6,6 @@ namespace ReswareOrderMonitorService.Utilities
     internal abstract class FundingAuthMailUtility : IFundingAuthMailUtility
     {
         public abstract MailMessage BuildFundingAuthMailMessage(Order reswareOrder);
+        public abstract bool SendFundingAuthMailMessage(MailMessage mailMessage);
     }
 }

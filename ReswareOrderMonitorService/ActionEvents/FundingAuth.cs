@@ -1,5 +1,4 @@
-﻿using System.Net.Mail;
-using Resware.Entities.Orders;
+﻿using Resware.Entities.Orders;
 using ReswareOrderMonitorService.Utilities;
 
 namespace ReswareOrderMonitorService.ActionEvents
@@ -17,12 +16,7 @@ namespace ReswareOrderMonitorService.ActionEvents
         {
             var mailMessage = _fundingAuthMailUtility.BuildFundingAuthMailMessage(order);
 
-            if (mailMessage == null) return false;
-
-            var smtpSender = new SmtpClient("outlook.pcnclosings.com", 25);
-            smtpSender.Send(mailMessage);
-
-            return true;
+            return mailMessage != null && _fundingAuthMailUtility.SendFundingAuthMailMessage(mailMessage);
         }
     }
 }

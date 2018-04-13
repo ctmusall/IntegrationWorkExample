@@ -87,6 +87,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ActionEvents.Test\FundingAuthTest.cs" />
     <Compile Include="ActionEvents.Test\Solidifi.Test\SolidifiRequestClosingTest.cs" />
     <Compile Include="ActionEvents.Test\Solidifi.Test\SolidifiRequestDocPrepTest.cs" />
     <Compile Include="ActionEvents.Test\Solidifi.Test\SolidifiRequestTitleOpinionTest.cs" />
