@@ -5,7 +5,6 @@ using Resware.Data.Signing.Repository;
 using Resware.Entities.Orders;
 using Resware.Entities.Orders.BuyerSellers;
 using Resware.Entities.Signings;
-using ReswareCommon;
 using ReswareCommon.Enums;
 using ReswareOrderMonitorService.Common;
 using ReswareOrderMonitorService.Mirth;
@@ -47,7 +46,7 @@ namespace ReswareOrderMonitorService.ActionEvents
 
         private static void AssignBorrowerInformation(RequestMessage requestClosingMessage, ICollection<BuyerSeller> buyerSellerResults)
         {
-            var borrower = buyerSellerResults.FirstOrDefault(b => b.Type == BuyerSellerEnum.Buyer && !b.Spouse);
+            var borrower = buyerSellerResults?.FirstOrDefault(b => b.Type == BuyerSellerEnum.Buyer && !b.Spouse);
 
             if (borrower == null) return;
 
