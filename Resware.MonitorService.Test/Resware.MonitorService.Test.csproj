@@ -90,6 +90,7 @@
     <Compile Include="ActionEvents.Test\Solidifi.Test\SolidifiRequestClosingTest.cs" />
     <Compile Include="ActionEvents.Test\Solidifi.Test\SolidifiRequestDocPrepTest.cs" />
     <Compile Include="ActionEvents.Test\Solidifi.Test\SolidifiRequestTitleOpinionTest.cs" />
+    <Compile Include="ActionEvents.Test\Solidifi.Test\SolidifiSchedulingRescheduleTest.cs" />
     <Compile Include="Factories.Test\ActionEvents.Test\ParentActionEventFactoryTest.cs" />
     <Compile Include="Factories.Test\ActionEvents.Test\SolidifiActionEventFactoryTest.cs" />
     <Compile Include="Factories.Test\CompletedActionEvents.Test\ParentClientCompletedActionEventFactoryTest.cs" />
