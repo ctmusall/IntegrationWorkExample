@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
@@ -32,5 +34,20 @@ namespace ReswareOrderMonitorService.Utilities
         }
 
         protected internal abstract MailMessage CreateMailMessage(string fileNumber);
+
+        public bool SendDocumentMailMessage(MailMessage mailMessage)
+        {
+            try
+            {
+                var smtpSender = new SmtpClient("outlook.pcnclosings.com", 25);
+                smtpSender.Send(mailMessage);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                EventLog.WriteEntry(ex.Source, ex.Message, EventLogEntryType.Error);
+                return false;
+            }
+        }
     }
 }

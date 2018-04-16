@@ -7,5 +7,6 @@ namespace ReswareOrderMonitorService.Utilities
     internal interface IDocumentMailUtility
     {
         MailMessage BuildDocumentMailMessage(Document document, Order reswareOrder);
+        bool SendDocumentMailMessage(MailMessage mailMessage);
     }
 }
