@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using Aspose.Words;
 using Resware.Entities.Orders;
-using ReswareCommon;
 using ReswareCommon.Constants;
 using ReswareOrderMonitorService.eClosingIntegrationService;
 
@@ -48,7 +47,7 @@ namespace ReswareOrderMonitorService.StatusDocumentBuilders
             documentBuilder.Write("Borrower Name");
             documentBuilder.InsertCell();
             documentBuilder.Font.Bold = false;
-            documentBuilder.Write($"{eClosingOrder.Order.Borrower.FirstName} {eClosingOrder.Order.Borrower.LastName}");
+            documentBuilder.Write($"{eClosingOrder.Order.Borrower?.FirstName} {eClosingOrder.Order.Borrower?.LastName}");
             documentBuilder.EndRow();
 
             documentBuilder.InsertCell();
@@ -56,7 +55,7 @@ namespace ReswareOrderMonitorService.StatusDocumentBuilders
             documentBuilder.Write("Co-Borrower Name");
             documentBuilder.InsertCell();
             documentBuilder.Font.Bold = false;
-            documentBuilder.Write($"{eClosingOrder.Order.CoBorrower.FirstName} {eClosingOrder.Order.CoBorrower.LastName}");
+            documentBuilder.Write($"{eClosingOrder.Order.CoBorrower?.FirstName} {eClosingOrder.Order.CoBorrower?.LastName}");
             documentBuilder.EndRow();
             
             AddClosingDueDateTime(documentBuilder, eClosingOrder);
@@ -103,7 +102,7 @@ namespace ReswareOrderMonitorService.StatusDocumentBuilders
         }
         protected internal virtual void DetermineAttorneyInfo(DocumentBuilder documentBuilder, GetOrderResult eClosingOrder)
         {
-            var attorney = eClosingOrder.Order.Attorneys.FirstOrDefault(att => att.Services.Any(service => ServiceNameConstants.TitleOpinionAndDocPrepServices.Contains(service.Name)));
+            var attorney = eClosingOrder.Order?.Attorneys.FirstOrDefault(att => att.Services.Any(service => ServiceNameConstants.TitleOpinionAndDocPrepServices.Contains(service.Name)));
             if (attorney == null) return;
             AddAttorneyInfo(documentBuilder, attorney);
         }
@@ -122,59 +121,7 @@ namespace ReswareOrderMonitorService.StatusDocumentBuilders
 
             documentBuilder.StartTable();
 
-            documentBuilder.InsertCell();
-            documentBuilder.Write("Attorney Name");
-            documentBuilder.InsertCell();
-            documentBuilder.Write($"{additionalServiceAttorney.FirstName} {additionalServiceAttorney.LastName}");
-            documentBuilder.EndRow();
-
-            documentBuilder.InsertCell();
-            documentBuilder.Font.Bold = true;
-            documentBuilder.Write("Attorney Address");
-            documentBuilder.InsertCell();
-            documentBuilder.Font.Bold = false;
-            documentBuilder.Write($"{additionalServiceAttorney.Address.Address1} \n {additionalServiceAttorney.Address.City}, {additionalServiceAttorney.Address.State} {additionalServiceAttorney.Address.ZipCode}");
-            documentBuilder.EndRow();
-
-            documentBuilder.InsertCell();
-            documentBuilder.Font.Bold = true;
-            documentBuilder.Write("Attorney Phone");
-            documentBuilder.InsertCell();
-            documentBuilder.Font.Bold = false;
-            documentBuilder.Write($"{additionalServiceAttorney.CellPhone}");
-            documentBuilder.EndRow();
-
-            documentBuilder.InsertCell();
-            documentBuilder.Font.Bold = true;
-            documentBuilder.Write("Attorney Alt. Phone");
-            documentBuilder.InsertCell();
-            documentBuilder.Font.Bold = false;
-            documentBuilder.Write($"{additionalServiceAttorney.HomePhone}");
-            documentBuilder.EndRow();
-
-            documentBuilder.InsertCell();
-            documentBuilder.Font.Bold = true;
-            documentBuilder.Write("Attorney Fax");
-            documentBuilder.InsertCell();
-            documentBuilder.Font.Bold = false;
-            documentBuilder.Write($"{additionalServiceAttorney.FaxNumber1}");
-            documentBuilder.EndRow();
-
-            documentBuilder.InsertCell();
-            documentBuilder.Font.Bold = true;
-            documentBuilder.Write("Attorney E-mail");
-            documentBuilder.InsertCell();
-            documentBuilder.Font.Bold = false;
-            documentBuilder.Write($"{additionalServiceAttorney.Email1}");
-            documentBuilder.EndRow();
-
-            documentBuilder.InsertCell();
-            documentBuilder.Font.Bold = true;
-            documentBuilder.Write("Attorney Alt. Email");
-            documentBuilder.InsertCell();
-            documentBuilder.Font.Bold = false;
-            documentBuilder.Write($"{additionalServiceAttorney.Email2}");
-            documentBuilder.EndRow();
+            AddAttorneyInfo(documentBuilder, additionalServiceAttorney);
 
             documentBuilder.EndTable();
 
