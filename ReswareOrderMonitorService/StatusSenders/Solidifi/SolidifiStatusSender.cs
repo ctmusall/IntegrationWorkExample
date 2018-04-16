@@ -1,5 +1,6 @@
 ﻿using Resware.Entities.Orders;
 using ReswareOrderMonitorService.eClosingIntegrationService;
+using ReswareOrderMonitorService.Models;
 using ReswareOrderMonitorService.StatusDocumentBuilders;
 
 namespace ReswareOrderMonitorService.StatusSenders.Solidifi
@@ -7,10 +8,10 @@ namespace ReswareOrderMonitorService.StatusSenders.Solidifi
     internal class SolidifiStatusSender : IStatusSender
     {
         private readonly IStatusDocumentBuilder _statusDocumentBuilder;
-        private readonly GetOrderResult _eClosingOrder;
+        private readonly EClosingOrder _eClosingOrder;
         private readonly SolidifiUpdateOrderStatus _solidifiUpdateOrderStatus;
 
-        internal SolidifiStatusSender(GetOrderResult eClosingOrder, IStatusDocumentBuilder statusDocumentBuilder, SolidifiUpdateOrderStatus solidifiUpdateOrderStatus)
+        internal SolidifiStatusSender(EClosingOrder eClosingOrder, IStatusDocumentBuilder statusDocumentBuilder, SolidifiUpdateOrderStatus solidifiUpdateOrderStatus)
         {
             _statusDocumentBuilder = statusDocumentBuilder;
             _eClosingOrder = eClosingOrder;

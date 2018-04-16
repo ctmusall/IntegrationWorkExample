@@ -173,6 +173,13 @@
     <Compile Include="Factories\StatusSenders\StatusSenderFactory.cs" />
     <Compile Include="Mirth\IMirthServiceClient.cs" />
     <Compile Include="Mirth\MirthServiceClient.cs" />
+    <Compile Include="Models\EClosingAddress.cs" />
+    <Compile Include="Models\EClosingAttorney.cs" />
+    <Compile Include="Models\EClosingBaseOrder.cs" />
+    <Compile Include="Models\EClosingCourier.cs" />
+    <Compile Include="Models\EClosingOrder.cs" />
+    <Compile Include="Models\EClosingPerson.cs" />
+    <Compile Include="Models\EClosingService.cs" />
     <Compile Include="Models\RequestMessage.cs" />
     <Compile Include="Factories\ActionEvents\ParentActionEventFactory.cs" />
     <Compile Include="Factories\ActionEvents\IParentActionEventFactory.cs" />
@@ -180,6 +187,8 @@
     <Compile Include="Monitors\DocumentMonitor.cs" />
     <Compile Include="Monitors\IOutgoingMonitor.cs" />
     <Compile Include="Monitors\OutgoingMonitor.cs" />
+    <Compile Include="Readers\EClosingOrderReader.cs" />
+    <Compile Include="Readers\IEClosingOrderReader.cs" />
     <Compile Include="Repositories\IIntegrationServiceRepository.cs" />
     <Compile Include="Repositories\IntegrationServiceRepository.cs" />
     <Compile Include="StatusSenders\Solidifi\SolidifiUpdateDocPrepStatus.cs" />

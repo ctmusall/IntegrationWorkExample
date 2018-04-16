@@ -1,9 +1,9 @@
-﻿using ReswareOrderMonitorService.eClosingIntegrationService;
+﻿using ReswareOrderMonitorService.Models;
 
 namespace ReswareOrderMonitorService.Repositories
 {
     internal interface IIntegrationServiceRepository
     {
-        GetOrderResult GetOrder(string customerId, string fileNumber);
+        EClosingOrder GetOrder(string customerId, string fileNumber);
     }
 }

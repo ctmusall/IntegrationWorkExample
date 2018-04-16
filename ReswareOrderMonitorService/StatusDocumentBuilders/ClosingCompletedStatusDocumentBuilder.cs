@@ -1,13 +1,14 @@
 ﻿using Aspose.Words;
 using Resware.Entities.Orders;
 using ReswareOrderMonitorService.eClosingIntegrationService;
+using ReswareOrderMonitorService.Models;
 using Unity.Interception.Utilities;
 
 namespace ReswareOrderMonitorService.StatusDocumentBuilders
 {
     internal class ClosingCompletedStatusDocumentBuilder : StatusDocumentBuilder
     {
-        protected internal override void AddBody(DocumentBuilder documentBuilder, Order reswareOrder, GetOrderResult eClosingOrder)
+        protected internal override void AddBody(DocumentBuilder documentBuilder, Order reswareOrder, EClosingOrder eClosingOrder)
         {
             documentBuilder.Font.Name = "Times New Roman";
             documentBuilder.Font.Size = 16;
@@ -38,7 +39,7 @@ namespace ReswareOrderMonitorService.StatusDocumentBuilders
             documentBuilder.Write("Order/Loan Number");
             documentBuilder.InsertCell();
             documentBuilder.Font.Bold = false;
-            documentBuilder.Write($"{eClosingOrder.Order.OrderId}");
+            documentBuilder.Write($"{eClosingOrder.OrderId}");
             documentBuilder.EndRow();
 
             documentBuilder.InsertCell();
@@ -46,7 +47,7 @@ namespace ReswareOrderMonitorService.StatusDocumentBuilders
             documentBuilder.Write("Borrower Name");
             documentBuilder.InsertCell();
             documentBuilder.Font.Bold = false;
-            documentBuilder.Write($"{eClosingOrder.Order.Borrower.FirstName} {eClosingOrder.Order.Borrower.LastName}");
+            documentBuilder.Write($"{eClosingOrder.Borrower?.FirstName} {eClosingOrder.Borrower?.LastName}");
             documentBuilder.EndRow();
 
             documentBuilder.InsertCell();
@@ -54,7 +55,7 @@ namespace ReswareOrderMonitorService.StatusDocumentBuilders
             documentBuilder.Write("Co-Borrower Name");
             documentBuilder.InsertCell();
             documentBuilder.Font.Bold = false;
-            documentBuilder.Write($"{eClosingOrder.Order.CoBorrower.FirstName} {eClosingOrder.Order.CoBorrower.LastName}");
+            documentBuilder.Write($"{eClosingOrder.CoBorrower?.FirstName} {eClosingOrder.CoBorrower?.LastName}");
             documentBuilder.EndRow();
 
             documentBuilder.InsertCell();
@@ -62,7 +63,7 @@ namespace ReswareOrderMonitorService.StatusDocumentBuilders
             documentBuilder.Write("Closing Date & Time");
             documentBuilder.InsertCell();
             documentBuilder.Font.Bold = false;
-            documentBuilder.Write($"{eClosingOrder.Order.ClosingDate} {eClosingOrder.Order.ClosingTime}");
+            documentBuilder.Write($"{eClosingOrder.ClosingDate} {eClosingOrder.ClosingTime}");
             documentBuilder.EndRow();
 
             documentBuilder.InsertCell();
@@ -71,7 +72,7 @@ namespace ReswareOrderMonitorService.StatusDocumentBuilders
             documentBuilder.InsertCell();
             documentBuilder.Font.Bold = false;
 
-            eClosingOrder.Order.Couriers.ForEach(courier =>
+            eClosingOrder.Couriers.ForEach(courier =>
             {
                 documentBuilder.Writeln($"{courier.Name} - {courier.TrackingNumber}");
             });

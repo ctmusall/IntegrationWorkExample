@@ -5,6 +5,7 @@ using Aspose.Words;
 using Resware.Entities.Orders;
 using ReswareCommon.Constants;
 using ReswareOrderMonitorService.eClosingIntegrationService;
+using ReswareOrderMonitorService.Models;
 
 namespace Resware.MonitorService.Test.StatusDocumentBuilders.Test
 {
@@ -13,7 +14,7 @@ namespace Resware.MonitorService.Test.StatusDocumentBuilders.Test
     {
         private DocumentBuilder _documentBuilder;
         private Order _reswareOrder;
-        private GetOrderResult _eClosingOrder;
+        private EClosingOrder _eClosingOrder;
         private AssignedAttorneyStatusDocumentBuilder _assignedAttorneyStatusDocumentBuilder;
 
         [TestInitialize]
@@ -21,7 +22,7 @@ namespace Resware.MonitorService.Test.StatusDocumentBuilders.Test
         {
             _documentBuilder = new DocumentBuilder();
             _reswareOrder = new Order();
-            _eClosingOrder = new GetOrderResult { Order = new OutboundOrder { Borrower = new Person(), Attorneys = new AttorneyInfoForOrder[0], ClosingAttorney = new AttorneyInfoForOrder {Services = new Service[0]} } };
+            _eClosingOrder = new EClosingOrder { Borrower = new EClosingPerson(), Attorneys = new EClosingAttorney[0], ClosingAttorney = new EClosingAttorney {Services = new EClosingService[0]}};
             _assignedAttorneyStatusDocumentBuilder = new AssignedAttorneyStatusDocumentBuilder();
         }
 
@@ -29,7 +30,7 @@ namespace Resware.MonitorService.Test.StatusDocumentBuilders.Test
         public void AddBody_should_add_appropriate_lines_to_assigned_attorney_document()
         {
             // Arrange
-            _eClosingOrder.Order.OrderId = "123456";
+            _eClosingOrder.OrderId = "123456";
 
             // Act
             _assignedAttorneyStatusDocumentBuilder.AddBody(_documentBuilder, _reswareOrder, _eClosingOrder);
@@ -45,22 +46,22 @@ namespace Resware.MonitorService.Test.StatusDocumentBuilders.Test
         {
             // Arrange
             var currentDateTime = DateTime.Now;
-            _eClosingOrder.Order.ClosingDate = currentDateTime.ToShortDateString();
-            _eClosingOrder.Order.ClosingTime = currentDateTime.ToShortTimeString();
+            _eClosingOrder.ClosingDate = currentDateTime.ToShortDateString();
+            _eClosingOrder.ClosingTime = currentDateTime.ToShortTimeString();
 
             // Act
             _assignedAttorneyStatusDocumentBuilder.AddClosingDueDateTime(_documentBuilder, _eClosingOrder);
 
             // Assert
-            Assert.IsTrue(_documentBuilder.Document.GetText().Contains(_eClosingOrder.Order.ClosingDate));
-            Assert.IsTrue(_documentBuilder.Document.GetText().Contains(_eClosingOrder.Order.ClosingTime));
+            Assert.IsTrue(_documentBuilder.Document.GetText().Contains(_eClosingOrder.ClosingDate));
+            Assert.IsTrue(_documentBuilder.Document.GetText().Contains(_eClosingOrder.ClosingTime));
         }
 
         [TestMethod]
         public void DetermineAttorneyInfo_should_not_add_any_attorney_info_to_document()
         {
             // Arrange
-            _eClosingOrder.Order.Attorneys = new AttorneyInfoForOrder[0];
+            _eClosingOrder.Attorneys = new EClosingAttorney[0];
 
             // Act
             _assignedAttorneyStatusDocumentBuilder.DetermineAttorneyInfo(_documentBuilder, _eClosingOrder);
@@ -73,7 +74,7 @@ namespace Resware.MonitorService.Test.StatusDocumentBuilders.Test
         public void DetermineAttorneyInfo_should_add_attorney_info_to_document()
         {
             // Arrange
-            _eClosingOrder.Order.Attorneys = new [] {new AttorneyInfoForOrder {FirstName = "Bob", Address = new Address(), Services = new [] {new Service {Name = ServiceNameConstants.TitleOpinionLetter}}}};
+            _eClosingOrder.Attorneys = new [] {new EClosingAttorney {FirstName = "Bob", Address = new EClosingAddress(), Services = new [] {new EClosingService {Name = ServiceNameConstants.TitleOpinionLetter}}}};
 
             // Act
             _assignedAttorneyStatusDocumentBuilder.DetermineAttorneyInfo(_documentBuilder, _eClosingOrder);
@@ -81,6 +82,17 @@ namespace Resware.MonitorService.Test.StatusDocumentBuilders.Test
             // Assert
             Assert.IsFalse(string.IsNullOrWhiteSpace(_documentBuilder.Document.GetText()));
             Assert.IsTrue(_documentBuilder.Document.GetText().Contains("Bob"));
+        }
+
+        [TestMethod]
+        public void BuildDocument_should_return_new_document_with_order_info()
+        {
+            // Act
+            var result = _assignedAttorneyStatusDocumentBuilder.BuildDocument(_reswareOrder, _eClosingOrder);
+
+            // Assert
+            Assert.IsNotNull(result);
+            Assert.IsFalse(string.IsNullOrWhiteSpace(result.GetText()));
         }
     }
 }

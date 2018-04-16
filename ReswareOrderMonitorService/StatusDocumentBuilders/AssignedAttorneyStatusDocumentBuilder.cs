@@ -3,12 +3,13 @@ using Aspose.Words;
 using Resware.Entities.Orders;
 using ReswareCommon.Constants;
 using ReswareOrderMonitorService.eClosingIntegrationService;
+using ReswareOrderMonitorService.Models;
 
 namespace ReswareOrderMonitorService.StatusDocumentBuilders
 {
     internal class AssignedAttorneyStatusDocumentBuilder : StatusDocumentBuilder
     {
-        protected internal override void AddBody(DocumentBuilder documentBuilder, Order reswareOrder, GetOrderResult eClosingOrder)
+        protected internal override void AddBody(DocumentBuilder documentBuilder, Order reswareOrder, EClosingOrder eClosingOrder)
         {
             documentBuilder.Font.Name = "Times New Roman";
             documentBuilder.Font.Size = 16;
@@ -26,7 +27,7 @@ namespace ReswareOrderMonitorService.StatusDocumentBuilders
             documentBuilder.Font.Size = 10;
             documentBuilder.Font.Bold = true;
             documentBuilder.ParagraphFormat.Alignment = ParagraphAlignment.Left;
-            documentBuilder.Writeln($"Associates LLC will handle the services requested for the {eClosingOrder.Order.Borrower.FirstName} {eClosingOrder.Order.Borrower.LastName} file:");
+            documentBuilder.Writeln($"Associates LLC will handle the services requested for the {eClosingOrder.Borrower.FirstName} {eClosingOrder.Borrower.LastName} file:");
 
             documentBuilder.Writeln();
 
@@ -39,7 +40,7 @@ namespace ReswareOrderMonitorService.StatusDocumentBuilders
             documentBuilder.Write("Order/Loan Number");
             documentBuilder.InsertCell();
             documentBuilder.Font.Bold = false;
-            documentBuilder.Write($"{eClosingOrder.Order.OrderId}");
+            documentBuilder.Write($"{eClosingOrder.OrderId}");
             documentBuilder.EndRow();
 
             documentBuilder.InsertCell();
@@ -47,7 +48,7 @@ namespace ReswareOrderMonitorService.StatusDocumentBuilders
             documentBuilder.Write("Borrower Name");
             documentBuilder.InsertCell();
             documentBuilder.Font.Bold = false;
-            documentBuilder.Write($"{eClosingOrder.Order.Borrower?.FirstName} {eClosingOrder.Order.Borrower?.LastName}");
+            documentBuilder.Write($"{eClosingOrder.Borrower?.FirstName} {eClosingOrder.Borrower?.LastName}");
             documentBuilder.EndRow();
 
             documentBuilder.InsertCell();
@@ -55,7 +56,7 @@ namespace ReswareOrderMonitorService.StatusDocumentBuilders
             documentBuilder.Write("Co-Borrower Name");
             documentBuilder.InsertCell();
             documentBuilder.Font.Bold = false;
-            documentBuilder.Write($"{eClosingOrder.Order.CoBorrower?.FirstName} {eClosingOrder.Order.CoBorrower?.LastName}");
+            documentBuilder.Write($"{eClosingOrder.CoBorrower?.FirstName} {eClosingOrder.CoBorrower?.LastName}");
             documentBuilder.EndRow();
             
             AddClosingDueDateTime(documentBuilder, eClosingOrder);
@@ -65,7 +66,7 @@ namespace ReswareOrderMonitorService.StatusDocumentBuilders
             documentBuilder.Write("Closing Location");
             documentBuilder.InsertCell();
             documentBuilder.Font.Bold = false;
-            documentBuilder.Write($"{eClosingOrder.Order.ClosingLocation}");
+            documentBuilder.Write($"{eClosingOrder.ClosingLocation}");
             documentBuilder.EndRow();
 
             documentBuilder.InsertCell();
@@ -73,7 +74,7 @@ namespace ReswareOrderMonitorService.StatusDocumentBuilders
             documentBuilder.Write("Documents to Attorney");
             documentBuilder.InsertCell();
             documentBuilder.Font.Bold = false;
-            documentBuilder.Write($"{eClosingOrder.Order.DeliveryMethod}");
+            documentBuilder.Write($"{eClosingOrder.DeliveryMethod}");
             documentBuilder.EndRow();
 
             DetermineAttorneyInfo(documentBuilder, eClosingOrder);
@@ -91,24 +92,24 @@ namespace ReswareOrderMonitorService.StatusDocumentBuilders
             
             AddFeeSchedule(documentBuilder, eClosingOrder);
         }
-        protected internal virtual void AddClosingDueDateTime(DocumentBuilder documentBuilder, GetOrderResult eClosingOrder)
+        protected internal virtual void AddClosingDueDateTime(DocumentBuilder documentBuilder, EClosingOrder eClosingOrder)
         {
             documentBuilder.InsertCell();
             documentBuilder.Font.Bold = true;
             documentBuilder.Write("Due Date & Time");
             documentBuilder.InsertCell();
             documentBuilder.Font.Bold = false;
-            documentBuilder.Write($"{eClosingOrder.Order.ClosingDate} {eClosingOrder.Order.ClosingTime}");
+            documentBuilder.Write($"{eClosingOrder.ClosingDate} {eClosingOrder.ClosingTime}");
         }
-        protected internal virtual void DetermineAttorneyInfo(DocumentBuilder documentBuilder, GetOrderResult eClosingOrder)
+        protected internal virtual void DetermineAttorneyInfo(DocumentBuilder documentBuilder, EClosingOrder eClosingOrder)
         {
-            var attorney = eClosingOrder.Order?.Attorneys.FirstOrDefault(att => att.Services.Any(service => ServiceNameConstants.TitleOpinionAndDocPrepServices.Contains(service.Name)));
+            var attorney = eClosingOrder.Attorneys.FirstOrDefault(att => att.Services.Any(service => ServiceNameConstants.TitleOpinionAndDocPrepServices.Contains(service.Name)));
             if (attorney == null) return;
             AddAttorneyInfo(documentBuilder, attorney);
         }
-        protected internal void AddAdditionalAttorneyInfo(DocumentBuilder documentBuilder, GetOrderResult eClosingOrder)
+        protected internal void AddAdditionalAttorneyInfo(DocumentBuilder documentBuilder, EClosingOrder eClosingOrder)
         {
-            var additionalServiceAttorneys = eClosingOrder.Order.Attorneys.Where(att => att.Services.Any(service => ServiceNameConstants.AdditionalAttorneyServices.Contains(service.Name))).ToList();
+            var additionalServiceAttorneys = eClosingOrder.Attorneys.Where(att => att.Services.Any(service => ServiceNameConstants.AdditionalAttorneyServices.Contains(service.Name))).ToList();
             if (additionalServiceAttorneys.Count == 0) return;
 
             var additionalServiceAttorney = additionalServiceAttorneys.First();
@@ -127,7 +128,7 @@ namespace ReswareOrderMonitorService.StatusDocumentBuilders
 
             documentBuilder.Writeln();
         }
-        protected internal void AddAttorneyInfo(DocumentBuilder documentBuilder, AttorneyInfoForOrder attorney)
+        protected internal void AddAttorneyInfo(DocumentBuilder documentBuilder, EClosingAttorney attorney)
         {
             documentBuilder.InsertCell();
             documentBuilder.Font.Bold = true;

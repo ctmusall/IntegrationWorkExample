@@ -1,9 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using ReswareOrderMonitorService.Common.Solidifi;
-using ReswareOrderMonitorService.eClosingIntegrationService;
 using ReswareOrderMonitorService.Factories.CompletedActionEvents.Solidifi;
 using ReswareOrderMonitorService.Factories.StatusSenders.Solidifi;
+using ReswareOrderMonitorService.Models;
 using ReswareOrderMonitorService.Repositories;
 
 namespace Resware.MonitorService.Test.Factories.Test.CompletedActionEvents.Test.Solidifi.Test
@@ -20,7 +20,7 @@ namespace Resware.MonitorService.Test.Factories.Test.CompletedActionEvents.Test.
         public void Setup()
         {
             _integrationServiceRepositoryMock = new Mock<IIntegrationServiceRepository>();
-            _integrationServiceRepositoryMock.Setup(isr => isr.GetOrder(CustomerId, FileNumber)).Returns(new GetOrderResult());
+            _integrationServiceRepositoryMock.Setup(isr => isr.GetOrder(CustomerId, FileNumber)).Returns(new EClosingOrder());
             _solidifiCompletedActionEventFactory = new SolidifiCompletedActionEventFactory(_integrationServiceRepositoryMock.Object);
         }
 

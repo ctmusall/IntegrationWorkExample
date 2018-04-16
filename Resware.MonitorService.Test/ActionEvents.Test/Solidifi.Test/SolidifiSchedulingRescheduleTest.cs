@@ -8,6 +8,7 @@ using Resware.Entities.Signings;
 using ReswareOrderMonitorService.ActionEvents.Solidifi;
 using ReswareOrderMonitorService.eClosingIntegrationService;
 using ReswareOrderMonitorService.Mirth;
+using ReswareOrderMonitorService.Models;
 using ReswareOrderMonitorService.Repositories;
 using ReswareOrderMonitorService.Utilities.Solidifi;
 
@@ -43,7 +44,7 @@ namespace Resware.MonitorService.Test.ActionEvents.Test.Solidifi.Test
         public void PerformAction_should_add_to_the_incoming_order_notes_order_did_not_exist_in_eclosings_and_perform_the_request_closing_perform_action_method_should_return_true()
         {
             // Arrange
-            _integrationServiceRepositoryMock.Setup(isr => isr.GetOrder(It.IsAny<string>(), It.IsAny<string>())).Returns(new GetOrderResult {Outcome = OutcomeEnum.Fail});
+            _integrationServiceRepositoryMock.Setup(isr => isr.GetOrder(It.IsAny<string>(), It.IsAny<string>())).Returns(new EClosingOrder());
             _reswareDbContext.Signings.Add(_signing);
             _reswareDbContext.SaveChanges();
             _mirthServiceClientMock.Setup(m => m.SendMessageToMirth(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<string>())).Returns(true);

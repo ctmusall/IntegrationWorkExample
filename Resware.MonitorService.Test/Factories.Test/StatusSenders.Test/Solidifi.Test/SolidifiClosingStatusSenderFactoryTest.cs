@@ -3,6 +3,7 @@ using Resware.Entities.Orders;
 using ReswareCommon.Constants;
 using ReswareOrderMonitorService.eClosingIntegrationService;
 using ReswareOrderMonitorService.Factories.StatusSenders.Solidifi;
+using ReswareOrderMonitorService.Models;
 using ReswareOrderMonitorService.StatusSenders.Solidifi;
 
 namespace Resware.MonitorService.Test.Factories.Test.StatusSenders.Test.Solidifi.Test
@@ -11,16 +12,13 @@ namespace Resware.MonitorService.Test.Factories.Test.StatusSenders.Test.Solidifi
     public class SolidifiClosingStatusSenderFactoryTest
     {
         private SolidifiClosingStatusSenderFactory _solidifiClosingStatusSenderFactory;
-        private GetOrderResult _getOrderResult;
+        private EClosingOrder _getOrderResult;
         private Order _reswareOrder;
 
         [TestInitialize]
         public void Setup()
         {
-            _getOrderResult = new GetOrderResult
-            {
-                Order = new OutboundOrder()
-            };
+            _getOrderResult = new EClosingOrder();
             _reswareOrder = new Order();
             _solidifiClosingStatusSenderFactory = new SolidifiClosingStatusSenderFactory(_getOrderResult);
         }
@@ -29,7 +27,7 @@ namespace Resware.MonitorService.Test.Factories.Test.StatusSenders.Test.Solidifi
         public void ResolveStatusSender_order_result_is_invalid_should_return_null()
         {
             // Arrange
-            _solidifiClosingStatusSenderFactory.EClosingOrder.Order = null;
+            _solidifiClosingStatusSenderFactory.EClosingOrder = null;
 
             // Act
             var result = _solidifiClosingStatusSenderFactory.ResolveStatusSender(_reswareOrder);
@@ -43,7 +41,7 @@ namespace Resware.MonitorService.Test.Factories.Test.StatusSenders.Test.Solidifi
         {
             // Arrange
             _reswareOrder.ClosingStatus = string.Empty;
-            _solidifiClosingStatusSenderFactory.EClosingOrder.Order.Status = OrderStatusConstants.Pending;
+            _solidifiClosingStatusSenderFactory.EClosingOrder.Status = OrderStatusConstants.Pending;
             
             // Act
             var result = _solidifiClosingStatusSenderFactory.ResolveStatusSender(_reswareOrder);
@@ -59,7 +57,7 @@ namespace Resware.MonitorService.Test.Factories.Test.StatusSenders.Test.Solidifi
             // Arrange
             _reswareOrder.TitleOpinionStatus = OrderStatusConstants.Pending;
             _reswareOrder.ClosingStatus = OrderStatusConstants.Pending;
-            _solidifiClosingStatusSenderFactory.EClosingOrder.Order.Status = OrderStatusConstants.Pending;
+            _solidifiClosingStatusSenderFactory.EClosingOrder.Status = OrderStatusConstants.Pending;
 
             // Act
             var result = _solidifiClosingStatusSenderFactory.ResolveStatusSender(_reswareOrder);
@@ -73,7 +71,7 @@ namespace Resware.MonitorService.Test.Factories.Test.StatusSenders.Test.Solidifi
         {
             // Arrange
             _reswareOrder.ClosingStatus = OrderStatusConstants.Pending;
-            _solidifiClosingStatusSenderFactory.EClosingOrder.Order.Status = OrderStatusConstants.Scheduled;
+            _solidifiClosingStatusSenderFactory.EClosingOrder.Status = OrderStatusConstants.Scheduled;
 
             // Act
             var result = _solidifiClosingStatusSenderFactory.ResolveStatusSender(_reswareOrder);
@@ -88,7 +86,7 @@ namespace Resware.MonitorService.Test.Factories.Test.StatusSenders.Test.Solidifi
         {
             // Arrange
             _reswareOrder.ClosingStatus = OrderStatusConstants.Scheduled;
-            _solidifiClosingStatusSenderFactory.EClosingOrder.Order.Status = OrderStatusConstants.Closed;
+            _solidifiClosingStatusSenderFactory.EClosingOrder.Status = OrderStatusConstants.Closed;
 
             // Act
             var result = _solidifiClosingStatusSenderFactory.ResolveStatusSender(_reswareOrder);
@@ -103,7 +101,7 @@ namespace Resware.MonitorService.Test.Factories.Test.StatusSenders.Test.Solidifi
         {
             // Arrange 
             _reswareOrder.ClosingStatus = OrderStatusConstants.Scheduled;
-            _solidifiClosingStatusSenderFactory.EClosingOrder.Order.Status = OrderStatusConstants.Scheduled;
+            _solidifiClosingStatusSenderFactory.EClosingOrder.Status = OrderStatusConstants.Scheduled;
 
             // Act
             var result = _solidifiClosingStatusSenderFactory.ResolveStatusSender(_reswareOrder);

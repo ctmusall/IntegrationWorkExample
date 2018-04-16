@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using ReswareOrderMonitorService.eClosingIntegrationService;
+using ReswareOrderMonitorService.Readers;
 using ReswareOrderMonitorService.Repositories;
 
 namespace Resware.MonitorService.Test.Repositories.Test
@@ -10,12 +11,14 @@ namespace Resware.MonitorService.Test.Repositories.Test
     {
         private IIntegrationServiceRepository _integrationServiceRepository;
         private Mock<IIntegrationService> _integrationServiceClientMock;
+        private IEClosingOrderReader _eClosingOrderReader;
 
         [TestInitialize]
         public void Setup()
         {
             _integrationServiceClientMock = new Mock<IIntegrationService>();
-            _integrationServiceRepository = new IntegrationServiceRepository(_integrationServiceClientMock.Object);
+            _eClosingOrderReader = new EClosingOrderReader();
+            _integrationServiceRepository = new IntegrationServiceRepository(_integrationServiceClientMock.Object, _eClosingOrderReader);
         }
 
         [TestMethod]
@@ -28,8 +31,7 @@ namespace Resware.MonitorService.Test.Repositories.Test
             var result = _integrationServiceRepository.GetOrder("123", "123456");
 
             // Assert
-            Assert.IsNotNull(result);
-            Assert.AreEqual(result.Outcome, OutcomeEnum.Fail);
+            Assert.IsNull(result);
         }
 
         [TestMethod]
@@ -43,8 +45,6 @@ namespace Resware.MonitorService.Test.Repositories.Test
 
             // Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual(result.Outcome, OutcomeEnum.Success);
-            Assert.IsNotNull(result.Order);
         }
 
     }

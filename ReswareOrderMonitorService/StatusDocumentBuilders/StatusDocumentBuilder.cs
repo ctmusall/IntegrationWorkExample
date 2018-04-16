@@ -2,7 +2,7 @@
 using System.Linq;
 using Aspose.Words;
 using Resware.Entities.Orders;
-using ReswareOrderMonitorService.eClosingIntegrationService;
+using ReswareOrderMonitorService.Models;
 
 namespace ReswareOrderMonitorService.StatusDocumentBuilders
 {
@@ -76,7 +76,7 @@ namespace ReswareOrderMonitorService.StatusDocumentBuilders
             documentBuilder.Writeln("South Carolina Office: 226 State Street, West Columbia, SC, Phone: 803-873-9198");
         }
 
-        public Document BuildDocument(Order reswareOrder, GetOrderResult eClosingOrder)
+        public Document BuildDocument(Order reswareOrder, EClosingOrder eClosingOrder)
         {
             AddHeader(_documentBuilder);
 
@@ -87,7 +87,7 @@ namespace ReswareOrderMonitorService.StatusDocumentBuilders
             return _documentBuilder.Document;
         }
 
-        protected internal void AddFeeSchedule(DocumentBuilder documentBuilder, GetOrderResult eClosingOrder)
+        protected internal void AddFeeSchedule(DocumentBuilder documentBuilder, EClosingOrder eClosingOrder)
         {
             documentBuilder.ParagraphFormat.ClearFormatting();
             documentBuilder.Font.ClearFormatting();
@@ -103,10 +103,10 @@ namespace ReswareOrderMonitorService.StatusDocumentBuilders
 
             documentBuilder.StartTable();
 
-            var services = eClosingOrder.Order.Attorneys.SelectMany(attorney => attorney.Services).ToList();
-            services.AddRange(eClosingOrder.Order.ClosingAttorney.Services);
+            var services = eClosingOrder.Attorneys.SelectMany(attorney => attorney.Services).ToList();
+            if (eClosingOrder.ClosingAttorney?.Services != null) services?.AddRange(eClosingOrder.ClosingAttorney?.Services);
 
-            services.ForEach(service =>
+            services?.ForEach(service =>
             {
                 documentBuilder.InsertCell();
                 documentBuilder.Font.Bold = true;
@@ -122,13 +122,13 @@ namespace ReswareOrderMonitorService.StatusDocumentBuilders
             documentBuilder.Write("Total Fee");
             documentBuilder.InsertCell();
             documentBuilder.Font.Bold = false;
-            documentBuilder.Write($"{eClosingOrder.Order.TotalBillRate:C}");
+            documentBuilder.Write($"{eClosingOrder.TotalBillRate:C}");
             documentBuilder.EndRow();
 
             documentBuilder.EndTable();
         }
 
 
-        protected internal abstract void AddBody(DocumentBuilder documentBuilder, Order reswareOrder, GetOrderResult eClosingOrder);
+        protected internal abstract void AddBody(DocumentBuilder documentBuilder, Order reswareOrder, EClosingOrder eClosingOrder);
     }
 }

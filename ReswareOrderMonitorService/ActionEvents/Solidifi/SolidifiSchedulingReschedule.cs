@@ -25,7 +25,7 @@ namespace ReswareOrderMonitorService.ActionEvents.Solidifi
         internal override bool PerformAction(Order order)
         {
             var existingOrder = _integrationServiceRepository.GetOrder(order.CustomerId, order.FileNumber);
-            if (existingOrder.Outcome == OutcomeEnum.Fail || existingOrder.Order == null)
+            if (existingOrder == null)
             {
                 order.Notes += $"Received Reschedule Action Event from Resware for file number {order.FileNumber}. Order did not exist in eClosings.";
             }
