@@ -62,7 +62,7 @@
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Mirthtest|AnyCPU'">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Test|AnyCPU' ">
     <OutputPath>bin\Mirthtest\</OutputPath>
   </PropertyGroup>
   <ItemGroup>
@@ -243,18 +243,14 @@
     <None Include="App.Debug.config">
       <DependentUpon>App.config</DependentUpon>
     </None>
-    <None Include="App.Mirthtest.config">
+    <None Include="App.Release.config">
       <DependentUpon>App.config</DependentUpon>
     </None>
-    <None Include="App.Release.config">
+    <None Include="App.Test.config">
       <DependentUpon>App.config</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.Debug.settings">
-      <DependentUpon>Settings.settings</DependentUpon>
-      <Generator>SettingsSingleFileGenerator</Generator>
-    </None>
-    <None Include="Properties\Settings.Mirthtest.settings">
       <DependentUpon>Settings.settings</DependentUpon>
       <Generator>SettingsSingleFileGenerator</Generator>
     </None>
@@ -265,6 +261,10 @@
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Properties\Settings.Test.settings">
+      <DependentUpon>Settings.settings</DependentUpon>
+      <Generator>SettingsSingleFileGenerator</Generator>
     </None>
     <None Include="ReswareMonitor_TemporaryKey.pfx" />
     <None Include="Service References\eClosingIntegrationService\IntegrationService.wsdl" />
