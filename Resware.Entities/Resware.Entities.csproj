@@ -30,6 +30,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Mirthtest|AnyCPU'">
+    <OutputPath>bin\Mirthtest\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ReswareCommon">
       <HintPath>..\ReswareCommon\bin\Debug\ReswareCommon.dll</HintPath>

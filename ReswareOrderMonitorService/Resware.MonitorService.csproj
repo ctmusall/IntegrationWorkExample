@@ -62,6 +62,9 @@
   <PropertyGroup>
     <SignManifests>true</SignManifests>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Mirthtest|AnyCPU'">
+    <OutputPath>bin\Mirthtest\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="Aspose.Pdf">
       <HintPath>Aspose\DLLs\Aspose.Pdf.dll</HintPath>
@@ -240,10 +243,25 @@
     <None Include="App.Debug.config">
       <DependentUpon>App.config</DependentUpon>
     </None>
+    <None Include="App.Mirthtest.config">
+      <DependentUpon>App.config</DependentUpon>
+    </None>
     <None Include="App.Release.config">
       <DependentUpon>App.config</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\Settings.Debug.settings">
+      <DependentUpon>Settings.settings</DependentUpon>
+      <Generator>SettingsSingleFileGenerator</Generator>
+    </None>
+    <None Include="Properties\Settings.Mirthtest.settings">
+      <DependentUpon>Settings.settings</DependentUpon>
+      <Generator>SettingsSingleFileGenerator</Generator>
+    </None>
+    <None Include="Properties\Settings.Release.settings">
+      <DependentUpon>Settings.settings</DependentUpon>
+      <Generator>SettingsSingleFileGenerator</Generator>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -352,5 +370,8 @@
     </PropertyGroup>
     <!--Publish copies the untransformed App.config to deployment directory so overwrite it-->
     <Copy Condition="Exists('$(DeployedConfig)')" SourceFiles="$(IntermediateOutputPath)$(TargetFileName).config" DestinationFiles="$(DeployedConfig)" />
+  </Target>
+  <Target Name="Settings_settings_AfterBuild" AfterTargets="AfterBuild" Condition="Exists('Settings.$(Configuration).settings')">
+    <TransformXml Source="Settings.settings" Destination="$(OutputPath)Settings.settings" Transform="Settings.$(Configuration).settings" />
   </Target>
 </Project>

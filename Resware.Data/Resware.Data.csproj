@@ -30,6 +30,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Mirthtest|AnyCPU'">
+    <OutputPath>bin\Mirthtest\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CommonServiceLocator, Version=2.0.3.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
       <HintPath>..\packages\Unity.5.7.4\lib\net45\CommonServiceLocator.dll</HintPath>
@@ -98,6 +101,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="App.Debug.config">
+      <DependentUpon>App.config</DependentUpon>
+    </None>
+    <None Include="App.Mirthtest.config">
       <DependentUpon>App.config</DependentUpon>
     </None>
     <None Include="App.Release.config">

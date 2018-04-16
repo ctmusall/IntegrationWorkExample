@@ -23,27 +23,21 @@ namespace ReswareOrderMonitorService.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("10.250.161.135")]
         public string MirthIPAddress {
             get {
                 return ((string)(this["MirthIPAddress"]));
             }
-            set {
-                this["MirthIPAddress"] = value;
-            }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("4412")]
         public int MirthSolidifiRequestPort {
             get {
                 return ((int)(this["MirthSolidifiRequestPort"]));
-            }
-            set {
-                this["MirthSolidifiRequestPort"] = value;
             }
         }
     }

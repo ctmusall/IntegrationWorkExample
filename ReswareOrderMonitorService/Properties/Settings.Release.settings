@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='iso-8859-1'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="ReswareOrderMonitorService.Properties" GeneratedClassName="Settings.Release">
+  <Profiles />
+  <Settings>
+    <Setting Name="MirthIPAddress" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">10.250.161.57</Value>
+    </Setting>
+    <Setting Name="MirthSolidifiRequestPort" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">4412</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
