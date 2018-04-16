@@ -8,5 +8,6 @@
         public const string Cancelled = "Cancelled";
         public const string UnableToFulfill = "Unable to Fulfill";
         public const string Adjourned = "Adjourned";
+        public const string Complete = "Complete";
     }
 }

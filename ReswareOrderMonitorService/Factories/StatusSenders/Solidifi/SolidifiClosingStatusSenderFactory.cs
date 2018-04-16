@@ -17,13 +17,15 @@ namespace ReswareOrderMonitorService.Factories.StatusSenders.Solidifi
         {
             if (InvalidOrder()) return null;
 
+            if (string.Equals(OrderStatusConstants.Complete, reswareOrder.ClosingStatus)) return null;
+
             if (string.IsNullOrWhiteSpace(reswareOrder.ClosingStatus)) return new SolidifiUpdateClosingStatus(EClosingOrder.Order.Status, DependencyFactory.Resolve<OrderRepository>());
 
             if (string.Equals(reswareOrder.ClosingStatus, EClosingOrder.Order.Status, StringComparison.CurrentCultureIgnoreCase)) return null;
 
             if (OrderHasAssignedAttorney(reswareOrder.ClosingStatus, EClosingOrder.Order.Status)) return new SolidifiStatusSender(EClosingOrder, new AssignedClosingAttorneyStatusDocumentBuilder(), new SolidifiUpdateClosingStatus(EClosingOrder.Order.Status, DependencyFactory.Resolve<OrderRepository>()));
 
-            return ClosingCompleted(EClosingOrder.Order.Status) ? new SolidifiStatusSender(EClosingOrder, new ClosingCompletedStatusDocumentBuilder(), new SolidifiUpdateClosingStatus(EClosingOrder.Order.Status, DependencyFactory.Resolve<OrderRepository>())) : null;
+            return ClosingCompleted(EClosingOrder.Order.Status) ? new SolidifiStatusSender(EClosingOrder, new ClosingCompletedStatusDocumentBuilder(), new SolidifiUpdateClosingStatus(OrderStatusConstants.Complete, DependencyFactory.Resolve<OrderRepository>())) : null;
         }
 
         private static bool ClosingCompleted(string currentOrderStatus)

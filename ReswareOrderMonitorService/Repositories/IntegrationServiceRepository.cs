@@ -6,11 +6,11 @@ namespace ReswareOrderMonitorService.Repositories
 {
     internal class IntegrationServiceRepository : IIntegrationServiceRepository
     {
-        private readonly IntegrationServiceClient _integrationServiceClient;
+        private readonly IIntegrationService _integrationServiceClient;
 
         public IntegrationServiceRepository(): this(new IntegrationServiceClient()) { }
 
-        internal IntegrationServiceRepository(IntegrationServiceClient integrationServiceClient)
+        internal IntegrationServiceRepository(IIntegrationService integrationServiceClient)
         {
             _integrationServiceClient = integrationServiceClient;
         }
