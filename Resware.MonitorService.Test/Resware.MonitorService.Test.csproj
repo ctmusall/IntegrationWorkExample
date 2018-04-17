@@ -35,6 +35,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Aspose.Pdf, Version=17.9.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Resware.Core\Aspose\DLLs\Aspose.Pdf.dll</HintPath>
+    </Reference>
     <Reference Include="Aspose.Words, Version=17.9.0.0, Culture=neutral, PublicKeyToken=716fcc553a201e56, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\ReswareOrderMonitorService\Aspose\DLLs\Aspose.Words.dll</HintPath>
@@ -60,7 +64,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="NMemory, Version=1.0.0.0, Culture=neutral, PublicKeyToken=6a46696d54971e6d, processorArchitecture=MSIL">
-      <HintPath>..\packages\NMemory.1.1.0\lib\net45\NMemory.dll</HintPath>
+      <HintPath>..\packages\NMemory.1.1.2\lib\net45\NMemory.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -69,8 +73,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.1.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.4.0\lib\portable-net45+win8+wp8+wpa81\System.Threading.Tasks.Extensions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Transactions" />
@@ -122,6 +126,38 @@
     <Compile Include="StatusSenders.Test\Solidifi.Test\SolidifiStatusSenderTest.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\eClosings.Core\eClosings.Core.csproj">
+      <Project>{c1477a7c-7adf-47c7-87e5-e3c2835c7dd0}</Project>
+      <Name>eClosings.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\eClosings.Data\eClosings.Data.csproj">
+      <Project>{1eedc6ba-4b06-4daa-8121-91eed2ae5f6b}</Project>
+      <Name>eClosings.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\eClosings.Entities\eClosings.Entities.csproj">
+      <Project>{7134d3dc-f4ae-47f4-b025-a916083e782e}</Project>
+      <Name>eClosings.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\eClosings.Mirth\eClosings.Mirth.csproj">
+      <Project>{5ec9e816-594d-488b-99a0-d77dbe0bbbf5}</Project>
+      <Name>eClosings.Mirth</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Resware.Core.ActionEvent\Resware.Core.ActionEvents.csproj">
+      <Project>{cd9f2e69-e9e1-4d28-b01b-9ed85b6964f9}</Project>
+      <Name>Resware.Core.ActionEvents</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Resware.Core.Services\Resware.Core.Services.csproj">
+      <Project>{c026c213-076c-473b-a263-735326cf2e58}</Project>
+      <Name>Resware.Core.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Resware.Core.Status\Resware.Core.Status.csproj">
+      <Project>{9c32fb65-0c61-4a6c-a48e-a1b9285ef8a8}</Project>
+      <Name>Resware.Core.Status</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Resware.Core\Resware.Core.Documents.csproj">
+      <Project>{d5a219ef-0c78-4e36-9039-3ca2f7c290c2}</Project>
+      <Name>Resware.Core.Documents</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Resware.Data\Resware.Data.csproj">
       <Project>{9d6988e7-5971-4d1b-a765-0bd105416157}</Project>
       <Name>Resware.Data</Name>

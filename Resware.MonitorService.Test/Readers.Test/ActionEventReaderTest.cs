@@ -3,19 +3,20 @@ using System.Linq;
 using Effort;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Resware.Core.ActionEvent.Factories.ActionEvents;
+using Resware.Core.ActionEvent.Factories.ParentActionEvents;
+using Resware.Core.ActionEvent.Readers.ActionEvents;
 using Resware.Data.ActionEvent.Repository;
 using Resware.Data.Context;
 using Resware.Entities.ActionEvents;
 using Resware.Entities.Orders;
-using ReswareOrderMonitorService.Factories.ActionEvents;
-using ReswareOrderMonitorService.Readers;
 
 namespace Resware.MonitorService.Test.Readers.Test
 {
     [TestClass]
     public class ActionEventReaderTest
     {
-        private IActionEventReader _actionEventReader;
+        private ActionEventReader _actionEventReader;
         private ActionEventRepository _actionEventRepository;
         private ReswareDbContext _reswareDbContext;
 
@@ -23,7 +24,7 @@ namespace Resware.MonitorService.Test.Readers.Test
 
 
         private Mock<ActionEventFactory> _actionEventFactoryMock;
-        private Mock<ReswareOrderMonitorService.ActionEvents.ActionEvent> _actionEventMock;
+        private Mock<Core.ActionEvent.ActionEvents.ActionEvent> _actionEventMock;
 
 
 
@@ -35,7 +36,7 @@ namespace Resware.MonitorService.Test.Readers.Test
             _reswareDbContext = new ReswareDbContext(connection);
             _actionEventRepository = new ActionEventRepository(_reswareDbContext);
 
-            _actionEventMock = new Mock<ReswareOrderMonitorService.ActionEvents.ActionEvent>();
+            _actionEventMock = new Mock<Core.ActionEvent.ActionEvents.ActionEvent>();
             _actionEventMock.Setup(ae => ae.PerformAction(It.IsAny<Order>())).Returns(true);
 
             _actionEventFactoryMock = new Mock<ActionEventFactory>();

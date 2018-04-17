@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ReswareOrderMonitorService.Factories;
+using Resware.Core.Services.Factories.ParentServiceUtilities;
+using Resware.Core.Services.Factories.ServiceUtilities;
 
 namespace Resware.MonitorService.Test.Factories.Test.Services.Test
 {

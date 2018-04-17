@@ -1,10 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using eClosings.Data.IntegrationService.Repository;
+using eClosings.Entities.Orders;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Resware.Core.ActionEvent.Factories.ClientCompletedActionEvents;
+using Resware.Core.Status.Factories.StatusSender.ClosingStatus;
+using Resware.Core.Status.Factories.StatusSender.DocPrepStatus;
+using Resware.Core.Status.Factories.StatusSender.TitleOpinion;
 using ReswareCommon.Constants.Solidifi;
-using ReswareOrderMonitorService.Factories.CompletedActionEvents.Solidifi;
-using ReswareOrderMonitorService.Factories.StatusSenders.Solidifi;
-using ReswareOrderMonitorService.Models;
-using ReswareOrderMonitorService.Repositories;
 
 namespace Resware.MonitorService.Test.Factories.Test.CompletedActionEvents.Test.Solidifi.Test
 {
@@ -20,7 +22,7 @@ namespace Resware.MonitorService.Test.Factories.Test.CompletedActionEvents.Test.
         public void Setup()
         {
             _integrationServiceRepositoryMock = new Mock<IIntegrationServiceRepository>();
-            _integrationServiceRepositoryMock.Setup(isr => isr.GetOrder(CustomerId, FileNumber)).Returns(new EClosingOrder());
+            _integrationServiceRepositoryMock.Setup(isr => isr.GetOrder(CustomerId, FileNumber)).Returns(new Order());
             _solidifiCompletedActionEventFactory = new SolidifiCompletedActionEventFactory(_integrationServiceRepositoryMock.Object);
         }
 

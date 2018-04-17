@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ReswareOrderMonitorService.Factories.ActionEvents;
+using Resware.Core.ActionEvent.Factories.ActionEvents;
+using Resware.Core.ActionEvent.Factories.ParentActionEvents;
 
 namespace Resware.MonitorService.Test.Factories.Test.ActionEvents.Test
 {

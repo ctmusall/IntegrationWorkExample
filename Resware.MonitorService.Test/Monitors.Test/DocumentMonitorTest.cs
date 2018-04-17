@@ -5,16 +5,17 @@ using System.Net.Mail;
 using Effort;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Resware.Core.DocumentSenders;
+using Resware.Core.Factories.DocumentFactory;
+using Resware.Core.Factories.DocumentReaders;
+using Resware.Core.Utilities.DocumentMail;
 using Resware.Data.Context;
 using Resware.Data.NoteDoc.Repository;
 using Resware.Data.Order.Repository;
 using Resware.Entities.Notes;
 using Resware.Entities.Notes.Documents;
 using Resware.Entities.Orders;
-using ReswareOrderMonitorService.DocumentSenders;
-using ReswareOrderMonitorService.Factories.Documents;
-using ReswareOrderMonitorService.Monitors;
-using ReswareOrderMonitorService.Utilities;
+using ReswareOrderMonitorService.Monitors.Documents;
 
 namespace Resware.MonitorService.Test.Monitors.Test
 {
@@ -26,7 +27,7 @@ namespace Resware.MonitorService.Test.Monitors.Test
         private NoteDocRepository _noteDocRepository;
         private OrderRepository _orderRepository;
         private Mock<IClientDocumentFactory> _clientDocumentFactoryMock;
-        private Mock<IDocumentReaderFactory> _documentReaderFactoryMock;
+        private Mock<DocumentReaderFactory> _documentReaderFactoryMock;
         private Mock<IDocumentMailUtility> _documentMailUtilityMock; 
         private DocumentSender _documentSender;
 
@@ -38,7 +39,7 @@ namespace Resware.MonitorService.Test.Monitors.Test
             _noteDocRepository = new NoteDocRepository(_reswareDbContext);
             _orderRepository = new OrderRepository(_reswareDbContext);
             _clientDocumentFactoryMock = new Mock<IClientDocumentFactory>();
-            _documentReaderFactoryMock = new Mock<IDocumentReaderFactory>();
+            _documentReaderFactoryMock = new Mock<DocumentReaderFactory>();
             _documentMailUtilityMock = new Mock<IDocumentMailUtility>();
             _documentSender = new DocumentSender(_documentMailUtilityMock.Object);
             _documentMonitor = new DocumentMonitor(_noteDocRepository, _orderRepository, _clientDocumentFactoryMock.Object);    

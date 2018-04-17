@@ -1,15 +1,15 @@
 ﻿using System.Linq;
 using Effort;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Resware.Core.ActionEvent.Factories.ParentActionEvents;
+using Resware.Core.ActionEvent.Readers.ActionEvents;
+using Resware.Core.Services.Factories.ParentServiceUtilities;
 using Resware.Data.ActionEvent.Repository;
 using Resware.Data.Context;
 using Resware.Data.Order.Repository;
 using Resware.Entities.ActionEvents;
 using Resware.Entities.Orders;
-using ReswareOrderMonitorService.Factories;
-using ReswareOrderMonitorService.Factories.ActionEvents;
-using ReswareOrderMonitorService.Monitors;
-using ReswareOrderMonitorService.Readers;
+using ReswareOrderMonitorService.Monitors.OrderActionEvents;
 
 namespace Resware.MonitorService.Test.Monitors.Test
 {
@@ -18,10 +18,10 @@ namespace Resware.MonitorService.Test.Monitors.Test
     {
         private OrderRepository _orderRepository;
         private ActionEventRepository _actionEventRepository;
-        private IParentActionEventFactory _parentActionEventFactory;
-        private IActionEventReader _actionEventReader;
-        private IParentServiceUtilityFactory _parentServiceUtilityFactory;
-        private static IOrderActionEventMonitor _orderActionEventMonitor;
+        private ParentActionEventFactory _parentActionEventFactory;
+        private ActionEventReader _actionEventReader;
+        private ParentServiceUtilityFactory _parentServiceUtilityFactory;
+        private static OrderActionEventMonitor _orderActionEventMonitor;
         private static ReswareDbContext _reswareDbContext;
 
         [TestInitialize]

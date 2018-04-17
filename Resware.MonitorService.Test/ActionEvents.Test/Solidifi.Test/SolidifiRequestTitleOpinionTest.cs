@@ -1,15 +1,15 @@
-﻿using Effort;
+﻿using eClosings.Core.Utilities;
+using eClosings.Mirth.Clients;
+using Effort;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Resware.Core.ActionEvent.RequestTitleOpinion.ActionEvents;
+using Resware.Core.Services.Utilities.ServiceUtilities.TitleOpinionService;
 using Resware.Data.Context;
 using Resware.Data.Signing.Repository;
 using Resware.Entities.Orders;
 using Resware.Entities.Signings;
 using ReswareCommon.Constants;
-using ReswareOrderMonitorService.ActionEvents.Solidifi;
-using ReswareOrderMonitorService.Mirth;
-using ReswareOrderMonitorService.Utilities;
-using ReswareOrderMonitorService.Utilities.Solidifi;
 
 namespace Resware.MonitorService.Test.ActionEvents.Test.Solidifi.Test
 {
@@ -22,7 +22,7 @@ namespace Resware.MonitorService.Test.ActionEvents.Test.Solidifi.Test
         private Mock<IDateTimeUtility> _dateTimeUtilityMock;
         private SigningRepository _signingRepository;
         private ReswareDbContext _reswareDbContext;
-        private Mock<IMirthServiceClient> _mirthServiceClientMock;
+        private Mock<MirthServiceClient> _mirthServiceClientMock;
         private Mock<SolidifiTitleOpinionServiceUtility> _solidifiTitleOpinionServiceUtilityMock;
 
         [TestInitialize]
@@ -33,7 +33,7 @@ namespace Resware.MonitorService.Test.ActionEvents.Test.Solidifi.Test
             var connection = DbConnectionFactory.CreateTransient();
             _reswareDbContext = new ReswareDbContext(connection);
             _signingRepository = new SigningRepository(_reswareDbContext);
-            _mirthServiceClientMock = new Mock<IMirthServiceClient>();
+            _mirthServiceClientMock = new Mock<MirthServiceClient>();
             _solidifiTitleOpinionServiceUtilityMock = new Mock<SolidifiTitleOpinionServiceUtility>();
             _dateTimeUtilityMock = new Mock<IDateTimeUtility>();
             _solidifiRequestTitleOpinion = new SolidifiRequestTitleOpinion(_signingRepository, _mirthServiceClientMock.Object, _solidifiTitleOpinionServiceUtilityMock.Object, _dateTimeUtilityMock.Object);    

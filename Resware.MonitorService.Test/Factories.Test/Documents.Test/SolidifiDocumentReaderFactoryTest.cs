@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ReswareOrderMonitorService.DocumentSenders;
-using ReswareOrderMonitorService.Factories.Documents;
+using Resware.Core.DocumentSenders;
+using Resware.Core.Factories.DocumentReaders;
 
 namespace Resware.MonitorService.Test.Factories.Test.Documents.Test
 {

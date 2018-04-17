@@ -1,15 +1,15 @@
 ﻿using System;
+using eClosings.Data.eClosingsIntegrationService;
+using eClosings.Data.Readers.OrderReader;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ReswareOrderMonitorService.eClosingIntegrationService;
-using ReswareOrderMonitorService.Models;
-using ReswareOrderMonitorService.Readers;
+using Resware.Entities.Orders;
 
 namespace Resware.MonitorService.Test.Readers.Test
 {
     [TestClass]
     public class EClosingOrderReaderTest
     {
-        private IEClosingOrderReader _eClosingOrderReader;
+        private EClosingOrderReader _eClosingOrderReader;
 
         [TestInitialize]
         public void Setup()
@@ -72,7 +72,7 @@ namespace Resware.MonitorService.Test.Readers.Test
 
             // Assert
             Assert.IsNotNull(result);
-            Assert.IsInstanceOfType(result, typeof(EClosingOrder));
+            Assert.IsInstanceOfType(result, typeof(eClosings.Entities.Orders.Order));
             Assert.AreEqual(getOrderResult.Order.FileNumber, result.FileNumber);
             Assert.AreEqual(getOrderResult.Order.OrderId, result.OrderId);
         }

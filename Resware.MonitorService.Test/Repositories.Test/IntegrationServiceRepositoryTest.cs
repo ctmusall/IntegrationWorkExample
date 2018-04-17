@@ -1,17 +1,17 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using eClosings.Data.eClosingsIntegrationService;
+using eClosings.Data.IntegrationService.Repository;
+using eClosings.Data.Readers.OrderReader;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using ReswareOrderMonitorService.eClosingIntegrationService;
-using ReswareOrderMonitorService.Readers;
-using ReswareOrderMonitorService.Repositories;
 
 namespace Resware.MonitorService.Test.Repositories.Test
 {
     [TestClass]
     public class IntegrationServiceRepositoryTest
     {
-        private IIntegrationServiceRepository _integrationServiceRepository;
+        private IntegrationServiceRepository _integrationServiceRepository;
         private Mock<IIntegrationService> _integrationServiceClientMock;
-        private IEClosingOrderReader _eClosingOrderReader;
+        private EClosingOrderReader _eClosingOrderReader;
 
         [TestInitialize]
         public void Setup()

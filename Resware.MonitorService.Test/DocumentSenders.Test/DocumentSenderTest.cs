@@ -1,10 +1,10 @@
 ﻿using System.Net.Mail;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Resware.Core.DocumentSenders;
+using Resware.Core.Utilities.DocumentMail;
 using Resware.Entities.Notes.Documents;
 using Resware.Entities.Orders;
-using ReswareOrderMonitorService.DocumentSenders;
-using ReswareOrderMonitorService.Utilities;
 
 namespace Resware.MonitorService.Test.DocumentSenders.Test
 {
