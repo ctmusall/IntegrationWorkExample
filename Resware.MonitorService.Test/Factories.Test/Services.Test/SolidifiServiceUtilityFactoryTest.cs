@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ReswareOrderMonitorService.Common;
+using ReswareCommon.Enums;
 using ReswareOrderMonitorService.Factories;
 using ReswareOrderMonitorService.Utilities.Solidifi;
 

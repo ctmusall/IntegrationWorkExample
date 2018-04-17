@@ -90,9 +90,7 @@ namespace ReswareOrderMonitorService.Utilities
             }
             holidays.Add(laborDay.Date);
 
-            var thanksgiving = (from day in Enumerable.Range(1, 30)
-                where new DateTime(year, 11, day).DayOfWeek == DayOfWeek.Thursday
-                select day).ElementAt(3);
+            var thanksgiving = (Enumerable.Range(1, 30).Where(day => new DateTime(year, 11, day).DayOfWeek == DayOfWeek.Thursday)).ElementAt(3);
             var thanksgivingDay = new DateTime(year, 11, thanksgiving);
             holidays.Add(thanksgivingDay.Date);
 

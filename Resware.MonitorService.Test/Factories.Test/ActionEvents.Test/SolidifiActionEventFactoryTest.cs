@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using ReswareCommon.Constants.Solidifi;
 using ReswareOrderMonitorService.ActionEvents;
 using ReswareOrderMonitorService.ActionEvents.Solidifi;
-using ReswareOrderMonitorService.Common.Solidifi;
 using ReswareOrderMonitorService.Factories;
 using ReswareOrderMonitorService.Factories.ActionEvents;
 

@@ -1,4 +1,4 @@
-﻿using ReswareOrderMonitorService.Common;
+﻿using ReswareCommon.Enums;
 using ReswareOrderMonitorService.Utilities;
 using ReswareOrderMonitorService.Utilities.Solidifi;
 

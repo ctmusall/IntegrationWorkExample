@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using ReswareOrderMonitorService.Common.Solidifi;
+using ReswareCommon.Constants.Solidifi;
 using ReswareOrderMonitorService.Factories.CompletedActionEvents.Solidifi;
 using ReswareOrderMonitorService.Factories.StatusSenders.Solidifi;
 using ReswareOrderMonitorService.Models;

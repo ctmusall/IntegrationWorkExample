@@ -1,11 +1,11 @@
 ﻿using System.IO;
 using System.Xml.Serialization;
 
-namespace ReswareOrderMonitorService.Common
+namespace ReswareCommon
 {
-    internal static class ModelSerializer
+    public static class ModelSerializer
     {
-        internal static string SerializeXml<T>(T objectToSerialize)
+        public static string SerializeXml<T>(T objectToSerialize)
         {
             var stringWriter = new StringWriter();
             var serializer = new XmlSerializer(typeof(T));

@@ -1,4 +1,4 @@
-﻿using ReswareOrderMonitorService.Common.Solidifi;
+﻿using ReswareCommon.Constants.Solidifi;
 using ReswareOrderMonitorService.Factories.StatusSenders;
 using ReswareOrderMonitorService.Factories.StatusSenders.Solidifi;
 using ReswareOrderMonitorService.Repositories;

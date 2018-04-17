@@ -145,9 +145,6 @@
     <Compile Include="ActionEvents\RequestOrder.cs" />
     <Compile Include="ActionEvents\Solidifi\SolidifiSchedulingReschedule.cs" />
     <Compile Include="Aspose\AsposeLicense.cs" />
-    <Compile Include="Common\ModelSerializer.cs" />
-    <Compile Include="Common\OrderTypeEnum.cs" />
-    <Compile Include="Common\Solidifi\SolidifiActionEventConstants.cs" />
     <Compile Include="DocumentSenders\DocumentSender.cs" />
     <Compile Include="Factories\ActionEvents\ActionEventFactory.cs" />
     <Compile Include="Factories\CompletedActionEvents\ClientCompletedActionEventFactory.cs" />
@@ -247,7 +244,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EmbeddedResource Include="Aspose\DLLs\Aspose.Total.lic" />
     <None Include="App.Debug.config">
       <DependentUpon>App.config</DependentUpon>
     </None>
@@ -257,6 +253,7 @@
     <None Include="App.Test.config">
       <DependentUpon>App.config</DependentUpon>
     </None>
+    <None Include="Aspose\DLLs\Aspose.Total.lic" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.Debug.settings">
       <DependentUpon>Settings.settings</DependentUpon>

@@ -1,6 +1,6 @@
-﻿namespace ReswareOrderMonitorService.Common
+﻿namespace ReswareCommon.Enums
 {
-    internal enum OrderTypeEnum
+    public enum OrderTypeEnum
     {
         Closing = 1,
         TitleOpinion = 2,

@@ -1,8 +1,8 @@
 ﻿using Resware.Data.Signing.Repository;
+using ReswareCommon.Constants.Solidifi;
+using ReswareCommon.Enums;
 using ReswareOrderMonitorService.ActionEvents;
 using ReswareOrderMonitorService.ActionEvents.Solidifi;
-using ReswareOrderMonitorService.Common;
-using ReswareOrderMonitorService.Common.Solidifi;
 using ReswareOrderMonitorService.Mirth;
 using ReswareOrderMonitorService.Repositories;
 using ReswareOrderMonitorService.Utilities;
