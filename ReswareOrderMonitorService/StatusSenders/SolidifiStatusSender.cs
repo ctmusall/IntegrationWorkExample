@@ -1,9 +1,9 @@
 ﻿using Resware.Entities.Orders;
-using ReswareOrderMonitorService.eClosingIntegrationService;
 using ReswareOrderMonitorService.Models;
 using ReswareOrderMonitorService.StatusDocumentBuilders;
+using ReswareOrderMonitorService.StatusSenders.Solidifi;
 
-namespace ReswareOrderMonitorService.StatusSenders.Solidifi
+namespace ReswareOrderMonitorService.StatusSenders
 {
     internal class SolidifiStatusSender : IStatusSender
     {

@@ -1,9 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Resware.Entities.Orders;
 using ReswareCommon.Constants;
-using ReswareOrderMonitorService.eClosingIntegrationService;
 using ReswareOrderMonitorService.Factories.StatusSenders.Solidifi;
 using ReswareOrderMonitorService.Models;
+using ReswareOrderMonitorService.StatusSenders;
 using ReswareOrderMonitorService.StatusSenders.Solidifi;
 
 namespace Resware.MonitorService.Test.Factories.Test.StatusSenders.Test.Solidifi.Test

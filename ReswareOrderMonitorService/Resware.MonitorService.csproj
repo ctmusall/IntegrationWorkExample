@@ -223,7 +223,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="StatusSenders\Solidifi\SolidifiStatusSender.cs" />
+    <Compile Include="StatusSenders\SolidifiStatusSender.cs" />
     <Compile Include="StatusSenders\Solidifi\SolidifiUpdateClosingStatus.cs" />
     <Compile Include="StatusSenders\Solidifi\SolidifiUpdateOrderStatus.cs" />
     <Compile Include="StatusDocumentBuilders\ClosingCompletedStatusDocumentBuilder.cs" />
