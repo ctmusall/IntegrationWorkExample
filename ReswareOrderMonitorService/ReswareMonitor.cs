@@ -1,4 +1,5 @@
 ﻿using System.ServiceProcess;
+using System.Threading.Tasks;
 using System.Timers;
 using ReswareOrderMonitorService.Monitors;
 
@@ -29,11 +30,11 @@ namespace ReswareOrderMonitorService
             _timer.Elapsed += TimerElapsed;
         }
 
-        private void TimerElapsed(object sender, ElapsedEventArgs elapsedEventArgs)
+        private async void TimerElapsed(object sender, ElapsedEventArgs elapsedEventArgs)
         {
-            _orderActionEventMonitor.MonitorOrderActionEvents();
-            _documentMonitor.MonitorDocuments();
-            _outgoingMonitor.MonitorOrders();
+            await Task.Run(() => _orderActionEventMonitor.MonitorOrderActionEvents());
+            await Task.Run(() => _documentMonitor.MonitorDocuments());
+            await Task.Run(() => _outgoingMonitor.MonitorOrders());
         }
 
         protected override void OnStop()
