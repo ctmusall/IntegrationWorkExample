@@ -53,14 +53,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Properties\Settings.Debug.settings">
-      <DependentUpon>Settings.settings</DependentUpon>
-      <Generator>SettingsSingleFileGenerator</Generator>
-    </None>
-    <None Include="Properties\Settings.Release.settings">
-      <DependentUpon>Settings.settings</DependentUpon>
-      <Generator>SettingsSingleFileGenerator</Generator>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
