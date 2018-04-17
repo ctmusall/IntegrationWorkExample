@@ -9,7 +9,7 @@ namespace ReswareOrderMonitorService.Readers
     {
         public EClosingOrder MapEClosingOrder(GetOrderResult getOrderResult)
         {
-            if (getOrderResult?.Order == null) return null;
+            if (getOrderResult?.Outcome == OutcomeEnum.Fail || getOrderResult?.Order == null) return null;
 
             return new EClosingOrder
             {

@@ -115,6 +115,7 @@
     <Compile Include="Monitors.Test\OutgoingMonitorTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Readers.Test\ActionEventReaderTest.cs" />
+    <Compile Include="Readers.Test\EClosingOrderReaderTest.cs" />
     <Compile Include="Repositories.Test\IntegrationServiceRepositoryTest.cs" />
     <Compile Include="StatusDocumentBuilders.Test\AssignedAttorneyStatusDocumentBuilderTest.cs" />
     <Compile Include="StatusDocumentBuilders.Test\ClosingCompletedStatusDocumentBuilderTest.cs" />
