@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using Aspose.Words;
+using eClosings.Entities.Attorneys;
+using eClosings.Entities.Couriers;
+using eClosings.Entities.Persons;
+using eClosings.Entities.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Resware.Core.Builders.StatusDocument.ClosingCompleted;
 using Resware.Entities.Orders;
-using ReswareOrderMonitorService.Models;
-using ReswareOrderMonitorService.StatusDocumentBuilders;
 
 namespace Resware.MonitorService.Test.StatusDocumentBuilders.Test
 {
@@ -14,14 +17,14 @@ namespace Resware.MonitorService.Test.StatusDocumentBuilders.Test
         private ClosingCompletedStatusDocumentBuilder _closingCompletedStatusDocumentBuilder;
         private DocumentBuilder _documentBuilder;
         private Order _reswareOrder;
-        private EClosingOrder _eClosingOrder;
+        private eClosings.Entities.Orders.Order _eClosingOrder;
 
         [TestInitialize]
         public void Setup()
         {
             _documentBuilder = new DocumentBuilder();
             _reswareOrder = new Order();
-            _eClosingOrder = new EClosingOrder() { Couriers = new List<EClosingCourier>(), Attorneys = new List<EClosingAttorney>()};
+            _eClosingOrder = new eClosings.Entities.Orders.Order() { Couriers = new List<Courier>(), Attorneys = new List<Attorney>()};
             _closingCompletedStatusDocumentBuilder = new ClosingCompletedStatusDocumentBuilder();    
         }
 
@@ -29,14 +32,14 @@ namespace Resware.MonitorService.Test.StatusDocumentBuilders.Test
         public void AddBody_should_add_post_closing_body_text()
         {
             // Arrange
-            _eClosingOrder = new EClosingOrder
+            _eClosingOrder = new eClosings.Entities.Orders.Order()
             {
-                Borrower = new EClosingPerson(),
+                Borrower = new Person(),
                 ClosingDate = DateTime.Now.ToShortDateString(),
                 ClosingTime = DateTime.Now.ToShortTimeString(),
-                Couriers = new EClosingCourier[0],
-                Attorneys = new EClosingAttorney[0],
-                ClosingAttorney = new EClosingAttorney { Services = new EClosingService[0]}
+                Couriers = new Courier[0],
+                Attorneys = new Attorney[0],
+                ClosingAttorney = new Attorney { Services = new Service[0]}
             };
 
             // Act

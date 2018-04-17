@@ -1,9 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Resware.Core.Status.Factories.StatusSender.TitleOpinion;
+using Resware.Core.Status.StatusSenders;
 using Resware.Entities.Orders;
 using ReswareCommon.Constants;
-using ReswareOrderMonitorService.Factories.StatusSenders.Solidifi;
-using ReswareOrderMonitorService.Models;
-using ReswareOrderMonitorService.StatusSenders;
 using ReswareOrderMonitorService.StatusSenders.Solidifi;
 
 namespace Resware.MonitorService.Test.Factories.Test.StatusSenders.Test.Solidifi.Test
@@ -12,13 +11,13 @@ namespace Resware.MonitorService.Test.Factories.Test.StatusSenders.Test.Solidifi
     public class SolidifiTitleOpinionStatusSenderFactoryTest
     {
         private SolidifiTitleOpinionStatusSenderFactory _solidifiTitleOpinionStatusSenderFactory;
-        private EClosingOrder _getOrderResult;
+        private eClosings.Entities.Orders.Order _getOrderResult;
         private Order _reswareOrder;
 
         [TestInitialize]
         public void Setup()
         {
-            _getOrderResult = new EClosingOrder();
+            _getOrderResult = new eClosings.Entities.Orders.Order();
             _reswareOrder = new Order();
 
             _solidifiTitleOpinionStatusSenderFactory = new SolidifiTitleOpinionStatusSenderFactory(_getOrderResult);    

@@ -1,13 +1,13 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ReswareOrderMonitorService.Factories.CompletedActionEvents;
-using ReswareOrderMonitorService.Factories.CompletedActionEvents.Solidifi;
+using Resware.Core.ActionEvent.Factories.ClientCompletedActionEvents;
+using Resware.Core.ActionEvent.Factories.ParentClientCompletedActionEvents;
 
 namespace Resware.MonitorService.Test.Factories.Test.CompletedActionEvents.Test
 {
     [TestClass]
     public class ParentClientCompletedActionEventFactoryTest
     {
-        private IParentClientCompletedActionEventFactory _parentClientCompletedActionEventFactory;
+        private ParentClientCompletedActionEventFactory _parentClientCompletedActionEventFactory;
 
         [TestInitialize]
         public void Setup()

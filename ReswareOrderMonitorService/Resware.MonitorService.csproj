@@ -73,7 +73,7 @@
       <HintPath>Aspose\DLLs\Aspose.Words.dll</HintPath>
     </Reference>
     <Reference Include="CommonServiceLocator, Version=2.0.3.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.5.8.1\lib\net45\CommonServiceLocator.dll</HintPath>
+      <HintPath>..\packages\Unity.5.8.5\lib\net45\CommonServiceLocator.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
@@ -108,105 +108,46 @@
     <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml" />
     <Reference Include="Unity.Abstractions, Version=3.3.0.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.Abstractions.3.3.0\lib\net45\Unity.Abstractions.dll</HintPath>
+      <HintPath>..\packages\Unity.5.8.5\lib\net45\Unity.Abstractions.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Unity.Configuration, Version=5.2.1.0, Culture=neutral, PublicKeyToken=6d32ff45e0ccc69f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.5.8.1\lib\net45\Unity.Configuration.dll</HintPath>
+      <HintPath>..\packages\Unity.5.8.5\lib\net45\Unity.Configuration.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Unity.Container, Version=5.8.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.Container.5.8.1\lib\net45\Unity.Container.dll</HintPath>
+    <Reference Include="Unity.Container, Version=5.8.5.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Container.5.8.5\lib\net45\Unity.Container.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Unity.Interception, Version=5.5.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.5.8.1\lib\net45\Unity.Interception.dll</HintPath>
+      <HintPath>..\packages\Unity.5.8.5\lib\net45\Unity.Interception.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Unity.Interception.Configuration, Version=5.1.4.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.5.8.1\lib\net45\Unity.Interception.Configuration.dll</HintPath>
+      <HintPath>..\packages\Unity.5.8.5\lib\net45\Unity.Interception.Configuration.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Unity.RegistrationByConvention, Version=2.1.5.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.5.8.1\lib\net45\Unity.RegistrationByConvention.dll</HintPath>
+      <HintPath>..\packages\Unity.5.8.5\lib\net45\Unity.RegistrationByConvention.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Unity.ServiceLocation, Version=2.1.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
-      <HintPath>..\packages\Unity.5.8.1\lib\net45\Unity.ServiceLocation.dll</HintPath>
+      <HintPath>..\packages\Unity.5.8.5\lib\net45\Unity.ServiceLocation.dll</HintPath>
       <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActionEvents\ActionEvent.cs" />
-    <Compile Include="ActionEvents\Solidifi\SolidifiRequestClosing.cs" />
-    <Compile Include="ActionEvents\Solidifi\SolidifiRequestDocPrep.cs" />
-    <Compile Include="ActionEvents\Solidifi\SolidifiRequestTitleOpinion.cs" />
-    <Compile Include="ActionEvents\FundingAuth.cs" />
-    <Compile Include="ActionEvents\RequestOrder.cs" />
-    <Compile Include="ActionEvents\Solidifi\SolidifiSchedulingReschedule.cs" />
     <Compile Include="Aspose\AsposeLicense.cs" />
-    <Compile Include="DocumentSenders\DocumentSender.cs" />
-    <Compile Include="Factories\ActionEvents\ActionEventFactory.cs" />
-    <Compile Include="Factories\CompletedActionEvents\ClientCompletedActionEventFactory.cs" />
-    <Compile Include="Factories\CompletedActionEvents\IClientCompletedActionEventFactory.cs" />
-    <Compile Include="Factories\CompletedActionEvents\IParentClientCompletedActionEventFactory.cs" />
-    <Compile Include="Factories\CompletedActionEvents\ParentClientCompletedActionEventFactory.cs" />
-    <Compile Include="Factories\CompletedActionEvents\Solidifi\SolidifiCompletedActionEventFactory.cs" />
-    <Compile Include="Factories\Documents\ClientDocumentFactory.cs" />
-    <Compile Include="Factories\Documents\DocumentReaderFactory.cs" />
-    <Compile Include="Factories\Documents\IClientDocumentFactory.cs" />
-    <Compile Include="Factories\Services\IParentServiceUtilityFactory.cs" />
-    <Compile Include="Factories\Services\IServiceUtilityFactory.cs" />
-    <Compile Include="Factories\ActionEvents\SolidifiActionEventFactory.cs" />
-    <Compile Include="Factories\Documents\SolidifiDocumentReaderFactory.cs" />
-    <Compile Include="Factories\Services\ParentServiceUtilityFactory.cs" />
-    <Compile Include="Factories\DependencyFactory.cs" />
-    <Compile Include="Factories\Services\ServiceUtilityFactory.cs" />
-    <Compile Include="Factories\Services\SolidifiServiceUtilityFactory.cs" />
-    <Compile Include="Factories\StatusSenders\IStatusSenderFactory.cs" />
-    <Compile Include="Factories\StatusSenders\Solidifi\SolidifiClosingStatusSenderFactory.cs" />
-    <Compile Include="Factories\StatusSenders\Solidifi\SolidifiDocPrepStatusSenderFactory.cs" />
-    <Compile Include="Factories\StatusSenders\Solidifi\SolidifiTitleOpinionStatusSenderFactory.cs" />
-    <Compile Include="Factories\StatusSenders\StatusSenderFactory.cs" />
-    <Compile Include="Mirth\IMirthServiceClient.cs" />
-    <Compile Include="Mirth\MirthServiceClient.cs" />
-    <Compile Include="Models\EClosingAddress.cs" />
-    <Compile Include="Models\EClosingAttorney.cs" />
-    <Compile Include="Models\EClosingBaseOrder.cs" />
-    <Compile Include="Models\EClosingCourier.cs" />
-    <Compile Include="Models\EClosingOrder.cs" />
-    <Compile Include="Models\EClosingPerson.cs" />
-    <Compile Include="Models\EClosingService.cs" />
-    <Compile Include="Models\RequestMessage.cs" />
-    <Compile Include="Factories\ActionEvents\ParentActionEventFactory.cs" />
-    <Compile Include="Factories\ActionEvents\IParentActionEventFactory.cs" />
-    <Compile Include="Monitors\IDocumentMonitor.cs" />
-    <Compile Include="Monitors\DocumentMonitor.cs" />
-    <Compile Include="Monitors\IOutgoingMonitor.cs" />
-    <Compile Include="Monitors\OutgoingMonitor.cs" />
-    <Compile Include="Readers\EClosingOrderReader.cs" />
-    <Compile Include="Readers\IEClosingOrderReader.cs" />
-    <Compile Include="Repositories\IIntegrationServiceRepository.cs" />
-    <Compile Include="Repositories\IntegrationServiceRepository.cs" />
-    <Compile Include="StatusSenders\Solidifi\SolidifiUpdateDocPrepStatus.cs" />
-    <Compile Include="StatusSenders\Solidifi\SolidifiUpdateTitleOpinionStatus.cs" />
+    <Compile Include="Factories.DependencyFactory\DependencyFactory.cs" />
+    <Compile Include="Monitors.Documents\DocumentMonitor.cs" />
+    <Compile Include="Monitors.Outgoing\OutgoingMonitor.cs" />
     <Compile Include="ProjectInstaller.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ProjectInstaller.Designer.cs">
       <DependentUpon>ProjectInstaller.cs</DependentUpon>
     </Compile>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-    <Compile Include="Readers\ActionEventReader.cs" />
-    <Compile Include="Factories\Documents\IDocumentReaderFactory.cs" />
-    <Compile Include="Readers\IActionEventReader.cs" />
-    <Compile Include="Monitors\IOrderActionEventMonitor.cs" />
-    <Compile Include="Monitors\OrderActionEventMonitor.cs" />
-    <Compile Include="StatusSenders\IStatusSender.cs" />
+    <Compile Include="Monitors.OrderActionEvents\OrderActionEventMonitor.cs" />
     <Compile Include="ReswareMonitor.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -215,32 +156,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service References\eClosingIntegrationService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
-    <Compile Include="StatusSenders\SolidifiStatusSender.cs" />
-    <Compile Include="StatusSenders\Solidifi\SolidifiUpdateClosingStatus.cs" />
-    <Compile Include="StatusSenders\Solidifi\SolidifiUpdateOrderStatus.cs" />
-    <Compile Include="StatusDocumentBuilders\ClosingCompletedStatusDocumentBuilder.cs" />
-    <Compile Include="Utilities\DocumentMailUtility.cs" />
-    <Compile Include="Utilities\FundingAuthMailUtility.cs" />
-    <Compile Include="Utilities\IDocumentMailUtility.cs" />
-    <Compile Include="Utilities\IFundingAuthMailUtility.cs" />
-    <Compile Include="StatusDocumentBuilders\IStatusDocumentBuilder.cs" />
-    <Compile Include="StatusDocumentBuilders\AssignedAttorneyStatusDocumentBuilder.cs" />
-    <Compile Include="Utilities\Solidifi\SolidifiClosingDocumentMailUtility.cs" />
-    <Compile Include="Utilities\Solidifi\SolidifiDisbursementDocumentMailUtility.cs" />
-    <Compile Include="Utilities\Solidifi\SolidifiDocPrepServiceUtility.cs" />
-    <Compile Include="Utilities\ServiceUtility.cs" />
-    <Compile Include="Utilities\DateTimeUtility.cs" />
-    <Compile Include="Utilities\IDateTimeUtility.cs" />
-    <Compile Include="Utilities\IServiceUtility.cs" />
-    <Compile Include="Utilities\Solidifi\SolidifiClosingServiceUtility.cs" />
-    <Compile Include="Utilities\Solidifi\SolidifiFundingAuthMailUtility.cs" />
-    <Compile Include="Utilities\Solidifi\SolidifiTitleOpinionServiceUtility.cs" />
-    <Compile Include="StatusDocumentBuilders\StatusDocumentBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -253,65 +168,9 @@
     <None Include="App.Test.config">
       <DependentUpon>App.config</DependentUpon>
     </None>
-    <None Include="Aspose\DLLs\Aspose.Total.lic" />
+    <EmbeddedResource Include="Aspose\DLLs\Aspose.Total.lic" />
     <None Include="packages.config" />
-    <None Include="Properties\Settings.Debug.settings">
-      <DependentUpon>Settings.settings</DependentUpon>
-      <Generator>SettingsSingleFileGenerator</Generator>
-    </None>
-    <None Include="Properties\Settings.Release.settings">
-      <DependentUpon>Settings.settings</DependentUpon>
-      <Generator>SettingsSingleFileGenerator</Generator>
-    </None>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Properties\Settings.Test.settings">
-      <DependentUpon>Settings.settings</DependentUpon>
-      <Generator>SettingsSingleFileGenerator</Generator>
-    </None>
     <None Include="ReswareMonitor_TemporaryKey.pfx" />
-    <None Include="Service References\eClosingIntegrationService\IntegrationService.wsdl" />
-    <None Include="Service References\eClosingIntegrationService\IntegrationService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\eClosingIntegrationService\IntegrationService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\eClosingIntegrationService\IntegrationService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\eClosingIntegrationService\IntegrationService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\eClosingIntegrationService\IntegrationService4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\eClosingIntegrationService\IntegrationService5.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\eClosingIntegrationService\ReswareOrderMonitorService.eClosingIntegrationService.GetOrderResult.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\eClosingIntegrationService\ReswareOrderMonitorService.eClosingIntegrationService.IntegrationServiceInfo.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\eClosingIntegrationService\ReswareOrderMonitorService.eClosingIntegrationService.ServiceResult.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\eClosingIntegrationService\ReswareOrderMonitorService.eClosingIntegrationService.SubmitOrderResult.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\eClosingIntegrationService\ReswareOrderMonitorService.eClosingIntegrationService.TSISubmitOrderResult.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\eClosingIntegrationService\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ProjectInstaller.resx">
@@ -331,22 +190,24 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\eClosingIntegrationService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\eClosingIntegrationService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\eClosingIntegrationService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Aspose\DLLs\Aspose.Pdf.dll" />
     <Content Include="Aspose\DLLs\Aspose.Pdf.XML" />
     <Content Include="Aspose\DLLs\Aspose.Words.dll" />
     <Content Include="Aspose\DLLs\Aspose.Words.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Resware.Core.ActionEvent\Resware.Core.ActionEvents.csproj">
+      <Project>{cd9f2e69-e9e1-4d28-b01b-9ed85b6964f9}</Project>
+      <Name>Resware.Core.ActionEvents</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Resware.Core.Status\Resware.Core.Status.csproj">
+      <Project>{9c32fb65-0c61-4a6c-a48e-a1b9285ef8a8}</Project>
+      <Name>Resware.Core.Status</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Resware.Core\Resware.Core.Documents.csproj">
+      <Project>{d5a219ef-0c78-4e36-9039-3ca2f7c290c2}</Project>
+      <Name>Resware.Core.Documents</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

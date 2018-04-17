@@ -1,9 +1,12 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Resware.Core.ActionEvent.Factories.ActionEvents;
+using Resware.Core.ActionEvent.RequestClosing.ActionEvents;
+using Resware.Core.ActionEvent.RequestDocPrep.ActionEvents;
+using Resware.Core.ActionEvent.RequestFundingAuth.ActionEvents;
+using Resware.Core.ActionEvent.RequestReschedule.ActionEvents;
+using Resware.Core.ActionEvent.RequestTitleOpinion.ActionEvents;
+using Resware.Core.Services.Factories.ServiceUtilities;
 using ReswareCommon.Constants.Solidifi;
-using ReswareOrderMonitorService.ActionEvents;
-using ReswareOrderMonitorService.ActionEvents.Solidifi;
-using ReswareOrderMonitorService.Factories;
-using ReswareOrderMonitorService.Factories.ActionEvents;
 
 namespace Resware.MonitorService.Test.Factories.Test.ActionEvents.Test
 {
@@ -35,7 +38,7 @@ namespace Resware.MonitorService.Test.Factories.Test.ActionEvents.Test
             var result = _solidifiActionEventFactory.ResolveActionEvent(SolidifiActionEventConstants.RescheduleClosing);
 
             // Assert
-            Assert.AreEqual(typeof(SolidifiSchedulingReschedule), result.GetType());
+            Assert.AreEqual(typeof(SolidifiRequestReschedule), result.GetType());
         }
 
         [TestMethod]
@@ -75,7 +78,7 @@ namespace Resware.MonitorService.Test.Factories.Test.ActionEvents.Test
             var result = _solidifiActionEventFactory.ResolveActionEvent(SolidifiActionEventConstants.FundingAuth);
 
             // Assert
-            Assert.AreEqual(typeof(FundingAuth), result.GetType());
+            Assert.AreEqual(typeof(RequestFundingAuth), result.GetType());
         }
     }
 }

@@ -1,7 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Resware.Core.Services.Factories.ServiceUtilities;
+using Resware.Core.Services.Utilities.ServiceUtilities.ClosingService;
+using Resware.Core.Services.Utilities.ServiceUtilities.DocPrepService;
+using Resware.Core.Services.Utilities.ServiceUtilities.TitleOpinionService;
 using ReswareCommon.Enums;
-using ReswareOrderMonitorService.Factories;
-using ReswareOrderMonitorService.Utilities.Solidifi;
 
 namespace Resware.MonitorService.Test.Factories.Test.Services.Test
 {

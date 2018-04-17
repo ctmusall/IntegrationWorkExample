@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Linq;
+using eClosings.Data.IntegrationService.Repository;
 using Effort;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Resware.Core.ActionEvent.Factories.ClientCompletedActionEvents;
+using Resware.Core.ActionEvent.Factories.ParentClientCompletedActionEvents;
+using Resware.Core.Status.Factories.StatusSender;
+using Resware.Core.Status.StatusSenders;
 using Resware.Data.ActionEvent.Repository;
 using Resware.Data.Context;
 using Resware.Data.Order.Repository;
 using Resware.Entities.ActionEvents;
 using Resware.Entities.Orders;
-using ReswareOrderMonitorService.Factories.CompletedActionEvents;
-using ReswareOrderMonitorService.Factories.StatusSenders;
-using ReswareOrderMonitorService.Monitors;
-using ReswareOrderMonitorService.StatusSenders;
+using ReswareOrderMonitorService.Monitors.Outgoing;
 
 namespace Resware.MonitorService.Test.Monitors.Test
 {
@@ -25,7 +27,7 @@ namespace Resware.MonitorService.Test.Monitors.Test
         private Mock<IParentClientCompletedActionEventFactory> _parentClientCompletedActionEventFactoryMock;
         private Mock<IClientCompletedActionEventFactory> _clientCompletedActionEventFactory;
         private Mock<IStatusSender> _statusSenderMock;
-        private Mock<IStatusSenderFactory> _statusSenderFactoryMock;
+        private Mock<StatusSenderFactory> _statusSenderFactoryMock;
 
         [TestInitialize]
         public void Setup()
@@ -34,10 +36,11 @@ namespace Resware.MonitorService.Test.Monitors.Test
             _reswareDbContext = new ReswareDbContext(connection);
             _orderRepository = new OrderRepository(_reswareDbContext);
             _actionEventRepository = new ActionEventRepository(_reswareDbContext);
+
             _parentClientCompletedActionEventFactoryMock = new Mock<IParentClientCompletedActionEventFactory>();
             _clientCompletedActionEventFactory = new Mock<IClientCompletedActionEventFactory>();
             _statusSenderMock = new Mock<IStatusSender>();
-            _statusSenderFactoryMock = new Mock<IStatusSenderFactory>();
+            _statusSenderFactoryMock = new Mock<StatusSenderFactory>();
             _outgoingMonitor = new OutgoingMonitor(_orderRepository, _actionEventRepository, _parentClientCompletedActionEventFactoryMock.Object);    
         }
 

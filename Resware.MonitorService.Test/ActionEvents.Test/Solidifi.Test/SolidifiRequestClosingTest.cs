@@ -1,14 +1,14 @@
-﻿using Effort;
+﻿using eClosings.Mirth.Clients;
+using Effort;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Resware.Core.ActionEvent.RequestClosing.ActionEvents;
+using Resware.Core.Services.Utilities.ServiceUtilities.ClosingService;
 using Resware.Data.Context;
 using Resware.Data.Signing.Repository;
 using Resware.Entities.Orders;
 using Resware.Entities.Signings;
 using ReswareCommon.Constants;
-using ReswareOrderMonitorService.ActionEvents.Solidifi;
-using ReswareOrderMonitorService.Mirth;
-using ReswareOrderMonitorService.Utilities.Solidifi;
 
 namespace Resware.MonitorService.Test.ActionEvents.Test.Solidifi.Test
 {
@@ -98,7 +98,7 @@ namespace Resware.MonitorService.Test.ActionEvents.Test.Solidifi.Test
             _reswareDbContext.Signings.Add(_signing);
             _reswareDbContext.SaveChanges();
 
-            _mirthServiceClientMock.Setup(m => m.SendMessageToMirth(It.IsAny<string>(), It.IsAny<int>(), It.IsAny<string>())).Returns(true);
+            _mirthServiceClientMock.Setup(m => m.SendMessageToMirth(It.IsAny<string>(), It.IsAny<int>())).Returns(true);
 
             // Act
             var result = _solidifiRequestClosing.PerformAction(_order);

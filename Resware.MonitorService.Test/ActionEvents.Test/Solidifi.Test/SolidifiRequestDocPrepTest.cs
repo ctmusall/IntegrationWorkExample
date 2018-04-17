@@ -1,15 +1,15 @@
-﻿using Effort;
+﻿using eClosings.Core.Utilities;
+using eClosings.Mirth.Clients;
+using Effort;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Resware.Core.ActionEvent.RequestDocPrep.ActionEvents;
+using Resware.Core.Services.Utilities.ServiceUtilities.DocPrepService;
 using Resware.Data.Context;
 using Resware.Data.Signing.Repository;
 using Resware.Entities.Orders;
 using Resware.Entities.Signings;
 using ReswareCommon.Constants;
-using ReswareOrderMonitorService.ActionEvents.Solidifi;
-using ReswareOrderMonitorService.Mirth;
-using ReswareOrderMonitorService.Utilities;
-using ReswareOrderMonitorService.Utilities.Solidifi;
 
 namespace Resware.MonitorService.Test.ActionEvents.Test.Solidifi.Test
 {
@@ -19,7 +19,7 @@ namespace Resware.MonitorService.Test.ActionEvents.Test.Solidifi.Test
         private SolidifiRequestDocPrep _solidifiRequestDocPrep;
         private SigningRepository _signingRepository;
         private ReswareDbContext _reswareDbContext;
-        private Mock<IMirthServiceClient> _mirthServiceClientMock;
+        private Mock<MirthServiceClient> _mirthServiceClientMock;
         private Mock<SolidifiDocPrepServiceUtility> _solidifiDocPrepServiceUtilityMock;
         private Mock<IDateTimeUtility> _dateTimeUtilityMock;
         private Order _order;
@@ -33,7 +33,7 @@ namespace Resware.MonitorService.Test.ActionEvents.Test.Solidifi.Test
             var connection = DbConnectionFactory.CreateTransient();
             _reswareDbContext = new ReswareDbContext(connection);
             _signingRepository = new SigningRepository(_reswareDbContext);
-            _mirthServiceClientMock = new Mock<IMirthServiceClient>();
+            _mirthServiceClientMock = new Mock<MirthServiceClient>();
             _solidifiDocPrepServiceUtilityMock = new Mock<SolidifiDocPrepServiceUtility>();
             _dateTimeUtilityMock = new Mock<IDateTimeUtility>();
             _solidifiRequestDocPrep = new SolidifiRequestDocPrep(_signingRepository, _mirthServiceClientMock.Object, _solidifiDocPrepServiceUtilityMock.Object, _dateTimeUtilityMock.Object);

@@ -1,25 +1,25 @@
 ﻿using System.Net.Mail;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Resware.Core.ActionEvent.FundingAuth.MailUtility;
+using Resware.Core.ActionEvent.RequestFundingAuth.ActionEvents;
 using Resware.Entities.Orders;
-using ReswareOrderMonitorService.ActionEvents;
-using ReswareOrderMonitorService.Utilities;
 
 namespace Resware.MonitorService.Test.ActionEvents.Test
 {
     [TestClass]
     public class FundingAuthTest
     {
-        private Mock<IFundingAuthMailUtility> _fundingAuthMailUtilityMock;
-        private FundingAuth _fundingAuth;
+        private Mock<FundingAuthMailUtility> _fundingAuthMailUtilityMock;
+        private RequestFundingAuth _fundingAuth;
         private Order _order;
 
         [TestInitialize]
         public void Setup()
         {
             _order = new Order {FileNumber = "123456"};
-            _fundingAuthMailUtilityMock = new Mock<IFundingAuthMailUtility>();
-            _fundingAuth = new FundingAuth(_fundingAuthMailUtilityMock.Object);    
+            _fundingAuthMailUtilityMock = new Mock<FundingAuthMailUtility>();
+            _fundingAuth = new RequestFundingAuth(_fundingAuthMailUtilityMock.Object);    
         }
 
         [TestMethod]

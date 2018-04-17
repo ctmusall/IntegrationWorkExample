@@ -1,11 +1,13 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ReswareOrderMonitorService.StatusDocumentBuilders;
 using Aspose.Words;
+using eClosings.Entities.Addresses;
+using eClosings.Entities.Attorneys;
+using eClosings.Entities.Persons;
+using eClosings.Entities.Services;
+using Resware.Core.Builders.StatusDocument.AssignedAttorney;
 using Resware.Entities.Orders;
 using ReswareCommon.Constants;
-using ReswareOrderMonitorService.eClosingIntegrationService;
-using ReswareOrderMonitorService.Models;
 
 namespace Resware.MonitorService.Test.StatusDocumentBuilders.Test
 {
@@ -14,7 +16,7 @@ namespace Resware.MonitorService.Test.StatusDocumentBuilders.Test
     {
         private DocumentBuilder _documentBuilder;
         private Order _reswareOrder;
-        private EClosingOrder _eClosingOrder;
+        private eClosings.Entities.Orders.Order _eClosingOrder;
         private AssignedAttorneyStatusDocumentBuilder _assignedAttorneyStatusDocumentBuilder;
 
         [TestInitialize]
@@ -22,7 +24,7 @@ namespace Resware.MonitorService.Test.StatusDocumentBuilders.Test
         {
             _documentBuilder = new DocumentBuilder();
             _reswareOrder = new Order();
-            _eClosingOrder = new EClosingOrder { Borrower = new EClosingPerson(), Attorneys = new EClosingAttorney[0], ClosingAttorney = new EClosingAttorney {Services = new EClosingService[0]}};
+            _eClosingOrder = new eClosings.Entities.Orders.Order { Borrower = new Person(), Attorneys = new Attorney[0], ClosingAttorney = new Attorney {Services = new Service[0]}};
             _assignedAttorneyStatusDocumentBuilder = new AssignedAttorneyStatusDocumentBuilder();
         }
 
@@ -61,7 +63,7 @@ namespace Resware.MonitorService.Test.StatusDocumentBuilders.Test
         public void DetermineAttorneyInfo_should_not_add_any_attorney_info_to_document()
         {
             // Arrange
-            _eClosingOrder.Attorneys = new EClosingAttorney[0];
+            _eClosingOrder.Attorneys = new Attorney[0];
 
             // Act
             _assignedAttorneyStatusDocumentBuilder.DetermineAttorneyInfo(_documentBuilder, _eClosingOrder);
@@ -74,7 +76,7 @@ namespace Resware.MonitorService.Test.StatusDocumentBuilders.Test
         public void DetermineAttorneyInfo_should_add_attorney_info_to_document()
         {
             // Arrange
-            _eClosingOrder.Attorneys = new [] {new EClosingAttorney {FirstName = "Bob", Address = new EClosingAddress(), Services = new [] {new EClosingService {Name = ServiceNameConstants.TitleOpinionLetter}}}};
+            _eClosingOrder.Attorneys = new [] {new Attorney { FirstName = "Bob", Address = new Address(), Services = new [] {new Service {Name = ServiceNameConstants.TitleOpinionLetter}}}};
 
             // Act
             _assignedAttorneyStatusDocumentBuilder.DetermineAttorneyInfo(_documentBuilder, _eClosingOrder);

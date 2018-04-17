@@ -3,13 +3,12 @@ using Aspose.Words;
 using Effort;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Resware.Core.Builders.StatusDocument;
+using Resware.Core.Status.StatusSenders;
 using Resware.Data.Context;
 using Resware.Data.Order.Repository;
 using Resware.Entities.Orders;
 using ReswareCommon.Constants;
-using ReswareOrderMonitorService.Models;
-using ReswareOrderMonitorService.StatusDocumentBuilders;
-using ReswareOrderMonitorService.StatusSenders;
 using ReswareOrderMonitorService.StatusSenders.Solidifi;
 
 namespace Resware.MonitorService.Test.StatusSenders.Test.Solidifi.Test
@@ -18,7 +17,7 @@ namespace Resware.MonitorService.Test.StatusSenders.Test.Solidifi.Test
     public class SolidifiStatusSenderTest
     {
         private IStatusSender _solidifiStatusSender;
-        private EClosingOrder _eClosingOrder;
+        private eClosings.Entities.Orders.Order _eClosingOrder;
         private OrderRepository _orderRepository;
         private ReswareDbContext _reswareDbContext;
         private Mock<IStatusDocumentBuilder> _statusDocumentBuilderMock;
@@ -27,7 +26,7 @@ namespace Resware.MonitorService.Test.StatusSenders.Test.Solidifi.Test
         [TestInitialize]
         public void Setup()
         {
-            _eClosingOrder = new EClosingOrder();
+            _eClosingOrder = new eClosings.Entities.Orders.Order();
             _order = new Order();
             _statusDocumentBuilderMock = new Mock<IStatusDocumentBuilder>();
             var connection = DbConnectionFactory.CreateTransient();
@@ -42,7 +41,7 @@ namespace Resware.MonitorService.Test.StatusSenders.Test.Solidifi.Test
             _solidifiStatusSender = new SolidifiStatusSender(_eClosingOrder, _statusDocumentBuilderMock.Object, new SolidifiUpdateClosingStatus(OrderStatusConstants.Scheduled, _orderRepository));
             _reswareDbContext.Orders.Add(_order);
             _reswareDbContext.SaveChanges();
-            _statusDocumentBuilderMock.Setup(sdb => sdb.BuildDocument(It.IsAny<Order>(), It.IsAny<EClosingOrder>())).Returns(new Document());
+            _statusDocumentBuilderMock.Setup(sdb => sdb.BuildDocument(It.IsAny<Order>(), It.IsAny<eClosings.Entities.Orders.Order>())).Returns(new Document());
 
             // Act
             _solidifiStatusSender.SendStatusUpdate(_order);
@@ -59,7 +58,7 @@ namespace Resware.MonitorService.Test.StatusSenders.Test.Solidifi.Test
             _solidifiStatusSender = new SolidifiStatusSender(_eClosingOrder, _statusDocumentBuilderMock.Object, new SolidifiUpdateTitleOpinionStatus(OrderStatusConstants.Scheduled, _orderRepository));
             _reswareDbContext.Orders.Add(_order);
             _reswareDbContext.SaveChanges();
-            _statusDocumentBuilderMock.Setup(sdb => sdb.BuildDocument(It.IsAny<Order>(), It.IsAny<EClosingOrder>())).Returns(new Document());
+            _statusDocumentBuilderMock.Setup(sdb => sdb.BuildDocument(It.IsAny<Order>(), It.IsAny<eClosings.Entities.Orders.Order>())).Returns(new Document());
 
             // Act
             _solidifiStatusSender.SendStatusUpdate(_order);
@@ -76,7 +75,7 @@ namespace Resware.MonitorService.Test.StatusSenders.Test.Solidifi.Test
             _solidifiStatusSender = new SolidifiStatusSender(_eClosingOrder, _statusDocumentBuilderMock.Object, new SolidifiUpdateDocPrepStatus(OrderStatusConstants.Scheduled, _orderRepository));
             _reswareDbContext.Orders.Add(_order);
             _reswareDbContext.SaveChanges();
-            _statusDocumentBuilderMock.Setup(sdb => sdb.BuildDocument(It.IsAny<Order>(), It.IsAny<EClosingOrder>())).Returns(new Document());
+            _statusDocumentBuilderMock.Setup(sdb => sdb.BuildDocument(It.IsAny<Order>(), It.IsAny<eClosings.Entities.Orders.Order>())).Returns(new Document());
 
             // Act
             _solidifiStatusSender.SendStatusUpdate(_order);
