@@ -21,7 +21,7 @@ namespace Resware.NoteDocs.WCF.Test.Managers.Test
         public void Setup()
         {
             _noteDocReader = new NoteDocReader();
-            EffortProviderConfiguration.RegisterProvider();
+            //EffortProviderConfiguration.RegisterProvider();
             var connection = DbConnectionFactory.CreateTransient();
             var reswareDbContext = new ReswareDbContext(connection);
             _noteDocRepository = new NoteDocRepository(reswareDbContext);

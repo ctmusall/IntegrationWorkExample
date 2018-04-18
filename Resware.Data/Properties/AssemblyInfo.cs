@@ -18,6 +18,7 @@ using System.Runtime.InteropServices;
 [assembly: InternalsVisibleTo("Resware.NoteDocs.WCF.Test")]
 [assembly: InternalsVisibleTo("Resware.Signing.WCF.Test")]
 [assembly: InternalsVisibleTo("Resware.Orders.WCF.Test")]
+[assembly: InternalsVisibleTo("Resware.MonitorService.Test")]
 
 
 // Setting ComVisible to false makes the types in this assembly not visible 

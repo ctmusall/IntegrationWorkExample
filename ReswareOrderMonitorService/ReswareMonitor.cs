@@ -1,17 +1,20 @@
 ﻿using System.ServiceProcess;
+using System.Threading.Tasks;
 using System.Timers;
-using ReswareOrderMonitorService.Monitors;
+using ReswareOrderMonitorService.Monitors.Documents;
+using ReswareOrderMonitorService.Monitors.OrderActionEvents;
+using ReswareOrderMonitorService.Monitors.Outgoing;
 
 namespace ReswareOrderMonitorService
 {
     internal partial class ReswareMonitor : ServiceBase
     {
         private readonly Timer _timer;
-        private readonly IOrderActionEventMonitor _orderActionEventMonitor;
-        private readonly IDocumentMonitor _documentMonitor;
-        private readonly IOutgoingMonitor _outgoingMonitor;
+        private readonly OrderActionEventMonitor _orderActionEventMonitor;
+        private readonly DocumentMonitor _documentMonitor;
+        private readonly OutgoingMonitor _outgoingMonitor;
 
-        internal ReswareMonitor(IOrderActionEventMonitor orderActionEventMonitor, IDocumentMonitor documentMonitor, IOutgoingMonitor outgoingMonitor)
+        internal ReswareMonitor(OrderActionEventMonitor orderActionEventMonitor, DocumentMonitor documentMonitor, OutgoingMonitor outgoingMonitor)
         {
             InitializeComponent();
             _orderActionEventMonitor = orderActionEventMonitor;
@@ -29,11 +32,11 @@ namespace ReswareOrderMonitorService
             _timer.Elapsed += TimerElapsed;
         }
 
-        private void TimerElapsed(object sender, ElapsedEventArgs elapsedEventArgs)
+        private async void TimerElapsed(object sender, ElapsedEventArgs elapsedEventArgs)
         {
-            _orderActionEventMonitor.MonitorOrderActionEvents();
-            _documentMonitor.MonitorDocuments();
-            _outgoingMonitor.MonitorOrders();
+            await Task.Run(() => _orderActionEventMonitor.MonitorOrderActionEvents());
+            await Task.Run(() => _documentMonitor.MonitorDocuments());
+            await Task.Run(() => _outgoingMonitor.MonitorOrders());
         }
 
         protected override void OnStop()

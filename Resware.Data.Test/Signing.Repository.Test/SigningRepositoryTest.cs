@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Effort;
-using Effort.Provider;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Resware.Data.Context;
 using Resware.Data.Signing.Repository;
@@ -18,7 +17,7 @@ namespace Resware.Data.Test.Signing.Repository.Test
         [TestInitialize]
         public void Setup()
         {
-            EffortProviderConfiguration.RegisterProvider();
+            //EffortProviderConfiguration.RegisterProvider();
             var connection = DbConnectionFactory.CreateTransient();
             _reswareDbContext = new ReswareDbContext(connection);
             _signingRepository = new SigningRepository(_reswareDbContext);

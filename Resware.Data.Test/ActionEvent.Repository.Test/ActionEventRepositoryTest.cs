@@ -20,7 +20,7 @@ namespace Resware.Data.Test.ActionEvent.Repository.Test
         public void Setup()
         {
             // Context
-            EffortProviderConfiguration.RegisterProvider();
+            //EffortProviderConfiguration.RegisterProvider();
             var connection = Effort.DbConnectionFactory.CreateTransient();
             _reswareDbContext = new ReswareDbContext(connection);
             _reswareDbContext.ActionEvents.AddRange(_actionEvents = new List<Entities.ActionEvents.ActionEvent>

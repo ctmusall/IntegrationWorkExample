@@ -23,6 +23,8 @@
             public const string DeedPrepInternal = "Deed Prep--Internal";
             public const string DeedPrepExternal = "Deed Prep--External";
             public const string Online = "Online";
+            public const string IntSearchOpinion = "INT--Search/Opinion";
+            public const string EDoc = "eDoc";
         }
     }
 }

@@ -2,8 +2,10 @@
 using System.Diagnostics;
 using System.ServiceProcess;
 using ReswareOrderMonitorService.Aspose;
-using ReswareOrderMonitorService.Factories;
-using ReswareOrderMonitorService.Monitors;
+using ReswareOrderMonitorService.Factories.DependencyFactory;
+using ReswareOrderMonitorService.Monitors.Documents;
+using ReswareOrderMonitorService.Monitors.OrderActionEvents;
+using ReswareOrderMonitorService.Monitors.Outgoing;
 
 namespace ReswareOrderMonitorService
 {
@@ -18,17 +20,18 @@ namespace ReswareOrderMonitorService
 #if (!DEBUG)
                 var servicesToRun = new ServiceBase[]
                 {
-                    new ReswareMonitor(DependencyFactory.Resolve<IOrderActionEventMonitor>(), 
-                    DependencyFactory.Resolve<IDocumentMonitor>(), 
-                    DependencyFactory.Resolve<IOutgoingMonitor>())
+                    new ReswareMonitor(
+                    DependencyFactory.Resolve<OrderActionEventMonitor>(), 
+                    DependencyFactory.Resolve<DocumentMonitor>(), 
+                    DependencyFactory.Resolve<OutgoingMonitor>())
                 };
 
                 ServiceBase.Run(servicesToRun);
 #endif
 
-                DependencyFactory.Resolve<IOrderActionEventMonitor>().MonitorOrderActionEvents();
-                DependencyFactory.Resolve<IDocumentMonitor>().MonitorDocuments();
-                DependencyFactory.Resolve<IOutgoingMonitor>().MonitorOrders();
+                DependencyFactory.Resolve<OrderActionEventMonitor>().MonitorOrderActionEvents();
+                DependencyFactory.Resolve<DocumentMonitor>().MonitorDocuments();
+                DependencyFactory.Resolve<OutgoingMonitor>().MonitorOrders();
 
             }
             catch (Exception ex)
