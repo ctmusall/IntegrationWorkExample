@@ -49,8 +49,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resware.Data", "Resware.Dat
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resware.Data.Test", "Resware.Data.Test\Resware.Data.Test.csproj", "{116B2A38-55D8-4224-B1AC-A4E552A6B760}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AA020657-4003-45F8-A739-0BBC2F43B4F6} = {AA020657-4003-45F8-A739-0BBC2F43B4F6}
+		{9D6988E7-5971-4D1B-A765-0BD105416157} = {9D6988E7-5971-4D1B-A765-0BD105416157}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resware.Entities", "Resware.Entities\Resware.Entities.csproj", "{AA020657-4003-45F8-A739-0BBC2F43B4F6}"
+	ProjectSection(ProjectDependencies) = postProject
+		{786C9E6C-93FF-4D16-9407-EEEB61A705E3} = {786C9E6C-93FF-4D16-9407-EEEB61A705E3}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resware.Signing.WCF.Test", "Resware.Signing.WCF.Test\Resware.Signing.WCF.Test.csproj", "{A6611F10-E445-4C26-9789-43ECD3160B48}"
 EndProject
