@@ -53,15 +53,6 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="Resware.Data">
-      <HintPath>..\Resware.Data\bin\Debug\Resware.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="Resware.Entities">
-      <HintPath>..\Resware.Data\bin\Debug\Resware.Entities.dll</HintPath>
-    </Reference>
-    <Reference Include="ReswareCommon">
-      <HintPath>..\ReswareCommon\bin\Debug\ReswareCommon.dll</HintPath>
-    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.IdentityModel" />
     <Reference Include="System.Web.DynamicData" />
@@ -130,7 +121,20 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserNameValidator.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Resware.Data\Resware.Data.csproj">
+      <Project>{9d6988e7-5971-4d1b-a765-0bd105416157}</Project>
+      <Name>Resware.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Resware.Entities\Resware.Entities.csproj">
+      <Project>{aa020657-4003-45f8-a739-0bbc2f43b4f6}</Project>
+      <Name>Resware.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ReswareCommon\Resware.Common.csproj">
+      <Project>{786c9e6c-93ff-4d16-9407-eeeb61a705e3}</Project>
+      <Name>Resware.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\Mirthtest.pubxml" />
