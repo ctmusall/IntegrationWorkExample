@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
-using ReswareCommon;
 using ReswareCommon.Enums;
 
 namespace OrderPlacement.Models
