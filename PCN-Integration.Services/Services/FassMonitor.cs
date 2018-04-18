@@ -8,6 +8,7 @@ using PCN_Integration.DataModels;
 using PCN_Integration.Services.Common;
 using PCN_Integration.Services.Models;
 using PCN_Integration.Services.PcnIntegrationServiceTest;
+using PCN_Integration.Services.Properties;
 using PCN_Integration.Services.Utilities;
 
 namespace PCN_Integration.Services.Services
@@ -24,19 +25,19 @@ namespace PCN_Integration.Services.Services
                 var fassOrder = new FassOrder
                 {
                     OrderId = order.ORDERID,
-                    FileNo = order.FILE_NUM,           
+                    FileNo = order.FILE_NUM,
                     DateTimeLastUpdated = order.CREATE_DATE,
                     Status = ConvertStatusIdToString(order.STATUS),
                     StatusLastUpdated = ConvertStatusIdToString(order.STATUS),
                     DateTimeCreated = order.CREATE_DATE,
                     CustomerId = order.CUSTOMERID
-                };                   
+                };
                 AddOrderToMonitorDb(fassOrder);
             }
         }
 
         private static void SendFassNotificationOnUpdate()
-        {     
+        {
             var trackedFassOrders = GetTrackedOrders();
             var trackedFassOrderIds = trackedFassOrders.Select(fassOrder => fassOrder.OrderId).ToList();
 
@@ -50,7 +51,7 @@ namespace PCN_Integration.Services.Services
 
         private static void BuildFassResponseMessageAndSendUpdate(IEnumerable<OSGPCN300> pcnOrders, FassOrder trackedOrder)
         {
-            var pcnOrder = pcnOrders.FirstOrDefault(o => 
+            var pcnOrder = pcnOrders.FirstOrDefault(o =>
                 string.Equals(o.ORDERID, trackedOrder.OrderId, StringComparison.InvariantCultureIgnoreCase));
 
             if (pcnOrder == null) return;
@@ -62,11 +63,11 @@ namespace PCN_Integration.Services.Services
             bool success;
 
             var response = pcnWebService.GetOrderFromService(pcnOrder.CUSTOMERID, pcnOrder.ORDERID, out success);
-            
+
             if (IsNotMostRecentOrder(response)) return;
 
             var order = response.GetOrderResult.Order;
-                        
+
             var fassMessage = new FassMonitorResponseMessage
             {
                 OrderId = order.FileNumber,
@@ -142,7 +143,7 @@ namespace PCN_Integration.Services.Services
         {
             if (string.IsNullOrWhiteSpace(orderAdjournedReason) || !orderAdjournedReason.Contains("||")) return;
 
-            var adjournedContent = orderAdjournedReason.Split(new [] {"||"}, StringSplitOptions.None);
+            var adjournedContent = orderAdjournedReason.Split(new[] { "||" }, StringSplitOptions.None);
 
             if (adjournedContent.Length < 2) return;
 
@@ -241,18 +242,25 @@ namespace PCN_Integration.Services.Services
 
         private static void SendUpdateToMirth(FassMonitorResponseMessage fassMessage, FassOrder trackedOrder, OSGPCN300 pcnOrder)
         {
-            var mirthSender = new MirthService();
-            var result = mirthSender.SendFassMessageToMirth(fassMessage.ToSerializedXml());
-            if (result)
+            if (string.Equals(Settings.Default.famsModificationsCustomerId, trackedOrder.CustomerId, StringComparison.CurrentCultureIgnoreCase))
             {
                 UpdateRecordOfActionTaken(trackedOrder, pcnOrder);
+            }
+            else
+            {
+                var mirthSender = new MirthService();
+                var result = mirthSender.SendFassMessageToMirth(fassMessage.ToSerializedXml());
+                if (result)
+                {
+                    UpdateRecordOfActionTaken(trackedOrder, pcnOrder);
+                }
             }
         }
 
         private static void ConvertAndAssignFee(FassMonitorResponseMessage fassMessage, OutboundOrder order)
         {
             var nfi = CultureInfo.CurrentCulture.NumberFormat;
-            nfi = (NumberFormatInfo) nfi.Clone();
+            nfi = (NumberFormatInfo)nfi.Clone();
             nfi.CurrencySymbol = string.Empty;
             fassMessage.Fee = string.Format(nfi, "{0:c}", order.TotalBillRate);
         }
@@ -280,13 +288,13 @@ namespace PCN_Integration.Services.Services
                 var currentDate = DateTime.Now.Date.AddDays(-Properties.Settings.Default.daysToLookBack);
 
                 var res = context.OSGPCN300.Where(o =>
-                (o.STATUS == 0 || o.STATUS == 1) && 
-                (o.CUSTOMERID == Properties.Settings.Default.famsCustomerId || o.CUSTOMERID == Properties.Settings.Default.famsModificationsCustomerId) && 
+                (o.STATUS == 0 || o.STATUS == 1) &&
+                (o.CUSTOMERID == Properties.Settings.Default.famsCustomerId || o.CUSTOMERID == Properties.Settings.Default.famsModificationsCustomerId) &&
                 o.CREATE_DATE > currentDate &&
                 o.PRODUCT == 9 || o.PRODUCT == 11
                 );
                 return res.ToList();
-                
+
             }
             catch (Exception ex)
             {
@@ -331,7 +339,7 @@ namespace PCN_Integration.Services.Services
 
             try
             {
-                var context= new PCNIntegrationEntities();
+                var context = new PCNIntegrationEntities();
                 result = context.FassOrders.ToList();
                 return result;
             }
@@ -368,7 +376,7 @@ namespace PCN_Integration.Services.Services
             fOrder.StatusLastUpdated = fassOrder.Status;
             fOrder.Status = ConvertStatusIdToString(order.STATUS);
             fOrder.DateTimeLastUpdated = DateTime.Now;
-        
+
             context.SaveChanges();
         }
 
@@ -379,7 +387,7 @@ namespace PCN_Integration.Services.Services
                 TrackNewFassOrders();
                 SendFassNotificationOnUpdate();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 EventLog.WriteEntry(ex.Source, ex.Message);
             }
