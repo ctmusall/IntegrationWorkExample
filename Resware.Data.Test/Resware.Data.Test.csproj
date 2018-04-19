@@ -59,12 +59,6 @@
       <HintPath>..\packages\NMemory.1.1.2\lib\net45\NMemory.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Resware.Data">
-      <HintPath>..\Resware.Data\bin\Debug\Resware.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="Resware.Entities">
-      <HintPath>..\Resware.Entities\bin\Debug\Resware.Entities.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -104,6 +98,16 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Resware.Data\Resware.Data.csproj">
+      <Project>{9d6988e7-5971-4d1b-a765-0bd105416157}</Project>
+      <Name>Resware.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Resware.Entities\Resware.Entities.csproj">
+      <Project>{aa020657-4003-45f8-a739-0bbc2f43b4f6}</Project>
+      <Name>Resware.Entities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
