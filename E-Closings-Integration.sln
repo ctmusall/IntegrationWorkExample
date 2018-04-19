@@ -40,6 +40,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resware.ActionEvent.WCF", "
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resware.MonitorService", "ReswareOrderMonitorService\Resware.MonitorService.csproj", "{43DBA399-2E78-44DD-A2F8-8529C7E9A5AB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AA020657-4003-45F8-A739-0BBC2F43B4F6} = {AA020657-4003-45F8-A739-0BBC2F43B4F6}
+		{9D6988E7-5971-4D1B-A765-0BD105416157} = {9D6988E7-5971-4D1B-A765-0BD105416157}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resware.Common", "ReswareCommon\Resware.Common.csproj", "{786C9E6C-93FF-4D16-9407-EEEB61A705E3}"
 EndProject
