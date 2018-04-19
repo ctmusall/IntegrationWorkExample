@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Resware.Entities.Orders.Addresses;
-using ReswareCommon;
 using ReswareCommon.Enums;
 
 namespace Resware.Entities.Orders.BuyerSellers
