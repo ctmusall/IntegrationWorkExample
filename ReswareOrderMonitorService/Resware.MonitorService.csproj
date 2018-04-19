@@ -60,7 +60,7 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Test|AnyCPU' ">
     <OutputPath>bin\Mirthtest\</OutputPath>
@@ -83,15 +83,6 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
-    </Reference>
-    <Reference Include="Resware.Data">
-      <HintPath>..\Resware.Data\bin\Debug\Resware.Data.dll</HintPath>
-    </Reference>
-    <Reference Include="Resware.Entities">
-      <HintPath>..\Resware.Entities\bin\Debug\Resware.Entities.dll</HintPath>
-    </Reference>
-    <Reference Include="ReswareCommon">
-      <HintPath>..\ReswareCommon\bin\Debug\ReswareCommon.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -207,6 +198,18 @@
     <ProjectReference Include="..\Resware.Core\Resware.Core.Documents.csproj">
       <Project>{d5a219ef-0c78-4e36-9039-3ca2f7c290c2}</Project>
       <Name>Resware.Core.Documents</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Resware.Data\Resware.Data.csproj">
+      <Project>{9d6988e7-5971-4d1b-a765-0bd105416157}</Project>
+      <Name>Resware.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Resware.Entities\Resware.Entities.csproj">
+      <Project>{aa020657-4003-45f8-a739-0bbc2f43b4f6}</Project>
+      <Name>Resware.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ReswareCommon\Resware.Common.csproj">
+      <Project>{786c9e6c-93ff-4d16-9407-eeeb61a705e3}</Project>
+      <Name>Resware.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
